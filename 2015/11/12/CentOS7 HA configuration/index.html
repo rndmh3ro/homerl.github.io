@@ -1,0 +1,873 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="centos,ha,cluster,linux,3 nodes,corosync,pacemaker,kvm,virtualization," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS 7 HA configuration (3 nodes and kvm stonith)">
+<meta property="og:url" content="http://yoursite.com/2015/11/12/CentOS7 HA configuration/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+<meta property="og:updated_time" content="2016-03-08T16:08:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS 7 HA configuration (3 nodes and kvm stonith)">
+<meta name="twitter:description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> CentOS 7 HA configuration (3 nodes and kvm stonith) | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CentOS 7 HA configuration (3 nodes and kvm stonith)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-11-12T17:16:07+08:00" content="2015-11-12">
+              2015-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux configuration</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/12/CentOS7 HA configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/12/CentOS7 HA configuration/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Just-for-test-not-in-my-production-environment-it-is-incomplete"><a href="#Just-for-test-not-in-my-production-environment-it-is-incomplete" class="headerlink" title="Just for test , not in my production environment, it is incomplete"></a>Just for test , not in my production environment, it is incomplete</h3><ul>
+<li>3 nodes linux HA replace 2 nodes</li>
+<li>fence kvm</li>
+</ul>
+<h3 id="Physical-node-OS"><a href="#Physical-node-OS" class="headerlink" title="Physical node OS"></a>Physical node OS</h3><ul>
+<li>CentOS Linux release 7.1.1503 (Core) </li>
+<li>3.10.0-229.14.1.el7.x86_64</li>
+</ul>
+<h3 id="Virtual-machine-OS"><a href="#Virtual-machine-OS" class="headerlink" title="Virtual machine OS"></a>Virtual machine OS</h3><ul>
+<li>CentOS release 6.7 (Final)</li>
+<li>2.6.32-504.30.3.el6_lustre.x86_64</li>
+<li>Not support SR-IOV</li>
+<li>Virtaul disk cache set to none</li>
+</ul>
+<h3 id="Create-linux-HA-3-x-physical-server"><a href="#Create-linux-HA-3-x-physical-server" class="headerlink" title="Create linux HA ,3 x physical server"></a>Create linux HA ,3 x physical server</h3><p>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4<br>::1         localhost localhost.localdomain localhost6 localhost6.localdomain6<br>10.xx.xx.1 node01<br>10.xx.xx.2 node02<br>10.xx.xx.3 node03</p>
+<h3 id="Share-strorages"><a href="#Share-strorages" class="headerlink" title="Share strorages"></a>Share strorages</h3><p>NFS/Lustre</p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install pacemaker corosync fence-agents-all fence-agents-virsh \</span></span><br><span class="line">  fence-virt pacemaker-remote pcs fence-virtd resource-agents \</span><br><span class="line">  fence-virtd-libvirt fence-virtd-multicast</span><br></pre></td></tr></table></figure>
+<h3 id="Setup-physical-server"><a href="#Setup-physical-server" class="headerlink" title="Setup physical server"></a>Setup physical server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo hacluster | passwd --stdin hacluster</span></span><br><span class="line"><span class="comment"># systemctl enable pcsd.service</span></span><br><span class="line"><span class="comment"># systemctl start pcsd.service</span></span><br><span class="line"><span class="comment"># systemctl is-active pcsd.service</span></span><br><span class="line"><span class="comment"># pcs cluster auth node01 node02 node03 ##input hacluster password for auth</span></span><br><span class="line"><span class="comment"># pcs cluster setup --start --name ha-kvm node01 node02 node03</span></span><br><span class="line"><span class="comment"># pcs property set no-quorum-policy=stop</span></span><br></pre></td></tr></table></figure>
+<p>4.1.2 Option no-quorum-policy</p>
+<p>This global option defines what to do when a cluster partition does not have quorum (no majority of nodes is part of the partition).</p>
+<p>Allowed values are:</p>
+<p>ignore<br>The quorum state does not influence the cluster behavior; resource management is continued.</p>
+<p>This setting is useful for the following scenarios:</p>
+<p>Two-node clusters: Since a single node failure would always result in a loss of majority, usually you want the cluster to carry on regardless. Resource integrity is ensured using fencing, which also prevents split brain scenarios.</p>
+<p>Resource-driven clusters: For local clusters with redundant communication channels, a split brain scenario only has a certain probability. Thus, a loss of communication with a node most likely indicates that the node has crashed, and that the surviving nodes should recover and start serving the resources again.</p>
+<p>If no-quorum-policy is set to ignore, a 4-node cluster can sustain concurrent failure of three nodes before service is lost. With the other settings, it would lose quorum after concurrent failure of two nodes.</p>
+<p>freeze<br>If quorum is lost, the cluster partition freezes. Resource management is continued: running resources are not stopped (but possibly restarted in response to monitor events), but no further resources are started within the affected partition.</p>
+<p>This setting is recommended for clusters where certain resources depend on communication with other nodes (for example, OCFS2 mounts). In this case, the default setting no-quorum-policy=stop is not useful, as it would lead to the following scenario: Stopping those resources would not be possible while the peer nodes are unreachable. Instead, an attempt to stop them would eventually time out and cause a stop failure, triggering escalated recovery and fencing.</p>
+<p>stop (default value)<br>If quorum is lost, all resources in the affected cluster partition are stopped in an orderly fashion.</p>
+<p>suicide<br>If quorum is lost, all nodes in the affected cluster partition are fenced.</p>
+<h3 id="Setting-etc-corosync-corosync-conf-for-every-node"><a href="#Setting-etc-corosync-corosync-conf-for-every-node" class="headerlink" title="Setting /etc/corosync/corosync.conf for every node"></a>Setting /etc/corosync/corosync.conf for every node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">totem &#123;</span><br><span class="line">    version: 2</span><br><span class="line">    secauth: off</span><br><span class="line">    rrp_mode:active</span><br><span class="line">    cluster_name: ha-kvm</span><br><span class="line">    transport: udpu</span><br><span class="line">    token: 17000</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nodelist &#123;</span><br><span class="line">  node &#123;</span><br><span class="line">	ring0_addr: 10.xx.xx.1</span><br><span class="line">        ring1_addr: 172.xx.xx.1</span><br><span class="line">        nodeid: 1</span><br><span class="line">       &#125;</span><br><span class="line">  node &#123;</span><br><span class="line">        ring0_addr: 10.xx.xx.3</span><br><span class="line">        ring1_addr: 172.xx.xx.3</span><br><span class="line">        nodeid: 2</span><br><span class="line">       &#125;</span><br><span class="line">  node &#123;</span><br><span class="line">        ring0_addr: 10.xx.xx.2</span><br><span class="line">        ring1_addr: 172.xx.xx.2</span><br><span class="line">        nodeid: 3</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">quorum &#123;</span><br><span class="line">    provider: corosync_votequorum</span><br><span class="line">    expected_votes: 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">        fileline: off</span><br><span class="line">        to_logfile: yes</span><br><span class="line">        to_syslog: yes</span><br><span class="line">        logfile: /var/<span class="built_in">log</span>/cluster/corosync.log</span><br><span class="line">        timestamp: on</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Restart-corosync-service-in-each-node"><a href="#Restart-corosync-service-in-each-node" class="headerlink" title="Restart corosync service in each node"></a>Restart corosync service in each node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl restart corosync</span></span><br></pre></td></tr></table></figure>
+<h3 id="Create-stonith-for-physical-server"><a href="#Create-stonith-for-physical-server" class="headerlink" title="Create stonith for physical server"></a>Create stonith for physical server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create node01-fencing fence_ipmilan pcmk_host_list="nod01 node02 node03" \</span></span><br><span class="line">ipaddr=<span class="string">"node1_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 \</span><br><span class="line">op monitor interval=60s</span><br><span class="line"><span class="comment"># pcs stonith create node02-fencing fence_ipmilan pcmk_host_list="nod01 node02 node03" \</span></span><br><span class="line"> ipaddr=<span class="string">"node2_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 \</span><br><span class="line">op monitor interval=60s</span><br><span class="line"><span class="comment"># pcs stonith create node03-fencing fence_ipmilan pcmk_host_list="nod01 node02 node03" \</span></span><br><span class="line">ipaddr=<span class="string">"node3_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op \</span><br><span class="line">monitor interval=60s</span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs property set stonith-enabled=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs status</span></span><br><span class="line">Cluster name: ha-kvm</span><br><span class="line">Last updated: Wed Nov 11 16:42:46 2015</span><br><span class="line">Last change: Wed Nov 11 02:48:26 2015 by root via crm_resource on node01</span><br><span class="line">Stack: corosync</span><br><span class="line">Current DC: node01 (version 1.1.13<span class="_">-a</span>14efad) - partition with quorum</span><br><span class="line">3 nodes and 5 resources configured</span><br><span class="line"></span><br><span class="line">Online: [ node02 node03 node01 ]</span><br><span class="line"></span><br><span class="line">Full list of resources:</span><br><span class="line"></span><br><span class="line"> node01-fencing	(stonith:fence_ipmilan):	Started node02</span><br><span class="line"> node03-fencing	(stonith:fence_ipmilan):	Started node01</span><br><span class="line"> node02-fencing	(stonith:fence_ipmilan):	Started node03</span><br><span class="line"></span><br><span class="line">PCSD Status:</span><br><span class="line">  node03: Online</span><br><span class="line">  node01: Online</span><br><span class="line">  node02: Online</span><br><span class="line"></span><br><span class="line">Daemon Status:</span><br><span class="line">  corosync: active/enabled</span><br><span class="line">  pacemaker: active/enabled</span><br><span class="line">  pcsd: active/enabled</span><br></pre></td></tr></table></figure>
+<h3 id="Get-quorum-info"><a href="#Get-quorum-info" class="headerlink" title="Get quorum info"></a>Get quorum info</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># corosync-quorumtool -siH</span></span><br><span class="line">Quorum information</span><br><span class="line">------------------</span><br><span class="line">Date:             Thu Nov 12 04:49:31 2015</span><br><span class="line">Quorum provider:  corosync_votequorum</span><br><span class="line">Nodes:            3</span><br><span class="line">Node ID:          0x00000002</span><br><span class="line">Ring ID:          260</span><br><span class="line">Quorate:          Yes</span><br><span class="line"></span><br><span class="line">Votequorum information</span><br><span class="line">----------------------</span><br><span class="line">Expected votes:   3</span><br><span class="line">Highest expected: 3</span><br><span class="line">Total votes:      3</span><br><span class="line">Quorum:           2  </span><br><span class="line">Flags:            Quorate </span><br><span class="line"></span><br><span class="line">Membership information</span><br><span class="line">----------------------</span><br><span class="line">    Nodeid      Votes Name</span><br><span class="line">0x00000003          1 10.0.0.80</span><br><span class="line">0x00000001          1 10.0.10.97</span><br><span class="line">0x00000002          1 10.0.10.106 (<span class="built_in">local</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Install-kvm"><a href="#Install-kvm" class="headerlink" title="Install kvm"></a>Install kvm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install qemu-kvm libcacard qemu-kvm-common libvirt</span></span><br></pre></td></tr></table></figure>
+<h3 id="Create-HA-resource-for-kvm"><a href="#Create-HA-resource-for-kvm" class="headerlink" title="Create HA resource for kvm"></a>Create HA resource for kvm</h3><p>Delete cpu model in your xml file for prevent virsh start faild.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cpu</span> <span class="attr">mode</span>=<span class="string">'custom'</span> <span class="attr">match</span>=<span class="string">'exact'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">model</span> <span class="attr">fallback</span>=<span class="string">'allow'</span>&gt;</span>SandyBridge<span class="tag">&lt;/<span class="name">model</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">cpu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cpu</span> <span class="attr">mode</span>=<span class="string">'custom'</span> <span class="attr">match</span>=<span class="string">'exact'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">model</span> <span class="attr">fallback</span>=<span class="string">'allow'</span>&gt;</span>Westmere<span class="tag">&lt;/<span class="name">model</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">cpu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs resource create mds-01 VirtualDomain hypervisor="qemu:///system" \</span></span><br><span class="line">config=<span class="string">"/xxx/mds01.xml"</span>  meta remote-node=<span class="string">"mds-01"</span></span><br><span class="line"><span class="comment"># pcs resource create mds-02 VirtualDomain hypervisor="qemu:///system" \</span></span><br><span class="line">config=<span class="string">"/xxx/mds02.xml"</span>  meta remote-node=<span class="string">"mds-02"</span></span><br></pre></td></tr></table></figure>
+<p>###Configure the pysical node for stonith<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install fence-virt fence-virtd fence-virtd-multicast fence-virtd-libvirt</span></span><br><span class="line"><span class="comment"># fence_virtd -c</span></span><br><span class="line">Accept all the defaults except <span class="keyword">for</span> the items listed below, and the multicast IP and TCP port <span class="keyword">if</span> you selected non-default ones:</span><br><span class="line">Setting a preferred interface causes fence_virtd to listen only</span><br><span class="line"> on that interface.  Normally, it listens on all interfaces.</span><br><span class="line"> In environments <span class="built_in">where</span> the virtual machines are using the host</span><br><span class="line"> machine as a gateway, this *must* be <span class="built_in">set</span> (typically to virbr0).</span><br><span class="line"> Set to <span class="string">'none'</span> <span class="keyword">for</span> no interface.</span><br><span class="line"> </span><br><span class="line"> Interface [none]: br1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">You can accept the default (none) <span class="keyword">if</span> the guests have IPs on the <span class="built_in">local</span> LAN. Here, we assume they <span class="keyword">do</span> not.</span><br><span class="line">Key File [none]: /etc/cluster/fence_xvm.key</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">This ensures only machines with the same key can initiate fencing requests.</span><br><span class="line">At the end, it will ask</span><br><span class="line">Replace /etc/fence_virt.conf with the above [y/N]? y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Say yes.</span><br><span class="line">You should end up with a configuration like this <span class="keyword">in</span> /etc/fence_virt.conf:</span><br><span class="line">backends &#123;</span><br><span class="line">         libvirt &#123;</span><br><span class="line">                 uri = <span class="string">"qemu:///system"</span>;</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> listeners &#123;</span><br><span class="line">         multicast &#123;</span><br><span class="line">                 key_file = <span class="string">"/etc/cluster/fence_xvm.key"</span>;</span><br><span class="line">                 interface = <span class="string">"virbr0"</span>;</span><br><span class="line">                 port = <span class="string">"1229"</span>;</span><br><span class="line">                 address = <span class="string">"225.0.0.12"</span>;</span><br><span class="line">                 family = <span class="string">"ipv4"</span>;</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> fence_virtd &#123;</span><br><span class="line">         backend = <span class="string">"libvirt"</span>;</span><br><span class="line">         listener = <span class="string">"multicast"</span>;</span><br><span class="line">         module_path = <span class="string">"/usr/lib64/fence-virt"</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># mkdir -p /etc/cluster</span></span><br><span class="line"><span class="comment"># dd if=/dev/urandom bs=4k count=1 of=/etc/cluster/fence_xvm.key</span></span><br><span class="line"><span class="comment"># chmod 0600 /etc/cluster/fence_xvm.key</span></span><br></pre></td></tr></table></figure></p>
+<p>Required changes to the “address” value on both nodes<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    (on node1)</span><br><span class="line">    address = <span class="string">"225.0.1.12"</span>;</span><br><span class="line"></span><br><span class="line">    (on node2)</span><br><span class="line">    address = <span class="string">"225.0.2.12"</span>;</span><br><span class="line"></span><br><span class="line">    (on node3)</span><br><span class="line">    address = <span class="string">"225.0.3.12"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># fence_virtd  #start the daemon</span></span><br><span class="line"><span class="comment"># fence_xvm -o list</span></span><br><span class="line">iml-01               e95b2343-7d31-410d-1398-25c98daaaabd on</span><br><span class="line">manager-kvm          24fa85e3-6cc0-4e1e-b8b5-cdd78aca1eff on</span><br><span class="line">mds-02               e95e6534-7a29-419b-9919-22d8cad8ef4d on</span><br></pre></td></tr></table></figure></p>
+<h3 id="Configure-the-virtual-machine-for-stonith"><a href="#Configure-the-virtual-machine-for-stonith" class="headerlink" title="Configure the virtual machine for stonith"></a>Configure the virtual machine for stonith</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install fence-virt fence-virtd</span></span><br><span class="line"><span class="comment"># mkdir -p /etc/cluster</span></span><br><span class="line">Copy the shared key from the physical host to vm:/etc/cluster/fence_xvm.key</span><br></pre></td></tr></table></figure>
+<h3 id="Create-stonith-resource-for-vm"><a href="#Create-stonith-resource-for-vm" class="headerlink" title="Create stonith resource for vm"></a>Create stonith resource for vm</h3><p>Because I do not know which vm would be running in one physical node. Because there are three physical server,<br>so I create three vm fencing for one vm.</p>
+<p>I setup a corosync with pacemaker two node cluster for mds-01 and mds-02<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-01-1 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.1.12</span><br><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-01-2 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.2.12</span><br><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-01-3 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.3.12</span><br><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-02-1 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.1.12</span><br><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-02-2 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.2.12</span><br><span class="line"><span class="comment"># pcs stonith create xvmfence_mds-02-3 fence_xvm pcmk_host_list="mds-01 mds-02" action="reboot" \</span></span><br><span class="line">key_file=/etc/cluster/fence_xvm.key multicast_address=225.0.3.12</span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs status</span></span><br><span class="line">Cluster name: </span><br><span class="line">Last updated: Thu Nov 12 08:36:34 2015</span><br><span class="line">Last change: Thu Nov 12 08:34:47 2015</span><br><span class="line">Stack: classic openais (with plugin)</span><br><span class="line">Current DC: mds-01 - partition with quorum</span><br><span class="line">Version: 1.1.11-97629de</span><br><span class="line">2 Nodes configured, 2 expected votes</span><br><span class="line">6 Resources configured</span><br><span class="line">Online: [ mds-01 mds-02 ]</span><br><span class="line">Full list of resources:</span><br><span class="line"> xvmfence_mds-01-1	(stonith:fence_xvm):	Started mds-01 </span><br><span class="line"> xvmfence_mds-01-2	(stonith:fence_xvm):	Started mds-02 </span><br><span class="line"> xvmfence_mds-01-3	(stonith:fence_xvm):	Started mds-01 </span><br><span class="line"> xvmfence_mds-02-1	(stonith:fence_xvm):	Started mds-02 </span><br><span class="line"> xvmfence_mds-02-2	(stonith:fence_xvm):	Started mds-01 </span><br><span class="line"> xvmfence_mds-02-3	(stonith:fence_xvm):	Started mds-02 </span><br><span class="line"></span><br><span class="line"><span class="comment"># Settting level for clsuter</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs stonith level add 1 mds-01 xvmfence_mds-01-1</span></span><br><span class="line"><span class="comment"># pcs stonith level add 2 mds-01 xvmfence_mds-01-2</span></span><br><span class="line"><span class="comment"># pcs stonith level add 3 mds-01 xvmfence_mds-01-3</span></span><br><span class="line"><span class="comment"># pcs stonith level add 1 mds-01 xvmfence_mds-02-1</span></span><br><span class="line"><span class="comment"># pcs stonith level add 2 mds-01 xvmfence_mds-02-2</span></span><br><span class="line"><span class="comment"># pcs stonith level add 3 mds-01 xvmfence_mds-02-3</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Test-vm-stonith"><a href="#Test-vm-stonith" class="headerlink" title="Test vm stonith"></a>Test vm stonith</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.3.12 -k /etc/cluster/fence_xvm.key -H mds-01 -o status</span></span><br><span class="line">Status: ON  (It means mds-01 running <span class="keyword">in</span> node3)</span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.1.12 -k /etc/cluster/fence_xvm.key -H mds-01 -o status</span></span><br><span class="line">Status: OFF</span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.2.12 -k /etc/cluster/fence_xvm.key -H mds-01 -o status</span></span><br><span class="line">Status: OFF</span><br><span class="line"></span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.1.12 -k /etc/cluster/fence_xvm.key -H mds-02 -o status</span></span><br><span class="line">Status: ON  (It means mds-02 running <span class="keyword">in</span> node1)</span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.2.12 -k /etc/cluster/fence_xvm.key -H mds-02 -o status</span></span><br><span class="line">Status: OFF</span><br><span class="line">[root@mds-02 ~]<span class="comment"># fence_xvm -a 225.0.3.12 -k /etc/cluster/fence_xvm.key -H mds-02 -o status</span></span><br><span class="line">Status: OFF</span><br><span class="line"></span><br><span class="line">fence mds-02</span><br><span class="line">[root@mds-01 ~]<span class="comment"># pcs stonith fence mds-02</span></span><br><span class="line">Node: mds-02 fenced</span><br><span class="line">[root@mds-02 ~]<span class="comment"># Write failed: Broken pipe</span></span><br><span class="line"></span><br><span class="line">fence mds-01</span><br><span class="line">[root@mds-02 ~]<span class="comment"># pcs stonith fence mds-01</span></span><br><span class="line">Node: mds-01 fenced</span><br><span class="line">[root@mds-01 ~]<span class="comment"># Write failed: Broken pipe</span></span><br></pre></td></tr></table></figure>
+<p>There is one Mellanox ConnectX-3 adapter could not work well in my test environment.<br>I checked config again and again until I upgrded the driver, it could work well.<br>Third time to waste my time in Mellanox ethernet adapter, until now I don’t think it’s a good choice.</p>
+<p>Reference<br><a href="http://clusterlabs.org/wiki/Guest_Fencing" target="_blank" rel="external">http://clusterlabs.org/wiki/Guest_Fencing</a><br><a href="https://access.redhat.com/solutions/293183" target="_blank" rel="external">https://access.redhat.com/solutions/293183</a><br><a href="https://access.redhat.com/solutions/917833" target="_blank" rel="external">https://access.redhat.com/solutions/917833</a><br><a href="https://alteeve.ca/w/Fencing_KVM_Virtual_Servers#Configuring_fence_xvm" target="_blank" rel="external">https://alteeve.ca/w/Fencing_KVM_Virtual_Servers#Configuring_fence_xvm</a><br><a href="http://people.redhat.com/ccaulfie/docs/Votequorum_Intro.pdf" target="_blank" rel="external">http://people.redhat.com/ccaulfie/docs/Votequorum_Intro.pdf</a><br><a href="https://www.ibm.com/developerworks/community/blogs/mhhaque/entry/configure_two_node_highly_available_cluster_using_kvm_fencing_on_rhel7?lang=en" target="_blank" rel="external">https://www.ibm.com/developerworks/community/blogs/mhhaque/entry/configure_two_node_highly_available_cluster_using_kvm_fencing_on_rhel7?lang=en</a><br><a href="https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_config_basics_global.html?view=print" target="_blank" rel="external">https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_config_basics_global.html?view=print</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/centos/" rel="tag">#centos</a>
+          
+            <a href="/tags/ha/" rel="tag">#ha</a>
+          
+            <a href="/tags/cluster/" rel="tag">#cluster</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/3-nodes/" rel="tag">#3 nodes</a>
+          
+            <a href="/tags/corosync/" rel="tag">#corosync</a>
+          
+            <a href="/tags/pacemaker/" rel="tag">#pacemaker</a>
+          
+            <a href="/tags/kvm/" rel="tag">#kvm</a>
+          
+            <a href="/tags/virtualization/" rel="tag">#virtualization</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/06/Tips-hard-drive-disk/" rel="next" title="Tips-hard drive disk">
+                <i class="fa fa-chevron-left"></i> Tips-hard drive disk
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/20/Recover openzfs partition table/" rel="prev" title="Recover openzfs partition table">
+                Recover openzfs partition table <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Just-for-test-not-in-my-production-environment-it-is-incomplete"><span class="nav-number">1.</span> <span class="nav-text">Just for test , not in my production environment, it is incomplete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Physical-node-OS"><span class="nav-number">2.</span> <span class="nav-text">Physical node OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-machine-OS"><span class="nav-number">3.</span> <span class="nav-text">Virtual machine OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-linux-HA-3-x-physical-server"><span class="nav-number">4.</span> <span class="nav-text">Create linux HA ,3 x physical server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Share-strorages"><span class="nav-number">5.</span> <span class="nav-text">Share strorages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">6.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-physical-server"><span class="nav-number">7.</span> <span class="nav-text">Setup physical server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-etc-corosync-corosync-conf-for-every-node"><span class="nav-number">8.</span> <span class="nav-text">Setting /etc/corosync/corosync.conf for every node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restart-corosync-service-in-each-node"><span class="nav-number">9.</span> <span class="nav-text">Restart corosync service in each node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-stonith-for-physical-server"><span class="nav-number">10.</span> <span class="nav-text">Create stonith for physical server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-quorum-info"><span class="nav-number">11.</span> <span class="nav-text">Get quorum info</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-kvm"><span class="nav-number">12.</span> <span class="nav-text">Install kvm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-HA-resource-for-kvm"><span class="nav-number">13.</span> <span class="nav-text">Create HA resource for kvm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-the-virtual-machine-for-stonith"><span class="nav-number">14.</span> <span class="nav-text">Configure the virtual machine for stonith</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-stonith-resource-for-vm"><span class="nav-number">15.</span> <span class="nav-text">Create stonith resource for vm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-vm-stonith"><span class="nav-number">16.</span> <span class="nav-text">Test vm stonith</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2015/11/12/CentOS7 HA configuration/';
+      var disqus_title = 'CentOS 7 HA configuration (3 nodes and kvm stonith)';
+      var disqus_url = 'http://yoursite.com/2015/11/12/CentOS7 HA configuration/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
