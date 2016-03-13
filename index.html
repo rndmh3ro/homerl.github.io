@@ -323,10 +323,8 @@
           
           Install sysbench 0.5OS version: CentOS 7
 
-undefined
-
-
-Install mariadbMariaDB.repo123456789# MariaDB 10.1 CentOS repository list - created 2016-03-02 0
+mkdir /var/lib/mysql && mount /dev/sdb1 /var/lib/mysql
+echo "deadline" > /sys/class/block/sdb/queue/schedule
           ...
 
           <div class="post-more-link text-center">

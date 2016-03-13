@@ -61,29 +61,29 @@
 
 <meta name="description" content="Install sysbench 0.5OS version: CentOS 7
 
-undefined
-
-
-Install mariadbMariaDB.repo123456789# MariaDB 10.1 CentOS repository list - created 2016-03-02 02:05 UTC# http://mariadb.org/mariadb/repositories/">
+mkdir /var/lib/mysql &amp;&amp; mount /dev/sdb1 /var/lib/mysql
+echo &quot;deadline&quot; &amp;gt; /sys/class/block/sdb/queue/scheduler
+yum install git automake libtool
+git clone https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mariadb benchmark iops">
 <meta property="og:url" content="http://yoursite.com/2016/03/01/Mariadb-benchmark-iops/index.html">
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Install sysbench 0.5OS version: CentOS 7
 
-undefined
-
-
-Install mariadbMariaDB.repo123456789# MariaDB 10.1 CentOS repository list - created 2016-03-02 02:05 UTC# http://mariadb.org/mariadb/repositories/">
-<meta property="og:updated_time" content="2016-03-13T09:46:09.000Z">
+mkdir /var/lib/mysql &amp;&amp; mount /dev/sdb1 /var/lib/mysql
+echo &quot;deadline&quot; &amp;gt; /sys/class/block/sdb/queue/scheduler
+yum install git automake libtool
+git clone https">
+<meta property="og:updated_time" content="2016-03-13T09:52:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mariadb benchmark iops">
 <meta name="twitter:description" content="Install sysbench 0.5OS version: CentOS 7
 
-undefined
-
-
-Install mariadbMariaDB.repo123456789# MariaDB 10.1 CentOS repository list - created 2016-03-02 02:05 UTC# http://mariadb.org/mariadb/repositories/">
+mkdir /var/lib/mysql &amp;&amp; mount /dev/sdb1 /var/lib/mysql
+echo &quot;deadline&quot; &amp;gt; /sys/class/block/sdb/queue/scheduler
+yum install git automake libtool
+git clone https">
 
 
 
@@ -332,7 +332,18 @@ Install mariadbMariaDB.repo123456789# MariaDB 10.1 CentOS repository list - crea
       
         <h3 id="Install-sysbench-0-5"><a href="#Install-sysbench-0-5" class="headerlink" title="Install sysbench 0.5"></a>Install sysbench 0.5</h3><p>OS version: CentOS 7</p>
 
-undefined
+mkdir /var/lib/mysql && mount /dev/sdb1 /var/lib/mysql
+echo "deadline" > /sys/class/block/sdb/queue/scheduler
+yum install git automake libtool
+git clone https://github.com/hgxl64/sysbench-mariadb.git
+cd sysbench-mariadb
+./autogen.sh
+./configure
+make
+cd sysbech/
+export PATH=$PATH:$(pwd)/
+sysbench --version
+sysbench 0.5
 
 
 <h3 id="Install-mariadb"><a href="#Install-mariadb" class="headerlink" title="Install mariadb"></a>Install mariadb</h3><p><a href="https://downloads.mariadb.org/mariadb/repositories/#mirror=syringa&amp;distro=CentOS&amp;distro_release=centos7-amd64--centos7&amp;version=10.1" target="_blank" rel="external">MariaDB.repo</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># MariaDB 10.1 CentOS repository list - created 2016-03-02 02:05 UTC</span><br><span class="line"># http://mariadb.org/mariadb/repositories/</span><br><span class="line">[mariadb]</span><br><span class="line">name = MariaDB</span><br><span class="line">baseurl = http://yum.mariadb.org/10.1/centos7-amd64</span><br><span class="line">gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB</span><br><span class="line">gpgcheck=1</span><br><span class="line"></span><br><span class="line"># yum install mariadb-server mariadb-client mariadb-devel</span><br></pre></td></tr></table></figure></p>
