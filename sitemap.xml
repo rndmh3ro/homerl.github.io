@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    
+    <lastmod>2016-03-18T16:59:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/03/01/Mariadb-benchmark-iops/</loc>
     
     <lastmod>2016-03-18T16:45:34.000Z</lastmod>
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
@@ -58,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
