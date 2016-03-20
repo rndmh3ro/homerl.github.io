@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
+    
+    <lastmod>2016-03-20T10:26:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tools/index.html</loc>
     
-    <lastmod>2016-03-19T03:20:14.000Z</lastmod>
+    <lastmod>2016-03-19T03:21:50.000Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2016-03-08T16:52:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
-    
-    <lastmod>2016-03-01T09:11:54.000Z</lastmod>
     
   </url>
   

@@ -61,14 +61,15 @@
     <link href="http://yoursite.com/2016/03/01/VLC-not-show-media-title/"/>
     <id>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</id>
     <published>2016-03-01T09:00:07.000Z</published>
-    <updated>2016-03-01T09:11:54.000Z</updated>
+    <updated>2016-03-20T10:26:07.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;a href=&quot;https://forum.videolan.org/viewtopic.php?t=50202&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Same question&lt;/a&gt;&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Show media title on media start (disable it)&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Enable on screen display (disable it)&lt;/p&gt;
+    <content type="html">&lt;h4 id=&quot;Not-show-media-title&quot;&gt;&lt;a href=&quot;#Not-show-media-title&quot; class=&quot;headerlink&quot; title=&quot;Not show media title&quot;&gt;&lt;/a&gt;Not show media title&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://forum.videolan.org/viewtopic.php?t=50202&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Same question&lt;/a&gt;&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Show media title on media start (disable it)&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Enable on screen display (disable it)&lt;/p&gt;
+&lt;h4 id=&quot;Not-resize-interface&quot;&gt;&lt;a href=&quot;#Not-resize-interface&quot; class=&quot;headerlink&quot; title=&quot;Not resize interface&quot;&gt;&lt;/a&gt;Not resize interface&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;/img/vlc-set1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://forum.videolan.org/viewtopic.php?t=50202&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Same question&lt;/a&gt;&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;
+      &lt;h4 id=&quot;Not-show-media-title&quot;&gt;&lt;a href=&quot;#Not-show-media-title&quot; class=&quot;headerlink&quot; title=&quot;Not show media title&quot;&gt;&lt;/a&gt;Not show media title&lt;/h4&gt;&lt;
     
     </summary>
     
