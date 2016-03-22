@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="centos,linux,zfs," />
+  <meta name="keywords" content="linux,cli,yum," />
 
 
 
@@ -59,25 +59,19 @@
 
 
 
-<meta name="description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
-Xattr1zfs set xattr=sa tank
-ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
+<meta name="description" content="Exclude packagesyum.conf123456[main]cachedir=/var/cache/yum/$basearch/$releaseverkeepcache=0debuglevel=2logfile=/var/log/yum.logexclude=kernel* redhat-release* *.i?86
+Cli1$ yum update --exclude=kernel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Openzfs tips">
-<meta property="og:url" content="http://yoursite.com/2015/12/04/Openzfs-tips/index.html">
+<meta property="og:title" content="Yum tips">
+<meta property="og:url" content="http://yoursite.com/2016/03/22/Yum-tips/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
-Xattr1zfs set xattr=sa tank
-ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
-<meta property="og:updated_time" content="2016-03-08T16:08:11.000Z">
+<meta property="og:description" content="Exclude packagesyum.conf123456[main]cachedir=/var/cache/yum/$basearch/$releaseverkeepcache=0debuglevel=2logfile=/var/log/yum.logexclude=kernel* redhat-release* *.i?86
+Cli1$ yum update --exclude=kernel">
+<meta property="og:updated_time" content="2016-03-22T09:54:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openzfs tips">
-<meta name="twitter:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
-Xattr1zfs set xattr=sa tank
-ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
+<meta name="twitter:title" content="Yum tips">
+<meta name="twitter:description" content="Exclude packagesyum.conf123456[main]cachedir=/var/cache/yum/$basearch/$releaseverkeepcache=0debuglevel=2logfile=/var/log/yum.logexclude=kernel* redhat-release* *.i?86
+Cli1$ yum update --exclude=kernel">
 
 
 
@@ -95,7 +89,7 @@ Zpool rename12zpool">
   };
 </script>
 
-  <title> Openzfs tips | Homer's Blog </title>
+  <title> Yum tips | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -259,7 +253,7 @@ Zpool rename12zpool">
             
             
               
-                Openzfs tips
+                Yum tips
               
             
           </h1>
@@ -271,8 +265,8 @@ Zpool rename12zpool">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-12-04T15:06:13+08:00" content="2015-12-04">
-              2015-12-04
+            <time itemprop="dateCreated" datetime="2016-03-22T17:19:55+08:00" content="2016-03-22">
+              2016-03-22
             </time>
           </span>
 
@@ -285,8 +279,8 @@ Zpool rename12zpool">
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux configuration</span>
+                  <a href="/categories/tips/" itemprop="url" rel="index">
+                    <span itemprop="name">tips</span>
                   </a>
                 </span>
 
@@ -301,8 +295,8 @@ Zpool rename12zpool">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/04/Openzfs-tips/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/04/Openzfs-tips/" itemprop="commentsCount"></span>
+                <a href="/2016/03/22/Yum-tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/22/Yum-tips/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -324,40 +318,14 @@ Zpool rename12zpool">
       
 
       
-        <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
-<h3 id="Xattr"><a href="#Xattr" class="headerlink" title="Xattr"></a>Xattr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> xattr=sa tank</span><br></pre></td></tr></table></figure>
-<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs set acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>
-<h3 id="Zpool-rename"><a href="#Zpool-rename" class="headerlink" title="Zpool rename"></a>Zpool rename</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">export</span> app</span><br><span class="line">zpool import app apps</span><br></pre></td></tr></table></figure>
-<h3 id="Detach-hdd-from-mirror"><a href="#Detach-hdd-from-mirror" class="headerlink" title="Detach hdd from mirror"></a>Detach hdd from mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zpool detach tank sdz <span class="comment">#detach zda from mirror-17</span></span><br><span class="line">only sdal <span class="keyword">in</span> mirror-17, and mirror-17 is missing</span><br><span class="line"></span><br><span class="line">          mirror-16  ONLINE       0     0     0</span><br><span class="line">            sdai     ONLINE       0     0     0</span><br><span class="line">            sdaj     ONLINE       0     0     0</span><br><span class="line">          sdal       ONLINE       0     0     0</span><br><span class="line">          mirror-18  ONLINE       0     0     0</span><br><span class="line">            sdam     ONLINE       0     0     0</span><br><span class="line">            sdan     ONLINE       0     0     0</span><br></pre></td></tr></table></figure>
-<h3 id="Attach-one-hdd-to-mirror"><a href="#Attach-one-hdd-to-mirror" class="headerlink" title="Attach one hdd to mirror"></a>Attach one hdd to mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zpool attach tank sdal sdz</span><br><span class="line">          mirror-17  ONLINE       0     0     0</span><br><span class="line">            sdal     ONLINE       0     0     0</span><br><span class="line">            sdz      ONLINE       0     0     0  (resilvering)</span><br></pre></td></tr></table></figure>
-<h3 id="dir"><a href="#dir" class="headerlink" title="dir"></a>dir</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs create tank/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h3 id="Quota"><a href="#Quota" class="headerlink" title="Quota"></a>Quota</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> quota=1024G tank/<span class="built_in">test</span></span><br><span class="line"><span class="comment"># disable</span></span><br><span class="line">zfs <span class="built_in">set</span> quota=none tank</span><br></pre></td></tr></table></figure>
-<h3 id="user-quota"><a href="#user-quota" class="headerlink" title="user quota"></a>user quota</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> userquota@nagios=2G tank</span><br><span class="line">dd <span class="keyword">if</span>=/dev/zero of=/tank01/<span class="built_in">test</span>/nagios bs=1M</span><br><span class="line">dd: writing /tank/<span class="built_in">test</span>/nagios:Disk quota exceeded</span><br><span class="line"></span><br><span class="line"><span class="comment"># zfs get userquota@nagios </span></span><br><span class="line">NAME            PROPERTY          VALUE             SOURCE</span><br><span class="line">tank01          userquota@nagios  2G                <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># group</span></span><br><span class="line">zfs <span class="built_in">set</span> groupquota@staff=10G tank/staff/admins</span><br></pre></td></tr></table></figure>
-<h3 id="Limit-memory-usage"><a href="#Limit-memory-usage" class="headerlink" title="Limit memory usage"></a>Limit memory usage</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> xxx &gt; /sys/module/zfs/parameters/zfs_arc_max</span><br><span class="line">cat xxx &gt; /sys/module/zfs/parameters/zfs_arc_min</span><br><span class="line"></span><br><span class="line">cat /etc/modprobe.d/zfs.conf <span class="comment"># Min 4096MB / Max 8192MB limit</span></span><br><span class="line">options zfs zfs_arc_min=4294967296</span><br><span class="line">options zfs zfs_arc_max=8589934592</span><br><span class="line"><span class="comment">#ZFS Device I/O Queue Depth</span></span><br><span class="line">options zfs zfs_vdev_max_pending=24</span><br><span class="line"></span><br><span class="line">modprobe zfs zfs_arc_min=4294967296</span><br></pre></td></tr></table></figure>
-<h3 id="Custome-mount-path"><a href="#Custome-mount-path" class="headerlink" title="Custome mount path"></a>Custome mount path</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zpool import  -R / tank-1 <span class="comment">#mount to /tank-1</span></span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line">zfs <span class="built_in">set</span> mountpoint=/zfs tank</span><br><span class="line">zfs get mountpoint tank</span><br></pre></td></tr></table></figure>
-<h3 id="Add-and-remove-hotspare"><a href="#Add-and-remove-hotspare" class="headerlink" title="Add and remove hotspare"></a>Add and remove hotspare</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zpool add tank spare c1t4d0 c1t5d0</span><br><span class="line">zpool remove tank c1t5d0</span><br></pre></td></tr></table></figure>
-<h3 id="Clear-zfs-label"><a href="#Clear-zfs-label" class="headerlink" title="Clear zfs label"></a>Clear zfs label</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zpool labelclear /dev/sdxxx</span><br></pre></td></tr></table></figure>
-<h3 id="Lz4-Compression-ratio"><a href="#Lz4-Compression-ratio" class="headerlink" title="Lz4 Compression ratio"></a>Lz4 Compression ratio</h3><p>backup 5TB<br>zfs lz4: 3.5TB</p>
-<p>home 582G<br>zfs lz4: 337G</p>
-<p>project 3TB<br>zfs lz4: 1.7TB </p>
-<h3 id="Auto-rebuild"><a href="#Auto-rebuild" class="headerlink" title="Auto rebuild"></a>Auto rebuild</h3><p><a href="https://github.com/zfsonlinux/zfs/issues/2449" target="_blank" rel="external">Autoreplace not working</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">set</span> autoreplace=on tank</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tuning-for-Scrubs-and-Resilvers"><a href="#Tuning-for-Scrubs-and-Resilvers" class="headerlink" title="Tuning for Scrubs and Resilvers"></a><a href="http://broken.net/uncategorized/zfs-performance-tuning-for-scrubs-and-resilvers/" target="_blank" rel="external">Tuning for Scrubs and Resilvers</a></h3><p>Prioritize resilvering by setting the delay to zero</p>
-<ul>
-<li>set zfs:zfs_resilver_delay = 0</li>
-</ul>
-<p>Prioritize scrubs by setting the delay to zero</p>
-<ul>
-<li>set zfs:zfs_scrub_delay = 0</li>
-</ul>
-<p>set maximum number of inflight IOs to a reasonable value - this number will vary for your environment</p>
-<ul>
-<li>set zfs:zfs_top_maxinflight = 128</li>
-</ul>
-<p>resilver for five seconds per TXG</p>
-<ul>
-<li>set zfs:zfs_resilver_min_time_ms = 5000</li>
-</ul>
-<p><a href="http://zfsonlinux.org/docs.html" target="_blank" rel="external">http://zfsonlinux.org/docs.html</a><br><a href="http://ispire.me/if-zfs-is-eating-your-memory/" target="_blank" rel="external">http://ispire.me/if-zfs-is-eating-your-memory/</a><br><a href="https://bbs.archlinux.org/viewtopic.php?id=171559" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=171559</a><br><a href="http://broken.net/uncategorized/zfs-performance-tuning-for-scrubs-and-resilvers/" target="_blank" rel="external">http://broken.net/uncategorized/zfs-performance-tuning-for-scrubs-and-resilvers/</a></p>
+        <h3 id="Exclude-packages"><a href="#Exclude-packages" class="headerlink" title="Exclude packages"></a>Exclude packages</h3><h4 id="yum-conf"><a href="#yum-conf" class="headerlink" title="yum.conf"></a>yum.conf</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[main]</span><br><span class="line">cachedir=/var/cache/yum/$basearch/$releasever</span><br><span class="line">keepcache=0</span><br><span class="line">debuglevel=2</span><br><span class="line">logfile=/var/log/yum.log</span><br><span class="line">exclude=kernel* redhat-release* *.i?86</span><br></pre></td></tr></table></figure>
+<h4 id="Cli"><a href="#Cli" class="headerlink" title="Cli"></a>Cli</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum update --exclude=kernel*</span><br></pre></td></tr></table></figure>
+<p><a href="https://access.redhat.com/solutions/10185" target="_blank" rel="external">reference</a></p>
+<h3 id="Switch-version"><a href="#Switch-version" class="headerlink" title="Switch version"></a>Switch version</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ yum --showduplicates list kernel</span><br><span class="line">Installed Packages</span><br><span class="line">Installed Packages</span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573</span>.el6       @anaconda-CentOS-<span class="number">201508042137</span>.x86_64/<span class="number">6.7</span></span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.8</span>.<span class="number">1</span>.el6   @update                                 </span><br><span class="line">Available Packages</span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573</span>.el6       base                                    </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.1</span>.<span class="number">1</span>.el6   update                                  </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.3</span>.<span class="number">1</span>.el6   update                                  </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.7</span>.<span class="number">1</span>.el6   update                                  </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.8</span>.<span class="number">1</span>.el6   update                                  </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.12</span>.<span class="number">1</span>.el6  update                                  </span><br><span class="line">kernel.x86_64       <span class="number">2.6</span>.<span class="number">32</span>-<span class="number">573.18</span>.<span class="number">1</span>.el6  update  </span><br><span class="line"><span class="string">``</span><span class="string">` </span><br><span class="line"></span><br><span class="line">### Save rpms to local</span><br><span class="line">#### yum.conf</span><br><span class="line">`</span><span class="string">``</span>ruby</span><br><span class="line">keepcache = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="Cli-1"><a href="#Cli-1" class="headerlink" title="Cli"></a>Cli</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install yum-plugin-downloadonly</span><br><span class="line">$ yum install --downloadonly --downloaddir=&lt;directory&gt; &lt;package&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="https://access.redhat.com/solutions/10154" target="_blank" rel="external">reference</a></p>
+<h3 id="Resolve-dependency-resolution-errors"><a href="#Resolve-dependency-resolution-errors" class="headerlink" title="Resolve dependency resolution errors"></a>Resolve dependency resolution errors</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum update</span></span><br><span class="line">** Found <span class="number">5</span> pre-existing rpmdb problem(s), <span class="string">'yum check'</span> output <span class="symbol">follows:</span></span><br><span class="line"><span class="meta">MegaCli-8.04.10-1.noarch is a duplicate with MegaCli-8.04.07-1.noarch</span><br><span class="line">kernel-2.6.32-279.5.1.el6_lustre.gb16fe80.x86_64 has missing requires of kernel-firmware &gt;</span>= (<span class="string">'0'</span>, <span class="string">'2.6.32'</span>, <span class="string">'279.5.1.el6_lustre.gb16fe80'</span>)</span><br><span class="line">kernel-firmware-<span class="number">2.6</span>.<span class="number">32</span>-<span class="number">279.5</span>.<span class="number">1</span>.el6.noarch is a duplicate with kernel-firmware-<span class="number">2.6</span>.<span class="number">32</span>-<span class="number">279</span>.el6.noarch</span><br><span class="line">kernel-headers-<span class="number">2.6</span>.<span class="number">32</span>-<span class="number">279.5</span>.<span class="number">1</span>.el6.x86_64 is a duplicate with kernel-headers-<span class="number">2.6</span>.<span class="number">32</span>-<span class="number">279</span>.el6.x86_64</span><br><span class="line">libcom_err-<span class="number">1.42</span>.<span class="number">3</span>.wc3-<span class="number">7</span>.el6.x86_64 is a duplicate with libcom_err-<span class="number">1.41</span>.<span class="number">12</span>-<span class="number">12</span>.el6.i686</span><br><span class="line">......</span><br><span class="line">You could try using --skip-broken to work around the problem</span><br><span class="line">You could try <span class="symbol">running:</span> rpm -Va --nofiles --nodigest</span><br></pre></td></tr></table></figure>
+<h4 id="Uninstall-rpm-packages-from-rpmdb"><a href="#Uninstall-rpm-packages-from-rpmdb" class="headerlink" title="Uninstall rpm packages from rpmdb"></a>Uninstall rpm packages from rpmdb</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ rpm <span class="_">-e</span> --justdb --nodeps <span class="string">"bad rpm packages"</span></span><br><span class="line">$ rpm -ivh --force <span class="string">"replace normal rpm packages"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># rebuild rpmdb</span></span><br><span class="line">$ <span class="built_in">cd</span> /var/lib/rpm</span><br><span class="line">$ rm  <span class="_">-f</span> __db*</span><br><span class="line">$ rpm --rebuilddb </span><br><span class="line"></span><br><span class="line">$ yum clean all</span><br><span class="line">$ yum -y update</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -372,11 +340,11 @@ Zpool rename12zpool">
       
         <div class="post-tags">
           
-            <a href="/tags/centos/" rel="tag">#centos</a>
-          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/zfs/" rel="tag">#zfs</a>
+            <a href="/tags/cli/" rel="tag">#cli</a>
+          
+            <a href="/tags/yum/" rel="tag">#yum</a>
           
         </div>
       
@@ -385,17 +353,13 @@ Zpool rename12zpool">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/" rel="next" title="Online dropbox with socks5 proxy (command line)">
-                <i class="fa fa-chevron-left"></i> Online dropbox with socks5 proxy (command line)
+              <a href="/2016/03/22/High-availability-cluster-in-linux/" rel="next" title="High availability cluster in linux">
+                <i class="fa fa-chevron-left"></i> High availability cluster in linux
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/04/Replace-HDD-for-openzfs/" rel="prev" title="Replace HDD for openzfs">
-                Replace HDD for openzfs <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +515,7 @@ Zpool rename12zpool">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compression"><span class="nav-number">1.</span> <span class="nav-text">Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xattr"><span class="nav-number">2.</span> <span class="nav-text">Xattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL"><span class="nav-number">3.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zpool-rename"><span class="nav-number">4.</span> <span class="nav-text">Zpool rename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detach-hdd-from-mirror"><span class="nav-number">5.</span> <span class="nav-text">Detach hdd from mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attach-one-hdd-to-mirror"><span class="nav-number">6.</span> <span class="nav-text">Attach one hdd to mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-number">7.</span> <span class="nav-text">dir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quota"><span class="nav-number">8.</span> <span class="nav-text">Quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-quota"><span class="nav-number">9.</span> <span class="nav-text">user quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limit-memory-usage"><span class="nav-number">10.</span> <span class="nav-text">Limit memory usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Custome-mount-path"><span class="nav-number">11.</span> <span class="nav-text">Custome mount path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-and-remove-hotspare"><span class="nav-number">12.</span> <span class="nav-text">Add and remove hotspare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-zfs-label"><span class="nav-number">13.</span> <span class="nav-text">Clear zfs label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lz4-Compression-ratio"><span class="nav-number">14.</span> <span class="nav-text">Lz4 Compression ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-rebuild"><span class="nav-number">15.</span> <span class="nav-text">Auto rebuild</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuning-for-Scrubs-and-Resilvers"><span class="nav-number">16.</span> <span class="nav-text">Tuning for Scrubs and Resilvers</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exclude-packages"><span class="nav-number">1.</span> <span class="nav-text">Exclude packages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#yum-conf"><span class="nav-number">1.1.</span> <span class="nav-text">yum.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cli"><span class="nav-number">1.2.</span> <span class="nav-text">Cli</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch-version"><span class="nav-number">2.</span> <span class="nav-text">Switch version</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cli-1"><span class="nav-number">2.1.</span> <span class="nav-text">Cli</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resolve-dependency-resolution-errors"><span class="nav-number">3.</span> <span class="nav-text">Resolve dependency resolution errors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Uninstall-rpm-packages-from-rpmdb"><span class="nav-number">3.1.</span> <span class="nav-text">Uninstall rpm packages from rpmdb</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -829,9 +793,9 @@ Zpool rename12zpool">
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2015/12/04/Openzfs-tips/';
-      var disqus_title = 'Openzfs tips';
-      var disqus_url = 'http://yoursite.com/2015/12/04/Openzfs-tips/';
+      var disqus_identifier = '2016/03/22/Yum-tips/';
+      var disqus_title = 'Yum tips';
+      var disqus_url = 'http://yoursite.com/2016/03/22/Yum-tips/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
