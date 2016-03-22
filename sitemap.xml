@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/22/High-availability-cluster-in-linux/</loc>
+    
+    <lastmod>2016-03-22T09:10:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/03/22/Software-install-at-centos-5-6/</loc>
     
     <lastmod>2016-03-22T07:45:52.000Z</lastmod>
@@ -58,7 +65,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
+    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -72,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
+    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -86,7 +100,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -94,13 +108,6 @@
   
   <url>
     <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -121,14 +128,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
