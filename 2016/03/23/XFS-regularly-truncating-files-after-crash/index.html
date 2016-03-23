@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,zfs,data recovery,partition," />
+  <meta name="keywords" content="linux,xfs," />
 
 
 
@@ -59,19 +59,16 @@
 
 
 
-<meta name="description" content="backup partition table1234567891011121314151617# MBRsfdisk -d /dev/sda &amp;gt; /tmp/sda.baksfdisk /dev/sda &amp;lt; /tmp/sda.bakdd if=/dev/sda of=/dev/sdb bs=512 count=1# GPTsgdisk --backup=table /dev/sdasgd">
+<meta name="description" content="Recover file1234567891011121314151617181920212223242526$ ls -ih70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm$ xfs_db -r /dev/sdb -c &quot;inode 70179&quot; -c &quot;bmap&quot;data offset 0 startblock 2459">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Recover openzfs partition table">
-<meta property="og:url" content="http://yoursite.com/2015/11/20/Recover openzfs partition table/index.html">
+<meta property="og:title" content="XFS regularly truncating files after crash">
+<meta property="og:url" content="http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="backup partition table1234567891011121314151617# MBRsfdisk -d /dev/sda &amp;gt; /tmp/sda.baksfdisk /dev/sda &amp;lt; /tmp/sda.bakdd if=/dev/sda of=/dev/sdb bs=512 count=1# GPTsgdisk --backup=table /dev/sdasgd">
-<meta property="og:image" content="http://yoursite.com/img/uberblock_tag.png">
-<meta property="og:image" content="http://yoursite.com/img/uberblock_tag2.png">
-<meta property="og:updated_time" content="2016-03-08T16:08:11.000Z">
+<meta property="og:description" content="Recover file1234567891011121314151617181920212223242526$ ls -ih70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm$ xfs_db -r /dev/sdb -c &quot;inode 70179&quot; -c &quot;bmap&quot;data offset 0 startblock 2459">
+<meta property="og:updated_time" content="2016-03-23T06:51:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Recover openzfs partition table">
-<meta name="twitter:description" content="backup partition table1234567891011121314151617# MBRsfdisk -d /dev/sda &amp;gt; /tmp/sda.baksfdisk /dev/sda &amp;lt; /tmp/sda.bakdd if=/dev/sda of=/dev/sdb bs=512 count=1# GPTsgdisk --backup=table /dev/sdasgd">
-<meta name="twitter:image" content="http://yoursite.com/img/uberblock_tag.png">
+<meta name="twitter:title" content="XFS regularly truncating files after crash">
+<meta name="twitter:description" content="Recover file1234567891011121314151617181920212223242526$ ls -ih70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm$ xfs_db -r /dev/sdb -c &quot;inode 70179&quot; -c &quot;bmap&quot;data offset 0 startblock 2459">
 
 
 
@@ -89,7 +86,7 @@
   };
 </script>
 
-  <title> Recover openzfs partition table | Homer's Blog </title>
+  <title> XFS regularly truncating files after crash | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -253,7 +250,7 @@
             
             
               
-                Recover openzfs partition table
+                XFS regularly truncating files after crash
               
             
           </h1>
@@ -265,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-11-20T11:24:14+08:00" content="2015-11-20">
-              2015-11-20
+            <time itemprop="dateCreated" datetime="2016-03-23T14:35:37+08:00" content="2016-03-23">
+              2016-03-23
             </time>
           </span>
 
@@ -295,8 +292,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/20/Recover openzfs partition table/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/20/Recover openzfs partition table/" itemprop="commentsCount"></span>
+                <a href="/2016/03/23/XFS-regularly-truncating-files-after-crash/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/23/XFS-regularly-truncating-files-after-crash/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -318,22 +315,11 @@
       
 
       
-        <h3 id="backup-partition-table"><a href="#backup-partition-table" class="headerlink" title="backup partition table"></a>backup partition table</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MBR</span></span><br><span class="line">sfdisk <span class="_">-d</span> /dev/sda &gt; /tmp/sda.bak</span><br><span class="line">sfdisk /dev/sda &lt; /tmp/sda.bak</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/sda of=/dev/sdb bs=512 count=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># GPT</span></span><br><span class="line">sgdisk --backup=table /dev/sda</span><br><span class="line">sgdisk --load-backup=table /dev/sdb</span><br><span class="line">sgdisk -G /dev/sdb</span><br><span class="line"></span><br><span class="line">B=$(parted -ms /dev/sda <span class="built_in">print</span> |tail -1|cut -b1)</span><br><span class="line">A=$((128*B)+1024)</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/sda of=GPT_TABLE bs=1 count=<span class="variable">$A</span></span><br><span class="line">dd <span class="keyword">if</span>=GPT_TABLE of=/dev/sdb</span><br><span class="line">partprobe /dev/sdb</span><br></pre></td></tr></table></figure>
-<p>Backup is very important</p>
-<h3 id="Damage-command"><a href="#Damage-command" class="headerlink" title="Damage command"></a>Damage command</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">950  parted /dev/sdb rm 1</span><br><span class="line">951  df -h</span><br><span class="line">952  zpool status</span><br><span class="line">953  zpool destroy tank</span><br><span class="line">954  yum remove $(rpm -qa | grepzfs)</span><br><span class="line">955 parted <span class="_">-a</span> cylinder /dev/sdb mkpart primary 0 100%</span><br><span class="line"><span class="comment"># same parted commmand with created</span></span><br></pre></td></tr></table></figure>
-<p>zpool -D improt failed, </p>
-<h3 id="Found-uberblock-tag-label"><a href="#Found-uberblock-tag-label" class="headerlink" title="Found uberblock tag label"></a>Found uberblock tag label</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dd if=/dev/sdb1 of=label-2m bs=1M count=2</span></span><br></pre></td></tr></table></figure>
-<p>The begin address is 011bc00-128KB, and after 256KB is the uberblock<br>You can use zdb -l 256KB-file, you could get zpool info<br><img src="/img/uberblock_tag.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># awk 'BEGIN&#123;printf "%x",0x011bc00-0x0020000"\n"&#125;'</span></span><br><span class="line">fbc00</span><br><span class="line"><span class="comment"># awk 'BEGIN&#123;printf "%x",0x011bc00+0x0020000"\n"&#125;'</span></span><br><span class="line">13bc00</span><br></pre></td></tr></table></figure>
-<p>The address is from fbc00 to 13bc00</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;print (strtonum("0xfbc00"))/1024&#125;'</span></span><br><span class="line">1007</span><br></pre></td></tr></table></figure>
-<p>The begin address in 1007K of the disk (sdb1)</p>
-<h3 id="Create-a-new-zpool-in-another-disk"><a href="#Create-a-new-zpool-in-another-disk" class="headerlink" title="Create a new zpool in another disk"></a>Create a new zpool in another disk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parted -a cylinder /dev/sdd mkpart primary 0 100%a</span></span><br><span class="line"><span class="comment"># zpool create tank /dev/sdd1</span></span><br><span class="line"><span class="comment"># dd if=/dev/sdd1 of=label-sdd bs=1M count=2</span></span><br></pre></td></tr></table></figure>
-<p><img src="/img/uberblock_tag2.png" alt=""><br>The tag at 0021000, and there are nothing in previous part except zero</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dd if=/dev/zero of=/dev/sdc1 bs=4k count=1</span></span><br><span class="line"><span class="comment"># dd if=/dev/sdb1 of=/dev/sdc1 bs=512 skip=2014 #offset 1007KB</span></span><br></pre></td></tr></table></figure>
-<p>You can use zdb get infomation from sdc1</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: 5000</span><br><span class="line">name: <span class="string">'tank'</span></span><br><span class="line">state: 2</span><br><span class="line">txg: 1256237</span><br><span class="line">pool_guid: 10281825564445304044</span><br><span class="line">errata: 0</span><br><span class="line">hostname: <span class="string">'nas-56-11.local'</span></span><br><span class="line">top_guid: 8832263634429449792</span><br><span class="line">guid: 8832263634429449792</span><br><span class="line">vdev_children: 1</span><br><span class="line">vdev_tree:</span><br><span class="line">    <span class="built_in">type</span>: <span class="string">'disk'</span></span><br><span class="line">    id: 0</span><br><span class="line">    guid: 8832263634429449792</span><br><span class="line">    path: <span class="string">'/dev/sdb1'</span></span><br><span class="line">    whole_disk: 1</span><br><span class="line">    metaslab_array: 33</span><br><span class="line">    metaslab_<span class="built_in">shift</span>: 37</span><br><span class="line">    ashift: 12</span><br><span class="line">    asize: 17990975750144</span><br><span class="line">    is_<span class="built_in">log</span>: 0</span><br><span class="line">    create_txg: 4</span><br></pre></td></tr></table></figure>
-<p>When you dd complete. Use “zpool -D import tank” import the loss pool.<br>The disk is a hardraid , There are 17TB important data in it. It really scared the heck out of me.<br>Really Thank Javen Wu very much, Because your help these data could be recovery.</p>
+        <h3 id="Recover-file"><a href="#Recover-file" class="headerlink" title="Recover file"></a>Recover file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ ls -ih</span><br><span class="line">70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm</span><br><span class="line"></span><br><span class="line">$ xfs_db -r /dev/sdb -c <span class="string">"inode 70179"</span> -c <span class="string">"bmap"</span></span><br><span class="line">data offset 0 startblock 2459337662 (9/43418558) count 1 flag 0a</span><br><span class="line"></span><br><span class="line">$ agblocks=$(xfs_db -r /dev/sdb -c sb -c p | grep ^agblocks | sed <span class="string">'s/.* = //'</span>)</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$agblocks</span></span><br><span class="line">268435455</span><br><span class="line">$ agcount=9</span><br><span class="line">$ b=43418558</span><br><span class="line">$ c=1</span><br><span class="line">$ <span class="built_in">echo</span> $((<span class="variable">$agblocks</span>*<span class="variable">$agcount</span>+<span class="variable">$b</span>)) </span><br><span class="line">2459337653</span><br><span class="line">$ <span class="built_in">echo</span> $((2459337662-9))</span><br><span class="line">2459337653</span><br><span class="line"></span><br><span class="line">$ dd <span class="keyword">if</span>=/dev/sdb bs=4096 skip=$((<span class="variable">$agblocks</span>*<span class="variable">$agcount</span>+<span class="variable">$b</span>)) count=<span class="variable">$c</span> of=/tmp/report.htm</span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB) copied, 4.6345e-05 s, 88.4 MB/s</span><br><span class="line"></span><br><span class="line">$ cat /tmp/report.htm   <span class="comment"># file come back</span></span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=gbk"</span>/&gt;</span><br><span class="line">&lt;style&gt;</span><br></pre></td></tr></table></figure>
+<font color="red">12</font>/<font color="blue">214358232</font><br>count <font color="green">845887</font>
+
+<h4 id="Parameter-relationship"><a href="#Parameter-relationship" class="headerlink" title="Parameter relationship"></a>Parameter relationship</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ xfs_db -r /dev/sdb -c <span class="string">"inode 70164"</span> -c <span class="string">"bmap"</span></span><br><span class="line">data offset 0 startblock 3435583704 (12/214358232) count 845887 flag 0</span><br><span class="line">agcount=12</span><br><span class="line">b=214358232</span><br><span class="line">c=845887 </span><br><span class="line"></span><br><span class="line">$ agcount=12</span><br><span class="line">$ b=214358232</span><br><span class="line">$ c=845887 </span><br><span class="line">$ <span class="built_in">echo</span> $((<span class="variable">$agblocks</span>*<span class="variable">$agcount</span>+<span class="variable">$b</span>)) </span><br><span class="line">3435583692</span><br><span class="line">$ <span class="built_in">echo</span> $((3435583704-3435583692))</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=845233" target="_blank" rel="external">redhat reference</a><br><a href="http://oss.sgi.com/archives/xfs/2012-02/msg00561.html" target="_blank" rel="external">sgi reference</a></p>
 
       
     </div>
@@ -350,11 +336,7 @@
           
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/zfs/" rel="tag">#zfs</a>
-          
-            <a href="/tags/data-recovery/" rel="tag">#data recovery</a>
-          
-            <a href="/tags/partition/" rel="tag">#partition</a>
+            <a href="/tags/xfs/" rel="tag">#xfs</a>
           
         </div>
       
@@ -363,17 +345,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/12/CentOS7 HA configuration/" rel="next" title="CentOS 7 HA configuration (3 nodes and kvm stonith)">
-                <i class="fa fa-chevron-left"></i> CentOS 7 HA configuration (3 nodes and kvm stonith)
+              <a href="/2016/03/22/Yum-tips/" rel="next" title="Yum tips">
+                <i class="fa fa-chevron-left"></i> Yum tips
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/" rel="prev" title="Online dropbox with socks5 proxy (command line)">
-                Online dropbox with socks5 proxy (command line) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -529,7 +507,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#backup-partition-table"><span class="nav-number">1.</span> <span class="nav-text">backup partition table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Damage-command"><span class="nav-number">2.</span> <span class="nav-text">Damage command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Found-uberblock-tag-label"><span class="nav-number">3.</span> <span class="nav-text">Found uberblock tag label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-zpool-in-another-disk"><span class="nav-number">4.</span> <span class="nav-text">Create a new zpool in another disk</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recover-file"><span class="nav-number">1.</span> <span class="nav-text">Recover file</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Parameter-relationship"><span class="nav-number">1.1.</span> <span class="nav-text">Parameter relationship</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -807,9 +785,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2015/11/20/Recover openzfs partition table/';
-      var disqus_title = 'Recover openzfs partition table';
-      var disqus_url = 'http://yoursite.com/2015/11/20/Recover openzfs partition table/';
+      var disqus_identifier = '2016/03/23/XFS-regularly-truncating-files-after-crash/';
+      var disqus_title = 'XFS regularly truncating files after crash';
+      var disqus_url = 'http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

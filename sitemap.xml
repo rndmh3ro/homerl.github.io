@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/</loc>
+    
+    <lastmod>2016-03-23T06:51:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/03/22/Yum-tips/</loc>
     
     <lastmod>2016-03-23T05:44:09.000Z</lastmod>
@@ -72,28 +79,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -121,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
+    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -142,7 +128,28 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
