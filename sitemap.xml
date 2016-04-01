@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/01/blktrace/</loc>
+    
+    <lastmod>2016-04-01T09:58:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/03/29/golang-bitwise-operators/</loc>
     
     <lastmod>2016-03-28T16:40:05.000Z</lastmod>
@@ -11,7 +18,7 @@
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
-    <lastmod>2016-03-28T08:23:48.000Z</lastmod>
+    <lastmod>2016-03-28T08:46:00.000Z</lastmod>
     
   </url>
   
@@ -44,16 +51,16 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
+    <loc>http://yoursite.com/tools/index.html</loc>
     
-    <lastmod>2016-03-20T10:26:07.000Z</lastmod>
+    <lastmod>2016-03-21T06:54:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/tools/index.html</loc>
+    <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
     
-    <lastmod>2016-03-19T03:21:50.000Z</lastmod>
+    <lastmod>2016-03-20T10:25:35.000Z</lastmod>
     
   </url>
   
@@ -86,79 +93,79 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
-    
-    <lastmod>2016-03-01T07:44:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
-    
-    <lastmod>2016-02-17T08:51:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
-    
-    <lastmod>2016-01-28T08:28:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
     
-    <lastmod>2016-01-26T05:17:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
-    
-    <lastmod>2016-01-12T07:10:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
-    
-    <lastmod>2016-01-08T05:08:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2015-12-22T08:00:40.000Z</lastmod>
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
     
-    <lastmod>2015-12-04T08:52:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/06/Some%20of%20Important%20HDD%20spec/</loc>
-    
-    <lastmod>2015-12-02T02:47:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
-    
-    <lastmod>2015-12-02T02:18:22.000Z</lastmod>
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
-    <lastmod>2015-12-02T02:17:20.000Z</lastmod>
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/06/Some%20of%20Important%20HDD%20spec/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
