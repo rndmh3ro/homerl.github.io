@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-06T08:51:40.000Z</updated>
+  <updated>2016-04-06T08:52:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/04/06/Lustre-operations/"/>
     <id>http://yoursite.com/2016/04/06/Lustre-operations/</id>
     <published>2016-04-06T03:17:42.000Z</published>
-    <updated>2016-04-06T08:51:40.000Z</updated>
+    <updated>2016-04-06T08:52:58.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Fsck-ldiskfs-file-system-corruption&quot;&gt;&lt;a href=&quot;#Fsck-ldiskfs-file-system-corruption&quot; class=&quot;headerlink&quot; title=&quot;Fsck ldiskfs file system corruption&quot;&gt;&lt;/a&gt;Fsck ldiskfs file system corruption&lt;/h3&gt;&lt;h4 id=&quot;Errors&quot;&gt;&lt;a href=&quot;#Errors&quot; class=&quot;headerlink&quot; title=&quot;Errors&quot;&gt;&lt;/a&gt;Errors&lt;/h4&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Dec &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt; mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode &lt;span class=&quot;number&quot;&gt;5384166&lt;/span&gt; in dir &lt;span class=&quot;comment&quot;&gt;#145170469&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Dec &lt;span class=&quot;number&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;32&lt;/span&gt; mookie kernel: Remounting filesystem read-only&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;Flush-the-journal&quot;&gt;&lt;a href=&quot;#Flush-the-journal&quot; class=&quot;headerlink&quot; title=&quot;Flush the journal&quot;&gt;&lt;/a&gt;Flush the journal&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ umount /ostxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ mount -t ldiskfs /dev/sdx /mnt/ost&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ umount /mnt/ost&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -55,13 +55,6 @@
 &lt;h3 id=&quot;Abort-tgt-reocv&quot;&gt;&lt;a href=&quot;#Abort-tgt-reocv&quot; class=&quot;headerlink&quot; title=&quot;Abort tgt_reocv&quot;&gt;&lt;/a&gt;Abort tgt_reocv&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mds$ lctl dl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mds$ lctl -device 3 abort_recovery&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;or mount.lustre xxx xxx -o abort_recov&lt;/p&gt;
 &lt;h3 id=&quot;Get-lustre-version&quot;&gt;&lt;a href=&quot;#Get-lustre-version&quot; class=&quot;headerlink&quot; title=&quot;Get lustre version&quot;&gt;&lt;/a&gt;Get lustre version&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ lctl get_param version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;Upload-file-to-intel&quot;&gt;&lt;a href=&quot;#Upload-file-to-intel&quot; class=&quot;headerlink&quot; title=&quot;Upload file to intel&quot;&gt;&lt;/a&gt;Upload file to intel&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;yaml&quot;&gt;$ ftp ftp.whamcloud.com 
-&lt;span class=&quot;attr&quot;&gt;username:&lt;/span&gt; anonymous
-&lt;span class=&quot;attr&quot;&gt;Password:&lt;/span&gt; enter
-ftp&amp;gt; cd uploads
-ftp&amp;gt; put your_file
-ftp&amp;gt; quit
-&lt;/code&gt;&lt;/pre&gt;
 </content>
     
     <summary type="html">
