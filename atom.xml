@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-08T07:39:38.000Z</updated>
+  <updated>2016-04-08T07:42:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSD Interface</title>
+    <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
+    <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:42:40.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Interface-reference&quot;&gt;&lt;a href=&quot;#Interface-reference&quot; class=&quot;headerlink&quot; title=&quot;Interface reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Interface reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/nvme-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-2.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-4.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-5.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-6.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-7.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;supermicro-benchmark&quot;&gt;&lt;a href=&quot;#supermicro-benchmark&quot; class=&quot;headerlink&quot; title=&quot;supermicro benchmark&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.supermicro.com/white_paper/white_paper_NVMe.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;supermicro benchmark&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/nvme-8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Interface-reference&quot;&gt;&lt;a href=&quot;#Interface-reference&quot; class=&quot;headerlink&quot; title=&quot;Interface reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.nvmexpres
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
+    
+  </entry>
   
   <entry>
     <title>SFP+ VS 10GBaseT</title>
@@ -311,9 +337,9 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
       <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="corosync" scheme="http://yoursite.com/tags/corosync/"/>
     
@@ -573,9 +599,9 @@ systemctl start httpd
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
       <category term="centos" scheme="http://yoursite.com/tags/centos/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
     
@@ -633,9 +659,9 @@ systemctl start httpd
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
       <category term="centos" scheme="http://yoursite.com/tags/centos/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
     
@@ -675,50 +701,6 @@ systemctl start httpd
       <category term="socks5" scheme="http://yoursite.com/tags/socks5/"/>
     
       <category term="privoxy" scheme="http://yoursite.com/tags/privoxy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Recover openzfs partition table</title>
-    <link href="http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/"/>
-    <id>http://yoursite.com/2015/11/20/Recover openzfs partition table/</id>
-    <published>2015-11-20T03:24:14.000Z</published>
-    <updated>2016-03-08T16:08:11.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;backup-partition-table&quot;&gt;&lt;a href=&quot;#backup-partition-table&quot; class=&quot;headerlink&quot; title=&quot;backup partition table&quot;&gt;&lt;/a&gt;backup partition table&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# MBR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sfdisk &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; /dev/sda &amp;gt; /tmp/sda.bak&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sfdisk /dev/sda &amp;lt; /tmp/sda.bak&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sda of=/dev/sdb bs=512 count=1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# GPT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sgdisk --backup=table /dev/sda&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sgdisk --load-backup=table /dev/sdb&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sgdisk -G /dev/sdb&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;B=$(parted -ms /dev/sda &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt; |tail -1|cut -b1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;A=$((128*B)+1024)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sda of=GPT_TABLE bs=1 count=&lt;span class=&quot;variable&quot;&gt;$A&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=GPT_TABLE of=/dev/sdb&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;partprobe /dev/sdb&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Backup is very important&lt;/p&gt;
-&lt;h3 id=&quot;Damage-command&quot;&gt;&lt;a href=&quot;#Damage-command&quot; class=&quot;headerlink&quot; title=&quot;Damage command&quot;&gt;&lt;/a&gt;Damage command&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;950  parted /dev/sdb rm 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;951  df -h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;952  zpool status&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;953  zpool destroy tank&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;954  yum remove $(rpm -qa | grepzfs)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;955 parted &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; cylinder /dev/sdb mkpart primary 0 100%&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# same parted commmand with created&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;zpool -D improt failed, &lt;/p&gt;
-&lt;h3 id=&quot;Found-uberblock-tag-label&quot;&gt;&lt;a href=&quot;#Found-uberblock-tag-label&quot; class=&quot;headerlink&quot; title=&quot;Found uberblock tag label&quot;&gt;&lt;/a&gt;Found uberblock tag label&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# dd if=/dev/sdb1 of=label-2m bs=1M count=2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;The begin address is 011bc00-128KB, and after 256KB is the uberblock&lt;br&gt;You can use zdb -l 256KB-file, you could get zpool info&lt;br&gt;&lt;img src=&quot;/img/uberblock_tag.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# awk &#39;BEGIN&amp;#123;printf &quot;%x&quot;,0x011bc00-0x0020000&quot;\n&quot;&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fbc00&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# awk &#39;BEGIN&amp;#123;printf &quot;%x&quot;,0x011bc00+0x0020000&quot;\n&quot;&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13bc00&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;The address is from fbc00 to 13bc00&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print (strtonum(&quot;0xfbc00&quot;))/1024&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1007&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;The begin address in 1007K of the disk (sdb1)&lt;/p&gt;
-&lt;h3 id=&quot;Create-a-new-zpool-in-another-disk&quot;&gt;&lt;a href=&quot;#Create-a-new-zpool-in-another-disk&quot; class=&quot;headerlink&quot; title=&quot;Create a new zpool in another disk&quot;&gt;&lt;/a&gt;Create a new zpool in another disk&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# parted -a cylinder /dev/sdd mkpart primary 0 100%a&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# zpool create tank /dev/sdd1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# dd if=/dev/sdd1 of=label-sdd bs=1M count=2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;/img/uberblock_tag2.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;The tag at 0021000, and there are nothing in previous part except zero&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# dd if=/dev/zero of=/dev/sdc1 bs=4k count=1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# dd if=/dev/sdb1 of=/dev/sdc1 bs=512 skip=2014 #offset 1007KB&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;You can use zdb get infomation from sdc1&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;version: 5000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;name: &lt;span class=&quot;string&quot;&gt;&#39;tank&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;state: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;txg: 1256237&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pool_guid: 10281825564445304044&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;errata: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hostname: &lt;span class=&quot;string&quot;&gt;&#39;nas-56-11.local&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;top_guid: 8832263634429449792&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;guid: 8832263634429449792&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;vdev_children: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;vdev_tree:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;disk&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    id: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    guid: 8832263634429449792&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    path: &lt;span class=&quot;string&quot;&gt;&#39;/dev/sdb1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    whole_disk: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    metaslab_array: 33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    metaslab_&lt;span class=&quot;built_in&quot;&gt;shift&lt;/span&gt;: 37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ashift: 12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    asize: 17990975750144&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    is_&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    create_txg: 4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;When you dd complete. Use “zpool -D import tank” import the loss pool.&lt;br&gt;The disk is a hardraid , There are 17TB important data in it. It really scared the heck out of me.&lt;br&gt;Really Thank Javen Wu very much, Because your help these data could be recovery.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;backup-partition-table&quot;&gt;&lt;a href=&quot;#backup-partition-table&quot; class=&quot;headerlink&quot; title=&quot;backup partition table&quot;&gt;&lt;/a&gt;backup partition tab
-    
-    </summary>
-    
-      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
-    
-      <category term="data recovery" scheme="http://yoursite.com/tags/data-recovery/"/>
-    
-      <category term="partition" scheme="http://yoursite.com/tags/partition/"/>
     
   </entry>
   

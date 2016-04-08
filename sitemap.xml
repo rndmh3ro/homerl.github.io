@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
+    
+    <lastmod>2016-04-08T07:42:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</loc>
     
     <lastmod>2016-04-08T07:39:38.000Z</lastmod>
@@ -121,21 +128,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -149,7 +142,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
+    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -163,14 +156,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Some%20of%20Important%20HDD%20spec/</loc>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -184,14 +184,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
+    <loc>http://yoursite.com/2015/11/06/Some%20of%20Important%20HDD%20spec/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
