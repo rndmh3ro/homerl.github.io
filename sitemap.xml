@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/20/SSD-partition-alignment/</loc>
+    
+    <lastmod>2016-04-19T16:26:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
     
     <lastmod>2016-04-19T15:40:15.000Z</lastmod>
@@ -11,7 +18,7 @@
   <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
-    <lastmod>2016-04-14T02:02:23.000Z</lastmod>
+    <lastmod>2016-04-14T01:33:11.000Z</lastmod>
     
   </url>
   
