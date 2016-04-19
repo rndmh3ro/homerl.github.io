@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
+    
+    <lastmod>2016-04-19T15:40:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
     <lastmod>2016-04-14T02:02:23.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2016/03/01/Mariadb-benchmark-iops/</loc>
     
     <lastmod>2016-04-11T07:55:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
-    
-    <lastmod>2016-04-08T08:25:25.000Z</lastmod>
     
   </url>
   
