@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,grub," />
+  <meta name="keywords" content="ssd,interface,raid," />
 
 
 
@@ -59,19 +59,21 @@
 
 
 
-<meta name="description" content="Boot livecd from your usb device or network/dev/sdd2 is my linux root partition, OS is pinguyos(ubuntu)
-Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind /sys/ /opt/sysm">
+<meta name="description" content="Chipset Bottlenecks can occur SSDs in a RAIDEvaluate the I/O topology of the used machine and eliminate bottleneckse.g., distribute SSDs to multiple controllers
+Where is your ssd connectted ?Some sata">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinstall grub2">
-<meta property="og:url" content="http://yoursite.com/2016/02/17/Reinstall-grub2/index.html">
+<meta property="og:title" content="Raid in SSD">
+<meta property="og:url" content="http://yoursite.com/2016/04/25/Raid-in-SSD/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Boot livecd from your usb device or network/dev/sdd2 is my linux root partition, OS is pinguyos(ubuntu)
-Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind /sys/ /opt/sysm">
-<meta property="og:updated_time" content="2016-02-17T08:51:00.000Z">
+<meta property="og:description" content="Chipset Bottlenecks can occur SSDs in a RAIDEvaluate the I/O topology of the used machine and eliminate bottleneckse.g., distribute SSDs to multiple controllers
+Where is your ssd connectted ?Some sata">
+<meta property="og:image" content="https://zh.wikipedia.org/wiki/File:Intel_5_Series_architecture.png">
+<meta property="og:updated_time" content="2016-04-25T16:31:14.104Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reinstall grub2">
-<meta name="twitter:description" content="Boot livecd from your usb device or network/dev/sdd2 is my linux root partition, OS is pinguyos(ubuntu)
-Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind /sys/ /opt/sysm">
+<meta name="twitter:title" content="Raid in SSD">
+<meta name="twitter:description" content="Chipset Bottlenecks can occur SSDs in a RAIDEvaluate the I/O topology of the used machine and eliminate bottleneckse.g., distribute SSDs to multiple controllers
+Where is your ssd connectted ?Some sata">
+<meta name="twitter:image" content="https://zh.wikipedia.org/wiki/File:Intel_5_Series_architecture.png">
 
 
 
@@ -89,7 +91,7 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
   };
 </script>
 
-  <title> Reinstall grub2 | Homer's Blog </title>
+  <title> Raid in SSD | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -277,7 +279,7 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
             
             
               
-                Reinstall grub2
+                Raid in SSD
               
             
           </h1>
@@ -289,8 +291,8 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T16:02:32+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-04-25T20:28:13+08:00" content="2016-04-25">
+              2016-04-25
             </time>
           </span>
 
@@ -303,8 +305,8 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux configuration</span>
+                  <a href="/categories/Hardware/" itemprop="url" rel="index">
+                    <span itemprop="name">Hardware</span>
                   </a>
                 </span>
 
@@ -319,8 +321,8 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/17/Reinstall-grub2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/17/Reinstall-grub2/" itemprop="commentsCount"></span>
+                <a href="/2016/04/25/Raid-in-SSD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/25/Raid-in-SSD/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,9 +344,41 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
       
 
       
-        <h3 id="Boot-livecd-from-your-usb-device-or-network"><a href="#Boot-livecd-from-your-usb-device-or-network" class="headerlink" title="Boot livecd from your usb device or network"></a>Boot livecd from your usb device or network</h3><p>/dev/sdd2 is my linux root partition, OS is pinguyos(ubuntu)</p>
-<h3 id="Test-in-ubuntu"><a href="#Test-in-ubuntu" class="headerlink" title="Test in ubuntu"></a>Test in ubuntu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdd2 /opt</span><br><span class="line">mount --bind /dev/ /opt/dev</span><br><span class="line">mount --bind /sys/ /opt/sys</span><br><span class="line">mount --bind /proc /opt/proc</span><br><span class="line">chroot /opt</span><br><span class="line">grub-install /dev/sdd</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
-<h3 id="Test-in-CentOS-7-set-boot-menu"><a href="#Test-in-CentOS-7-set-boot-menu" class="headerlink" title="Test in CentOS 7, set boot menu"></a>Test in CentOS 7, set boot menu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat   /boot/grub2/grub.cfg | grep Windows</span><br><span class="line">menuentry <span class="string">"Windows 7 (loader) (on /dev/sda1)"</span></span><br><span class="line">grub2-set-default  <span class="string">"Windows 7 (loader) (on /dev/sda1)"</span></span><br><span class="line">grub2-editenv list</span><br><span class="line">saved_entry=Windows 7 (loader) (on /dev/sda1)</span><br><span class="line">or </span><br><span class="line">grub2-set-default <span class="string">"windows"</span></span><br><span class="line"></span><br><span class="line">grub2-mkconfig -o /boot/grub2/grub.conf</span><br></pre></td></tr></table></figure>
+        <h3 id="Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID"><a href="#Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID" class="headerlink" title="Chipset Bottlenecks can occur SSDs in a RAID"></a>Chipset Bottlenecks can occur SSDs in a RAID</h3><p>Evaluate the I/O topology of the used machine and eliminate bottlenecks<br>e.g., distribute SSDs to multiple controllers</p>
+<p>Where is your ssd connectted ?<br>Some sata/M.2 ports through DMI conencetted.<br><img src="https://zh.wikipedia.org/wiki/File:Intel_5_Series_architecture.png" alt=""></p>
+<p>DMI bandwidth<br>DMI 2.0, introduced in 2011, doubles the data transfer rate to 2 GB/s with a ×4 link. It is used to link an Intel CPU with the Intel Platform Controller Hub (PCH), which supersedes the historic implementation of a separate northbridge and southbridge.</p>
+<p>DMI 3.0, released in August 2015, allows the 8 GT/s transfer rate per lane, for a total of four lanes and <font color="green">3.93 GB/s</font> for the CPU–PCH link. It is used by two-chip variants of the Intel Skylake microprocessors, which are used in conjunction with Intel 100 Series chipsets</p>
+<p>Popular server only DMI 2.0 shipset at 2016-04<br>For example<br><a href="http://www.supermicro.com/products/system/1U/1028/SYS-1028U-E1CR4_.cfm" target="_blank" rel="external">Supermicro 1028U-E1CR4+</a><br><a href="http://www.supermicro.com/products/system/1U/1028/SYS-1028U-TN10RT_.cfm" target="_blank" rel="external">Same with 1028U-TN10RT+</a><br><a href="http://ark.intel.com/products/81759/Intel-DH82029-PCH" target="_blank" rel="external">Intel C612 chipset</a></p>
+<h3 id="Enterprise-class-hardware-RAID-controllers-IOPS-bottlenecks"><a href="#Enterprise-class-hardware-RAID-controllers-IOPS-bottlenecks" class="headerlink" title="Enterprise-class hardware RAID controllers IOPS bottlenecks"></a>Enterprise-class hardware RAID controllers IOPS bottlenecks</h3><ul>
+<li>Use software RAID to overcome the performance limitations of hardware RAID</li>
+<li>Bottlenecks in software RAID implementations can still occur though at higher performance level</li>
+</ul>
+<h3 id="Asymmetry-between-Read-Write-Speed"><a href="#Asymmetry-between-Read-Write-Speed" class="headerlink" title="Asymmetry between Read/Write Speed"></a>Asymmetry between Read/Write Speed</h3><ul>
+<li>Reading flash pages faster than writing</li>
+<li>Writes in parity-based RAIDs slower than reads due to Read-Modify-Write operations</li>
+<li>Effects can accumulate Even faster reads and slower writes</li>
+</ul>
+<h3 id="Synchronous-SSD-Aging"><a href="#Synchronous-SSD-Aging" class="headerlink" title="Synchronous SSD Aging"></a>Synchronous SSD Aging</h3><ul>
+<li>SSDs have limited number of erase cycles<ul>
+<li>Lifespan of SSD depends on write workload</li>
+</ul>
+</li>
+<li>In RAIDs writes often distributed equally to all drives<ul>
+<li>Multiple drives may wear out at the same time </li>
+</ul>
+</li>
+</ul>
+<p>If broken ssd just read only ,that is fine<br>Until 2016, I think write endurance is not problem.</p>
+<h3 id="Workload-History-Dependency"><a href="#Workload-History-Dependency" class="headerlink" title="Workload History Dependency"></a>Workload History Dependency</h3><ul>
+<li>Increase spare capacity to ensure that enough free flash blocks will be available anytime</li>
+<li>Garbage collector</li>
+<li>Write amplification</li>
+</ul>
+<p>OP (Over Provisioning) is very important for Garbage collector and write amplification</p>
+<p>More OP, More perforamnce, Lower fragments(Lower write amplification), More write endurance….</p>
+<p><a href="http://www.anandtech.com/show/8954/intel-launches-ssd-dc-s3610-s3710-enterprise-ssds" target="_blank" rel="external">There’s a difference in over-provisioning levels too as the S3710 features a higher 30-40% over-provisioning with the S3610 having only 10-20%, in both models the exact over-provisioning depends on the capacity</a></p>
+<p><a href="http://www.anandtech.com/show/9455/samsung-releases-pm863-sm863-enterprise-sata-ssds-up-to-384tb-with-3d-vnand" target="_blank" rel="external">The SM863 actually provides lower random write performance than the 845DC PRO, which is due to the reduced default over-provisioning as the SM863 only has 12% compared to 28% in the 845DC PRO</a></p>
+<p><a href="http://www.research.ibm.com/haifa/conferences/systor2011/present/session5_talk2_systor2011.pdf" target="_blank" rel="external">Reference</a><br><a href="https://en.wikipedia.org/wiki/Direct_Media_Interface" target="_blank" rel="external">Reference</a><br><a href="http://www.ssdfans.com/?p=1840" target="_blank" rel="external">Garbage collector  Reference</a><br><a href="https://en.wikipedia.org/wiki/Write_amplification#BG-GC" target="_blank" rel="external">Garbage collector  Reference</a></p>
 
       
     </div>
@@ -359,9 +393,11 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
+            <a href="/tags/ssd/" rel="tag">#ssd</a>
           
-            <a href="/tags/grub/" rel="tag">#grub</a>
+            <a href="/tags/interface/" rel="tag">#interface</a>
+          
+            <a href="/tags/raid/" rel="tag">#raid</a>
           
         </div>
       
@@ -370,17 +406,13 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/25/rdesktop-to-windows10/" rel="next" title="rdesktop to windows10">
-                <i class="fa fa-chevron-left"></i> rdesktop to windows10
+              <a href="/2016/04/20/SSD-partition-alignment/" rel="next" title="Partition alignment">
+                <i class="fa fa-chevron-left"></i> Partition alignment
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/18/Install-robinhood/" rel="prev" title="Install robinhood">
-                Install robinhood <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,7 +568,7 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Boot-livecd-from-your-usb-device-or-network"><span class="nav-number">1.</span> <span class="nav-text">Boot livecd from your usb device or network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-in-ubuntu"><span class="nav-number">2.</span> <span class="nav-text">Test in ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-in-CentOS-7-set-boot-menu"><span class="nav-number">3.</span> <span class="nav-text">Test in CentOS 7, set boot menu</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID"><span class="nav-number">1.</span> <span class="nav-text">Chipset Bottlenecks can occur SSDs in a RAID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enterprise-class-hardware-RAID-controllers-IOPS-bottlenecks"><span class="nav-number">2.</span> <span class="nav-text">Enterprise-class hardware RAID controllers IOPS bottlenecks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Asymmetry-between-Read-Write-Speed"><span class="nav-number">3.</span> <span class="nav-text">Asymmetry between Read/Write Speed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronous-SSD-Aging"><span class="nav-number">4.</span> <span class="nav-text">Synchronous SSD Aging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Workload-History-Dependency"><span class="nav-number">5.</span> <span class="nav-text">Workload History Dependency</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -807,9 +839,9 @@ Test in ubuntu1234567mount /dev/sdd2 /optmount --bind /dev/ /opt/devmount --bind
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2016/02/17/Reinstall-grub2/';
-      var disqus_title = 'Reinstall grub2';
-      var disqus_url = 'http://yoursite.com/2016/02/17/Reinstall-grub2/';
+      var disqus_identifier = '2016/04/25/Raid-in-SSD/';
+      var disqus_title = 'Raid in SSD';
+      var disqus_url = 'http://yoursite.com/2016/04/25/Raid-in-SSD/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

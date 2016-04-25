@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/25/Raid-in-SSD/</loc>
+    
+    <lastmod>2016-04-25T16:31:14.104Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/20/SSD-partition-alignment/</loc>
     
-    <lastmod>2016-04-19T16:31:44.000Z</lastmod>
+    <lastmod>2016-04-19T16:31:44.819Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
     
-    <lastmod>2016-04-19T15:40:15.000Z</lastmod>
+    <lastmod>2016-04-19T15:40:15.379Z</lastmod>
     
   </url>
   
@@ -25,7 +32,7 @@
   <url>
     <loc>http://yoursite.com/2016/04/12/golang-io-reader-to-string/</loc>
     
-    <lastmod>2016-04-12T14:37:53.000Z</lastmod>
+    <lastmod>2016-04-12T14:37:53.142Z</lastmod>
     
   </url>
   
@@ -67,14 +74,14 @@
   <url>
     <loc>http://yoursite.com/2016/04/04/Sort-array-with-GAWK4/</loc>
     
-    <lastmod>2016-04-03T16:27:03.000Z</lastmod>
+    <lastmod>2016-04-03T16:27:03.147Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/01/blktrace/</loc>
     
-    <lastmod>2016-04-03T13:18:14.000Z</lastmod>
+    <lastmod>2016-04-03T13:18:14.313Z</lastmod>
     
   </url>
   
@@ -116,21 +123,21 @@
   <url>
     <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
     
-    <lastmod>2016-03-20T10:26:07.000Z</lastmod>
+    <lastmod>2016-03-20T10:26:07.907Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tools/index.html</loc>
     
-    <lastmod>2016-03-19T03:21:50.000Z</lastmod>
+    <lastmod>2016-03-19T03:21:50.953Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
     
-    <lastmod>2016-03-18T17:25:29.000Z</lastmod>
+    <lastmod>2016-03-18T17:25:29.630Z</lastmod>
     
   </url>
   
