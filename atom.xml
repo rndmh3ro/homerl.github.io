@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-25T16:31:14.104Z</updated>
+  <updated>2016-04-25T16:59:47.264Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/04/25/Raid-in-SSD/"/>
     <id>http://yoursite.com/2016/04/25/Raid-in-SSD/</id>
     <published>2016-04-25T12:28:13.000Z</published>
-    <updated>2016-04-25T16:31:14.104Z</updated>
+    <updated>2016-04-25T16:59:47.264Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot;&gt;&lt;a href=&quot;#Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot; class=&quot;headerlink&quot; title=&quot;Chipset Bottlenecks can occur SSDs in a RAID&quot;&gt;&lt;/a&gt;Chipset Bottlenecks can occur SSDs in a RAID&lt;/h3&gt;&lt;p&gt;Evaluate the I/O topology of the used machine and eliminate bottlenecks&lt;br&gt;e.g., distribute SSDs to multiple controllers&lt;/p&gt;
 &lt;p&gt;Where is your ssd connectted ?&lt;br&gt;Some sata/M.2 ports through DMI conencetted.&lt;br&gt;&lt;img src=&quot;https://zh.wikipedia.org/wiki/File:Intel_5_Series_architecture.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -56,6 +56,7 @@
 &lt;p&gt;More OP, More perforamnce, Lower fragments(Lower write amplification), More write endurance….&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.anandtech.com/show/8954/intel-launches-ssd-dc-s3610-s3710-enterprise-ssds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;There’s a difference in over-provisioning levels too as the S3710 features a higher 30-40% over-provisioning with the S3610 having only 10-20%, in both models the exact over-provisioning depends on the capacity&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.anandtech.com/show/9455/samsung-releases-pm863-sm863-enterprise-sata-ssds-up-to-384tb-with-3d-vnand&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The SM863 actually provides lower random write performance than the 845DC PRO, which is due to the reduced default over-provisioning as the SM863 only has 12% compared to 28% in the 845DC PRO&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.ssdfans.com/wp-content/uploads/2016/04/041316_0813_FTLOP12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.research.ibm.com/haifa/conferences/systor2011/present/session5_talk2_systor2011.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Direct_Media_Interface&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.ssdfans.com/?p=1840&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Garbage collector  Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Write_amplification#BG-GC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Garbage collector  Reference&lt;/a&gt;&lt;/p&gt;
 </content>
     
