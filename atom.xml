@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-25T16:59:47.264Z</updated>
+  <updated>2016-04-25T17:03:23.186Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/04/25/Raid-in-SSD/"/>
     <id>http://yoursite.com/2016/04/25/Raid-in-SSD/</id>
     <published>2016-04-25T12:28:13.000Z</published>
-    <updated>2016-04-25T16:59:47.264Z</updated>
+    <updated>2016-04-25T17:03:23.186Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot;&gt;&lt;a href=&quot;#Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot; class=&quot;headerlink&quot; title=&quot;Chipset Bottlenecks can occur SSDs in a RAID&quot;&gt;&lt;/a&gt;Chipset Bottlenecks can occur SSDs in a RAID&lt;/h3&gt;&lt;p&gt;Evaluate the I/O topology of the used machine and eliminate bottlenecks&lt;br&gt;e.g., distribute SSDs to multiple controllers&lt;/p&gt;
 &lt;p&gt;Where is your ssd connectted ?&lt;br&gt;Some sata/M.2 ports through DMI conencetted.&lt;br&gt;&lt;img src=&quot;https://zh.wikipedia.org/wiki/File:Intel_5_Series_architecture.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -57,6 +57,7 @@
 &lt;p&gt;&lt;a href=&quot;http://www.anandtech.com/show/8954/intel-launches-ssd-dc-s3610-s3710-enterprise-ssds&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;There’s a difference in over-provisioning levels too as the S3710 features a higher 30-40% over-provisioning with the S3610 having only 10-20%, in both models the exact over-provisioning depends on the capacity&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.anandtech.com/show/9455/samsung-releases-pm863-sm863-enterprise-sata-ssds-up-to-384tb-with-3d-vnand&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The SM863 actually provides lower random write performance than the 845DC PRO, which is due to the reduced default over-provisioning as the SM863 only has 12% compared to 28% in the 845DC PRO&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://www.ssdfans.com/wp-content/uploads/2016/04/041316_0813_FTLOP12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Benchmark&quot;&gt;&lt;a href=&quot;#Benchmark&quot; class=&quot;headerlink&quot; title=&quot;Benchmark&quot;&gt;&lt;/a&gt;Benchmark&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.tomshardware.com/reviews/ssd-dc-s3500-raid-performance,3613-7.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;6x dc s3500 raid performance&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.phoronix.com/scan.php?page=article&amp;amp;item=linux_raid_fs4&amp;amp;num=1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;4x intel 530 raid performance&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.research.ibm.com/haifa/conferences/systor2011/present/session5_talk2_systor2011.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Direct_Media_Interface&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.ssdfans.com/?p=1840&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Garbage collector  Reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Write_amplification#BG-GC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Garbage collector  Reference&lt;/a&gt;&lt;/p&gt;
 </content>
     
@@ -144,31 +145,6 @@
   </entry>
   
   <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -191,6 +167,31 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
