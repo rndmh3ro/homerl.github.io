@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-06T03:15:49.000Z</updated>
+  <updated>2016-05-06T16:13:32.103Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2016/05/06/Trim-discard-support/"/>
     <id>http://yoursite.com/2016/05/06/Trim-discard-support/</id>
     <published>2016-05-05T16:17:35.000Z</published>
-    <updated>2016-05-06T03:15:49.000Z</updated>
+    <updated>2016-05-06T16:13:32.103Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Why-Trim&quot;&gt;&lt;a href=&quot;#Why-Trim&quot; class=&quot;headerlink&quot; title=&quot;Why Trim)&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trim_\(computing\&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Why Trim&lt;/a&gt;)&lt;/h3&gt;&lt;p&gt;The Trim command is designed to enable the operating system to notify the SSD which pages no longer contain valid data due to erases either by the user or operating system itself. During a delete operation, the OS will mark the sectors as free for new data and send a Trim command to the SSD to mark them as not containing valid data. After that the SSD knows not to preserve the contents of the block when writing a page, resulting in less write amplification with fewer writes to the flash, higher write speed, and increased drive life.&lt;br&gt;Different SSDs implement the Trim command somewhat differently, so performance can vary.&lt;br&gt;&lt;img src=&quot;http://images.anandtech.com/reviews/storage/Intel/34nmSSD/Review/garbagecollection.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;Why-Trim&quot;&gt;&lt;a href=&quot;#Why-Trim&quot; class=&quot;headerlink&quot; title=&quot;Why Trim&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trim_(computing)&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Why Trim&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Trim command is designed to enable the operating system to notify the SSD which pages no longer contain valid data due to erases either by the user or operating system itself. During a delete operation, the OS will mark the sectors as free for new data and send a Trim command to the SSD to mark them as not containing valid data. After that the SSD knows not to preserve the contents of the block when writing a page, resulting in less write amplification with fewer writes to the flash, higher write speed, and increased drive life.&lt;br&gt;Different SSDs implement the Trim command somewhat differently, so performance can vary.&lt;br&gt;&lt;img src=&quot;http://images.anandtech.com/reviews/storage/Intel/34nmSSD/Review/garbagecollection.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;SoftRaid&quot;&gt;&lt;a href=&quot;#SoftRaid&quot; class=&quot;headerlink&quot; title=&quot;SoftRaid&quot;&gt;&lt;/a&gt;SoftRaid&lt;/h3&gt;&lt;h4 id=&quot;Openzfs-on-linux&quot;&gt;&lt;a href=&quot;#Openzfs-on-linux&quot; class=&quot;headerlink&quot; title=&quot;Openzfs on linux&quot;&gt;&lt;/a&gt;Openzfs on linux&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zfsonlinux/zfs/pull/1016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;not support trim funtion&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://list.zfsonlinux.org/pipermail/zfs-discuss/2016-January/024437.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;expect to get a upgrade this year that will add TRIM support&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;Trim-patch-for-ZOL&quot;&gt;&lt;a href=&quot;#Trim-patch-for-ZOL&quot; class=&quot;headerlink&quot; title=&quot;Trim patch for ZOL&quot;&gt;&lt;/a&gt;Trim patch for ZOL&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zfsonlinux/zfs/pull/924&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DO NOT APPLY THIS PATCH IF YOU CARE ABOUT YOUR DATA&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;Mdadm&quot;&gt;&lt;a href=&quot;#Mdadm&quot; class=&quot;headerlink&quot; title=&quot;Mdadm&quot;&gt;&lt;/a&gt;Mdadm&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://kernelnewbies.org/Linux_3.7#head-2fd9b183a4623d96e69ed24f88e0eb83217fa8df&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Since version 3.7 of the Linux kernel mainline, md supports TRIM operations for the underlying solid-state drives (SSDs), for linear, RAID 0, RAID 1, RAID 5 and RAID 10 layouts&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html-single/6.5_Release_Notes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CentOS 6.5 The mdadm tool now supports the TRIM commands for RAID0, RAID1, and RAID10.&lt;/a&gt;&lt;/p&gt;
@@ -32,7 +32,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Why-Trim&quot;&gt;&lt;a href=&quot;#Why-Trim&quot; class=&quot;headerlink&quot; title=&quot;Why Trim)&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trim_\(computing\&quot; tar
+      &lt;h3 id=&quot;Why-Trim&quot;&gt;&lt;a href=&quot;#Why-Trim&quot; class=&quot;headerlink&quot; title=&quot;Why Trim&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trim_(computing)&quot; targe
     
     </summary>
     
