@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,zfs,robinhood," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Just analyse lustre data, not remove or move any file and directory.And I created zfs pool in /var/lib/mysql, and enable lz4 compression.Now here is compressratio123# zfs get compressratio tankNAME  P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install robinhood">
+<meta property="og:url" content="http://yoursite.com/2016/02/18/Install-robinhood/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Just analyse lustre data, not remove or move any file and directory.And I created zfs pool in /var/lib/mysql, and enable lz4 compression.Now here is compressratio123# zfs get compressratio tankNAME  P">
+<meta property="og:image" content="http://yoursite.com/img/robinhood_size.png">
+<meta property="og:updated_time" content="2016-05-31T07:58:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Install robinhood">
+<meta name="twitter:description" content="Just analyse lustre data, not remove or move any file and directory.And I created zfs pool in /var/lib/mysql, and enable lz4 compression.Now here is compressratio123# zfs get compressratio tankNAME  P">
+<meta name="twitter:image" content="http://yoursite.com/img/robinhood_size.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Install robinhood | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Install robinhood
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-02-18T16:20:03+08:00" content="2016-02-18">
+              2016-02-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux configuration</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/18/Install-robinhood/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/18/Install-robinhood/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Just analyse lustre data, not remove or move any file and directory.<br>And I created zfs pool in /var/lib/mysql, and enable lz4 compression.<br>Now here is compressratio<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zfs get compressratio tank</span></span><br><span class="line">NAME  PROPERTY       VALUE  SOURCE</span><br><span class="line">tank  compressratio  2.50x  -</span><br></pre></td></tr></table></figure></p>
+<p>CentOS 7.2 and Robinhood 2.5.5<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install mariadb-devel mailx glib2-devel libattr-devel mariadb-server</span></span><br><span class="line"><span class="comment"># tar xzvf robinhood-2.5.5.tar.gz</span></span><br><span class="line"><span class="comment"># cd robinhood</span></span><br><span class="line"><span class="comment"># ./configure --with-purpose=TMPFS</span></span><br><span class="line">or</span><br><span class="line"><span class="comment"># ./configure --with-purpose=LUSTRE_HSM</span></span><br><span class="line"><span class="comment"># make rpm</span></span><br><span class="line"><span class="comment"># rpm -ivh robinhood-tmpfs-2.5.5-4.lustre2.5.el7.centos.x86_64 robinhood-adm-2.5.5-4.noarch.x86_64</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Init-mariadb"><a href="#Init-mariadb" class="headerlink" title="Init mariadb"></a>Init mariadb</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable mariadb</span></span><br><span class="line"><span class="comment"># systemctl start mariadb</span></span><br><span class="line"><span class="comment"># mysqladmin -u root password "your root password";</span></span><br><span class="line"><span class="comment"># rbh-config create_db</span></span><br></pre></td></tr></table></figure>
+<p>Modify /etc/robinhood.d/tmpfs/templates/tmpfs_detailed.conf as your wish, and save it to /etc/robinhood.d/tmpfs/tmpfs.conf.</p>
+<h3 id="Enable-lustre-changelog"><a href="#Enable-lustre-changelog" class="headerlink" title="Enable lustre changelog"></a>Enable lustre changelog</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ChangeLog</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"># 1 MDT block for each MDT :</span></span><br><span class="line">    MDT</span><br><span class="line">    &#123;</span><br><span class="line">        mdt_name = <span class="string">"MDT0000"</span> ;</span><br><span class="line">        reader_id = <span class="string">"cl1"</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># clear changelog every 1024 records:</span></span><br><span class="line">    batch_ack_count = 1024 ;</span><br><span class="line"></span><br><span class="line">    force_polling    = ON ;</span><br><span class="line">    polling_interval = 1s ;</span><br><span class="line">    queue_max_size   = 1000 ;</span><br><span class="line">    queue_max_age    = 5s ;</span><br><span class="line">    queue_check_interval = 1s ;</span><br><span class="line">    dump_file = <span class="string">"/var/lib/mysql/robinhood/changelog_dump.log"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># lctl --device lustrefs-MDT0000 changelog_register</span></span><br><span class="line">lustrefs-MDT0000: Registered changlog userid <span class="string">'cl1'</span></span><br><span class="line"><span class="comment"># lctl set_param mdd.lustrefs-MDT*.changelog_mask "MARK CREAT MKDIR HLINK SLINK MKNOD UNLNK RMDIR RENME RNMTO OPEN LYOUT TRUNC SATTR XATTR HSM MTIME CTIME"</span></span><br><span class="line"><span class="comment"># lctl get_param mdd.lustrefs-MDT*.changelog_mask </span></span><br><span class="line">MARK CREAT MKDIR HLINK SLINK MKNOD UNLNK RMDIR RENME RNMTO OPEN LYOUT TRUNC SATTR XATTR HSM MTIME CTIME</span><br></pre></td></tr></table></figure>
+<h3 id="Run-robinhood"><a href="#Run-robinhood" class="headerlink" title="Run robinhood"></a>Run robinhood</h3><p>write IOPS peak about 9000~10000 in single 10GbE SR SFP+ port.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robinhood <span class="_">-f</span> /etc/robinhood.d/tmpfs/tmpfs.conf --read-log -C --dry-run --scan</span><br></pre></td></tr></table></figure></p>
+<h3 id="Show-data"><a href="#Show-data" class="headerlink" title="Show data"></a>Show data</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rbh-report --top-users -U 10000</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">rank, user      ,   spc_used,      count,   avg_size</span><br><span class="line">   1, 501       ,  142.80 TB,     593083,  252.58 MB</span><br><span class="line">   2, 35061     ,   33.82 TB,      50912,  696.54 MB</span><br><span class="line">   3, 35623     ,   29.91 TB,      42304,  741.30 MB</span><br><span class="line">   4, 666666    ,   26.17 TB,     300038,   91.44 MB</span><br><span class="line">   5, 35939     ,   16.26 TB,    1616106,   10.54 MB</span><br><span class="line">   6, 31344     ,   15.63 TB,     801339,   20.45 MB</span><br><span class="line">   7, 30428     ,   13.54 TB,     272051,   52.19 MB</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-report --top-users --by-count</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">rank, user      ,   spc_used,      count,   avg_size</span><br><span class="line">   1, 28904     ,  778.50 GB,    4493723,  179.10 KB</span><br><span class="line">   2, 504       ,    4.14 TB,    2514345,    1.73 MB</span><br><span class="line">   3, 29637     ,    2.81 TB,    2152429,    1.37 MB</span><br><span class="line">   4, 29563     ,  873.35 GB,    1935333,  470.53 KB</span><br><span class="line">   5, 30185     ,  508.22 GB,    1695768,  310.95 KB</span><br><span class="line">   6, 35939     ,   16.26 TB,    1616106,   10.54 MB</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-du -sH /lustrefs/share_backup/ -u 30319 --details</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">ls </span><br><span class="line">total</span><br><span class="line">	symlink count:895, size:46.3K, spc_used:1.4M</span><br><span class="line">	dir count:9877, size:42.7M, spc_used:42.7M</span><br><span class="line">	file count:128990, size:5.2T, spc_used:5.2T</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-du -H -u 30319</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">5.2T	/lustrefs</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-report -u 30319 -S</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">user      ,      group,     <span class="built_in">type</span>,      count,   spc_used,   avg_size</span><br><span class="line">30319     ,        725,  symlink,          5,    4.00 KB,         36</span><br><span class="line">30319     ,        725,      dir,        811,    3.22 MB,    4.07 KB</span><br><span class="line">30319     ,        725,     file,       4388,    5.00 TB,    1.17 GB</span><br><span class="line">30319     ,        820,  symlink,         13,          0,         35</span><br><span class="line">30319     ,        820,      dir,         23,   92.00 KB,    4.00 KB</span><br><span class="line">30319     ,        820,     file,        287,    7.78 GB,   27.77 MB</span><br><span class="line">30319     ,        859,  symlink,        881,    1.38 MB,         53</span><br><span class="line">30319     ,        859,      dir,       9066,   39.48 MB,    4.45 KB</span><br><span class="line">30319     ,        859,     file,     124457,  208.88 GB,    1.72 MB</span><br><span class="line">30319     ,       root,      dir,          1,    4.00 KB,    4.00 KB</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-report -u 30319 --szprof</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">user      ,     <span class="built_in">type</span>,      count,   spc_used,   avg_size,        0,     1~31,   32~1K-,   1K~31K,  32K~1M-,   1M~31M,  32M~1G-,   1G~31G,  32G~1T-,      +1T</span><br><span class="line">30319     ,  symlink,        899,    1.39 MB,         53,        0,      357,      542,        0,        0,        0,        0,        0,        0,        0</span><br><span class="line">30319     ,      dir,       9902,   42.80 MB,    4.42 KB,        0,        0,        0,     9875,       27,        0,        0,        0,        0,        0</span><br><span class="line">30319     ,     file,     129132,    5.21 TB,   42.31 MB,     2288,     2300,    31102,    75173,    14854,     2366,      863,      100,       86,        0</span><br><span class="line"></span><br><span class="line">Total: 139933 entries, 5728992747520 bytes used (5.21 TB)</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-report --top-users --by-szratio=1G..31G</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">rank, user      ,   spc_used,      count,   avg_size,        0,     1~31,   32~1K-,   1K~31K,  32K~1M-,   1M~31M,  32M~1G-,   1G~31G,  32G~1T-,      +1T, ratio(1G..31G)</span><br><span class="line">   1, 29862     ,    8.96 TB,      10238,  918.14 MB,        9,        2,     1729,     2795,      466,      355,      679,     4185,       18,        0, 40.88%</span><br><span class="line">   2, 35590     ,   37.44 GB,         39,  983.16 MB,        2,        8,       10,        5,        0,        1,        0,       13,        0,        0, 33.33%</span><br><span class="line">   3, 35591     ,   17.47 GB,         22,  812.97 MB,        0,        0,       10,        3,        0,        1,        2,        6,        0,        0, 27.27%</span><br><span class="line">   4, qemu      ,  647.41 GB,        127,    5.27 GB,        0,        0,        5,       39,        3,       39,        6,       31,        4,        0, 24.41%</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rbh-report --top-dirs --by-count</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line">rank,                                     path, dircount,    avgsize,       user,      group,             last_mod</span><br><span class="line">   1, /lustrefs/cm/net,  1365749,   56.84 KB,      35697,        904,  2016/02/01 03:58:45</span><br><span class="line">   2, /lustrefs/tte/net,   443993,   54.27 KB,      35697,        904,  2016/01/25 12:24:21</span><br><span class="line">   3, /lustrefs/tte/crf/crf-net,   443993,   39.71 KB,      35697,        904,  2016/01/26 03:04:40</span><br><span class="line">   4, /lustrefs/LabelFree/net,   387909,   82.25 KB,      35697,        904,  2016/01/26 02:36:44</span><br><span class="line">   5, /lustrefs/LabelFree/crf/crf-net,   387909,   50.98 KB,      35697,        904,  2016/01/26 06:02:10</span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-find /lustrefs/test/ -user 501 -size +1G –ost 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># rbh-find -user 501 -print</span></span><br><span class="line">/lustrefs/xxxx</span><br><span class="line">/lustrefs/xxx/xxx</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rbh-report -a</span></span><br><span class="line">Using config file <span class="string">'/etc/robinhood.d/tmpfs/tmpfs.conf'</span>.</span><br><span class="line"></span><br><span class="line">Filesystem scan activity:</span><br><span class="line"></span><br><span class="line">    Current scan interval:   7.0d</span><br><span class="line"></span><br><span class="line">    Previous filesystem scan:</span><br><span class="line">            start:           2016/02/17 21:30:40</span><br><span class="line">            duration:        02s</span><br><span class="line"></span><br><span class="line">    Last filesystem scan:</span><br><span class="line">            status:          <span class="keyword">done</span></span><br><span class="line">            start:           2016/02/17 21:30:43</span><br><span class="line">            end:             2016/02/18 09:32:36</span><br><span class="line">            duration:        12h 01min 53s</span><br><span class="line"></span><br><span class="line">         Statistics:</span><br><span class="line">            entries scanned: 58038696</span><br><span class="line">            errors:          1</span><br><span class="line">            timeouts:        0</span><br><span class="line">            <span class="comment"># threads:       24</span></span><br><span class="line">            average speed:   1450.15 entries/sec</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Changelog stats:</span><br><span class="line"></span><br><span class="line">        Last <span class="built_in">read</span> record id:      5151588</span><br><span class="line">        Last <span class="built_in">read</span> record time:    2016/02/19 01:29:42.783530</span><br><span class="line">        Last receive time:        2016/02/19 01:28:56</span><br><span class="line">        Last committed record id: 5151588</span><br><span class="line">        Changelog stats:</span><br><span class="line">                 <span class="built_in">type</span>            total 	(diff)	(rate)</span><br><span class="line">                 MARK:               0</span><br><span class="line">                CREAT:         2363800 	(+30)	(0.03/sec)</span><br><span class="line">                MKDIR:           48696</span><br><span class="line">                HLINK:             110</span><br><span class="line">                SLINK:            1740 	(+2)	(0.00/sec)</span><br><span class="line">                MKNOD:               0</span><br><span class="line">                UNLNK:          137955 	(+161)	(0.13/sec)</span><br><span class="line">                RMDIR:            5993 	(+1)	(0.00/sec)</span><br><span class="line">                RENME:            3798 	(+5)	(0.00/sec)</span><br><span class="line">                RNMTO:               0</span><br><span class="line">                 OPEN:               0</span><br><span class="line">                CLOSE:               0</span><br><span class="line">                LYOUT:               0</span><br><span class="line">                TRUNC:          236843</span><br><span class="line">                SATTR:         2164457 	(+19)	(0.02/sec)</span><br><span class="line">                XATTR:           16732</span><br><span class="line">                  HSM:               0</span><br><span class="line">                MTIME:             284</span><br><span class="line">                CTIME:               0</span><br><span class="line">                ATIME:               0</span><br><span class="line"></span><br><span class="line">Storage usage has never been checked</span><br><span class="line"></span><br><span class="line">No purge was performed on this filesystem</span><br></pre></td></tr></table></figure>
+<h3 id="Install-web-interface"><a href="#Install-web-interface" class="headerlink" title="Install web interface"></a>Install web interface</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpm -ivh robinhood-webgui-2.5.5-4.noarch.x86_64.rpm</span></span><br><span class="line"><span class="comment"># yum -y install php php-mysql php-xml php-pdo php-gd httpd</span></span><br><span class="line"><span class="comment"># chown -R apache.apache /var/www/html/robinhood</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Modify httpd.conf</span></span><br><span class="line">&lt;Directory <span class="string">"/var/www/html"</span>&gt;</span><br><span class="line">    AllowOverride All</span><br></pre></td></tr></table></figure>
+<p>Start httpd<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> httpd</span><br><span class="line">systemctl start httpd</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">```mysql</span><br><span class="line">[mysqld]</span><br><span class="line">user		= mysql</span><br><span class="line">pid-file	= /var/run/mysqld/mysqld.pid</span><br><span class="line">socket		= /var/run/mysqld/mysqld.sock</span><br><span class="line">port		= 3306</span><br><span class="line">basedir		= /usr</span><br><span class="line">datadir		= /var/lib/mysql</span><br><span class="line">tmpdir		= /tmp</span><br><span class="line"></span><br><span class="line">skip-external-locking</span><br><span class="line"></span><br><span class="line">performance_schema</span><br><span class="line">table_open_cache=2028</span><br><span class="line">max_connections=1024</span><br><span class="line">thread_cache_size=512</span><br><span class="line">table_cache=2048</span><br><span class="line">connect_timeout=60</span><br><span class="line">key_buffer_size=512M</span><br><span class="line">query_cache_size=512M</span><br><span class="line">query_cache_<span class="built_in">limit</span>=512M</span><br><span class="line">sort_buffer_size=512M</span><br><span class="line"><span class="built_in">read</span>_rnd_buffer_size=1G</span><br><span class="line">tmp_table_size=1G</span><br><span class="line">max_heap_table_size=1G</span><br><span class="line"></span><br><span class="line">innodb_buffer_pool_size = 16G</span><br><span class="line">innodb_additional_mem_pool_size = 16M</span><br><span class="line">innodb_max_dirty_pages_pct = 20</span><br><span class="line"><span class="comment">#innodb_data_file_path = ibdata1:100M:autoextend</span></span><br><span class="line">innodb_io_capacity=100000</span><br><span class="line">innodb_autoinc_lock_mode = 2</span><br><span class="line">innodb_thread_concurrency = 0</span><br><span class="line">innodb_<span class="built_in">log</span>_buffer_size = 256M</span><br><span class="line">innodb_<span class="built_in">log</span>_file_size = 900M</span><br><span class="line">innodb_<span class="built_in">log</span>_files_<span class="keyword">in</span>_group = 4</span><br><span class="line">innodb_lock_<span class="built_in">wait</span>_timeout = 120</span><br><span class="line"></span><br><span class="line"><span class="built_in">bind</span>-address		= 127.0.0.1</span><br><span class="line">max_connections		= 1024</span><br><span class="line">connect_timeout		= 30</span><br><span class="line"><span class="built_in">wait</span>_timeout		= 60</span><br><span class="line">sort_buffer_size	= 4M</span><br><span class="line">bulk_insert_buffer_size	= 16M</span><br><span class="line">tmp_table_size		= 32M</span><br><span class="line">max_heap_table_size	= 32M</span><br><span class="line">key_buffer_size		= 8M</span><br><span class="line">table_open_cache	= 800</span><br><span class="line">myisam_sort_buffer_size	= 512M</span><br><span class="line">concurrent_insert	= 2</span><br><span class="line">general_<span class="built_in">log</span>             = 0</span><br><span class="line"><span class="built_in">log</span>_warnings		= 2</span><br><span class="line">slow_query_<span class="built_in">log</span>_file	= /var/<span class="built_in">log</span>/mysql/mariadb-slow.log</span><br><span class="line">long_query_time = 60</span><br><span class="line"><span class="built_in">log</span>_slow_verbosity	= query_plan</span><br><span class="line"></span><br><span class="line">skip-log-bin</span><br><span class="line">default_storage_engine	= InnoDB</span><br><span class="line">innodb_<span class="built_in">log</span>_file_size	= 50M</span><br><span class="line">innodb_<span class="built_in">log</span>_buffer_size	= 16M</span><br><span class="line">innodb_file_per_table	= <span class="literal">true</span></span><br><span class="line">innodb_open_files	= 4000</span><br><span class="line">innodb_lru_scan_depth   = 4000</span><br><span class="line">innodb_use_trim=ON</span><br><span class="line">innodb_use_fallocate=ON</span><br><span class="line">innodb_page_size=16k</span><br><span class="line">innodb_write_io_threads=24</span><br><span class="line">innodb_<span class="built_in">read</span>_io_threads=24</span><br><span class="line">innodb_buffer_pool_instances=16</span><br><span class="line">innodb_mtflush_threads=16</span><br><span class="line">innodb_doublewrite=0</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/robinhood_size.png" alt=""></p>
+<p>reference:<br><a href="https://github.com/cea-hpc/robinhood/wiki/Documentation" target="_blank" rel="external">https://github.com/cea-hpc/robinhood/wiki/Documentation</a><br><a href="http://cdn.opensfs.org/wp-content/uploads/2013/04/lug13-robinhood.pdf" target="_blank" rel="external">http://cdn.opensfs.org/wp-content/uploads/2013/04/lug13-robinhood.pdf</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/zfs/" rel="tag">#zfs</a>
+          
+            <a href="/tags/robinhood/" rel="tag">#robinhood</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/17/Reinstall-grub2/" rel="next" title="Reinstall grub2">
+                <i class="fa fa-chevron-left"></i> Reinstall grub2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/01/VLC-not-show-media-title/" rel="prev" title="VLC not show media title">
+                VLC not show media title <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Init-mariadb"><span class="nav-number">1.</span> <span class="nav-text">Init mariadb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-lustre-changelog"><span class="nav-number">2.</span> <span class="nav-text">Enable lustre changelog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-robinhood"><span class="nav-number">3.</span> <span class="nav-text">Run robinhood</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-data"><span class="nav-number">4.</span> <span class="nav-text">Show data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-web-interface"><span class="nav-number">5.</span> <span class="nav-text">Install web interface</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2016/02/18/Install-robinhood/';
+      var disqus_title = 'Install robinhood';
+      var disqus_url = 'http://yoursite.com/2016/02/18/Install-robinhood/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ha,cluster,linux,corosync,pacemaker,lustre,zfs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="HardwareMDS
+2 x SuperMicro SSG-6028R-E1CR12N (Xeon 2650 v3 8*16G)
+1 x 2U JBOD (216be26-r920lpb) 14 x ST600MP0005 + 2x ST200FM0002 
+2 x LSI Syncro CS 9286-8e (installed in MDS)test-test-test
+
+OSS
+4 x S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deploy Lustre and OpenZFS">
+<meta property="og:url" content="http://yoursite.com/2015/11/06/Deploy Lustre and OpenZFS/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="HardwareMDS
+2 x SuperMicro SSG-6028R-E1CR12N (Xeon 2650 v3 8*16G)
+1 x 2U JBOD (216be26-r920lpb) 14 x ST600MP0005 + 2x ST200FM0002 
+2 x LSI Syncro CS 9286-8e (installed in MDS)test-test-test
+
+OSS
+4 x S">
+<meta property="og:image" content="http://yoursite.com/img/mds.png">
+<meta property="og:image" content="http://yoursite.com/img/mds-1.png">
+<meta property="og:image" content="http://yoursite.com/img/oss.png">
+<meta property="og:image" content="http://yoursite.com/img/config_syncro.png">
+<meta property="og:updated_time" content="2016-03-18T17:25:29.630Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deploy Lustre and OpenZFS">
+<meta name="twitter:description" content="HardwareMDS
+2 x SuperMicro SSG-6028R-E1CR12N (Xeon 2650 v3 8*16G)
+1 x 2U JBOD (216be26-r920lpb) 14 x ST600MP0005 + 2x ST200FM0002 
+2 x LSI Syncro CS 9286-8e (installed in MDS)test-test-test
+
+OSS
+4 x S">
+<meta name="twitter:image" content="http://yoursite.com/img/mds.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Deploy Lustre and OpenZFS | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Deploy Lustre and OpenZFS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-11-06T12:32:00+08:00" content="2015-11-06">
+              2015-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux configuration</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/06/Deploy Lustre and OpenZFS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/06/Deploy Lustre and OpenZFS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Hardware"><a href="#Hardware" class="headerlink" title="Hardware"></a>Hardware</h2><h3 id="MDS"><a href="#MDS" class="headerlink" title="MDS"></a>MDS</h3><ul>
+<li>2 x SuperMicro SSG-6028R-E1CR12N (Xeon 2650 v3 8*16G)</li>
+<li>1 x 2U JBOD (216be26-r920lpb) 14 x ST600MP0005 + 2x ST200FM0002 </li>
+<li>2 x LSI Syncro CS 9286-8e (installed in MDS)<br><del>test-test-test</del></li>
+</ul>
+<h3 id="OSS"><a href="#OSS" class="headerlink" title="OSS"></a>OSS</h3><ul>
+<li>4 x SuperMicro SSG-6028R-E1CR12N (Xeon 2630v3 8*8G)</li>
+<li>4 x JBOD (SC847DE26-R2K02JBOD, installed 74 x ST6000NM0034) </li>
+<li>8 x LSI SAS2308 (installed in OSS)</li>
+</ul>
+<h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><ul>
+<li>OS: CentOS 6.6 x64 2.6.32-504.30.3.el6_lustre.x86_64</li>
+<li>Lustre: 2.5.37.7 (Intel ieel 2.3)</li>
+<li>OpenZFS: 0.6.4-1</li>
+</ul>
+<h3 id="LSI-syncro-Architecture"><a href="#LSI-syncro-Architecture" class="headerlink" title="LSI syncro Architecture"></a>LSI syncro Architecture</h3><p><img src="/img/mds.png" alt=""></p>
+<h3 id="MDS-Architecture"><a href="#MDS-Architecture" class="headerlink" title="MDS Architecture"></a>MDS Architecture</h3><p><img src="/img/mds-1.png" alt=""></p>
+<h3 id="OSS-Architecture"><a href="#OSS-Architecture" class="headerlink" title="OSS Architecture"></a>OSS Architecture</h3><p><img src="/img/oss.png" alt=""></p>
+<h2 id="The-Installation-Process"><a href="#The-Installation-Process" class="headerlink" title="The Installation Process"></a>The Installation Process</h2><h3 id="Configure-LSI-syncro-for-MDS"><a href="#Configure-LSI-syncro-for-MDS" class="headerlink" title="Configure LSI syncro for MDS"></a>Configure LSI syncro for MDS</h3><p><img src="/img/config_syncro.png" alt=""></p>
+<p>/opt/MegaRAID/storcli/storcli64 /c1 show all</p>
+<p>High Availability :</p>
+<p>Topology Type = Server Storage Cluster<br>Domain Id = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>Peer Controller Status = Active<br>Maximum Controller Nodes = 2<br>Incompatible Details = None</p>
+<h3 id="Install-rpms-for-MDS"><a href="#Install-rpms-for-MDS" class="headerlink" title="Install rpms for MDS"></a>Install rpms for MDS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh dracut-004-388.el6.noarch.rpm dracut-kernel-004-388.el6.noarch.rpm</span><br><span class="line">rpm -ivh e2fsprogs-1.42.12.wc1-7.el6.x86_64.rpm e2fsprogs-1.42.12.wc1-bundle.tar.gz e2fsprogs libs-1.42.12.wc1-7.el6.x86_64.rpm libcom_err-1.42.12.wc1-7.el6.x86_64.rpm libss-1.42.12.wc1-7.el6.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh kernel-2.6.32-504.30.3.el6_lustre.x86_64.rpm kernel-devel-2.6.32-504.30.3.el6_lustre.x86_64.rpm kernel-firmware-2.6.32-504.30.3.el6_lustre.x86_64.rpm kernel-headers-2.6.32-504.30.3.el6_lustre.x86_64.rpm lustre-modules-2.5.37.7-2.6.32_504.30.3.el6_lustre.x86_64.x86_64.rpm lustre-2.5.37.7-2.6.32_504.30.3.el6_lustre.x86_64.x86_64.rpm lustre-osd-ldiskfs-2.5.37.7-2.6.32_504.30.3.el6_lustre.x86_64.x86_64.rpm lustre-osd-ldiskfs-mount-2.5.37.7-2.6.32_504.30.3.el6_lustre.x86_64.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="Configuration-file-for-MDS"><a href="#Configuration-file-for-MDS" class="headerlink" title="Configuration file for MDS"></a>Configuration file for MDS</h3><p>disable selinux and iptables<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  <span class="string">"options lnet networks=tcp(bond0)"</span> &gt; /etc/modprobe.d/lnet.conf</span><br><span class="line">bond0 is data transfer network device</span><br><span class="line"></span><br><span class="line">pvcreate /dev/sdb</span><br><span class="line">vgcreate mds_data /dev/sdb</span><br><span class="line">lvcreate <span class="_">-l</span> 2%VG -n mgt_lv mds_data</span><br><span class="line">lvcreate <span class="_">-l</span> 98%VG -n mdt_lv mds_data</span><br></pre></td></tr></table></figure></p>
+<p>If you want deactivate it , you can use “vgchange -cn volume group”</p>
+<h3 id="Exclude-os-volume-group"><a href="#Exclude-os-volume-group" class="headerlink" title="Exclude os volume group"></a>Exclude os volume group</h3><p>edit /etc/lvm/lvm.conf in mds1<br><figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">volume_list</span> =<span class="meta"> [ "vg_mds1", "@MDS-11-1" ]</span></span><br><span class="line"><span class="attribute">locking_type</span> = 1</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dracut <span class="_">-f</span> </span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h3 id="Create-Lustre-file-system-for-MDS"><a href="#Create-Lustre-file-system-for-MDS" class="headerlink" title="Create Lustre file system for MDS"></a>Create Lustre file system for MDS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkfs.lustre --reformat --mgs --servicenode=10.x.x.1@tcp --servicenode=10.x.x.2@tcp /dev/mapper/mds_data-mgt_lv</span><br><span class="line"></span><br><span class="line">mkfs.lustre --reformat --mdt --fsname=lustrewh --index=0 --mgsnode=10.xx.xx.1@tcp --mgsnode=10.xx.xx.2@tcp  --servicenode=10.x.x.1@tcp --servicenode=10.x.x.2@tcp  /dev/mapper/mds_data-mdt_lv</span><br></pre></td></tr></table></figure>
+<p>You can mount the device where you want<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/dev/mapper/mds_data-mdt_lv  lustre  2.5T  328M  2.3T   1% /lustre/mdt</span><br><span class="line">/dev/mapper/mds_data-mgt_lv  lustre  66G   54M   63G   1% /lustre/mgt</span><br></pre></td></tr></table></figure></p>
+<h3 id="Prepare-create-HA-cluster"><a href="#Prepare-create-HA-cluster" class="headerlink" title="Prepare create HA cluster"></a>Prepare create HA cluster</h3><p>MDS1  eth0 192.xx.xx.1 (ipmi)<br>      eth1 192.168.1.1 (heartbeat)<br>      eth4 10.xx.xx.1  (production data)</p>
+<p>MDS2  eth0 192.xx.xx.2<br>      eth1 192.168.1.2<br>      eth4 10.xx.xx.2</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y pacemaker corosync pcs fence-agents resource-agents</span><br></pre></td></tr></table></figure>
+<p>config corosync.conf to /etc/corosync/</p>
+<h3 id="corosync-conf-j2-ansible"><a href="#corosync-conf-j2-ansible" class="headerlink" title="corosync.conf.j2 (ansible)"></a>corosync.conf.j2 (ansible)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#Please read the corosync.conf.5 manual page</span></span><br><span class="line">compatibility: whitetank</span><br><span class="line"></span><br><span class="line">totem &#123;</span><br><span class="line">	version: <span class="number">2</span></span><br><span class="line">	secauth: off</span><br><span class="line">	interface &#123;</span><br><span class="line">		member &#123;</span><br><span class="line">			memberaddr: &#123;&#123; nicA1 &#125;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		member &#123;</span><br><span class="line">			memberaddr: &#123;&#123; nicB1 &#125;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ringnumber: <span class="number">0</span></span><br><span class="line">		bindnetaddr: &#123;&#123; bind1 &#125;&#125;</span><br><span class="line">		mcastport: <span class="number">5406</span></span><br><span class="line">		ttl: <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	interface &#123;</span><br><span class="line">                member &#123;</span><br><span class="line">                        memberaddr: &#123;&#123; nicA2 &#125;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                member &#123;</span><br><span class="line">                        memberaddr: &#123;&#123; nicB2 &#125;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                ringnumber: <span class="number">1</span></span><br><span class="line">                bindnetaddr: &#123;&#123; bind2 &#125;&#125;</span><br><span class="line">                mcastport: <span class="number">5406</span></span><br><span class="line">                ttl: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">	transport: udpu</span><br><span class="line">	token: <span class="number">17000</span></span><br><span class="line">	rrp_mode: passive</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">	fileline: off</span><br><span class="line">	to_logfile: yes</span><br><span class="line">	to_syslog: yes</span><br><span class="line">	debug: on</span><br><span class="line">	logfile: /var/<span class="built_in">log</span>/cluster/corosync.<span class="built_in">log</span></span><br><span class="line">	debug: off</span><br><span class="line">	timestamp: on</span><br><span class="line">	logger_subsys &#123;</span><br><span class="line">		subsys: AMF</span><br><span class="line">		debug: off</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="etc-corosync-service-d-pacemaker"><a href="#etc-corosync-service-d-pacemaker" class="headerlink" title="/etc/corosync/service.d/pacemaker"></a>/etc/corosync/service.d/pacemaker</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">service &#123;</span><br><span class="line">        <span class="meta"># Load the Pacemaker Cluster Resource Manager</span></span><br><span class="line">        name: pacemaker</span><br><span class="line">        ver:  <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="etc-hosts"><a href="#etc-hosts" class="headerlink" title="/etc/hosts"></a>/etc/hosts</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">:<span class="number">1</span>         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.1</span>  MDS<span class="bullet">-11</span><span class="bullet">-1</span></span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.2</span>  MDS<span class="bullet">-11</span><span class="bullet">-2</span></span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.4</span>  OSS<span class="bullet">-11</span><span class="bullet">-4</span></span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.5</span>  OSS<span class="bullet">-11</span><span class="bullet">-5</span></span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.6</span>  OSS<span class="bullet">-11</span><span class="bullet">-6</span></span><br><span class="line"><span class="number">10.</span>xx.xx<span class="number">.7</span>  OSS<span class="bullet">-11</span><span class="bullet">-7</span></span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.1</span> MDS<span class="bullet">-11</span><span class="bullet">-1.</span>ipmi</span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.2</span> MDS<span class="bullet">-11</span><span class="bullet">-2.</span>ipmi</span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.4</span> OSS<span class="bullet">-11</span><span class="bullet">-4.</span>ipmi</span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.5</span> OSS<span class="bullet">-11</span><span class="bullet">-5.</span>ipmi</span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.6</span> OSS<span class="bullet">-11</span><span class="bullet">-6.</span>ipmi</span><br><span class="line"><span class="number">192.</span>xx.xx<span class="number">.7</span> OSS<span class="bullet">-11</span><span class="bullet">-7.</span>ipmi</span><br></pre></td></tr></table></figure>
+<p>If you need install IML, keep the same with your HOSTNAME environment variable and dns resolve.</p>
+<h3 id="Synchronizing-time-for-each-server"><a href="#Synchronizing-time-for-each-server" class="headerlink" title="Synchronizing time for each server"></a>Synchronizing time for each server</h3><p>go to <a href="http://www.pool.ntp.org/en/#top" target="_blank" rel="external">http://www.pool.ntp.org/en/#top</a></p>
+<h3 id="Enable-service"><a href="#Enable-service" class="headerlink" title="Enable service"></a>Enable service</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/corosync start</span><br><span class="line">/etc/init.d/pacemaker restart</span><br><span class="line">/etc/init.d/pcsd start</span><br><span class="line">chkconfig --level 35 corosync on</span><br><span class="line">chkconfig --level 35 pacemaker on</span><br><span class="line">chkconfig --level 35 pcsd on</span><br></pre></td></tr></table></figure>
+<h3 id="Create-HA-cluster-for-MDS"><a href="#Create-HA-cluster-for-MDS" class="headerlink" title="Create HA cluster for MDS"></a>Create HA cluster for MDS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pcs property <span class="built_in">set</span> no-quorum-policy=ignore</span><br><span class="line">pcs property <span class="built_in">set</span> stonith-enabled=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">pcs stonith create mds-11-1-fencing fence_ipmilan pcmk_host_list=<span class="string">"OSS-11-4.local"</span> ipaddr=<span class="string">"192.xx.xx.1"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op monitor interval=60s</span><br><span class="line">pcs stonith create mds-11-2-fencing fence_ipmilan pcmk_host_list=<span class="string">"OSS-11-4.local"</span> ipaddr=<span class="string">"192.xx.xx.2"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op monitor interval=60s</span><br><span class="line"></span><br><span class="line">pcs resource create Lustre_mgt ocf:heartbeat:Filesystem device=<span class="string">"/dev/mapper/mds_data-mgt_lv"</span> directory=<span class="string">"/lustre/mgt"</span> fstype=<span class="string">"lustre"</span></span><br><span class="line">pcs resource create Lustre_mdt ocf:heartbeat:Filesystem device=<span class="string">"/dev/mapper/mds_data-mdt_lv"</span> directory=<span class="string">"/lustre/mdt"</span> fstype=<span class="string">"lustre"</span></span><br><span class="line"></span><br><span class="line">pcs resource create mds_lv ocf:heartbeat:LVM volgrpname=mds_data exclusive=<span class="literal">true</span></span><br><span class="line">pcs constraint order mds_lv <span class="keyword">then</span> Lustre_mgt</span><br><span class="line">pcs constraint colocation add Lustre_mgt with mds_lv</span><br><span class="line">pcs constraint order mds_lv <span class="keyword">then</span> Lustre_mdt</span><br><span class="line">pcs constraint colocation add Lustre_mdt with mds_lv</span><br><span class="line"></span><br><span class="line">pcs resource update Lustre_mgt op start interval=0 timeout=300</span><br><span class="line">pcs resource update Lustre_mgt op stop interval=0 timeout=300</span><br><span class="line">pcs resource update Lustre_mgt op monitor interval=5</span><br><span class="line">pcs resource update mds_lv op start interval=0 timeout=300</span><br><span class="line">pcs resource update mds_lv op stop interval=0 timeout=300</span><br><span class="line">pcs resource update mds_lv op monitor interval=5</span><br><span class="line">pcs resource update Lustre_mdt op start interval=0 timeout=300</span><br><span class="line">pcs resource update Lustre_mdt op stop interval=0 timeout=300</span><br><span class="line">pcs resource update Lustre_mdt op monitor interval=5 timeout=60</span><br><span class="line">pcs resource meta Lustre_mgt migration-threshold=5</span><br><span class="line">pcs resource meta Lustre_mdt migration-threshold=5</span><br><span class="line">pcs resource meta mds_lv migration-threshold=5</span><br><span class="line">pcs resource meta Lustre_mdt failure-timeout=120</span><br><span class="line">pcs resource meta Lustre_mgt failure-timeout=120</span><br><span class="line">pcs resource meta mds_lv failure-timeout=120</span><br></pre></td></tr></table></figure>
+<h4 id="pcs-default-setting"><a href="#pcs-default-setting" class="headerlink" title="pcs default setting"></a>pcs default setting</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pcs resource defaults migration-threshold=5</span><br><span class="line">pcs resource defaults failure-timeout=240s</span><br><span class="line">pcs resource defaults resource-stickiness=100</span><br><span class="line">pcs resource op defaults timeout=240s</span><br><span class="line">pcs property <span class="built_in">set</span> stonith-action=reboot</span><br></pre></td></tr></table></figure>
+<h4 id="delete-default-value"><a href="#delete-default-value" class="headerlink" title="delete default value"></a>delete default value</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcs resource defaults timouts=    <span class="comment">#not set any value</span></span><br></pre></td></tr></table></figure>
+<h4 id="pcs-status"><a href="#pcs-status" class="headerlink" title="pcs status"></a>pcs status</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Cluster name: </span><br><span class="line"><span class="attr">Stack:</span> classic openais (with plugin)</span><br><span class="line">Current DC: MDS<span class="bullet">-11</span><span class="bullet">-2.</span>local - partition with quorum</span><br><span class="line"><span class="attr">Version:</span> <span class="number">1.1</span><span class="number">.11</span><span class="bullet">-97629</span>de</span><br><span class="line"><span class="number">2</span> Nodes configured, <span class="number">2</span> expected votes</span><br><span class="line"><span class="number">4</span> Resources configured</span><br><span class="line"></span><br><span class="line"><span class="attr">Online:</span> [ MDS<span class="bullet">-11</span><span class="bullet">-1.</span>local MDS<span class="bullet">-11</span><span class="bullet">-2.</span>local ]</span><br><span class="line"></span><br><span class="line">Full list of resources:</span><br><span class="line"></span><br><span class="line"> mds<span class="bullet">-11</span><span class="bullet">-1</span>-fencing (stonith:fence_ipmilan): Started MDS<span class="bullet">-11</span><span class="bullet">-2.</span>local </span><br><span class="line"> mds<span class="bullet">-11</span><span class="bullet">-2</span>-fencing (stonith:fence_ipmilan): Started MDS<span class="bullet">-11</span><span class="bullet">-2.</span>local </span><br><span class="line"> Lustre_mgt (ocf::heartbeat:Filesystem): Started MDS<span class="bullet">-11</span><span class="bullet">-2.</span>local </span><br><span class="line"> Lustre_mdt (ocf::heartbeat:Filesystem): Started MDS<span class="bullet">-11</span><span class="bullet">-1.</span>local</span><br></pre></td></tr></table></figure>
+<h3 id="About-OSS"><a href="#About-OSS" class="headerlink" title="About OSS"></a>About OSS</h3><p>OSS don ‘t like MDS, it ‘s base openzfs not ldiskfs.<br>OSS need be do 5.1 ~ 5.5 like MDS except 5.2, here is different setting</p>
+<h3 id="Initialization-OpenZFS"><a href="#Initialization-OpenZFS" class="headerlink" title="Initialization OpenZFS"></a>Initialization OpenZFS</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh e2fsprogs<span class="bullet">-1.42</span><span class="number">.12</span>.wc1<span class="bullet">-7.</span>el6.x86_64.rpm e2fsprogs<span class="bullet">-1.42</span><span class="number">.12</span>.wc1-bundle.tar.gz e2fsprogs libs<span class="bullet">-1.42</span><span class="number">.12</span>.wc1<span class="bullet">-7.</span>el6.x86_64.rpm libcom_err<span class="bullet">-1.42</span><span class="number">.12</span>.wc1<span class="bullet">-7.</span>el6.x86_64.rpm libss<span class="bullet">-1.42</span><span class="number">.12</span>.wc1<span class="bullet">-7.</span>el6.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh dracut<span class="bullet">-004</span><span class="bullet">-388.</span>el6.noarch.rpm dracut-kernel<span class="bullet">-004</span><span class="bullet">-388.</span>el6.noarch.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh kernel<span class="bullet">-2.6</span><span class="number">.32</span><span class="bullet">-504.30</span><span class="number">.3</span>.el6_lustre.x86_64.rpm kernel-devel<span class="bullet">-2.6</span><span class="number">.32</span><span class="bullet">-504.30</span><span class="number">.3</span>.el6_lustre.x86_64.rpm kernel-firmware<span class="bullet">-2.6</span><span class="number">.32</span><span class="bullet">-504.30</span><span class="number">.3</span>.el6_lustre.x86_64.rpm kernel-headers<span class="bullet">-2.6</span><span class="number">.32</span><span class="bullet">-504.30</span><span class="number">.3</span>.el6_lustre.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="Setting-lnet"><a href="#Setting-lnet" class="headerlink" title="Setting lnet"></a>Setting lnet</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  <span class="string">"options lnet networks=tcp(bond0)"</span> &gt; /etc/modprobe.d/lnet.conf</span><br></pre></td></tr></table></figure>
+<h3 id="Limit-zfs-memory-useage-half-memory-to-avoid-OOM-killer"><a href="#Limit-zfs-memory-useage-half-memory-to-avoid-OOM-killer" class="headerlink" title="Limit zfs memory useage(half memory) ,to avoid OOM killer"></a>Limit zfs memory useage(half memory) ,to avoid OOM killer</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'$0~/MemTotal/ &#123;print "options zfs zfs_arc_max="$2*1024/2&#125;'</span> /proc/meminfo &gt; /etc/modprobe.d/zfs.conf</span><br></pre></td></tr></table></figure>
+<p>33720700928 = 32GB</p>
+<h3 id="Setting-multipath-SAS-HDD-JBOD"><a href="#Setting-multipath-SAS-HDD-JBOD" class="headerlink" title="Setting multipath (SAS HDD, JBOD)"></a>Setting multipath (SAS HDD, JBOD)</h3><h4 id="etc-multipath-conf"><a href="#etc-multipath-conf" class="headerlink" title="/etc/multipath.conf"></a>/etc/multipath.conf</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">defaults &#123;</span><br><span class="line">polling_interval  <span class="number">10</span></span><br><span class="line">path_selector  <span class="string">"round-robin 0"</span></span><br><span class="line">path_grouping_policy failover</span><br><span class="line">prio   const</span><br><span class="line">path_checker  directio</span><br><span class="line">rr_min_io  <span class="number">1000</span></span><br><span class="line">max_fds   <span class="number">10240</span></span><br><span class="line">rr_weight  priorities</span><br><span class="line">failback  immediate</span><br><span class="line">no_path_retry  fail</span><br><span class="line">user_friendly_names <span class="literal">no</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blacklist &#123;</span><br><span class="line">        wwid <span class="number">3600304801</span>b1326001d0b4e480378fac8 <span class="comment">##root partition</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you use Dell MD34xx/NetAPP E27xx,Some of LSI chip in your Raid controller<br>You should change some in multipath.conf</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">defaults &#123;</span><br><span class="line"> polling_interval  <span class="number">10</span></span><br><span class="line"> path_selector  <span class="string">"round-robin 0"</span></span><br><span class="line"> path_grouping_policy group_by_prio</span><br><span class="line"> prio   rdac</span><br><span class="line"> path_checker  rdac</span><br><span class="line"> rr_min_io  <span class="number">1000</span></span><br><span class="line"> max_fds    <span class="number">10240</span></span><br><span class="line"> rr_weight  priorities</span><br><span class="line"> failback  immediate</span><br><span class="line"> no_path_retry  <span class="number">30</span></span><br><span class="line"> user_friendly_names no</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><h3 id="Install-OpenZFS"><a href="#Install-OpenZFS" class="headerlink" title="Install OpenZFS"></a>Install OpenZFS</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh spl<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.src.rpm zfs<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.src.rpm</span><br><span class="line">rpmbuild -bb -v spl.spec</span><br><span class="line">rpmbuild -bb -v zfs.spec</span><br><span class="line">rpm -ivh spl<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm spl-dkms<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.noarch.rpm zfs-dkms<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.noarch.rpm zfs<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm libzpool2<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm libnvpair1<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm libuutil1<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm libzfs2<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm zfs-dracut<span class="bullet">-0.6</span><span class="number">.4</span><span class="number">.1</span><span class="bullet">-1.</span>el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="Alias-HDD-name-etc-zfs-vdev-id-conf"><a href="#Alias-HDD-name-etc-zfs-vdev-id-conf" class="headerlink" title="Alias HDD name /etc/zfs/vdev_id.conf"></a>Alias HDD name /etc/zfs/vdev_id.conf</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">multipath <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line">alias hdd<span class="bullet">-0</span><span class="bullet">-2</span><span class="bullet">-0</span> /dev/disk/by-id/dm-uuid-mpath<span class="bullet">-35000</span>c50062a54f23</span><br><span class="line">alias hdd<span class="bullet">-0</span><span class="bullet">-2</span><span class="bullet">-1</span> /dev/disk/by-id/dm-uuid-mpath<span class="bullet">-35000</span>c500630fde27</span><br><span class="line">alias hdd<span class="bullet">-0</span><span class="bullet">-2</span><span class="bullet">-2</span> /dev/disk/by-id/dm-uuid-mpath<span class="bullet">-35000</span>c50062d67aa7</span><br><span class="line">alias hdd<span class="bullet">-0</span><span class="bullet">-2</span><span class="bullet">-3</span> /dev/disk/by-id/dm-uuid-mpath<span class="bullet">-35000</span>c50062db08ff</span><br><span class="line">.......</span><br><span class="line">alias hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-15</span> /dev/disk/by-id/dm-uuid-mpath<span class="bullet">-35000</span>c50062fdd8cf</span><br></pre></td></tr></table></figure>
+<h4 id="Create-zpool"><a href="#Create-zpool" class="headerlink" title="Create zpool"></a>Create zpool</h4><p>If you care performance ,don ‘t use ashift=9, In my case ,capacity is very important.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zpool create <span class="_">-f</span> ost-0 -o cachefile=none -o ashift=9 raidz3 hdd-0-2-0 hdd-0-2-1 hdd-0-2-2 hdd-0-2-3 hdd-0-2-4 hdd-0-2-5 hdd-0-2-6 hdd-0-2-7 hdd-0-2-8 hdd-0-2-9 hdd-2-10 hdd-2-11 spare hdd-0-3-15 hdd-0-5-15</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
+<h4 id="create-ost"><a href="#create-ost" class="headerlink" title="create ost"></a>create ost</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">zpool status ost<span class="bullet">-11</span></span><br><span class="line"><span class="attr">  pool:</span> ost<span class="bullet">-11</span></span><br><span class="line"><span class="attr"> state:</span> ONLINE</span><br><span class="line"><span class="attr">  scan:</span> resilvered <span class="number">710</span>K in <span class="number">0</span>h0m with <span class="number">0</span> errors on Thu Aug <span class="number">20</span> <span class="number">14</span>:<span class="number">12</span>:<span class="number">35</span> <span class="number">2015</span></span><br><span class="line"><span class="attr">config:</span></span><br><span class="line"></span><br><span class="line">NAME            STATE     READ WRITE CKSUM</span><br><span class="line">ost<span class="bullet">-11</span>          ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">  raidz3<span class="bullet">-0</span>      ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-1</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-2</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-3</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-5</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-6</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-7</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-9</span>   ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-10</span>  ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-11</span>  ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-12</span>  ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-13</span>  ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">    hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-14</span>  ONLINE       <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">spares</span><br><span class="line">  hdd<span class="bullet">-1</span><span class="bullet">-3</span><span class="bullet">-15</span>    AVAIL   </span><br><span class="line">  hdd<span class="bullet">-1</span><span class="bullet">-5</span><span class="bullet">-15</span>    AVAIL</span><br></pre></td></tr></table></figure>
+<h4 id="Enable-ZFS-features"><a href="#Enable-ZFS-features" class="headerlink" title="Enable ZFS features"></a>Enable ZFS features</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..11&#125;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    zfs <span class="built_in">set</span> acltype=posixacl ost-<span class="variable">$i</span>; </span><br><span class="line">    zfs <span class="built_in">set</span> compression=lz4 ost-<span class="variable">$i</span>; </span><br><span class="line">    zfs <span class="built_in">set</span> xattr=sa ost-<span class="variable">$i</span>; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h4 id="Format-zfs"><a href="#Format-zfs" class="headerlink" title="Format zfs"></a>Format zfs</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..11&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"mkfs.lustre --reformat --ost --backfstype=zfs --fsname=lustrewh --index=<span class="variable">$i</span> --mgsnode=10.xx.xx.1@tcp --mgsnode=10.xx.xx.2@tcp  --servicenode=10.x.x.4@tcp --servicenode=10.x.x.5@tcp</span><br><span class="line">ost-<span class="variable">$i</span>/ost-<span class="variable">$i</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h4 id="Create-HA-cluster"><a href="#Create-HA-cluster" class="headerlink" title="Create HA cluster"></a>Create HA cluster</h4><p>/etc/corosync/corosync.conf<br>/etc/corosync/service.d/pacemaker<br>same with config MDS</p>
+<p>Copy hearbeat script to all member of the cluster node<br>Get the file <a href="https://github.com/skiselkov/stmf-ha/blob/master/heartbeat/ZFS" target="_blank" rel="external">https://github.com/skiselkov/stmf-ha/blob/master/heartbeat/ZFS</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /usr/lib/ocf/resource.d/heartbeat/ZFS </span><br><span class="line">chmod 755 /usr/lib/ocf/resource.d/heartbeat/Lustre-ZFS</span><br></pre></td></tr></table></figure></p>
+<p>It ‘ s written by Paciucci Gabriele (intel)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Lustre-ZFS </span></span><br><span class="line"><span class="comment">#      Description: Manages a Lustre target on a shared storage medium.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># usage: ./Lustre-ZFS &#123;start|stop|status|monitor|validate-all|meta-data&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#      OCF parameters are as below:</span></span><br><span class="line"><span class="comment">#        OCF_RESKEY_vdev</span></span><br><span class="line"><span class="comment">#	OCF_RESKEY_mountpoint</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># OCF_RESKEY_vdev : name of the target the script should operate on</span></span><br><span class="line"><span class="comment"># OCF_RESKEY_mountpoint : name of the target the script should operate on</span></span><br><span class="line"></span><br><span class="line">: <span class="variable">$&#123;OCF_FUNCTIONS_DIR=$&#123;OCF_ROOT&#125;</span>/resource.d/heartbeat&#125;</span><br><span class="line">. <span class="variable">$&#123;OCF_FUNCTIONS_DIR&#125;</span>/.ocf-shellfuncs</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">usage</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"usage: <span class="variable">$0</span> &#123;start|stop|status|monitor|meta-data&#125;"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">meta_data</span></span>() &#123;</span><br><span class="line">    cat &lt;&lt;END</span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE resource-agent SYSTEM <span class="string">"ra-api-1.dtd"</span>&gt;</span><br><span class="line">&lt;resource-agent name=<span class="string">"Lustre-ZFS"</span>&gt;</span><br><span class="line">&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line"></span><br><span class="line">&lt;longdesc lang=<span class="string">"en"</span>&gt;</span><br><span class="line">Resource script <span class="keyword">for</span> a Lustre ZFS Target.</span><br><span class="line">&lt;/longdesc&gt;</span><br><span class="line"></span><br><span class="line">&lt;shortdesc lang=<span class="string">"en"</span>&gt;Manages Lustre ZFS Targets&lt;/shortdesc&gt;</span><br><span class="line"></span><br><span class="line">&lt;parameters&gt;</span><br><span class="line">&lt;parameter name=<span class="string">"vdev"</span> required=<span class="string">"1"</span>&gt;</span><br><span class="line">&lt;longdesc lang=<span class="string">"en"</span>&gt;</span><br><span class="line">The name of the ZFS vdev.</span><br><span class="line">&lt;/longdesc&gt;</span><br><span class="line">&lt;shortdesc lang=<span class="string">"en"</span>&gt;vdev&lt;/shortdesc&gt;</span><br><span class="line">&lt;content <span class="built_in">type</span>=<span class="string">"string"</span> default=<span class="string">""</span> /&gt;</span><br><span class="line">&lt;/parameter&gt;</span><br><span class="line"></span><br><span class="line">&lt;parameter name=<span class="string">"mountpoint"</span> required=<span class="string">"1"</span>&gt;</span><br><span class="line">&lt;longdesc lang=<span class="string">"en"</span>&gt;</span><br><span class="line">The mount point <span class="keyword">for</span> the target</span><br><span class="line">&lt;/longdesc&gt;</span><br><span class="line">&lt;shortdesc lang=<span class="string">"en"</span>&gt;mountpoint&lt;/shortdesc&gt;</span><br><span class="line">&lt;content <span class="built_in">type</span>=<span class="string">"string"</span> default=<span class="string">""</span> /&gt;</span><br><span class="line">&lt;/parameter&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/parameters&gt;</span><br><span class="line"></span><br><span class="line">&lt;actions&gt;</span><br><span class="line">&lt;action name=<span class="string">"start"</span> timeout=<span class="string">"60"</span> /&gt;</span><br><span class="line">&lt;action name=<span class="string">"stop"</span> timeout=<span class="string">"60"</span> /&gt;</span><br><span class="line">&lt;action name=<span class="string">"notify"</span> timeout=<span class="string">"60"</span> /&gt;</span><br><span class="line">&lt;action name=<span class="string">"monitor"</span> depth=<span class="string">"0"</span> timeout=<span class="string">"40"</span> interval=<span class="string">"20"</span> /&gt;</span><br><span class="line">&lt;action name=<span class="string">"validate-all"</span> timeout=<span class="string">"5"</span> /&gt;</span><br><span class="line">&lt;action name=<span class="string">"meta-data"</span> timeout=<span class="string">"5"</span> /&gt;</span><br><span class="line">&lt;/actions&gt;</span><br><span class="line">&lt;/resource-agent&gt;</span><br><span class="line">END</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">Target_start</span></span>() &#123;</span><br><span class="line">    <span class="comment"># See if the device is already mounted.</span></span><br><span class="line">    <span class="keyword">if</span> Target_status &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        ocf_<span class="built_in">log</span> info <span class="string">"Target <span class="variable">$TARGET</span> is already started."</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># this is not necessary, mount should start modules </span></span><br><span class="line"><span class="comment">#    if ! grep -e 'lustre$' /proc/filesystems &gt;/dev/null; then</span></span><br><span class="line"><span class="comment">#        ocf_log err "Couldn't find the lustre module in /proc/filesystems"</span></span><br><span class="line"><span class="comment">#        return $OCF_ERR_ARGS</span></span><br><span class="line"><span class="comment">#    fi</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># start the target</span></span><br><span class="line"><span class="comment">#    if ! chroma-agent mount_target --uuid $TARGET; then</span></span><br><span class="line">    <span class="keyword">if</span> ! mount -t lustre <span class="variable">$TARGET</span> <span class="variable">$MOUNT_POINT</span>; <span class="keyword">then</span></span><br><span class="line">        ocf_<span class="built_in">log</span> err <span class="string">"Couldn't start target <span class="variable">$TARGET</span>"</span></span><br><span class="line">        <span class="built_in">return</span> <span class="variable">$OCF_ERR_GENERIC</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">Target_notify</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">Target_stop</span></span>() &#123;</span><br><span class="line">    <span class="comment"># started already?</span></span><br><span class="line">    Target_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">    <span class="keyword">if</span> [ $? <span class="_">-eq</span> <span class="variable">$OCF_NOT_RUNNING</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="comment"># woo!  nothing to do.</span></span><br><span class="line">        rc=<span class="variable">$OCF_SUCCESS</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line"><span class="comment">#        chroma-agent unmount_target --uuid $TARGET</span></span><br><span class="line">        umount <span class="variable">$MOUNT_POINT</span> </span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$rc</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">Target_status</span></span>() &#123;</span><br><span class="line">    <span class="comment"># call the agent to see if it's running</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#    if chroma-agent target_running --uuid $TARGET &gt;/dev/null 2&gt;&amp;1; then</span></span><br><span class="line">    <span class="keyword">if</span> cat /proc/mounts |grep <span class="variable">$MOUNT_POINT</span> &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        rc=<span class="variable">$OCF_SUCCESS</span></span><br><span class="line">        msg=<span class="string">"<span class="variable">$TARGET</span> is started (running)"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        rc=<span class="variable">$OCF_NOT_RUNNING</span></span><br><span class="line">        msg=<span class="string">"<span class="variable">$TARGET</span> is stopped"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$OP</span>"</span> = <span class="string">"status"</span> ]; <span class="keyword">then</span></span><br><span class="line">        ocf_<span class="built_in">log</span> info <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$rc</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">Target_validate_all</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> <span class="_">-ne</span> 1 ]; <span class="keyword">then</span></span><br><span class="line">    usage</span><br><span class="line">    <span class="built_in">exit</span> <span class="variable">$OCF_ERR_ARGS</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">TARGET=<span class="variable">$OCF_RESKEY_vdev</span></span><br><span class="line">MOUNT_POINT=<span class="variable">$OCF_RESKEY_mountpoint</span></span><br><span class="line">OP=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># These operations do not require instance parameters</span></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$OP</span> <span class="keyword">in</span></span><br><span class="line">meta-data)    meta_data</span><br><span class="line">              <span class="built_in">exit</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">              ;;</span><br><span class="line">usage)        usage</span><br><span class="line">              <span class="built_in">exit</span> <span class="variable">$OCF_SUCCESS</span></span><br><span class="line">              ;;</span><br><span class="line">status)       Target_status</span><br><span class="line">              <span class="built_in">exit</span> $?</span><br><span class="line">              ;;</span><br><span class="line">monitor)      Target_status</span><br><span class="line">              <span class="built_in">exit</span> $?</span><br><span class="line">              ;;</span><br><span class="line">validate-all) Target_validate_all</span><br><span class="line">              <span class="built_in">exit</span> $?</span><br><span class="line">              ;;</span><br><span class="line">stop)         Target_stop</span><br><span class="line">              <span class="built_in">exit</span> $?</span><br><span class="line">              ;;</span><br><span class="line">start)        Target_start</span><br><span class="line">              ;;</span><br><span class="line">*)            usage</span><br><span class="line">              <span class="built_in">exit</span> <span class="variable">$OCF_ERR_UNIMPLEMENTED</span></span><br><span class="line">              ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"><span class="built_in">exit</span> $?</span><br></pre></td></tr></table></figure>
+<h4 id="Configuration-HA"><a href="#Configuration-HA" class="headerlink" title="Configuration HA"></a>Configuration HA</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">pcs property <span class="built_in">set</span> no-quorum-policy=ignore</span><br><span class="line">pcs property <span class="built_in">set</span> stonith-enabled=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..11&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  pcs resource create ost-<span class="variable">$i</span> ocf:heartbeat:ZFS  pool=ost-<span class="variable">$i</span></span><br><span class="line"> pcs resource update ost-<span class="variable">$i</span> op start interval=0 timeout=360</span><br><span class="line"> pcs resource update ost-<span class="variable">$i</span> op stop interval=0 timeout=360</span><br><span class="line"> pcs resource update ost-<span class="variable">$i</span> op monitor interval=5 timeout=60</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..11&#125;</span><br><span class="line"> <span class="keyword">do</span></span><br><span class="line">    mkdir /lustre_ost<span class="variable">$i</span></span><br><span class="line">    pcs resource create lustre_ost<span class="variable">$i</span> ocf:heartbeat:Lustre-ZFS vdev=<span class="string">"ost-<span class="variable">$i</span>/ost-<span class="variable">$i</span>"</span> mountpoint=<span class="string">"/lustre_ost<span class="variable">$i</span>"</span></span><br><span class="line"> pcs resource update lustre_ost<span class="variable">$i</span> op start interval=0 timeout=360</span><br><span class="line"> pcs resource update lustre_ost<span class="variable">$i</span> op stop interval=0 timeout=360</span><br><span class="line"> pcs resource update lustre_ost<span class="variable">$i</span> op  monitor interval=5 timeout=60</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..11&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">pcs constraint order ost-<span class="variable">$i</span> <span class="keyword">then</span> lustre_ost<span class="variable">$i</span></span><br><span class="line">pcs constraint colocation add lustre_ost<span class="variable">$i</span> with ost-<span class="variable">$i</span></span><br><span class="line">pcs resource meta ost-<span class="variable">$i</span> migration-threshold=5</span><br><span class="line">pcs resource meta lustre_ost<span class="variable">$i</span> migration-threshold=5</span><br><span class="line">pcs resource meta ost-<span class="variable">$i</span> failure-timeout=360</span><br><span class="line">pcs resource meta lustre_ost<span class="variable">$i</span> failure-timeout=360</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">pcs stonith create oss-11-4-fencing fence_ipmilan pcmk_host_list=<span class="string">"OSS-11-4.local"</span> ipaddr=<span class="string">"192.xx.xx.4"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op monitor interval=60s</span><br><span class="line">pcs stonith create oss-11-5-fencing fence_ipmilan pcmk_host_list=<span class="string">"OSS-11-4.local"</span> ipaddr=<span class="string">"192.xx.xx.5"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op monitor interval=60s</span><br></pre></td></tr></table></figure>
+<h3 id="pcs-status-1"><a href="#pcs-status-1" class="headerlink" title="pcs status"></a>pcs status</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Cluster <span class="symbol">name:</span> </span><br><span class="line">Last <span class="symbol">updated:</span> Tue Aug <span class="number">25</span> <span class="number">15</span><span class="symbol">:</span><span class="number">36</span><span class="symbol">:</span><span class="number">31</span> <span class="number">2015</span></span><br><span class="line">Last <span class="symbol">change:</span> Thu Aug <span class="number">20</span> <span class="number">15</span><span class="symbol">:</span><span class="number">44</span><span class="symbol">:</span><span class="number">16</span> <span class="number">2015</span></span><br><span class="line"><span class="symbol">Stack:</span> classic openais (with plugin)</span><br><span class="line">Current <span class="symbol">DC:</span> OSS-<span class="number">11</span>-<span class="number">4</span>.local - partition with quorum</span><br><span class="line"><span class="symbol">Version:</span> <span class="number">1.1</span>.<span class="number">11</span>-<span class="number">97629</span>de</span><br><span class="line"><span class="number">2</span> Nodes configured, <span class="number">2</span> expected votes</span><br><span class="line"><span class="number">26</span> Resources configured</span><br><span class="line"></span><br><span class="line"><span class="symbol">Online:</span> [ OSS-<span class="number">11</span>-<span class="number">4</span>.local OSS-<span class="number">11</span>-<span class="number">5</span>.local ]</span><br><span class="line"></span><br><span class="line">Full list of <span class="symbol">resources:</span></span><br><span class="line"></span><br><span class="line"> oss-<span class="number">11</span>-<span class="number">4</span>-fencing (<span class="symbol">stonith:</span>fence_ipmilan)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">4</span>.local </span><br><span class="line"> oss-<span class="number">11</span>-<span class="number">5</span>-fencing (<span class="symbol">stonith:</span>fence_ipmilan)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local </span><br><span class="line"> ost-<span class="number">0</span> (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">4</span>.local </span><br><span class="line"> ost-<span class="number">1</span> (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local </span><br><span class="line"> ost-<span class="number">2</span> (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">4</span>.local </span><br><span class="line"> ost-<span class="number">3</span> (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local </span><br><span class="line">………..</span><br><span class="line"> lustre_ost7 (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:Lustre-ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local </span><br><span class="line"> lustre_ost8 (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:Lustre-ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">4</span>.local </span><br><span class="line"> lustre_ost9 (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:Lustre-ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local </span><br><span class="line"> lustre_ost1<span class="number">0</span> (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:Lustre-ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">4</span>.local </span><br><span class="line"> lustre_ost11 (<span class="symbol">ocf:</span><span class="symbol">:heartbeat</span><span class="symbol">:Lustre-ZFS</span>)<span class="symbol">:</span> Started OSS-<span class="number">11</span>-<span class="number">5</span>.local</span><br></pre></td></tr></table></figure>
+<p>Reference</p>
+<p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html-single/DM_Multipath/" target="_blank" rel="external">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html-single/DM_Multipath/</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Configuring_the_Red_Hat_High_Availability_Add-On_with_Pacemaker/index.html" target="_blank" rel="external">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Configuring_the_Red_Hat_High_Availability_Add-On_with_Pacemaker/index.html</a><br><a href="https://github.com/zfsonlinux/zfs/labels/Bug" target="_blank" rel="external">https://github.com/zfsonlinux/zfs/labels/Bug</a><br><a href="https://github.com/skiselkov/stmf-ha" target="_blank" rel="external">https://github.com/skiselkov/stmf-ha</a><br><a href="https://github.com/zfsonlinux/pkg-zfs/wiki/Ubuntu-ZFS-mountall-FAQ-and-troubleshooting" target="_blank" rel="external">https://github.com/zfsonlinux/pkg-zfs/wiki/Ubuntu-ZFS-mountall-FAQ-and-troubleshooting</a><br><a href="http://linux-ha.996297.n3.nabble.com/custom-script-status-td14629.html" target="_blank" rel="external">http://linux-ha.996297.n3.nabble.com/custom-script-status-td14629.html</a><br><a href="https://www.youtube.com/watch?v=2XQ3Kvtd-sw" target="_blank" rel="external">https://www.youtube.com/watch?v=2XQ3Kvtd-sw</a><br><a href="http://open-zfs.org/wiki/Main_Page" target="_blank" rel="external">http://open-zfs.org/wiki/Main_Page</a><br><a href="http://irvingpop.github.io/blog/2015/03/01/redhat7-clustering-experiments/" target="_blank" rel="external">http://irvingpop.github.io/blog/2015/03/01/redhat7-clustering-experiments/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ha/" rel="tag">#ha</a>
+          
+            <a href="/tags/cluster/" rel="tag">#cluster</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/corosync/" rel="tag">#corosync</a>
+          
+            <a href="/tags/pacemaker/" rel="tag">#pacemaker</a>
+          
+            <a href="/tags/lustre/" rel="tag">#lustre</a>
+          
+            <a href="/tags/zfs/" rel="tag">#zfs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/06/Some of Important HDD spec/" rel="prev" title="Some of Important HDD spec">
+                Some of Important HDD spec <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hardware"><span class="nav-number">1.</span> <span class="nav-text">Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MDS"><span class="nav-number">1.1.</span> <span class="nav-text">MDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSS"><span class="nav-number">1.2.</span> <span class="nav-text">OSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software"><span class="nav-number">2.</span> <span class="nav-text">Software</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LSI-syncro-Architecture"><span class="nav-number">2.1.</span> <span class="nav-text">LSI syncro Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MDS-Architecture"><span class="nav-number">2.2.</span> <span class="nav-text">MDS Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSS-Architecture"><span class="nav-number">2.3.</span> <span class="nav-text">OSS Architecture</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Installation-Process"><span class="nav-number">3.</span> <span class="nav-text">The Installation Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-LSI-syncro-for-MDS"><span class="nav-number">3.1.</span> <span class="nav-text">Configure LSI syncro for MDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-rpms-for-MDS"><span class="nav-number">3.2.</span> <span class="nav-text">Install rpms for MDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration-file-for-MDS"><span class="nav-number">3.3.</span> <span class="nav-text">Configuration file for MDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exclude-os-volume-group"><span class="nav-number">3.4.</span> <span class="nav-text">Exclude os volume group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Lustre-file-system-for-MDS"><span class="nav-number">3.5.</span> <span class="nav-text">Create Lustre file system for MDS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prepare-create-HA-cluster"><span class="nav-number">3.6.</span> <span class="nav-text">Prepare create HA cluster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#corosync-conf-j2-ansible"><span class="nav-number">3.7.</span> <span class="nav-text">corosync.conf.j2 (ansible)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-corosync-service-d-pacemaker"><span class="nav-number">3.8.</span> <span class="nav-text">/etc/corosync/service.d/pacemaker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-hosts"><span class="nav-number">3.9.</span> <span class="nav-text">/etc/hosts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronizing-time-for-each-server"><span class="nav-number">3.10.</span> <span class="nav-text">Synchronizing time for each server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-service"><span class="nav-number">3.11.</span> <span class="nav-text">Enable service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-HA-cluster-for-MDS"><span class="nav-number">3.12.</span> <span class="nav-text">Create HA cluster for MDS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pcs-default-setting"><span class="nav-number">3.12.1.</span> <span class="nav-text">pcs default setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete-default-value"><span class="nav-number">3.12.2.</span> <span class="nav-text">delete default value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pcs-status"><span class="nav-number">3.12.3.</span> <span class="nav-text">pcs status</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-OSS"><span class="nav-number">3.13.</span> <span class="nav-text">About OSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialization-OpenZFS"><span class="nav-number">3.14.</span> <span class="nav-text">Initialization OpenZFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-lnet"><span class="nav-number">3.15.</span> <span class="nav-text">Setting lnet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limit-zfs-memory-useage-half-memory-to-avoid-OOM-killer"><span class="nav-number">3.16.</span> <span class="nav-text">Limit zfs memory useage(half memory) ,to avoid OOM killer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting-multipath-SAS-HDD-JBOD"><span class="nav-number">3.17.</span> <span class="nav-text">Setting multipath (SAS HDD, JBOD)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#etc-multipath-conf"><span class="nav-number">3.17.1.</span> <span class="nav-text">/etc/multipath.conf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reboot"><span class="nav-number">3.18.</span> <span class="nav-text">reboot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-OpenZFS"><span class="nav-number">3.19.</span> <span class="nav-text">Install OpenZFS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Alias-HDD-name-etc-zfs-vdev-id-conf"><span class="nav-number">3.19.1.</span> <span class="nav-text">Alias HDD name /etc/zfs/vdev_id.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-zpool"><span class="nav-number">3.19.2.</span> <span class="nav-text">Create zpool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-ost"><span class="nav-number">3.19.3.</span> <span class="nav-text">create ost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-ZFS-features"><span class="nav-number">3.19.4.</span> <span class="nav-text">Enable ZFS features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Format-zfs"><span class="nav-number">3.19.5.</span> <span class="nav-text">Format zfs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-HA-cluster"><span class="nav-number">3.19.6.</span> <span class="nav-text">Create HA cluster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuration-HA"><span class="nav-number">3.19.7.</span> <span class="nav-text">Configuration HA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pcs-status-1"><span class="nav-number">3.20.</span> <span class="nav-text">pcs status</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2015/11/06/Deploy Lustre and OpenZFS/';
+      var disqus_title = 'Deploy Lustre and OpenZFS';
+      var disqus_url = 'http://yoursite.com/2015/11/06/Deploy Lustre and OpenZFS/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>

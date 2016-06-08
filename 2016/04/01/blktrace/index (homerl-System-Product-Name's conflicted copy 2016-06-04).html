@@ -1,0 +1,846 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,io,trace," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="OS version :CentOS 7.2It ‘s a good tool for trace hot block in your block device
+Trace your IO operation12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849$ yum -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blktrace">
+<meta property="og:url" content="http://yoursite.com/2016/04/01/blktrace/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="OS version :CentOS 7.2It ‘s a good tool for trace hot block in your block device
+Trace your IO operation12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849$ yum -">
+<meta property="og:updated_time" content="2016-04-03T13:18:14.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blktrace">
+<meta name="twitter:description" content="OS version :CentOS 7.2It ‘s a good tool for trace hot block in your block device
+Trace your IO operation12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849$ yum -">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Blktrace | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Blktrace
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-04-01T15:06:39+08:00" content="2016-04-01">
+              2016-04-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IO/" itemprop="url" rel="index">
+                    <span itemprop="name">IO</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/01/blktrace/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/01/blktrace/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>OS version :CentOS 7.2<br>It ‘s a good tool for trace hot block in your block device</p>
+<h3 id="Trace-your-IO-operation"><a href="#Trace-your-IO-operation" class="headerlink" title="Trace your IO operation"></a>Trace your IO operation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install blktrace</span><br><span class="line">$ mount -t debugfs debugfs /sys/kernel/debug</span><br><span class="line"></span><br><span class="line">$ mount  | grep sdb1</span><br><span class="line">/dev/sdb1 on /<span class="built_in">local</span>/sdb <span class="built_in">type</span> ext4 (rw,noatime,stripe=128,data=ordered)</span><br><span class="line"></span><br><span class="line"><span class="comment"># With Ordered Mode, journal commits are deferred until the data blocks get written to disk. This guarantees that any blocks in the file will be data written by the application, avoiding a possibility of a security breach</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The path mapping to /dev/sdb1</span></span><br><span class="line">$ <span class="built_in">echo</span> 234 &gt; 234</span><br><span class="line"></span><br><span class="line">Sometimes ,the data is not write to block first</span><br><span class="line">$  cat /tmp/tmp  | grep A</span><br><span class="line">  8,16   6        1     0.000000000  3487  A   W 276480 + 8 &lt;- (8,17) <span class="string">"274432"</span></span><br><span class="line">  8,16   6       10     0.000224890 21268  A FWFS 1422142464 + 8 &lt;- (8,17) 1422140416</span><br><span class="line">  8,16   8        1     0.000070650 21268  A  WS 1422142416 + 8 &lt;- (8,17) 1422140368</span><br><span class="line">  8,16   8        5     0.000075917 21268  A  WS 1422142424 + 8 &lt;- (8,17) 1422140376</span><br><span class="line">  8,16   8        8     0.000078252 21268  A  WS 1422142432 + 8 &lt;- (8,17) 1422140384</span><br><span class="line">  8,16   8       11     0.000079337 21268  A  WS 1422142440 + 8 &lt;- (8,17) 1422140392</span><br><span class="line">  8,16   8       14     0.000080280 21268  A  WS 1422142448 + 8 &lt;- (8,17) 1422140400</span><br><span class="line">  8,16   8       17     0.000081320 21268  A  WS 1422142456 + 8 &lt;- (8,17) 1422140408</span><br><span class="line">  8,16   8       23     5.007945786  3487  A  WM 2056 + 8 &lt;- (8,17) 8</span><br><span class="line">  8,16   8       27     5.007958153  3487  A  WM 11616 + 8 &lt;- (8,17) 9568</span><br><span class="line">  8,16   8       30     5.007961458  3487  A  WM 11736 + 8 &lt;- (8,17) 9688</span><br><span class="line">  8,16   8       33     5.007964866  3487  A  WM 11864 + 8 &lt;- (8,17) 9816</span><br><span class="line">  8,16   8       36     5.007967773  3487  A  WM 77400 + 8 &lt;- (8,17) 75352</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ debugfs -R <span class="string">"icheck <span class="variable">$((274432/8)</span>)"</span> /dev/sdb1</span><br><span class="line">debugfs 1.42.9 (28-Dec-2013)</span><br><span class="line">Block	Inode number</span><br><span class="line">34304	15</span><br><span class="line"></span><br><span class="line">$ ls -li</span><br><span class="line">15 -rw-r--r-- 1 root root     4 Apr 1 04:44 234</span><br><span class="line"></span><br><span class="line">$ debugfs -R <span class="string">"ncheck 15"</span> /dev/sdb1</span><br><span class="line">debugfs 1.42.9 (28-Dec-2013)</span><br><span class="line">Inode	Pathname</span><br><span class="line">15	//234</span><br><span class="line"></span><br><span class="line">$ debugfs -R <span class="string">"icheck <span class="variable">$((1422140416/8)</span>)"</span> /dev/sdb1</span><br><span class="line">debugfs 1.42.9 (28-Dec-2013)</span><br><span class="line">Block	Inode number</span><br><span class="line">177767552	8</span><br><span class="line"></span><br><span class="line">$ debugfs -R <span class="string">"ncheck 8"</span> /dev/sdb1</span><br><span class="line">debugfs 1.42.9 (28-Dec-2013)</span><br><span class="line">Inode	Pathname</span><br></pre></td></tr></table></figure>
+<p><a href="https://ext4.wiki.kernel.org/index.php/Ext4_Disk_Layout#Journal_.28jbd2.29" target="_blank" rel="external">The journal inode is typically inode 8. The first 68 bytes of the journal inode are replicated in the ext4 superblock. The journal itself is normal (but hidden) file within the filesystem. The file usually consumes an entire block group, though mke2fs tries to put it in the middle of the disk</a></p>
+<h3 id="Another-example-full-ouput"><a href="#Another-example-full-ouput" class="headerlink" title="Another example full ouput"></a>Another example full ouput</h3><p>Here is output of my home PC (ubuntu 15.10)<br>Only write small file (dd if=/dev/zero of=/mnt/test bs=512 count=2)</p>
+<h4 id="oflag-sync"><a href="#oflag-sync" class="headerlink" title="oflag=sync"></a>oflag=sync</h4><p>write journal, and then write data, hdd return, not wait a second<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">159</span>   <span class="number">689.878265367</span>  <span class="number">8177</span>  A  WS <span class="number">155454552</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452504</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">160</span>   <span class="number">689.878266393</span>  <span class="number">8177</span>  Q  WS <span class="number">155454552</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">161</span>   <span class="number">689.878268169</span>  <span class="number">8177</span>  G  WS <span class="number">155454552</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">162</span>   <span class="number">689.878268655</span>  <span class="number">8177</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">163</span>   <span class="number">689.878269447</span>  <span class="number">8177</span>  A  WS <span class="number">155454560</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452512</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">164</span>   <span class="number">689.878269657</span>  <span class="number">8177</span>  Q  WS <span class="number">155454560</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">165</span>   <span class="number">689.878270524</span>  <span class="number">8177</span>  M  WS <span class="number">155454560</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">166</span>   <span class="number">689.878271142</span>  <span class="number">8177</span>  A  WS <span class="number">155454568</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452520</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">167</span>   <span class="number">689.878271349</span>  <span class="number">8177</span>  Q  WS <span class="number">155454568</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">168</span>   <span class="number">689.878271577</span>  <span class="number">8177</span>  M  WS <span class="number">155454568</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">169</span>   <span class="number">689.878272006</span>  <span class="number">8177</span>  A  WS <span class="number">155454576</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452528</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">170</span>   <span class="number">689.878272213</span>  <span class="number">8177</span>  Q  WS <span class="number">155454576</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">171</span>   <span class="number">689.878272441</span>  <span class="number">8177</span>  M  WS <span class="number">155454576</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">172</span>   <span class="number">689.878272828</span>  <span class="number">8177</span>  A  WS <span class="number">155454584</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452536</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">173</span>   <span class="number">689.878273026</span>  <span class="number">8177</span>  Q  WS <span class="number">155454584</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">174</span>   <span class="number">689.878273248</span>  <span class="number">8177</span>  M  WS <span class="number">155454584</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">175</span>   <span class="number">689.878273587</span>  <span class="number">8177</span>  A  WS <span class="number">155454592</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452544</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">176</span>   <span class="number">689.878273791</span>  <span class="number">8177</span>  Q  WS <span class="number">155454592</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">177</span>   <span class="number">689.878274019</span>  <span class="number">8177</span>  M  WS <span class="number">155454592</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">178</span>   <span class="number">689.878274829</span>  <span class="number">8177</span>  I  WS <span class="number">155454552</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">179</span>   <span class="number">689.878275333</span>  <span class="number">8177</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">180</span>   <span class="number">689.878275999</span>  <span class="number">8177</span>  D  WS <span class="number">155454552</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">181</span>   <span class="number">689.878535778</span>     <span class="number">0</span>  C  WS <span class="number">155454552</span> + <span class="number">48</span> [<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>      <span class="number">182</span>   <span class="number">689.878551480</span>  <span class="number">8177</span>  A FWFS <span class="number">155454600</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452552</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">183</span>   <span class="number">689.878551816</span>  <span class="number">8177</span>  Q FWFS <span class="number">155454600</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">184</span>   <span class="number">689.878552509</span>  <span class="number">8177</span>  G FWFS <span class="number">155454600</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">185</span>   <span class="number">689.878553118</span>  <span class="number">8177</span>  I FWFS <span class="number">155454600</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>      <span class="number">194</span>   <span class="number">689.878014170</span>  <span class="number">9030</span>  A  WS <span class="number">276520</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">274472</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">195</span>   <span class="number">689.878016897</span>  <span class="number">9030</span>  Q  WS <span class="number">276520</span> + <span class="number">8</span> [dd]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">196</span>   <span class="number">689.878020143</span>  <span class="number">9030</span>  G  WS <span class="number">276520</span> + <span class="number">8</span> [dd]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">197</span>   <span class="number">689.878021181</span>  <span class="number">9030</span>  P   N [dd]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">198</span>   <span class="number">689.878022921</span>  <span class="number">9030</span>  I  WS <span class="number">276520</span> + <span class="number">8</span> [dd]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">199</span>   <span class="number">689.878023761</span>  <span class="number">9030</span>  U   N [dd] <span class="number">1</span></span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">200</span>   <span class="number">689.878025114</span>  <span class="number">9030</span>  D  WS <span class="number">276520</span> + <span class="number">8</span> [dd]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">201</span>   <span class="number">689.878227087</span>     <span class="number">0</span>  C  WS <span class="number">276520</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">235</span>   <span class="number">689.929054795</span>     <span class="number">0</span>  D  WS <span class="number">155454600</span> + <span class="number">8</span> [swapper/<span class="number">2</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">236</span>   <span class="number">689.953664402</span>     <span class="number">0</span>  C  WS <span class="number">155454600</span> [<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>      <span class="number">186</span>   <span class="number">689.929232481</span>     <span class="number">0</span>  C  WS <span class="number">155454600</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">42</span>   <span class="number">716.440898596</span>  <span class="number">7824</span>  G   N [kworker/u8:<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">43</span>   <span class="number">716.440899622</span>  <span class="number">7824</span>  I   N <span class="number">0</span> (<span class="number">00</span> ..) [kworker/u8:<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">44</span>   <span class="number">716.440900483</span>  <span class="number">7824</span>  D   N <span class="number">0</span> (<span class="number">00</span> ..) [kworker/u8:<span class="number">0</span>]</span><br><span class="line"><span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">45</span>   <span class="number">716.440915785</span>     <span class="number">3</span>  C   N (<span class="number">00</span> ..) [<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
+<h4 id="oflag-direct"><a href="#oflag-direct" class="headerlink" title="oflag=direct"></a>oflag=direct</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">write data first <span class="string">"278560"</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">0</span>       <span class="number">71</span>   <span class="number">924.643982410</span>  <span class="number">9092</span>  A  WS <span class="number">280608</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="string">"278560"</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">72</span>   <span class="number">924.643984999</span>  <span class="number">9092</span>  Q  WS <span class="number">280608</span> + <span class="number">8</span> [dd]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">73</span>   <span class="number">924.643988437</span>  <span class="number">9092</span>  G  WS <span class="number">280608</span> + <span class="number">8</span> [dd]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">74</span>   <span class="number">924.643989544</span>  <span class="number">9092</span>  P   N [dd]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">75</span>   <span class="number">924.643991242</span>  <span class="number">9092</span>  I  WS <span class="number">280608</span> + <span class="number">8</span> [dd]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">76</span>   <span class="number">924.643992202</span>  <span class="number">9092</span> UT   N [dd] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">77</span>   <span class="number">924.644003671</span>   <span class="number">113</span>  D  WS <span class="number">280608</span> + <span class="number">8</span> [kworker/<span class="number">0</span>:<span class="number">1</span>H]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">78</span>   <span class="number">924.644187239</span>     <span class="number">0</span>  C  WS <span class="number">280608</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">5</span> seconds ... because commit = <span class="number">5</span> (default value)</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">216</span>   <span class="number">929.750636556</span>     <span class="number">0</span>  D  WS <span class="number">155454648</span> + <span class="number">8</span> [swapper/<span class="number">2</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">300</span>   <span class="number">929.725647290</span>  <span class="number">8177</span>  A  WS <span class="number">155454608</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452560</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">301</span>   <span class="number">929.725648586</span>  <span class="number">8177</span>  Q  WS <span class="number">155454608</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">302</span>   <span class="number">929.725651343</span>  <span class="number">8177</span>  G  WS <span class="number">155454608</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">303</span>   <span class="number">929.725651976</span>  <span class="number">8177</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">304</span>   <span class="number">929.725653017</span>  <span class="number">8177</span>  A  WS <span class="number">155454616</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452568</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">305</span>   <span class="number">929.725653281</span>  <span class="number">8177</span>  Q  WS <span class="number">155454616</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">306</span>   <span class="number">929.725654121</span>  <span class="number">8177</span>  M  WS <span class="number">155454616</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">307</span>   <span class="number">929.725655039</span>  <span class="number">8177</span>  A  WS <span class="number">155454624</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452576</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">308</span>   <span class="number">929.725655246</span>  <span class="number">8177</span>  Q  WS <span class="number">155454624</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">309</span>   <span class="number">929.725655474</span>  <span class="number">8177</span>  M  WS <span class="number">155454624</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">310</span>   <span class="number">929.725655948</span>  <span class="number">8177</span>  A  WS <span class="number">155454632</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452584</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">311</span>   <span class="number">929.725656326</span>  <span class="number">8177</span>  Q  WS <span class="number">155454632</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">312</span>   <span class="number">929.725656644</span>  <span class="number">8177</span>  M  WS <span class="number">155454632</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">313</span>   <span class="number">929.725657046</span>  <span class="number">8177</span>  A  WS <span class="number">155454640</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452592</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">314</span>   <span class="number">929.725657247</span>  <span class="number">8177</span>  Q  WS <span class="number">155454640</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">315</span>   <span class="number">929.725657469</span>  <span class="number">8177</span>  M  WS <span class="number">155454640</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">316</span>   <span class="number">929.725658477</span>  <span class="number">8177</span>  I  WS <span class="number">155454608</span> + <span class="number">40</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">317</span>   <span class="number">929.725659326</span>  <span class="number">8177</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">318</span>   <span class="number">929.725660286</span>  <span class="number">8177</span>  D  WS <span class="number">155454608</span> + <span class="number">40</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">319</span>   <span class="number">929.725919352</span>     <span class="number">0</span>  C  WS <span class="number">155454608</span> + <span class="number">40</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">1</span>      <span class="number">320</span>   <span class="number">929.725936739</span>  <span class="number">8177</span>  A FWFS <span class="number">155454648</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155452600</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">321</span>   <span class="number">929.725937087</span>  <span class="number">8177</span>  Q FWFS <span class="number">155454648</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">322</span>   <span class="number">929.725937786</span>  <span class="number">8177</span>  G FWFS <span class="number">155454648</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">323</span>   <span class="number">929.725938398</span>  <span class="number">8177</span>  I FWFS <span class="number">155454648</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>      <span class="number">324</span>   <span class="number">929.750809777</span>     <span class="number">0</span>  C  WS <span class="number">155454648</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>      <span class="number">217</span>   <span class="number">929.759034117</span>     <span class="number">0</span>  C  WS <span class="number">155454648</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">15</span>s or <span class="number">20</span>s ... Does it dirty_expire_centisecs = <span class="number">1500</span> ?</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">0</span>       <span class="number">79</span>   <span class="number">954.641636276</span>  <span class="number">8780</span>  A   W <span class="number">2048</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">0</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">80</span>   <span class="number">954.641637644</span>  <span class="number">8780</span>  Q   W <span class="number">2048</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">81</span>   <span class="number">954.641641085</span>  <span class="number">8780</span>  G   W <span class="number">2048</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">82</span>   <span class="number">954.641642087</span>  <span class="number">8780</span>  P   N [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">0</span>       <span class="number">83</span>   <span class="number">954.641644262</span>  <span class="number">8780</span>  A  WM <span class="number">2056</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">8</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">84</span>   <span class="number">954.641644472</span>  <span class="number">8780</span>  Q  WM <span class="number">2056</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">85</span>   <span class="number">954.641645486</span>  <span class="number">8780</span>  M  WM <span class="number">2056</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">0</span>       <span class="number">86</span>   <span class="number">954.641647064</span>  <span class="number">8780</span>  A  WM <span class="number">10256</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">8208</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">87</span>   <span class="number">954.641647274</span>  <span class="number">8780</span>  Q  WM <span class="number">10256</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">88</span>   <span class="number">954.641648009</span>  <span class="number">8780</span>  G  WM <span class="number">10256</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">0</span>       <span class="number">89</span>   <span class="number">954.641649608</span>  <span class="number">8780</span>  A  WM <span class="number">10504</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">8456</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">90</span>   <span class="number">954.641649809</span>  <span class="number">8780</span>  Q  WM <span class="number">10504</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">91</span>   <span class="number">954.641650430</span>  <span class="number">8780</span>  G  WM <span class="number">10504</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">92</span>   <span class="number">954.641652170</span>  <span class="number">8780</span>  I   W <span class="number">2048</span> + <span class="number">16</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">93</span>   <span class="number">954.641652974</span>  <span class="number">8780</span>  I  WM <span class="number">10256</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">94</span>   <span class="number">954.641653406</span>  <span class="number">8780</span>  I  WM <span class="number">10504</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">95</span>   <span class="number">954.641653775</span>  <span class="number">8780</span>  U   N [kworker/u8:<span class="number">1</span>] <span class="number">3</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">96</span>   <span class="number">954.641655053</span>  <span class="number">8780</span>  D   W <span class="number">2048</span> + <span class="number">16</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">97</span>   <span class="number">954.641708392</span>  <span class="number">8780</span>  D  WM <span class="number">10256</span> + <span class="number">8</span> [kworker/u8:<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">98</span>   <span class="number">954.641895755</span>     <span class="number">0</span>  C   W <span class="number">2048</span> + <span class="number">16</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>       <span class="number">99</span>   <span class="number">954.641947709</span>     <span class="number">0</span>  D  WM <span class="number">10504</span> + <span class="number">8</span> [swapper/<span class="number">2</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>      <span class="number">100</span>   <span class="number">954.642066976</span>     <span class="number">0</span>  C  WM <span class="number">10256</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>      <span class="number">101</span>   <span class="number">954.642239705</span>     <span class="number">0</span>  C  WM <span class="number">10504</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="no-oflag"><a href="#no-oflag" class="headerlink" title="no oflag"></a>no oflag</h4><p>There are a lot of different wait time in this situation<br>Because this situation is the most complex<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">wait <span class="number">5</span>s..</span><br><span class="line"> <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>       <span class="number">29</span>    <span class="number">82.996414180</span>     <span class="number">0</span>  D  WS <span class="number">155453784</span> + <span class="number">8</span> [swapper/<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">51</span>    <span class="number">82.975991741</span>  <span class="number">9859</span>  A  WS <span class="number">155453736</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451688</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">52</span>    <span class="number">82.975993076</span>  <span class="number">9859</span>  Q  WS <span class="number">155453736</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">53</span>    <span class="number">82.975997048</span>  <span class="number">9859</span>  G  WS <span class="number">155453736</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">54</span>    <span class="number">82.975998182</span>  <span class="number">9859</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">55</span>    <span class="number">82.975999169</span>  <span class="number">9859</span>  A  WS <span class="number">155453744</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451696</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">56</span>    <span class="number">82.975999367</span>  <span class="number">9859</span>  Q  WS <span class="number">155453744</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">57</span>    <span class="number">82.976000324</span>  <span class="number">9859</span>  M  WS <span class="number">155453744</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">58</span>    <span class="number">82.976000804</span>  <span class="number">9859</span>  A  WS <span class="number">155453752</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451704</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">59</span>    <span class="number">82.976001005</span>  <span class="number">9859</span>  Q  WS <span class="number">155453752</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">60</span>    <span class="number">82.976001239</span>  <span class="number">9859</span>  M  WS <span class="number">155453752</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">61</span>    <span class="number">82.976001674</span>  <span class="number">9859</span>  A  WS <span class="number">155453760</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451712</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">62</span>    <span class="number">82.976001872</span>  <span class="number">9859</span>  Q  WS <span class="number">155453760</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">63</span>    <span class="number">82.976002097</span>  <span class="number">9859</span>  M  WS <span class="number">155453760</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">64</span>    <span class="number">82.976002487</span>  <span class="number">9859</span>  A  WS <span class="number">155453768</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451720</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">65</span>    <span class="number">82.976002688</span>  <span class="number">9859</span>  Q  WS <span class="number">155453768</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">66</span>    <span class="number">82.976002913</span>  <span class="number">9859</span>  M  WS <span class="number">155453768</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">67</span>    <span class="number">82.976003279</span>  <span class="number">9859</span>  A  WS <span class="number">155453776</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451728</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">68</span>    <span class="number">82.976003474</span>  <span class="number">9859</span>  Q  WS <span class="number">155453776</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">69</span>    <span class="number">82.976003696</span>  <span class="number">9859</span>  M  WS <span class="number">155453776</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">70</span>    <span class="number">82.976004914</span>  <span class="number">9859</span>  I  WS <span class="number">155453736</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">71</span>    <span class="number">82.976005793</span>  <span class="number">9859</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">72</span>    <span class="number">82.976006999</span>  <span class="number">9859</span>  D  WS <span class="number">155453736</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">73</span>    <span class="number">82.976309138</span>     <span class="number">0</span>  C  WS <span class="number">155453736</span> + <span class="number">48</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">74</span>    <span class="number">82.976328284</span>  <span class="number">9859</span>  A FWFS <span class="number">155453784</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451736</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">75</span>    <span class="number">82.976328662</span>  <span class="number">9859</span>  Q FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">76</span>    <span class="number">82.976329421</span>  <span class="number">9859</span>  G FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">77</span>    <span class="number">82.976330021</span>  <span class="number">9859</span>  I FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">78</span>    <span class="number">82.996586831</span>     <span class="number">0</span>  C  WS <span class="number">155453784</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">3</span>    <span class="number">83.004773614</span>     <span class="number">0</span>  C  WS <span class="number">155453784</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">8</span>s</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">79</span>    <span class="number">92.668012660</span>  <span class="number">9646</span>  A   W <span class="number">272424</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">270376</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">80</span>    <span class="number">92.668014142</span>  <span class="number">9646</span>  Q   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">81</span>    <span class="number">92.668017571</span>  <span class="number">9646</span>  G   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">82</span>    <span class="number">92.668018489</span>  <span class="number">9646</span>  P   N [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">83</span>    <span class="number">92.668021330</span>  <span class="number">9646</span>  I   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">84</span>    <span class="number">92.668022206</span>  <span class="number">9646</span>  U   N [kworker/u8:<span class="number">0</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">85</span>    <span class="number">92.668023601</span>  <span class="number">9646</span>  D   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">86</span>    <span class="number">92.668207032</span>     <span class="number">0</span>  C   W <span class="number">272424</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">5</span>s</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">23</span>    <span class="number">97.967994525</span>  <span class="number">9859</span>  A  WS <span class="number">155453792</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451744</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">24</span>    <span class="number">97.967996184</span>  <span class="number">9859</span>  Q  WS <span class="number">155453792</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">25</span>    <span class="number">97.967999937</span>  <span class="number">9859</span>  G  WS <span class="number">155453792</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">26</span>    <span class="number">97.968001062</span>  <span class="number">9859</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">27</span>    <span class="number">97.968002124</span>  <span class="number">9859</span>  A  WS <span class="number">155453800</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451752</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">28</span>    <span class="number">97.968002415</span>  <span class="number">9859</span>  Q  WS <span class="number">155453800</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">29</span>    <span class="number">97.968003315</span>  <span class="number">9859</span>  M  WS <span class="number">155453800</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">30</span>    <span class="number">97.968003888</span>  <span class="number">9859</span>  A  WS <span class="number">155453808</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451760</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">31</span>    <span class="number">97.968004092</span>  <span class="number">9859</span>  Q  WS <span class="number">155453808</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">32</span>    <span class="number">97.968004323</span>  <span class="number">9859</span>  M  WS <span class="number">155453808</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">33</span>    <span class="number">97.968004722</span>  <span class="number">9859</span>  A  WS <span class="number">155453816</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451768</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">34</span>    <span class="number">97.968004923</span>  <span class="number">9859</span>  Q  WS <span class="number">155453816</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">35</span>    <span class="number">97.968005148</span>  <span class="number">9859</span>  M  WS <span class="number">155453816</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">36</span>    <span class="number">97.968006597</span>  <span class="number">9859</span>  I  WS <span class="number">155453792</span> + <span class="number">32</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">37</span>    <span class="number">97.968007347</span>  <span class="number">9859</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">38</span>    <span class="number">97.968008571</span>  <span class="number">9859</span>  D  WS <span class="number">155453792</span> + <span class="number">32</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">39</span>    <span class="number">97.968260397</span>     <span class="number">0</span>  C  WS <span class="number">155453792</span> + <span class="number">32</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">40</span>    <span class="number">97.968278433</span>  <span class="number">9859</span>  A FWFS <span class="number">155453824</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451776</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">41</span>    <span class="number">97.968278814</span>  <span class="number">9859</span>  Q FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">42</span>    <span class="number">97.968279507</span>  <span class="number">9859</span>  G FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">43</span>    <span class="number">97.968280119</span>  <span class="number">9859</span>  I FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">4</span>    <span class="number">97.987635609</span>     <span class="number">0</span>  D  WS <span class="number">155453824</span> + <span class="number">8</span> [swapper/<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">5</span>    <span class="number">97.996024470</span>     <span class="number">0</span>  C  WS <span class="number">155453824</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">44</span>    <span class="number">97.987810139</span>     <span class="number">0</span>  C  WS <span class="number">155453824</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://ext4.wiki.kernel.org/index.php/Ext3_Data%3DOrdered_vs_Data%3DWriteback_mode" target="_blank" rel="external">ext4 reference</a><br><a href="http://rick_stone.leanote.com/post/ext4%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%881%EF%BC%89%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B" target="_blank" rel="external">ext4 reference</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/io/" rel="tag">#io</a>
+          
+            <a href="/tags/trace/" rel="tag">#trace</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/29/golang-bitwise-operators/" rel="next" title="golang bitwise operators">
+                <i class="fa fa-chevron-left"></i> golang bitwise operators
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/04/Sort-array-with-GAWK4/" rel="prev" title="Sort array with GAWK4">
+                Sort array with GAWK4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trace-your-IO-operation"><span class="nav-number">1.</span> <span class="nav-text">Trace your IO operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Another-example-full-ouput"><span class="nav-number">2.</span> <span class="nav-text">Another example full ouput</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#oflag-sync"><span class="nav-number">2.1.</span> <span class="nav-text">oflag=sync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oflag-direct"><span class="nav-number">2.2.</span> <span class="nav-text">oflag=direct</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#no-oflag"><span class="nav-number">2.3.</span> <span class="nav-text">no oflag</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2016/04/01/blktrace/';
+      var disqus_title = 'Blktrace';
+      var disqus_url = 'http://yoursite.com/2016/04/01/blktrace/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
