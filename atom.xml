@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-08T05:09:40.000Z</updated>
+  <updated>2016-06-08T05:12:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Benchmark ConnectX®-3 Pro and libvma</title>
+    <title>Benchmark ConnectX®-3 Pro VMA</title>
     <link href="http://yoursite.com/2016/06/03/Benchmark_ConnectX%C2%AE_3_Pro/"/>
     <id>http://yoursite.com/2016/06/03/Benchmark_ConnectX®_3_Pro/</id>
     <published>2016-06-03T03:22:42.000Z</published>
-    <updated>2016-06-08T05:09:40.000Z</updated>
+    <updated>2016-06-08T05:12:48.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;RDMA-support&quot;&gt;&lt;a href=&quot;#RDMA-support&quot; class=&quot;headerlink&quot; title=&quot;RDMA support&quot;&gt;&lt;/a&gt;RDMA support&lt;/h3&gt;&lt;p&gt;RDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Mellanox/libvma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libvma&lt;/a&gt;&lt;br&gt;Linux user space library for network socket acceleration based on RDMA compatible network adaptors&lt;/p&gt;
