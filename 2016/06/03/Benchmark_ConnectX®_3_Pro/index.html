@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
 <meta property="og:image" content="http://yoursite.com/img/mellanox_network.jpg">
-<meta property="og:updated_time" content="2016-06-09T04:21:58.898Z">
+<meta property="og:updated_time" content="2016-06-09T04:27:49.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Benchmark ConnectX®-3 Pro VMA">
 <meta name="twitter:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
@@ -367,9 +367,207 @@
 <h4 id="Enable-Receive-Packet-Steering"><a href="#Enable-Receive-Packet-Steering" class="headerlink" title="Enable Receive Packet Steering"></a>Enable Receive Packet Steering</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">'%x\n'</span> <span class="string">"<span class="variable">$((2#10101)</span>)"</span> <span class="comment"># core 0,2,4</span></span><br><span class="line">15</span><br><span class="line"><span class="built_in">printf</span> <span class="string">'%x\n'</span> <span class="string">"<span class="variable">$((2#10101000000)</span>)"</span> core 6,8,10</span><br><span class="line">540</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls /sys/class/net/enp5s0/queues/ | grep rx-); </span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">	<span class="built_in">echo</span> 15 &gt; /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus;</span><br><span class="line">	cat /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus; </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls /sys/class/net/enp5s0d1/queues/ | grep rx-); </span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">	<span class="built_in">echo</span> 540 &gt; /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus;</span><br><span class="line">	cat /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h3 id="Configure-libvma"><a href="#Configure-libvma" class="headerlink" title="Configure libvma"></a>Configure libvma</h3><p><a href="https://github.com/Mellanox/libvma/wiki/Build-Instruction" target="_blank" rel="external">Install libvma in linux</a><br><a href="https://github.com/Mellanox/libvma/blob/master/src/vma/util/libvma.conf#L22" target="_blank" rel="external">libvma.conf</a><br><a href="https://community.mellanox.com/docs/DOC-2431" target="_blank" rel="external">Using ConnectX-3 Pro with VMA over Ubuntu 16.04 Inbox Driver</a><br><a href="http://www.mellanox.com/page/products_dyn?product_family=26" target="_blank" rel="external">Mellanox OpenFabrics Enterprise Distribution for Linux MLNX_OFED</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apt-get install dkms infiniband-diags libibverbs* ibacm librdmacm* libmlx4* libmlx5* mstflint libibcm.* libibmad.* libibumad* opensm srptools libmlx4-dev librdmacm-dev rdmacm-utils ibverbs-utils perftest vlan ibutils</span><br><span class="line">apt-get install libnl-3-200 libnl-route-3-200 libnl-route-3-dev libnl-utils</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Mellanox/libvma.git $ <span class="built_in">cd</span> libvma </span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make -j 12</span><br><span class="line">make install</span><br><span class="line">ldconfig</span><br><span class="line"><span class="built_in">echo</span> options mlx4_core <span class="built_in">log</span>_num_mgm_entry_size=-1 &gt; /etc/modprobe.d/mlnx.conf</span><br><span class="line"><span class="built_in">echo</span> 1000000000 &gt; /proc/sys/kernel/shmmax</span><br><span class="line"><span class="built_in">echo</span> 800 &gt; /proc/sys/vm/nr_hugepage</span><br><span class="line"><span class="built_in">ulimit</span> <span class="_">-l</span> unlimited</span><br><span class="line">LD_PRELOAD=libvma.so &lt;<span class="built_in">test</span>_app&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h3><h4 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h4><p><img src="/img/mellanox_network.jpg" alt="Network_Arch"><br>CPU is not bottle neck, 2620 was enough for quad/dual 10GbE</p>
-<h4 id="sockperf"><a href="#sockperf" class="headerlink" title="sockperf"></a>sockperf</h4><p>MTU 1500<br>single core server/client, single port<br>Throughput (MBps)<br>|msg size bytes |TCP TP MB/s |TCP TP VMA | UDP TP | UDP TP VMA<br>|——– |——-     |———–|————–|———–<br>|256      |289.160     |695.808    |78.632        |766.952<br>|512      |420.863     |1125.157   |154.019       |1055.240<br>|1024     |1129.297    |1130.277   |301.421       |1119.500<br>|2048     |1131.170    |1130.346   |381.049       |1123.660<br>|4096     |1131.160    |1130.387   |564.496       |1141.008<br>|8192     |1129.977    |1130.500   |660.844       |1142.078<br>|16384    |1130.031    |1130.422   |722.344       |1142.594<br>|32768    |1131.062    |1130.438   |784.688       |1130.438</p>
-<p>Package num (msg/s)<br>msg/s=(sendmsg+recmsg)/time<br>|msg size bytes |TCP PP msgps|TCP PP VMA | UDP PP  | UDP PP VMA | TCP PP msg/s 3xprocess | TCP PP msg/s 3xprocess VMA<br>|—————|————|———–|———|————|————————|—————————-<br>|256            |61813       |261712     |104967   |311446      | 181845                 | 702355<br>|512            |65832       |225369     |103220   |265571      | 154585                 | 615563<br>|1024           |51411       |182045     |921265   |182045      | 158244                 | 503944</p>
-<p>AVG Latency(us)<br>|msg size bytes |TCP PP |TCP PP VMA | UDP PP | UDP PP VMA | TCP PP 3xprocess | TCP PP 3xprocess VMA<br>|—————|——-|———–|——–|————|——————|———————–<br>|256            |14.611 |3.798      |9.474   |3.201       |16.7707           |4.268<br>|512            |16.162 |4.434      |9.635   |3.757       |19.8913           |4.866<br>|1024           |17.433 |5.455      |10.800  |4.822       |30.7607           |5.9526<br>|2048           |24.768 |7.849      |20.765  |23.768      |0                 |0<br>|4096           |27.054 |9.605      |21.258  |25.178      |0                 |0<br>|8192           |29.504 |13.884     |27.791  |26.294      |0                 |0<br>|16384          |38.803 |22.278     |38.850  |38.012      |0                 |0<br>|32768          |52.364 |37.984     |66.593  |55.820      |0                 |0</p>
+<h4 id="sockperf"><a href="#sockperf" class="headerlink" title="sockperf"></a>sockperf</h4><p>MTU 1500<br>single core server/client, single port<br>Throughput (MBps)</p>
+<table>
+<thead>
+<tr>
+<th>msg size bytes</th>
+<th>TCP TP MBps</th>
+<th>TCP TP VMA</th>
+<th>UDP TP</th>
+<th>UDP TP VMA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>289.160</td>
+<td>695.808</td>
+<td>78.632</td>
+<td>766.952</td>
+</tr>
+<tr>
+<td>512</td>
+<td>420.863</td>
+<td>1125.157</td>
+<td>154.019</td>
+<td>1055.240</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>1129.297</td>
+<td>1130.277</td>
+<td>301.421</td>
+<td>1119.500</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>1131.170</td>
+<td>1130.346</td>
+<td>381.049</td>
+<td>1123.660</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>1131.160</td>
+<td>1130.387</td>
+<td>564.496</td>
+<td>1141.008</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>1129.977</td>
+<td>1130.500</td>
+<td>660.844</td>
+<td>1142.078</td>
+</tr>
+<tr>
+<td>16384</td>
+<td>1130.031</td>
+<td>1130.422</td>
+<td>722.344</td>
+<td>1142.594</td>
+</tr>
+<tr>
+<td>32768</td>
+<td>1131.062</td>
+<td>1130.438</td>
+<td>784.688</td>
+<td>1130.438</td>
+</tr>
+</tbody>
+</table>
+<p>Package num (msg/s)<br>msg/s=(sendmsg+recmsg)/time</p>
+<table>
+<thead>
+<tr>
+<th>msg size bytes</th>
+<th>TCP PP msgps</th>
+<th>TCP PP VMA</th>
+<th>UDP PP</th>
+<th>UDP PP VMA</th>
+<th>TCP PP msgps 3xprocess</th>
+<th>TCP PP msgps 3xprocess VMA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>61813</td>
+<td>261712</td>
+<td>104967</td>
+<td>311446</td>
+<td>181845</td>
+<td>702355</td>
+</tr>
+<tr>
+<td>512</td>
+<td>65832</td>
+<td>225369</td>
+<td>103220</td>
+<td>265571</td>
+<td>154585</td>
+<td>615563</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>51411</td>
+<td>182045</td>
+<td>921265</td>
+<td>182045</td>
+<td>158244</td>
+<td>503944</td>
+</tr>
+</tbody>
+</table>
+<p>AVG Latency(us)                                                                                                       </p>
+<table>
+<thead>
+<tr>
+<th>msg size bytes</th>
+<th>TCP PP</th>
+<th>TCP PP VMA</th>
+<th>UDP PP</th>
+<th>UDP PP VMA</th>
+<th>TCP PP 3xprocess</th>
+<th>TCP PP 3xprocess VMA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>14.611</td>
+<td>3.798</td>
+<td>9.474</td>
+<td>3.201</td>
+<td>16.7707</td>
+<td>4.268</td>
+</tr>
+<tr>
+<td>512</td>
+<td>16.162</td>
+<td>4.434</td>
+<td>9.635</td>
+<td>3.757</td>
+<td>19.8913</td>
+<td>4.866</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>17.433</td>
+<td>5.455</td>
+<td>10.800</td>
+<td>4.822</td>
+<td>30.7607</td>
+<td>5.9526</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>24.768</td>
+<td>7.849</td>
+<td>20.765</td>
+<td>23.768</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>27.054</td>
+<td>9.605</td>
+<td>21.258</td>
+<td>25.178</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>29.504</td>
+<td>13.884</td>
+<td>27.791</td>
+<td>26.294</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16384</td>
+<td>38.803</td>
+<td>22.278</td>
+<td>38.850</td>
+<td>38.012</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>32768</td>
+<td>52.364</td>
+<td>37.984</td>
+<td>66.593</td>
+<td>55.820</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <h4 id="netperf"><a href="#netperf" class="headerlink" title="netperf"></a>netperf</h4><p>netserver -D  -4 -v 2 -p 5000 -f -L 192.168.12.201<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t TCP_STREAM -l 15 -T 2,2 – -m $((2**$i))</p>
 <h4 id="redis-benchmark"><a href="#redis-benchmark" class="headerlink" title="redis-benchmark"></a>redis-benchmark</h4><p>redis-server –port 7777  –protected-mode no –maxmemory 8000mb –maxmemory-samples 10 –maxmemory-policy allkeys-lru</p>
 <p><a href="https://www.nas.nasa.gov/assets/pdf/papers/NAS_Technical_Report_NAS-2014-01.pdf" target="_blank" rel="external">Comparison of 40G RDMA and Traditional Ethernet Technologies</a><br><a href="http://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters.pdf" target="_blank" rel="external">Performance Tuning Guidelines for Mellanox Network Adapters</a></p>
