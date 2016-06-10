@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-09T17:29:05.685Z</updated>
+  <updated>2016-06-10T05:55:10.666Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/03/Benchmark_ConnectX%C2%AE_3_Pro/"/>
     <id>http://yoursite.com/2016/06/03/Benchmark_ConnectX®_3_Pro/</id>
     <published>2016-06-03T03:22:42.000Z</published>
-    <updated>2016-06-09T17:29:05.685Z</updated>
+    <updated>2016-06-10T05:55:10.666Z</updated>
     
     <content type="html">&lt;h3 id=&quot;RDMA-support&quot;&gt;&lt;a href=&quot;#RDMA-support&quot; class=&quot;headerlink&quot; title=&quot;RDMA support&quot;&gt;&lt;/a&gt;RDMA support&lt;/h3&gt;&lt;p&gt;RDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Mellanox/libvma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libvma&lt;/a&gt;&lt;br&gt;Linux user space library for network socket acceleration based on RDMA compatible network adaptors&lt;/p&gt;
@@ -337,7 +337,108 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&quot;redis-benchmark&quot;&gt;&lt;a href=&quot;#redis-benchmark&quot; class=&quot;headerlink&quot; title=&quot;redis-benchmark&quot;&gt;&lt;/a&gt;redis-benchmark&lt;/h4&gt;&lt;p&gt;LD_PRELOAD=libvma.so VMA_STATS_FD_NUM=500 redis-server –port 7777  –protected-mode no –maxmemory 12000mb –maxmemory-samples 10 –maxmemory-policy allkeys-lru&lt;br&gt;numactl -C 2 redis-benchmark -r 10000000 -n 20000000 -t get,set,lpush,lpop -P 16 -q -h 192.168.12.201 -p 7777 -d 16&lt;br&gt;|size bytes     |set        |get        |lpush      |lpop       |set vma    |get vma    |lpush vma  |lpop vma&lt;br&gt;|—————|———–|———–|———–|———–|———–|———–|———–|———–&lt;br&gt;|2              |909628.44  |995668.88  |1125492.38 |1092836.38 |1051801.25 |1383604.25 |1427857.50 |1412230.00&lt;br&gt;|16             |877077.62  |975181.56  |1126506.75 |1058537.12 |960937.88  |1332001.25 |1403213.38 |1408054.00&lt;br&gt;|64             |765814.06  |963205.56  |881834.19  |1040203.94 |785360.88  |1114082.00 |1179384.38 |1258890.88&lt;br&gt;|256            |596801.12  |714030.69  |787928.94  |864416.31  |614420.50  |943129.31  |868847.50  |970167.38&lt;/p&gt;
+&lt;h4 id=&quot;redis-benchmark&quot;&gt;&lt;a href=&quot;#redis-benchmark&quot; class=&quot;headerlink&quot; title=&quot;redis-benchmark&quot;&gt;&lt;/a&gt;redis-benchmark&lt;/h4&gt;&lt;p&gt;LD_PRELOAD=libvma.so VMA_STATS_FD_NUM=500 redis-server –port 7777  –protected-mode no –maxmemory 12000mb –maxmemory-samples 10 –maxmemory-policy allkeys-lru&lt;br&gt;numactl -C 2 redis-benchmark -r 10000000 -n 20000000 -t get,set,lpush,lpop -P 16 -q -h 192.168.12.201 -p 7777 -d 16&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;size bytes&lt;/th&gt;
+&lt;th&gt;set&lt;/th&gt;
+&lt;th&gt;get&lt;/th&gt;
+&lt;th&gt;lpush&lt;/th&gt;
+&lt;th&gt;lpop&lt;/th&gt;
+&lt;th&gt;set vma&lt;/th&gt;
+&lt;th&gt;get vma&lt;/th&gt;
+&lt;th&gt;lpush vma&lt;/th&gt;
+&lt;th&gt;lpop vma&lt;/th&gt;
+&lt;th&gt;set x4&lt;/th&gt;
+&lt;th&gt;get x4&lt;/th&gt;
+&lt;th&gt;lpush x4&lt;/th&gt;
+&lt;th&gt;lpop x4&lt;/th&gt;
+&lt;th&gt;set x4 vma&lt;/th&gt;
+&lt;th&gt;get x4&lt;/th&gt;
+&lt;th&gt;lpush x4&lt;/th&gt;
+&lt;th&gt;lpop x4   &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;909628.44&lt;/td&gt;
+&lt;td&gt;995668.88&lt;/td&gt;
+&lt;td&gt;1125492.38&lt;/td&gt;
+&lt;td&gt;1092836.38&lt;/td&gt;
+&lt;td&gt;1051801.25&lt;/td&gt;
+&lt;td&gt;1383604.25&lt;/td&gt;
+&lt;td&gt;1427857.50&lt;/td&gt;
+&lt;td&gt;1412230.00&lt;/td&gt;
+&lt;td&gt;1179965.09&lt;/td&gt;
+&lt;td&gt;1580834.26&lt;/td&gt;
+&lt;td&gt;2055718.79&lt;/td&gt;
+&lt;td&gt;2001333.44&lt;/td&gt;
+&lt;td&gt;2432077.24&lt;/td&gt;
+&lt;td&gt;3466123.12&lt;/td&gt;
+&lt;td&gt;3255039.99&lt;/td&gt;
+&lt;td&gt;3349659.25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;877077.62&lt;/td&gt;
+&lt;td&gt;975181.56&lt;/td&gt;
+&lt;td&gt;1126506.75&lt;/td&gt;
+&lt;td&gt;1058537.12&lt;/td&gt;
+&lt;td&gt;960937.88&lt;/td&gt;
+&lt;td&gt;1332001.25&lt;/td&gt;
+&lt;td&gt;1403213.38&lt;/td&gt;
+&lt;td&gt;1408054.00&lt;/td&gt;
+&lt;td&gt;1205777.63&lt;/td&gt;
+&lt;td&gt;1656787.75&lt;/td&gt;
+&lt;td&gt;1685172.72&lt;/td&gt;
+&lt;td&gt;2167017.68&lt;/td&gt;
+&lt;td&gt;2212556.32&lt;/td&gt;
+&lt;td&gt;3204048.56&lt;/td&gt;
+&lt;td&gt;3243653&lt;/td&gt;
+&lt;td&gt;3355042&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;765814.06&lt;/td&gt;
+&lt;td&gt;963205.56&lt;/td&gt;
+&lt;td&gt;881834.19&lt;/td&gt;
+&lt;td&gt;1040203.94&lt;/td&gt;
+&lt;td&gt;785360.88&lt;/td&gt;
+&lt;td&gt;1114082.00&lt;/td&gt;
+&lt;td&gt;1179384.38&lt;/td&gt;
+&lt;td&gt;1258890.88&lt;/td&gt;
+&lt;td&gt;1125920.34&lt;/td&gt;
+&lt;td&gt;1491794.08&lt;/td&gt;
+&lt;td&gt;1603009.35&lt;/td&gt;
+&lt;td&gt;2040705.93&lt;/td&gt;
+&lt;td&gt;2004204.13&lt;/td&gt;
+&lt;td&gt;3079092.74&lt;/td&gt;
+&lt;td&gt;2744756.94&lt;/td&gt;
+&lt;td&gt;3079859.44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;256&lt;/td&gt;
+&lt;td&gt;596801.12&lt;/td&gt;
+&lt;td&gt;714030.69&lt;/td&gt;
+&lt;td&gt;787928.94&lt;/td&gt;
+&lt;td&gt;864416.31&lt;/td&gt;
+&lt;td&gt;614420.50&lt;/td&gt;
+&lt;td&gt;943129.31&lt;/td&gt;
+&lt;td&gt;868847.50&lt;/td&gt;
+&lt;td&gt;970167.38&lt;/td&gt;
+&lt;td&gt;1172390.68&lt;/td&gt;
+&lt;td&gt;1236795.19&lt;/td&gt;
+&lt;td&gt;1024634.36&lt;/td&gt;
+&lt;td&gt;1474094.21&lt;/td&gt;
+&lt;td&gt;1717803&lt;/td&gt;
+&lt;td&gt;2521588&lt;/td&gt;
+&lt;td&gt;1659403.82&lt;/td&gt;
+&lt;td&gt;2402496.31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;p&gt;Because not enough memory in single node, so I can’ t benchamrk 6xredis-server benchmark with 6xredis-benchmark&lt;br&gt;echo 1024 &amp;gt; /proc/sys/net/core/somaxconn&lt;br&gt;vm.overcommit_memory = 1&lt;br&gt;echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled (reduce performance when you enable VMA, cancel)&lt;br&gt;13562:M 10 Jun 01:02:39.054 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.&lt;br&gt;13562:M 10 Jun 01:02:39.054 # Server started, Redis version 3.2.0&lt;br&gt;13562:M 10 Jun 01:02:39.054 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add ‘vm.overcommit_memory = 1’ to /etc/sysctl.conf and then reboot or run the command ‘sysctl vm.overcommit_memory=1’ for this to take effect.&lt;br&gt;13562:M 10 Jun 01:02:39.054 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command ‘echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled’ as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.&lt;/p&gt;
 &lt;h4 id=&quot;qperf&quot;&gt;&lt;a href=&quot;#qperf&quot; class=&quot;headerlink&quot; title=&quot;qperf&quot;&gt;&lt;/a&gt;qperf&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;terminate called without an active exception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;terminate called without an active exception&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;terminate called without an active exception&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.nas.nasa.gov/assets/pdf/papers/NAS_Technical_Report_NAS-2014-01.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Comparison of 40G RDMA and Traditional Ethernet Technologies&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Performance Tuning Guidelines for Mellanox Network Adapters&lt;/a&gt;&lt;/p&gt;
