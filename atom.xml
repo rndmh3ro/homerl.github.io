@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-10T05:55:10.666Z</updated>
+  <updated>2016-06-10T06:53:53.466Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/06/03/Benchmark_ConnectX%C2%AE_3_Pro/"/>
     <id>http://yoursite.com/2016/06/03/Benchmark_ConnectX®_3_Pro/</id>
     <published>2016-06-03T03:22:42.000Z</published>
-    <updated>2016-06-10T05:55:10.666Z</updated>
+    <updated>2016-06-10T06:53:53.466Z</updated>
     
     <content type="html">&lt;h3 id=&quot;RDMA-support&quot;&gt;&lt;a href=&quot;#RDMA-support&quot; class=&quot;headerlink&quot; title=&quot;RDMA support&quot;&gt;&lt;/a&gt;RDMA support&lt;/h3&gt;&lt;p&gt;RDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Mellanox/libvma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libvma&lt;/a&gt;&lt;br&gt;Linux user space library for network socket acceleration based on RDMA compatible network adaptors&lt;/p&gt;
@@ -338,6 +338,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id=&quot;redis-benchmark&quot;&gt;&lt;a href=&quot;#redis-benchmark&quot; class=&quot;headerlink&quot; title=&quot;redis-benchmark&quot;&gt;&lt;/a&gt;redis-benchmark&lt;/h4&gt;&lt;p&gt;LD_PRELOAD=libvma.so VMA_STATS_FD_NUM=500 redis-server –port 7777  –protected-mode no –maxmemory 12000mb –maxmemory-samples 10 –maxmemory-policy allkeys-lru&lt;br&gt;numactl -C 2 redis-benchmark -r 10000000 -n 20000000 -t get,set,lpush,lpop -P 16 -q -h 192.168.12.201 -p 7777 -d 16&lt;/p&gt;
+&lt;p&gt;set/get/lpush/lpop records/s&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -349,7 +350,60 @@
 &lt;th&gt;set vma&lt;/th&gt;
 &lt;th&gt;get vma&lt;/th&gt;
 &lt;th&gt;lpush vma&lt;/th&gt;
-&lt;th&gt;lpop vma&lt;/th&gt;
+&lt;th&gt;lpop vma   &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;909628.44&lt;/td&gt;
+&lt;td&gt;995668.88&lt;/td&gt;
+&lt;td&gt;1125492.38&lt;/td&gt;
+&lt;td&gt;1092836.38&lt;/td&gt;
+&lt;td&gt;1051801.25&lt;/td&gt;
+&lt;td&gt;1383604.25&lt;/td&gt;
+&lt;td&gt;1427857.50&lt;/td&gt;
+&lt;td&gt;1412230.00 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;877077.62&lt;/td&gt;
+&lt;td&gt;975181.56&lt;/td&gt;
+&lt;td&gt;1126506.75&lt;/td&gt;
+&lt;td&gt;1058537.12&lt;/td&gt;
+&lt;td&gt;960937.88&lt;/td&gt;
+&lt;td&gt;1332001.25&lt;/td&gt;
+&lt;td&gt;1403213.38&lt;/td&gt;
+&lt;td&gt;1408054.00 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;765814.06&lt;/td&gt;
+&lt;td&gt;963205.56&lt;/td&gt;
+&lt;td&gt;881834.19&lt;/td&gt;
+&lt;td&gt;1040203.94&lt;/td&gt;
+&lt;td&gt;785360.88&lt;/td&gt;
+&lt;td&gt;1114082.00&lt;/td&gt;
+&lt;td&gt;1179384.38&lt;/td&gt;
+&lt;td&gt;1258890.88 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;256&lt;/td&gt;
+&lt;td&gt;596801.12&lt;/td&gt;
+&lt;td&gt;714030.69&lt;/td&gt;
+&lt;td&gt;787928.94&lt;/td&gt;
+&lt;td&gt;864416.31&lt;/td&gt;
+&lt;td&gt;614420.50&lt;/td&gt;
+&lt;td&gt;943129.31&lt;/td&gt;
+&lt;td&gt;868847.50&lt;/td&gt;
+&lt;td&gt;970167.38  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;size bytes&lt;/th&gt;
 &lt;th&gt;set x4&lt;/th&gt;
 &lt;th&gt;get x4&lt;/th&gt;
 &lt;th&gt;lpush x4&lt;/th&gt;
@@ -363,14 +417,6 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;909628.44&lt;/td&gt;
-&lt;td&gt;995668.88&lt;/td&gt;
-&lt;td&gt;1125492.38&lt;/td&gt;
-&lt;td&gt;1092836.38&lt;/td&gt;
-&lt;td&gt;1051801.25&lt;/td&gt;
-&lt;td&gt;1383604.25&lt;/td&gt;
-&lt;td&gt;1427857.50&lt;/td&gt;
-&lt;td&gt;1412230.00&lt;/td&gt;
 &lt;td&gt;1179965.09&lt;/td&gt;
 &lt;td&gt;1580834.26&lt;/td&gt;
 &lt;td&gt;2055718.79&lt;/td&gt;
@@ -382,14 +428,6 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;16&lt;/td&gt;
-&lt;td&gt;877077.62&lt;/td&gt;
-&lt;td&gt;975181.56&lt;/td&gt;
-&lt;td&gt;1126506.75&lt;/td&gt;
-&lt;td&gt;1058537.12&lt;/td&gt;
-&lt;td&gt;960937.88&lt;/td&gt;
-&lt;td&gt;1332001.25&lt;/td&gt;
-&lt;td&gt;1403213.38&lt;/td&gt;
-&lt;td&gt;1408054.00&lt;/td&gt;
 &lt;td&gt;1205777.63&lt;/td&gt;
 &lt;td&gt;1656787.75&lt;/td&gt;
 &lt;td&gt;1685172.72&lt;/td&gt;
@@ -401,14 +439,6 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;64&lt;/td&gt;
-&lt;td&gt;765814.06&lt;/td&gt;
-&lt;td&gt;963205.56&lt;/td&gt;
-&lt;td&gt;881834.19&lt;/td&gt;
-&lt;td&gt;1040203.94&lt;/td&gt;
-&lt;td&gt;785360.88&lt;/td&gt;
-&lt;td&gt;1114082.00&lt;/td&gt;
-&lt;td&gt;1179384.38&lt;/td&gt;
-&lt;td&gt;1258890.88&lt;/td&gt;
 &lt;td&gt;1125920.34&lt;/td&gt;
 &lt;td&gt;1491794.08&lt;/td&gt;
 &lt;td&gt;1603009.35&lt;/td&gt;
@@ -420,14 +450,6 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;256&lt;/td&gt;
-&lt;td&gt;596801.12&lt;/td&gt;
-&lt;td&gt;714030.69&lt;/td&gt;
-&lt;td&gt;787928.94&lt;/td&gt;
-&lt;td&gt;864416.31&lt;/td&gt;
-&lt;td&gt;614420.50&lt;/td&gt;
-&lt;td&gt;943129.31&lt;/td&gt;
-&lt;td&gt;868847.50&lt;/td&gt;
-&lt;td&gt;970167.38&lt;/td&gt;
 &lt;td&gt;1172390.68&lt;/td&gt;
 &lt;td&gt;1236795.19&lt;/td&gt;
 &lt;td&gt;1024634.36&lt;/td&gt;

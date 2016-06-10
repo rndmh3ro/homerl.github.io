@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
 <meta property="og:image" content="http://yoursite.com/img/mellanox_network.jpg">
-<meta property="og:updated_time" content="2016-06-10T05:55:10.666Z">
+<meta property="og:updated_time" content="2016-06-10T06:53:53.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Benchmark ConnectX®-3 Pro VMA">
 <meta name="twitter:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
@@ -657,6 +657,7 @@
 </tbody>
 </table>
 <h4 id="redis-benchmark"><a href="#redis-benchmark" class="headerlink" title="redis-benchmark"></a>redis-benchmark</h4><p>LD_PRELOAD=libvma.so VMA_STATS_FD_NUM=500 redis-server –port 7777  –protected-mode no –maxmemory 12000mb –maxmemory-samples 10 –maxmemory-policy allkeys-lru<br>numactl -C 2 redis-benchmark -r 10000000 -n 20000000 -t get,set,lpush,lpop -P 16 -q -h 192.168.12.201 -p 7777 -d 16</p>
+<p>set/get/lpush/lpop records/s</p>
 <table>
 <thead>
 <tr>
@@ -668,7 +669,60 @@
 <th>set vma</th>
 <th>get vma</th>
 <th>lpush vma</th>
-<th>lpop vma</th>
+<th>lpop vma   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>909628.44</td>
+<td>995668.88</td>
+<td>1125492.38</td>
+<td>1092836.38</td>
+<td>1051801.25</td>
+<td>1383604.25</td>
+<td>1427857.50</td>
+<td>1412230.00 </td>
+</tr>
+<tr>
+<td>16</td>
+<td>877077.62</td>
+<td>975181.56</td>
+<td>1126506.75</td>
+<td>1058537.12</td>
+<td>960937.88</td>
+<td>1332001.25</td>
+<td>1403213.38</td>
+<td>1408054.00 </td>
+</tr>
+<tr>
+<td>64</td>
+<td>765814.06</td>
+<td>963205.56</td>
+<td>881834.19</td>
+<td>1040203.94</td>
+<td>785360.88</td>
+<td>1114082.00</td>
+<td>1179384.38</td>
+<td>1258890.88 </td>
+</tr>
+<tr>
+<td>256</td>
+<td>596801.12</td>
+<td>714030.69</td>
+<td>787928.94</td>
+<td>864416.31</td>
+<td>614420.50</td>
+<td>943129.31</td>
+<td>868847.50</td>
+<td>970167.38  </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>size bytes</th>
 <th>set x4</th>
 <th>get x4</th>
 <th>lpush x4</th>
@@ -682,14 +736,6 @@
 <tbody>
 <tr>
 <td>2</td>
-<td>909628.44</td>
-<td>995668.88</td>
-<td>1125492.38</td>
-<td>1092836.38</td>
-<td>1051801.25</td>
-<td>1383604.25</td>
-<td>1427857.50</td>
-<td>1412230.00</td>
 <td>1179965.09</td>
 <td>1580834.26</td>
 <td>2055718.79</td>
@@ -701,14 +747,6 @@
 </tr>
 <tr>
 <td>16</td>
-<td>877077.62</td>
-<td>975181.56</td>
-<td>1126506.75</td>
-<td>1058537.12</td>
-<td>960937.88</td>
-<td>1332001.25</td>
-<td>1403213.38</td>
-<td>1408054.00</td>
 <td>1205777.63</td>
 <td>1656787.75</td>
 <td>1685172.72</td>
@@ -720,14 +758,6 @@
 </tr>
 <tr>
 <td>64</td>
-<td>765814.06</td>
-<td>963205.56</td>
-<td>881834.19</td>
-<td>1040203.94</td>
-<td>785360.88</td>
-<td>1114082.00</td>
-<td>1179384.38</td>
-<td>1258890.88</td>
 <td>1125920.34</td>
 <td>1491794.08</td>
 <td>1603009.35</td>
@@ -739,14 +769,6 @@
 </tr>
 <tr>
 <td>256</td>
-<td>596801.12</td>
-<td>714030.69</td>
-<td>787928.94</td>
-<td>864416.31</td>
-<td>614420.50</td>
-<td>943129.31</td>
-<td>868847.50</td>
-<td>970167.38</td>
 <td>1172390.68</td>
 <td>1236795.19</td>
 <td>1024634.36</td>
