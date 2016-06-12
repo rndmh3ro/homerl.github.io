@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
 <meta property="og:image" content="http://yoursite.com/img/mellanox_network.jpg">
-<meta property="og:updated_time" content="2016-06-10T06:53:53.466Z">
+<meta property="og:updated_time" content="2016-06-12T03:17:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Benchmark ConnectX®-3 Pro VMA">
 <meta name="twitter:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
@@ -367,7 +367,9 @@
 <h4 id="Enable-Receive-Packet-Steering"><a href="#Enable-Receive-Packet-Steering" class="headerlink" title="Enable Receive Packet Steering"></a>Enable Receive Packet Steering</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">'%x\n'</span> <span class="string">"<span class="variable">$((2#10101)</span>)"</span> <span class="comment"># core 0,2,4</span></span><br><span class="line">15</span><br><span class="line"><span class="built_in">printf</span> <span class="string">'%x\n'</span> <span class="string">"<span class="variable">$((2#10101000000)</span>)"</span> core 6,8,10</span><br><span class="line">540</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls /sys/class/net/enp5s0/queues/ | grep rx-); </span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">	<span class="built_in">echo</span> 15 &gt; /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus;</span><br><span class="line">	cat /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus; </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls /sys/class/net/enp5s0d1/queues/ | grep rx-); </span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">	<span class="built_in">echo</span> 540 &gt; /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus;</span><br><span class="line">	cat /sys/class/net/enp5s0/queues/<span class="variable">$i</span>/rps_cpus; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h3 id="Configure-libvma"><a href="#Configure-libvma" class="headerlink" title="Configure libvma"></a>Configure libvma</h3><p><a href="https://github.com/Mellanox/libvma/wiki/Build-Instruction" target="_blank" rel="external">Install libvma in linux</a><br><a href="https://github.com/Mellanox/libvma/blob/master/src/vma/util/libvma.conf#L22" target="_blank" rel="external">libvma.conf</a><br><a href="https://community.mellanox.com/docs/DOC-2431" target="_blank" rel="external">Using ConnectX-3 Pro with VMA over Ubuntu 16.04 Inbox Driver</a><br><a href="http://www.mellanox.com/page/products_dyn?product_family=26" target="_blank" rel="external">Mellanox OpenFabrics Enterprise Distribution for Linux MLNX_OFED</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apt-get install dkms infiniband-diags libibverbs* ibacm librdmacm* libmlx4* libmlx5* mstflint libibcm.* libibmad.* libibumad* opensm srptools libmlx4-dev librdmacm-dev rdmacm-utils ibverbs-utils perftest vlan ibutils</span><br><span class="line">apt-get install libnl-3-200 libnl-route-3-200 libnl-route-3-dev libnl-utils</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Mellanox/libvma.git $ <span class="built_in">cd</span> libvma </span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make -j 12</span><br><span class="line">make install</span><br><span class="line">ldconfig</span><br><span class="line"><span class="built_in">echo</span> options mlx4_core <span class="built_in">log</span>_num_mgm_entry_size=-1 &gt; /etc/modprobe.d/mlnx.conf</span><br><span class="line"><span class="built_in">echo</span> 1000000000 &gt; /proc/sys/kernel/shmmax</span><br><span class="line"><span class="built_in">echo</span> 800 &gt; /proc/sys/vm/nr_hugepage</span><br><span class="line"><span class="built_in">ulimit</span> <span class="_">-l</span> unlimited</span><br><span class="line">LD_PRELOAD=libvma.so &lt;<span class="built_in">test</span>_app&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h3><h4 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h4><p><img src="/img/mellanox_network.jpg" alt="Network_Arch"><br>CPU is not bottle neck, 2620 was enough for quad/dual 10GbE</p>
-<h4 id="sockperf"><a href="#sockperf" class="headerlink" title="sockperf"></a>sockperf</h4><p>MTU 1500<br>single core server/client, single port<br>Throughput (MBps)</p>
+<h4 id="sockperf"><a href="#sockperf" class="headerlink" title="sockperf"></a>sockperf</h4><p>sockperf: == version #2.7-53.git6f0f32c1fb02 ==<br>MTU 1500<br>single core server/client, single port</p>
+<p>./sockperf server –tcp -p 11111<br>./sockperf server -p 11111 #udp<br>numactl -C 2 /opt/sockperf/bin/sockperf tp -m 256  -i 192.168.12.201 -p 11111 -t 20<br>numactl -C 2 /opt/sockperf/bin/sockperf pp -m 256  -i 192.168.12.201 -p 11111 -t 20</p>
+<p>Throughput (MBps)</p>
 <table>
 <thead>
 <tr>
@@ -414,40 +416,17 @@
 <td>564.496</td>
 <td>1141.008</td>
 </tr>
-<tr>
-<td>8192</td>
-<td>1129.977</td>
-<td>1130.500</td>
-<td>660.844</td>
-<td>1142.078</td>
-</tr>
-<tr>
-<td>16384</td>
-<td>1130.031</td>
-<td>1130.422</td>
-<td>722.344</td>
-<td>1142.594</td>
-</tr>
-<tr>
-<td>32768</td>
-<td>1131.062</td>
-<td>1130.438</td>
-<td>784.688</td>
-<td>1130.438</td>
-</tr>
 </tbody>
 </table>
-<p>Package num (msg/s)<br>msg/s=(sendmsg+recmsg)/time</p>
+<p>Package num (msg/s)<br>msg/s=(send+rec msg) per second</p>
 <table>
 <thead>
 <tr>
 <th>msg size bytes</th>
-<th>TCP PP msgps</th>
+<th>TCP PP</th>
 <th>TCP PP VMA</th>
-<th>UDP PP</th>
-<th>UDP PP VMA</th>
-<th>TCP PP msgps 3xprocess</th>
-<th>TCP PP msgps 3xprocess VMA</th>
+<th>TCP PP 3x</th>
+<th>TCP PP 3x VMA</th>
 </tr>
 </thead>
 <tbody>
@@ -455,8 +434,6 @@
 <td>256</td>
 <td>61813</td>
 <td>261712</td>
-<td>104967</td>
-<td>311446</td>
 <td>181845</td>
 <td>702355</td>
 </tr>
@@ -464,8 +441,6 @@
 <td>512</td>
 <td>65832</td>
 <td>225369</td>
-<td>103220</td>
-<td>265571</td>
 <td>154585</td>
 <td>615563</td>
 </tr>
@@ -473,10 +448,15 @@
 <td>1024</td>
 <td>51411</td>
 <td>182045</td>
-<td>921265</td>
-<td>182045</td>
 <td>158244</td>
 <td>503944</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>40918</td>
+<td>130620</td>
+<td>130946</td>
+<td>353721</td>
 </tr>
 </tbody>
 </table>
@@ -487,10 +467,8 @@
 <th>msg size bytes</th>
 <th>TCP PP</th>
 <th>TCP PP VMA</th>
-<th>UDP PP</th>
-<th>UDP PP VMA</th>
-<th>TCP PP 3xprocess</th>
-<th>TCP PP 3xprocess VMA</th>
+<th>TCP PP 3x</th>
+<th>TCP PP 3x VMA</th>
 </tr>
 </thead>
 <tbody>
@@ -498,8 +476,6 @@
 <td>256</td>
 <td>14.611</td>
 <td>3.798</td>
-<td>9.474</td>
-<td>3.201</td>
 <td>16.7707</td>
 <td>4.268</td>
 </tr>
@@ -507,8 +483,6 @@
 <td>512</td>
 <td>16.162</td>
 <td>4.434</td>
-<td>9.635</td>
-<td>3.757</td>
 <td>19.8913</td>
 <td>4.866</td>
 </tr>
@@ -516,8 +490,6 @@
 <td>1024</td>
 <td>17.433</td>
 <td>5.455</td>
-<td>10.800</td>
-<td>4.822</td>
 <td>30.7607</td>
 <td>5.9526</td>
 </tr>
@@ -525,46 +497,80 @@
 <td>2048</td>
 <td>24.768</td>
 <td>7.849</td>
-<td>20.765</td>
-<td>23.768(err)</td>
-<td>0</td>
-<td>0</td>
+<td>28.7957</td>
+<td>8.49</td>
+</tr>
+</tbody>
+</table>
+<h4 id="UDP-performance"><a href="#UDP-performance" class="headerlink" title="UDP performance"></a>UDP performance</h4><table>
+<thead>
+<tr>
+<th>msg size bytes</th>
+<th>UDP PP</th>
+<th>UDP PP VMA </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>65921</td>
+<td>311823     </td>
 </tr>
 <tr>
-<td>4096</td>
-<td>27.054</td>
-<td>9.605</td>
-<td>21.258</td>
-<td>25.178(err)</td>
-<td>0</td>
-<td>0</td>
+<td>512</td>
+<td>68160</td>
+<td>261528     </td>
 </tr>
 <tr>
-<td>8192</td>
-<td>29.504</td>
-<td>13.884</td>
-<td>27.791</td>
-<td>26.294(err)</td>
-<td>0</td>
-<td>0</td>
+<td>1024</td>
+<td>62480</td>
+<td>203539     </td>
 </tr>
 <tr>
-<td>16384</td>
-<td>38.803</td>
-<td>22.278</td>
-<td>38.850</td>
-<td>38.012(err)</td>
-<td>0</td>
-<td>0</td>
+<td>1472</td>
+<td>62233</td>
+<td>171311     </td>
 </tr>
 <tr>
-<td>32768</td>
-<td>52.364</td>
-<td>37.984</td>
-<td>66.593</td>
-<td>55.820(err)</td>
-<td>0</td>
-<td>0</td>
+<td>2048</td>
+<td>49457</td>
+<td>46734      </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>msg size bytes</th>
+<th>UDP PP</th>
+<th>UDP PP VMA </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>9.474</td>
+<td>3.201       </td>
+</tr>
+<tr>
+<td>512</td>
+<td>9.635</td>
+<td>3.757       </td>
+</tr>
+<tr>
+<td>1024</td>
+<td>10.800</td>
+<td>4.822       </td>
+</tr>
+<tr>
+<td>1472</td>
+<td>16.016</td>
+<td>5.815           </td>
+</tr>
+<tr>
+<td>2048</td>
+<td>20.161</td>
+<td>19.953      </td>
 </tr>
 </tbody>
 </table>
@@ -576,9 +582,7 @@
 <th>TCP RR</th>
 <th>TCP RR VMA</th>
 <th>UDP RR</th>
-<th>UDP RR VMA</th>
-<th>TCP RR 3x</th>
-<th>TCP RR 3x VMA</th>
+<th>UDP RR VMA </th>
 </tr>
 </thead>
 <tbody>
@@ -587,72 +591,35 @@
 <td>43428.69</td>
 <td>129390.97</td>
 <td>49805.09</td>
-<td>146545.15</td>
-<td>3.798</td>
-<td>3.798       </td>
+<td>146545.15  </td>
 </tr>
 <tr>
 <td>512</td>
 <td>37705.07</td>
 <td>107808.85</td>
 <td>46393.12</td>
-<td>125839.11</td>
-<td>4.434</td>
-<td>4.434       </td>
+<td>125839.11  </td>
 </tr>
 <tr>
 <td>1024</td>
 <td>35005.28</td>
 <td>90787.06</td>
 <td>39591.57</td>
-<td>98669.99</td>
-<td>5.455</td>
-<td>5.455       </td>
+<td>98669.99   </td>
 </tr>
 <tr>
 <td>2048</td>
 <td>23688.22</td>
 <td>63992.85</td>
 <td>22633.36</td>
-<td>19961.70</td>
-<td>7.849</td>
-<td>7.849       </td>
+<td>19961.70   </td>
 </tr>
 <tr>
 <td>4096</td>
 <td>22933.14</td>
 <td>51851.17</td>
 <td>20772.47</td>
-<td>18604.53</td>
-<td>9.605</td>
-<td>9.605       </td>
-</tr>
-<tr>
-<td>8192</td>
-<td>18004.45</td>
-<td>35825.46</td>
-<td>13168.40</td>
-<td>17340.95</td>
-<td>13.884</td>
-<td>13.884      </td>
-</tr>
-<tr>
-<td>16384</td>
-<td>14452.57</td>
-<td>22415.81</td>
-<td>8380.55</td>
-<td>11999.45</td>
-<td>22.278</td>
-<td>22.278      </td>
-</tr>
-<tr>
-<td>32768</td>
-<td>9855.00</td>
-<td>13115.38</td>
-<td>5159.55</td>
-<td>8291.66</td>
-<td>37.984</td>
-<td>37.984      </td>
+<td>18604.53   </td>
 </tr>
 </tbody>
 </table>
@@ -974,7 +941,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDMA-support"><span class="nav-number">1.</span> <span class="nav-text">RDMA support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-driver"><span class="nav-number">2.</span> <span class="nav-text">Update driver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NIC-info"><span class="nav-number">2.1.</span> <span class="nav-text">NIC info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-info"><span class="nav-number">2.2.</span> <span class="nav-text">CPU info</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OPS"><span class="nav-number">3.</span> <span class="nav-text">OPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-Affinity"><span class="nav-number">3.1.</span> <span class="nav-text">CPU Affinity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ethtool"><span class="nav-number">3.2.</span> <span class="nav-text">ethtool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sysctl-conf"><span class="nav-number">3.3.</span> <span class="nav-text">sysctl.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#txqueueleng"><span class="nav-number">3.4.</span> <span class="nav-text">txqueueleng</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-Receive-Packet-Steering"><span class="nav-number">3.5.</span> <span class="nav-text">Enable Receive Packet Steering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-libvma"><span class="nav-number">4.</span> <span class="nav-text">Configure libvma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Benchmark"><span class="nav-number">5.</span> <span class="nav-text">Benchmark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Architecture"><span class="nav-number">5.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sockperf"><span class="nav-number">5.2.</span> <span class="nav-text">sockperf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#netperf"><span class="nav-number">5.3.</span> <span class="nav-text">netperf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis-benchmark"><span class="nav-number">5.4.</span> <span class="nav-text">redis-benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#qperf"><span class="nav-number">5.5.</span> <span class="nav-text">qperf</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDMA-support"><span class="nav-number">1.</span> <span class="nav-text">RDMA support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-driver"><span class="nav-number">2.</span> <span class="nav-text">Update driver</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NIC-info"><span class="nav-number">2.1.</span> <span class="nav-text">NIC info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-info"><span class="nav-number">2.2.</span> <span class="nav-text">CPU info</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OPS"><span class="nav-number">3.</span> <span class="nav-text">OPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-Affinity"><span class="nav-number">3.1.</span> <span class="nav-text">CPU Affinity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ethtool"><span class="nav-number">3.2.</span> <span class="nav-text">ethtool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sysctl-conf"><span class="nav-number">3.3.</span> <span class="nav-text">sysctl.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#txqueueleng"><span class="nav-number">3.4.</span> <span class="nav-text">txqueueleng</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-Receive-Packet-Steering"><span class="nav-number">3.5.</span> <span class="nav-text">Enable Receive Packet Steering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-libvma"><span class="nav-number">4.</span> <span class="nav-text">Configure libvma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Benchmark"><span class="nav-number">5.</span> <span class="nav-text">Benchmark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Architecture"><span class="nav-number">5.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sockperf"><span class="nav-number">5.2.</span> <span class="nav-text">sockperf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-performance"><span class="nav-number">5.3.</span> <span class="nav-text">UDP performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#netperf"><span class="nav-number">5.4.</span> <span class="nav-text">netperf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis-benchmark"><span class="nav-number">5.5.</span> <span class="nav-text">redis-benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#qperf"><span class="nav-number">5.6.</span> <span class="nav-text">qperf</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
