@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
 <meta property="og:image" content="http://yoursite.com/img/mellanox_network.jpg">
-<meta property="og:updated_time" content="2016-06-12T03:17:09.000Z">
+<meta property="og:updated_time" content="2016-06-12T09:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Benchmark ConnectX®-3 Pro VMA">
 <meta name="twitter:description" content="RDMA supportRDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.">
@@ -427,6 +427,9 @@
 <th>TCP PP VMA</th>
 <th>TCP PP 3x</th>
 <th>TCP PP 3x VMA</th>
+<th>Intel X540</th>
+<th>ConnectX-3</th>
+<th>ConnectX-3 VMA</th>
 </tr>
 </thead>
 <tbody>
@@ -436,6 +439,9 @@
 <td>261712</td>
 <td>181845</td>
 <td>702355</td>
+<td>53663</td>
+<td>63698</td>
+<td>258556</td>
 </tr>
 <tr>
 <td>512</td>
@@ -443,6 +449,9 @@
 <td>225369</td>
 <td>154585</td>
 <td>615563</td>
+<td>53414</td>
+<td>52425</td>
+<td>223479</td>
 </tr>
 <tr>
 <td>1024</td>
@@ -450,6 +459,9 @@
 <td>182045</td>
 <td>158244</td>
 <td>503944</td>
+<td>53067</td>
+<td>56812</td>
+<td>179406</td>
 </tr>
 <tr>
 <td>2048</td>
@@ -457,6 +469,9 @@
 <td>130620</td>
 <td>130946</td>
 <td>353721</td>
+<td>36214</td>
+<td>35772</td>
+<td>127449</td>
 </tr>
 </tbody>
 </table>
@@ -469,6 +484,9 @@
 <th>TCP PP VMA</th>
 <th>TCP PP 3x</th>
 <th>TCP PP 3x VMA</th>
+<th>Intel X540</th>
+<th>ConnectX-3</th>
+<th>ConnectX-3 VMA</th>
 </tr>
 </thead>
 <tbody>
@@ -478,6 +496,9 @@
 <td>3.798</td>
 <td>16.7707</td>
 <td>4.268</td>
+<td>17.072</td>
+<td>15.644</td>
+<td>3.845</td>
 </tr>
 <tr>
 <td>512</td>
@@ -485,6 +506,9 @@
 <td>4.434</td>
 <td>19.8913</td>
 <td>4.866</td>
+<td>18.667</td>
+<td>19.013</td>
+<td>4.456</td>
 </tr>
 <tr>
 <td>1024</td>
@@ -492,6 +516,9 @@
 <td>5.455</td>
 <td>30.7607</td>
 <td>5.9526</td>
+<td>18.789</td>
+<td>17.547</td>
+<td>5.576</td>
 </tr>
 <tr>
 <td>2048</td>
@@ -499,6 +526,9 @@
 <td>7.849</td>
 <td>28.7957</td>
 <td>8.49</td>
+<td>27.556</td>
+<td>27.347</td>
+<td>7.857</td>
 </tr>
 </tbody>
 </table>
@@ -574,7 +604,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="netperf"><a href="#netperf" class="headerlink" title="netperf"></a>netperf</h4><p>netserver -D  -4 -v 2 -p 5000 -f -L 192.168.12.201<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t TCP_STREAM -l 15 -T 2,2 – -m $((2<strong>$i))<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t TCP_RR -l 20 -T 2,2 – -m $((2</strong>$i))<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t UDP_RR -l 20 -T 2,2 – -m $((2**$i))</p>
+<h4 id="netperf"><a href="#netperf" class="headerlink" title="netperf"></a>netperf</h4><p>numactl -C 2 netserver -D  -4 -v 2 -p 5000 -f -L 192.168.12.201<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t TCP_STREAM -l 15 -T 2,2 – -m $((2<strong>$i))<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t TCP_RR -l 20 -T 2,2 – -m $((2</strong>$i))<br>numactl -N 0 ./netperf -n 6 -p 5000 -H 192.168.12.201 -c -C -t UDP_RR -l 20 -T 2,2 – -m $((2**$i))</p>
 <table>
 <thead>
 <tr>
@@ -747,6 +777,8 @@
 </tr>
 </tbody>
 </table>
+<p>Intel X540<br>|size bytes     |set x4    |get x4    |lpush x4  |lpop x4<br>|—————|———-|———-|———-|———-<br>|2              |1512821.64|2118883.93|1834559.35|1960360.28<br>|16             |1449761.53|1851285.18|1910151.44|2017602.97<br>|64             |1199011.03|1773449.28|1612987.21|1806331.65<br>|256            |1097519.72|1121691.17|1145548.86|1398369.94</p>
+<p>ConnectX-3<br>|size bytes     |set x4 VMA|get x4 VMA|lpush x4 VMA|lpop x4 VMA<br>|—————|———-|———-|————|———-<br>|2              |2455271.19|3476625.19|3360328.38  |3401881.00<br>|16             |2461504.31|3309726.63|3224818.00  |3322884.63<br>|64             |1954063.35|2876987.38|2729820.24  |3035352.45<br>|256            |1498470.37|2356658.57|1650766.50  |2362893.44</p>
 <p>Because not enough memory in single node, so I can’ t benchamrk 6xredis-server benchmark with 6xredis-benchmark<br>echo 1024 &gt; /proc/sys/net/core/somaxconn<br>vm.overcommit_memory = 1<br>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled (reduce performance when you enable VMA, cancel)<br>13562:M 10 Jun 01:02:39.054 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.<br>13562:M 10 Jun 01:02:39.054 # Server started, Redis version 3.2.0<br>13562:M 10 Jun 01:02:39.054 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add ‘vm.overcommit_memory = 1’ to /etc/sysctl.conf and then reboot or run the command ‘sysctl vm.overcommit_memory=1’ for this to take effect.<br>13562:M 10 Jun 01:02:39.054 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command ‘echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled’ as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.</p>
 <h4 id="qperf"><a href="#qperf" class="headerlink" title="qperf"></a>qperf</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)</span><br><span class="line">terminate called without an active exception</span><br><span class="line"> VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)</span><br><span class="line">terminate called without an active exception</span><br><span class="line"> VMA PANIC: ib_ctx_handler73:ib_ctx_handler() ibv device 0x1523ee0 pd allocation failure (ibv context 0x15266d0) (errno=13 Permission denied)</span><br><span class="line">terminate called without an active exception</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.nas.nasa.gov/assets/pdf/papers/NAS_Technical_Report_NAS-2014-01.pdf" target="_blank" rel="external">Comparison of 40G RDMA and Traditional Ethernet Technologies</a><br><a href="http://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters.pdf" target="_blank" rel="external">Performance Tuning Guidelines for Mellanox Network Adapters</a></p>
