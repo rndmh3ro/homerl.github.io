@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-16T07:41:45.000Z</updated>
+  <updated>2016-07-04T05:31:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Monitor intel ssd device</title>
+    <link href="http://yoursite.com/2016/07/04/Monitor-ssd-device/"/>
+    <id>http://yoursite.com/2016/07/04/Monitor-ssd-device/</id>
+    <published>2016-07-04T02:01:10.000Z</published>
+    <updated>2016-07-04T05:31:05.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Monitor-Intel-SATA-SSD&quot;&gt;&lt;a href=&quot;#Monitor-Intel-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Monitor Intel SATA SSD&quot;&gt;&lt;/a&gt;Monitor Intel SATA SSD&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;smartctl &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; /dev/sdaa&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24439&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=1M count=1024&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24471&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;You can see write 32*32=1024M write to ssd. the value is “MB”.&lt;/p&gt;
+&lt;h3 id=&quot;NVME-Intel-SSD&quot;&gt;&lt;a href=&quot;#NVME-Intel-SSD&quot; class=&quot;headerlink&quot; title=&quot;NVME Intel SSD&quot;&gt;&lt;/a&gt;NVME Intel SSD&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;isdct  show -smart -intelssd 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : NAND Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 6142760&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- F5 -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : Host Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 2790072&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=1M count=1024&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : NAND Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 6142930&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- F5 -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : Host Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 2790104&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Raw value of Host Bytes Written improved 32&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Monitor-Intel-SATA-SSD&quot;&gt;&lt;a href=&quot;#Monitor-Intel-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Monitor Intel SATA SSD&quot;&gt;&lt;/a&gt;Monitor Intel SATA S
+    
+    </summary>
+    
+      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
+    
+  </entry>
   
   <entry>
     <title>Main board SATA port bottle neck</title>
@@ -707,9 +735,9 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
-    
       <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
     
@@ -874,6 +902,31 @@
   </entry>
   
   <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -896,31 +949,6 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
@@ -1278,34 +1306,6 @@
       <category term="mariadb" scheme="http://yoursite.com/tags/mariadb/"/>
     
       <category term="sysbench" scheme="http://yoursite.com/tags/sysbench/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VLC not show media title</title>
-    <link href="http://yoursite.com/2016/03/01/VLC-not-show-media-title/"/>
-    <id>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</id>
-    <published>2016-03-01T09:00:07.000Z</published>
-    <updated>2016-03-20T10:25:35.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;Not-show-media-title&quot;&gt;&lt;a href=&quot;#Not-show-media-title&quot; class=&quot;headerlink&quot; title=&quot;Not show media title&quot;&gt;&lt;/a&gt;Not show media title&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://forum.videolan.org/viewtopic.php?t=50202&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Same question&lt;/a&gt;&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Show media title on media start (disable it)&lt;br&gt;Tools–&amp;gt;Preferences–&amp;gt;Subtitles / OSD–&amp;gt; Enable on screen display (disable it)&lt;/p&gt;
-&lt;h4 id=&quot;Not-resize-interface&quot;&gt;&lt;a href=&quot;#Not-resize-interface&quot; class=&quot;headerlink&quot; title=&quot;Not resize interface&quot;&gt;&lt;/a&gt;Not resize interface&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;/img/vlc-set1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Not-show-media-title&quot;&gt;&lt;a href=&quot;#Not-show-media-title&quot; class=&quot;headerlink&quot; title=&quot;Not show media title&quot;&gt;&lt;/a&gt;Not show media title&lt;/h4&gt;&lt;
-    
-    </summary>
-    
-      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="vlc" scheme="http://yoursite.com/tags/vlc/"/>
-    
-      <category term="desktop" scheme="http://yoursite.com/tags/desktop/"/>
     
   </entry>
   
