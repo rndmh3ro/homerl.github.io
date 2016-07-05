@@ -61,13 +61,13 @@
 
 <meta name="description" content="Monitor Intel SATA SSD12345678910111213smartctl -a /dev/sdaa233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0241 Host_Writes_32MiB       0x0032   100   100   000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Monitor intel ssd device">
+<meta property="og:title" content="Monitor ssd device">
 <meta property="og:url" content="http://yoursite.com/2016/07/04/Monitor-ssd-device/index.html">
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Monitor Intel SATA SSD12345678910111213smartctl -a /dev/sdaa233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0241 Host_Writes_32MiB       0x0032   100   100   000">
-<meta property="og:updated_time" content="2016-07-04T05:31:05.000Z">
+<meta property="og:updated_time" content="2016-07-05T10:36:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Monitor intel ssd device">
+<meta name="twitter:title" content="Monitor ssd device">
 <meta name="twitter:description" content="Monitor Intel SATA SSD12345678910111213smartctl -a /dev/sdaa233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0241 Host_Writes_32MiB       0x0032   100   100   000">
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> Monitor intel ssd device | Homer's Blog </title>
+  <title> Monitor ssd device | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +274,7 @@
             
             
               
-                Monitor intel ssd device
+                Monitor ssd device
               
             
           </h1>
@@ -341,6 +341,7 @@
       
         <h3 id="Monitor-Intel-SATA-SSD"><a href="#Monitor-Intel-SATA-SSD" class="headerlink" title="Monitor Intel SATA SSD"></a>Monitor Intel SATA SSD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">smartctl <span class="_">-a</span> /dev/sdaa</span><br><span class="line">233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24439</span><br><span class="line">242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275</span><br><span class="line">243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/zero of=<span class="built_in">test</span> bs=1M count=1024</span><br><span class="line"></span><br><span class="line">241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24471</span><br><span class="line">242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275</span><br><span class="line">243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857</span><br></pre></td></tr></table></figure>
 <p>You can see write 32*32=1024M write to ssd. the value is “MB”.</p>
+<h3 id="Samsung-SATA-SSD"><a href="#Samsung-SATA-SSD" class="headerlink" title="Samsung SATA SSD"></a><a href="https://www.smartmontools.org/ticket/661" target="_blank" rel="external">Samsung SATA SSD</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">251 NAND_Writes             -O--CK   100   100   000    -    7546253904</span><br><span class="line">                            ||||||_ K auto-keep</span><br><span class="line">                            |||||__ C event count</span><br><span class="line">                            ||||___ R error rate</span><br><span class="line">                            |||____ S speed/performance</span><br><span class="line">                            ||_____ O updated online</span><br><span class="line">                            |______ P prefailure warning</span><br></pre></td></tr></table></figure>
 <h3 id="NVME-Intel-SSD"><a href="#NVME-Intel-SSD" class="headerlink" title="NVME Intel SSD"></a>NVME Intel SSD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">isdct  show -smart -intelssd 0</span><br><span class="line">Description : NAND Bytes Written</span><br><span class="line">ID : F4</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 6142760</span><br><span class="line"></span><br><span class="line">- F5 -</span><br><span class="line"></span><br><span class="line">Description : Host Bytes Written</span><br><span class="line">ID : F5</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 2790072</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/zero of=<span class="built_in">test</span> bs=1M count=1024</span><br><span class="line"></span><br><span class="line">Description : NAND Bytes Written</span><br><span class="line">ID : F4</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 6142930</span><br><span class="line"></span><br><span class="line">- F5 -</span><br><span class="line"></span><br><span class="line">Description : Host Bytes Written</span><br><span class="line">ID : F5</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 2790104</span><br></pre></td></tr></table></figure>
 <p>Raw value of Host Bytes Written improved 32</p>
 
@@ -534,7 +535,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monitor-Intel-SATA-SSD"><span class="nav-number">1.</span> <span class="nav-text">Monitor Intel SATA SSD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NVME-Intel-SSD"><span class="nav-number">2.</span> <span class="nav-text">NVME Intel SSD</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monitor-Intel-SATA-SSD"><span class="nav-number">1.</span> <span class="nav-text">Monitor Intel SATA SSD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Samsung-SATA-SSD"><span class="nav-number">2.</span> <span class="nav-text">Samsung SATA SSD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NVME-Intel-SSD"><span class="nav-number">3.</span> <span class="nav-text">NVME Intel SSD</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -806,7 +807,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
       var disqus_identifier = '2016/07/04/Monitor-ssd-device/';
-      var disqus_title = 'Monitor intel ssd device';
+      var disqus_title = 'Monitor ssd device';
       var disqus_url = 'http://yoursite.com/2016/07/04/Monitor-ssd-device/';
 
       function run_disqus_script(disqus_script){
