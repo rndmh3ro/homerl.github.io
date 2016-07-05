@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ssd,power," />
+  <meta name="keywords" content="bio,software," />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="Risks of unexpected power loss on solid state drivesEach time data is accessed or modified on the SSD, metadata is modified pertaining to the state of the data. This information allows for the storage">
+<meta name="description" content="Install GCC 5.2.0123456789101112131415161718192021222324252627wget http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2tar xf gcc-5.2.0.tar.bz2wget https://gmplib.org/download/gmp/gmp-6.0.0a.tar.x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About SSD power loss">
-<meta property="og:url" content="http://yoursite.com/2016/06/02/About-SSD-power-loss/index.html">
+<meta property="og:title" content="Install blasr in CentOS6">
+<meta property="og:url" content="http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Risks of unexpected power loss on solid state drivesEach time data is accessed or modified on the SSD, metadata is modified pertaining to the state of the data. This information allows for the storage">
-<meta property="og:updated_time" content="2016-06-01T17:21:13.000Z">
+<meta property="og:description" content="Install GCC 5.2.0123456789101112131415161718192021222324252627wget http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2tar xf gcc-5.2.0.tar.bz2wget https://gmplib.org/download/gmp/gmp-6.0.0a.tar.x">
+<meta property="og:updated_time" content="2016-07-05T10:32:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About SSD power loss">
-<meta name="twitter:description" content="Risks of unexpected power loss on solid state drivesEach time data is accessed or modified on the SSD, metadata is modified pertaining to the state of the data. This information allows for the storage">
+<meta name="twitter:title" content="Install blasr in CentOS6">
+<meta name="twitter:description" content="Install GCC 5.2.0123456789101112131415161718192021222324252627wget http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2tar xf gcc-5.2.0.tar.bz2wget https://gmplib.org/download/gmp/gmp-6.0.0a.tar.x">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> About SSD power loss | Homer's Blog </title>
+  <title> Install blasr in CentOS6 | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +274,7 @@
             
             
               
-                About SSD power loss
+                Install blasr in CentOS6
               
             
           </h1>
@@ -286,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T01:08:37+08:00" content="2016-06-02">
-              2016-06-02
+            <time itemprop="dateCreated" datetime="2016-07-05T18:16:11+08:00" content="2016-07-05">
+              2016-07-05
             </time>
           </span>
 
@@ -300,8 +300,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hardware/" itemprop="url" rel="index">
-                    <span itemprop="name">Hardware</span>
+                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux configuration</span>
                   </a>
                 </span>
 
@@ -316,8 +316,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/02/About-SSD-power-loss/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/02/About-SSD-power-loss/" itemprop="commentsCount"></span>
+                <a href="/2016/07/05/Install-blasr-in-CentOS6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/05/Install-blasr-in-CentOS6/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,11 +339,11 @@
       
 
       
-        <h3 id="Risks-of-unexpected-power-loss-on-solid-state-drives"><a href="#Risks-of-unexpected-power-loss-on-solid-state-drives" class="headerlink" title="Risks of unexpected power loss on solid state drives"></a><a href="http://www8.hp.com/h20195/v2/GetPDF.aspx/4AA6-1470ENW.pdf" target="_blank" rel="external">Risks of unexpected power loss on solid state drives</a></h3><p>Each time data is accessed or modified on the SSD, metadata is modified pertaining to the state of the data. This information allows for the storage controller to choose what data should be in the drive’s volatile cache at any given moment as well as the ability to implement techniques which increase performance and endurance</p>
-<p>The drive then translates the LBA to the Physical Block Address (PBA) by way a flash translation table (FTL). The FTL is stored in cache and it is the responsibility of the controller to flush this table to non-volatile memory at times it deems appropriate or during a clean shutdown. The metadata associated with each page of data written also has information that can be used to rebuild the FTL if it is lost, but this rebuild takes time at the next power-on. If both the FTL and metadata are corrupted due to a sudden power loss event, the data stored on the SSD can become lost or even worse, the SSD, as a whole, can become inaccessible</p>
-<p>Turning drive cache off<br>Pros: Data integrity is preserved in the event of a sudden power loss.<br>Cons: Dramatic decrease in read and write performance.<br>Increased writes to NAND resulting in lower write endurance and decreased drive life. FTL data is still stored in the volatile cache, which leaves it at risk</p>
-<p>Capacitor hold-up circuitry<br>Pros: Data integrity is preserved in the event of a sudden power loss.<br>Cons: Increased cost due to inclusion of additional circuitry including capacitors. Additional board space is required.</p>
-<h3 id="Dell-Solid-State-Drive-FAQ"><a href="#Dell-Solid-State-Drive-FAQ" class="headerlink" title="Dell Solid-State-Drive-FAQ"></a><a href="http://www.dell.com/downloads/global/products/pvaul/en/Solid-State-Drive-FAQ-us.pdf" target="_blank" rel="external">Dell Solid-State-Drive-FAQ</a></h3>
+        <h3 id="Install-GCC-5-2-0"><a href="#Install-GCC-5-2-0" class="headerlink" title="Install GCC 5.2.0"></a><a href="http://en.librehat.com/blog/build-gcc-5-dot-2-on-rhel-6/" target="_blank" rel="external">Install GCC 5.2.0</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">wget http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2</span><br><span class="line">tar xf gcc-5.2.0.tar.bz2</span><br><span class="line">wget https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz</span><br><span class="line">tar xf gmp-6.0.0a.tar.xz</span><br><span class="line">mv gmp-6.0.0 gcc-5.2.0/gmp </span><br><span class="line">wget ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz</span><br><span class="line">tar xf mpc-1.0.3.tar.gz</span><br><span class="line">mv mpc-1.0.3 gcc-5.2.0/mpc</span><br><span class="line">wget http://www.mpfr.org/mpfr-current/mpfr-3.1.4.tar.xz</span><br><span class="line">tar xf mpfr-3.1.3.tar.xz</span><br><span class="line">mv mpfr-3.1.3 gcc-5.2.0/mpfr</span><br><span class="line">mkdir gcc-5.2.0/gcc-build &amp;&amp; <span class="built_in">cd</span> gcc-5.2.0/gcc-build</span><br><span class="line">../configure --prefix=<span class="variable">$HOME</span>/gcc5 </span><br><span class="line">            --disable-multilib </span><br><span class="line">            --enable-languages=c,c++ </span><br><span class="line">            --enable-libstdcxx-threads </span><br><span class="line">            --enable-libstdcxx-time </span><br><span class="line">            --enable-shared </span><br><span class="line">            --enable-__cxa_atexit </span><br><span class="line">            --disable-libunwind-exceptions </span><br><span class="line">            --disable-libada </span><br><span class="line">            --host x86_64-redhat-linux-gnu </span><br><span class="line">            --build x86_64-redhat-linux-gnu </span><br><span class="line">            --with-default-libstdcxx-abi=gcc4-compatible</span><br><span class="line"></span><br><span class="line">make -j 40</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h3 id="Check-C-11-support"><a href="#Check-C-11-support" class="headerlink" title="Check C++11 support"></a>Check C++11 support</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cat test.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">        #if __cplusplus==201402L</span><br><span class="line">        std::cout &lt;&lt; &quot;C++14&quot; &lt;&lt; std::endl;</span><br><span class="line">        #elif __cplusplus==201103L</span><br><span class="line">        std::cout &lt;&lt; &quot;C++11&quot; &lt;&lt; std::endl;</span><br><span class="line">        #else</span><br><span class="line">        std::cout &lt;&lt; &quot;C++&quot; &lt;&lt; std::endl;</span><br><span class="line">        #endif</span><br><span class="line"></span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">g++ -std=c++11 test.cpp -o test</span><br></pre></td></tr></table></figure>
+<p>./test<br>C++11</p>
+<h3 id="Install-blasr"><a href="#Install-blasr" class="headerlink" title="Install blasr"></a>Install blasr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">blasrpath=/xxxxxx/BLASR/blasr_el6</span><br><span class="line">HDF5=/xxxxxx/BLASR/hdf5-1.8.16-linux-centos6-x86_64-gcc447-shared</span><br><span class="line">LD_LIBRARY_PATH=<span class="variable">$blasrpath</span>/libcpp/alignment:<span class="variable">$blasrpath</span>/libcpp/hdf:<span class="variable">$blasrpath</span>/libcpp/pbdata:<span class="variable">$HDF5</span>/lib/:/xxxxxx/BLASR/blasr_el6/gcc/gcc5_el6/lib64:LD_LIBRARY</span><br><span class="line">PATH=/xxxxxx/BLASR/blasr_el6/gcc/gcc5_el6/bin:<span class="variable">$PATH</span></span><br><span class="line">./configure.py --shared --sub --no-pbbam HDF5_INCLUDE=<span class="variable">$HDF5</span>/include/ HDF5_LIB=<span class="variable">$HDF5</span>/lib</span><br><span class="line">make configure-submodule</span><br><span class="line">make build-submodule</span><br><span class="line">make blasr</span><br><span class="line">./blasr --version</span><br><span class="line">5.2</span><br><span class="line"></span><br><span class="line"><span class="comment">#benchamrk cpu</span></span><br><span class="line">time ./blasr /xxxxxx/BLASR/error_corrected_reads_7.fa /xxxxxx/BLASR/platypus.v2.fa.gapfilled.fa --sa /xxxxxx/BLASR/platypus.v2.fa.gapfilled.fa.blasr_sa --minMatch 11 --maxAnchorsPerPosition 500 --nproc $(cat /proc/cpuinfo | grep MHz -c) &gt; /dev/zero</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -357,9 +357,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssd/" rel="tag">#ssd</a>
+            <a href="/tags/bio/" rel="tag">#bio</a>
           
-            <a href="/tags/power/" rel="tag">#power</a>
+            <a href="/tags/software/" rel="tag">#software</a>
           
         </div>
       
@@ -368,17 +368,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/06/Trim-discard-support/" rel="next" title="Trim (discard) support">
-                <i class="fa fa-chevron-left"></i> Trim (discard) support
+              <a href="/2016/07/04/Monitor-ssd-device/" rel="next" title="Monitor intel ssd device">
+                <i class="fa fa-chevron-left"></i> Monitor intel ssd device
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/03/Benchmark_ConnectX®_3_Pro/" rel="prev" title="Benchmark ConnectX®-3 Pro VMA">
-                Benchmark ConnectX®-3 Pro VMA <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,7 +530,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Risks-of-unexpected-power-loss-on-solid-state-drives"><span class="nav-number">1.</span> <span class="nav-text">Risks of unexpected power loss on solid state drives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dell-Solid-State-Drive-FAQ"><span class="nav-number">2.</span> <span class="nav-text">Dell Solid-State-Drive-FAQ</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-GCC-5-2-0"><span class="nav-number">1.</span> <span class="nav-text">Install GCC 5.2.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-C-11-support"><span class="nav-number">2.</span> <span class="nav-text">Check C++11 support</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-blasr"><span class="nav-number">3.</span> <span class="nav-text">Install blasr</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -805,9 +801,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2016/06/02/About-SSD-power-loss/';
-      var disqus_title = 'About SSD power loss';
-      var disqus_url = 'http://yoursite.com/2016/06/02/About-SSD-power-loss/';
+      var disqus_identifier = '2016/07/05/Install-blasr-in-CentOS6/';
+      var disqus_title = 'Install blasr in CentOS6';
+      var disqus_url = 'http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

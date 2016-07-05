@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/</loc>
+    
+    <lastmod>2016-07-05T10:32:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/07/04/Monitor-ssd-device/</loc>
     
     <lastmod>2016-07-04T05:31:05.000Z</lastmod>
@@ -198,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
+    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -212,7 +219,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -226,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -240,21 +247,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
+    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
+    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
+    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
