@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,centos,zfs," />
+  <meta name="keywords" content="ssd,linux,hdd,raid," />
 
 
 
@@ -59,16 +59,19 @@
 
 
 
-<meta name="description" content="Replace HDD when raidz has degraded1234567891011121314151617181920212223242526272829$  zpool replace tank -f sdar$  zpool status  pool: tank state: DEGRADEDstatus: One or more devices is currently bei">
+<meta name="description" content="Nonrecoverable Read Errors(URE) per Bits Read1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)121e12*8 bytes = 1 (TB)(1e15)/(1e12*8)=125 (TB)
+1 byte per 10E14 (Desktop 5.9k/7.2k HDD)1(1e14">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Replace HDD for openzfs">
-<meta property="og:url" content="http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/index.html">
+<meta property="og:title" content="Calculate HDD SSD fault ratio">
+<meta property="og:url" content="http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Replace HDD when raidz has degraded1234567891011121314151617181920212223242526272829$  zpool replace tank -f sdar$  zpool status  pool: tank state: DEGRADEDstatus: One or more devices is currently bei">
-<meta property="og:updated_time" content="2016-03-08T16:08:11.000Z">
+<meta property="og:description" content="Nonrecoverable Read Errors(URE) per Bits Read1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)121e12*8 bytes = 1 (TB)(1e15)/(1e12*8)=125 (TB)
+1 byte per 10E14 (Desktop 5.9k/7.2k HDD)1(1e14">
+<meta property="og:updated_time" content="2016-07-20T09:20:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Replace HDD for openzfs">
-<meta name="twitter:description" content="Replace HDD when raidz has degraded1234567891011121314151617181920212223242526272829$  zpool replace tank -f sdar$  zpool status  pool: tank state: DEGRADEDstatus: One or more devices is currently bei">
+<meta name="twitter:title" content="Calculate HDD SSD fault ratio">
+<meta name="twitter:description" content="Nonrecoverable Read Errors(URE) per Bits Read1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)121e12*8 bytes = 1 (TB)(1e15)/(1e12*8)=125 (TB)
+1 byte per 10E14 (Desktop 5.9k/7.2k HDD)1(1e14">
 
 
 
@@ -86,7 +89,7 @@
   };
 </script>
 
-  <title> Replace HDD for openzfs | Homer's Blog </title>
+  <title> Calculate HDD SSD fault ratio | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +277,7 @@
             
             
               
-                Replace HDD for openzfs
+                Calculate HDD SSD fault ratio
               
             
           </h1>
@@ -286,8 +289,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-12-04T16:11:48+08:00" content="2015-12-04">
-              2015-12-04
+            <time itemprop="dateCreated" datetime="2016-07-20T14:30:04+08:00" content="2016-07-20">
+              2016-07-20
             </time>
           </span>
 
@@ -300,8 +303,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux configuration</span>
+                  <a href="/categories/tips/" itemprop="url" rel="index">
+                    <span itemprop="name">tips</span>
                   </a>
                 </span>
 
@@ -316,8 +319,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/04/Replace-HDD-for-openzfs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/04/Replace-HDD-for-openzfs/" itemprop="commentsCount"></span>
+                <a href="/2016/07/20/Calculate_HDD_SSD_fault_ratio/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/20/Calculate_HDD_SSD_fault_ratio/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,9 +342,16 @@
       
 
       
-        <h3 id="Replace-HDD-when-raidz-has-degraded"><a href="#Replace-HDD-when-raidz-has-degraded" class="headerlink" title="Replace HDD when raidz has degraded"></a>Replace HDD when raidz has degraded</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$  zpool replace tank <span class="_">-f</span> sdar</span><br><span class="line">$  zpool status</span><br><span class="line">  pool: tank</span><br><span class="line"> state: DEGRADED</span><br><span class="line">status: One or more devices is currently being resilvered.  The pool will</span><br><span class="line">        <span class="built_in">continue</span> to <span class="keyword">function</span>, possibly <span class="keyword">in</span> a degraded state.</span><br><span class="line">action: Wait <span class="keyword">for</span> the resilver to complete.</span><br><span class="line">  scan: resilver <span class="keyword">in</span> progress since Wed Aug 19 01:45:26 2015</span><br><span class="line">    91.6M scanned out of 66.9T at 9.16M/s, (scan is slow, no estimated time)</span><br><span class="line">    3.94M resilvered, 0.00% <span class="keyword">done</span></span><br><span class="line">......</span><br><span class="line">          raidz2-3                  DEGRADED     0     0     0</span><br><span class="line">            sdal                    ONLINE       0     0     0</span><br><span class="line">            sdam                    ONLINE       1    90     0</span><br><span class="line">            sdan                    ONLINE       0     0     0</span><br><span class="line">            sdao                    ONLINE       0     0     0</span><br><span class="line">            sdap                    ONLINE       0     0     0</span><br><span class="line">            sdaq                    ONLINE       0     0     0</span><br><span class="line">            replacing-6             UNAVAIL      0     0     0</span><br><span class="line">              old                   UNAVAIL    101     0     0</span><br><span class="line">              sdar                  ONLINE       0     0     0  (resilvering)</span><br><span class="line">            sdas                    ONLINE       0     0     0</span><br><span class="line">            sdat                    ONLINE       0     0     0</span><br><span class="line">            sdau                    ONLINE       0     0     0</span><br><span class="line">            sdav                    ONLINE       0     0     0</span><br><span class="line">        spares</span><br><span class="line">          scsi-35000c50021387d97    AVAIL</span><br><span class="line">          sdak                      AVAIL</span><br><span class="line">          sdaw                      AVAIL</span><br></pre></td></tr></table></figure>
-<h3 id="Replace-broken-HDD-and-insert-a-new-HDD-to-JBOD-enclosure"><a href="#Replace-broken-HDD-and-insert-a-new-HDD-to-JBOD-enclosure" class="headerlink" title="Replace broken HDD, and insert a new HDD to JBOD enclosure"></a>Replace broken HDD, and insert a new HDD to JBOD enclosure</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">$ zpool status</span><br><span class="line">  pool: tank</span><br><span class="line"> state: DEGRADED</span><br><span class="line">status: One or more devices is currently being resilvered.  The pool will</span><br><span class="line">        <span class="built_in">continue</span> to <span class="keyword">function</span>, possibly <span class="keyword">in</span> a degraded state.</span><br><span class="line">action: Wait <span class="keyword">for</span> the resilver to complete.</span><br><span class="line">  scan: resilver <span class="keyword">in</span> progress since Wed Aug 19 01:45:26 2015</span><br><span class="line">    90.5G scanned out of 66.9T at 232M/s, 83h45m to go</span><br><span class="line">    4.09G resilvered, 0.13% <span class="keyword">done</span></span><br><span class="line">config:</span><br><span class="line"></span><br><span class="line">        NAME                        STATE     READ WRITE CKSUM</span><br><span class="line">        tank                        DEGRADED     0     0     0</span><br><span class="line">          raidz2-0                  DEGRADED     0     0     0</span><br><span class="line">            scsi-35000c500212bff8b  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bed8f  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c24d7  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c1bdb  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212b9a0b  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c50034d625f7  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500575f9a87  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212baaeb  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bdcd3  UNAVAIL     33     0     0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ ls /dev/disk/by-id/scsi-35000c500212bdcd3</span><br><span class="line">ls: cannot access /dev/disk/by-id/scsi-35000c500212bdcd3: No such file or directory</span><br><span class="line"></span><br><span class="line">$ zpool replace tank scsi-35000c500212bdcd3</span><br><span class="line">cannot open <span class="string">'scsi-35000c500212bdcd3'</span>: no such device <span class="keyword">in</span> /dev</span><br><span class="line">must be a full path or shorthand device name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ dmesg</span><br><span class="line">.....</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Spinning up disk....................ready</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] 3907029168 512-byte logical blocks: (2.00 TB/1.81 TiB)</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Write Protect is off</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Write cache: enabled, <span class="built_in">read</span> cache: enabled, supports DPO and FUA</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sdk: unknown partition table</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Attached SCSI disk</span><br><span class="line"></span><br><span class="line"><span class="comment">#new hdd is sdk</span></span><br><span class="line">$ zpool add tank spare sdk</span><br><span class="line">        spares</span><br><span class="line">          scsi-35000c50021387d97    AVAIL</span><br><span class="line">          sdak                      AVAIL</span><br><span class="line">          sdaw                      AVAIL</span><br><span class="line">          sdk                       AVAIL</span><br><span class="line"></span><br><span class="line">$ zpool replace tank scsi-35000c500212bdcd3 sdk</span><br><span class="line">  scan: resilver <span class="keyword">in</span> progress since Wed Aug 19 01:57:53 2015</span><br><span class="line">    141M scanned out of 66.9T at 7.83M/s, (scan is slow, no estimated time)</span><br><span class="line">    8.72M resilvered, 0.00% <span class="keyword">done</span></span><br><span class="line">config:</span><br><span class="line"></span><br><span class="line">        NAME                          STATE     READ WRITE CKSUM</span><br><span class="line">        tank                          DEGRADED     0     0     0</span><br><span class="line">          raidz2-0                    DEGRADED     0     0     0</span><br><span class="line">            scsi-35000c500212bff8b    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bed8f    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c24d7    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c1bdb    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212b9a0b    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c50034d625f7    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500575f9a87    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212baaeb    ONLINE       0     0     0</span><br><span class="line">            spare-8                   UNAVAIL      0     0     0</span><br><span class="line">              scsi-35000c500212bdcd3  UNAVAIL     33     0     0</span><br><span class="line">              sdk                     ONLINE       0     0     0  (resilvering)</span><br></pre></td></tr></table></figure>
-<p>Well done, it’s worked.</p>
+        <h3 id="Nonrecoverable-Read-Errors-URE-per-Bits-Read"><a href="#Nonrecoverable-Read-Errors-URE-per-Bits-Read" class="headerlink" title="Nonrecoverable Read Errors(URE) per Bits Read"></a>Nonrecoverable Read Errors(URE) per Bits Read</h3><p>1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e12*8 bytes = 1 (TB)</span><br><span class="line">(1e15)/(1e12*8)=125 (TB)</span><br></pre></td></tr></table></figure></p>
+<p>1 byte per 10E14 (Desktop 5.9k/7.2k HDD)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1e14)/(1e12*8)=12.5 (TB)</span><br></pre></td></tr></table></figure></p>
+<p>1 byte per 10E17 (Enterprise SSD)<br>1 byte per 10E16 (Desktop SSD/SAS 15k HDD)</p>
+<h4 id="Calculate-failt-ratio-of-unrecoverable-read-error"><a href="#Calculate-failt-ratio-of-unrecoverable-read-error" class="headerlink" title="Calculate failt ratio of unrecoverable read error"></a><a href="https://www.high-rely.com/blog/why-raid-5-stops-working-in-2009-not/" target="_blank" rel="external">Calculate failt ratio of unrecoverable read error</a></h4><p>The probability equation they use for a successful read of all bits on a drive is<br>(1-1/b)^a<br>“b” = the Bit Error Rate (BER) also known as Unrecoverable Read Error(URE) rate<br>“a” = Number of Bits read (the amount of data on an entire volume or drive)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">6e12*8=6TB (raidz 5/6 rebuild is that raid of each HDD full scan 6TB data for XOR)</span><br><span class="line">I think each device has the same fault ratio,there is no any connection with raid disk number, it &apos;s just talk about &quot;Nonrecoverable Read Errors&quot;.</span><br><span class="line"></span><br><span class="line">rebuild device fault ratio cause by URE:</span><br><span class="line"></span><br><span class="line">6TB (if this byte has read 6TB)</span><br><span class="line">1-(1-1e-15)^(6e12*8)=0.046829644</span><br><span class="line"></span><br><span class="line">8TB </span><br><span class="line">0.06194</span><br><span class="line"></span><br><span class="line">10TB</span><br><span class="line">0.07682</span><br><span class="line"></span><br><span class="line">12TB</span><br><span class="line">0.09147</span><br><span class="line"></span><br><span class="line">20TB</span><br><span class="line">0.14775</span><br></pre></td></tr></table></figure>
+<h4 id="rebuild-device-error-ratio-by-MTBF"><a href="#rebuild-device-error-ratio-by-MTBF" class="headerlink" title="rebuild device error ratio by MTBF"></a>rebuild device error ratio by MTBF</h4><p>Mean Time Between Failures (MTBF) (hours) = 1M<br>You could get running time from smartctl<br>I assumed the raid device had running 1,3,5 years<br>365<em>1</em>24/1000000=0.00876 in each HDD<br>365<em>3</em>24/1000000=0.02628 in each HDD<br>365<em>5</em>24/1000000=0.04380 in each HDD</p>
+<h4 id="Production-environment-data-read-size"><a href="#Production-environment-data-read-size" class="headerlink" title="Production environment data read size"></a>Production environment data read size</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">smartctl <span class="_">-a</span> <span class="_">-d</span> scsi /dev/sdz</span><br><span class="line">number of hours powered up = 9919.17</span><br><span class="line">       Gigabytes</span><br><span class="line">       processed</span><br><span class="line">       [10^9 bytes]</span><br><span class="line"><span class="built_in">read</span>:  366268.989</span><br><span class="line"></span><br><span class="line">Read data:</span><br><span class="line">366274.390/9921.3*24*356*3/8/1000=118.285 (TB)</span><br><span class="line">Sort each byte <span class="built_in">read</span> capacity of HDD and get the maximum <span class="built_in">read</span> capacity of the byte ? I don <span class="string">'t know how to do.</span><br><span class="line">If the maximum byte of HDD has been read 23.657 TB (20% hot data)</span><br><span class="line"></span><br><span class="line">1-(1-1e-15)^(7.88568*8)=0.061089 (1y)</span><br><span class="line"></span><br><span class="line">1-(1-1e-15)^(23.657e12*8)=0.1723 (3y)</span><br><span class="line"></span><br><span class="line">1-(1-1e-15)^(39.4284*8)=0.270339 (5y)</span></span><br></pre></td></tr></table></figure>
+<h5 id="Ratio-of-2-devices-damaged-simultaneously-some-case-could-be-cause-data-loss"><a href="#Ratio-of-2-devices-damaged-simultaneously-some-case-could-be-cause-data-loss" class="headerlink" title="Ratio of 2 devices damaged simultaneously (some case could be cause data loss)"></a>Ratio of 2 devices damaged simultaneously (some case could be cause data loss)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(0.00876+0.061089)^2=0.004879 (1 years, 20% hot)</span><br><span class="line">(0.02628+0.1723)^2=0.039434 (3 years, 20% hot)</span><br><span class="line">(0.04380+0.270339)^2=0.0986833 (5 years, 20% hot)</span><br><span class="line"></span><br><span class="line">Rebuild speed about 1TB/day</span><br><span class="line">6TB = 144 hours</span><br><span class="line">8TB = 192 hours</span><br><span class="line">10TB = 240 hours</span><br><span class="line">12TB = 288 hours</span><br></pre></td></tr></table></figure>
+<h3 id="HDD-DWPD"><a href="#HDD-DWPD" class="headerlink" title="HDD DWPD"></a>HDD DWPD</h3><p>ST10000VN0004 10TB<br>Workload Rate Limit (WRL) (TB/year) = 180<br>Warranty, Limited (years) = 3<br>DWPD(5y)=540/365/5=0.29589</p>
+<p><a href="http://superuser.com/questions/516949/formula-to-calculate-probability-of-unrecoverable-read-error-during-raid-rebuild" target="_blank" rel="external">Formula to calculate probability of unrecoverable read error during RAID rebuild</a><br><a href="http://queue.acm.org/detail.cfm?id=1670144" target="_blank" rel="external">Triple-Parity RAID and Beyond</a><br><a href="http://www.seagate.com/www-content/product-content/ironwolf/files/ironwolf-ds-1904-1-1606us.pdf" target="_blank" rel="external">seagate ironwolf spec</a><br><a href="http://math.stackexchange.com/questions/853643/how-to-convert-1e11-into-number" target="_blank" rel="external">how to convert 1e11 into number</a></p>
 
       
     </div>
@@ -356,11 +366,13 @@
       
         <div class="post-tags">
           
+            <a href="/tags/ssd/" rel="tag">#ssd</a>
+          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/centos/" rel="tag">#centos</a>
+            <a href="/tags/hdd/" rel="tag">#hdd</a>
           
-            <a href="/tags/zfs/" rel="tag">#zfs</a>
+            <a href="/tags/raid/" rel="tag">#raid</a>
           
         </div>
       
@@ -369,17 +381,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/04/Openzfs-tips/" rel="next" title="Openzfs tips">
-                <i class="fa fa-chevron-left"></i> Openzfs tips
+              <a href="/2016/07/05/Install-blasr-in-CentOS6/" rel="next" title="Install blasr in CentOS6">
+                <i class="fa fa-chevron-left"></i> Install blasr in CentOS6
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/08/Encrypt-block-device/" rel="prev" title="Encrypt block device">
-                Encrypt block device <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,7 +543,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Replace-HDD-when-raidz-has-degraded"><span class="nav-number">1.</span> <span class="nav-text">Replace HDD when raidz has degraded</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replace-broken-HDD-and-insert-a-new-HDD-to-JBOD-enclosure"><span class="nav-number">2.</span> <span class="nav-text">Replace broken HDD, and insert a new HDD to JBOD enclosure</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nonrecoverable-Read-Errors-URE-per-Bits-Read"><span class="nav-number">1.</span> <span class="nav-text">Nonrecoverable Read Errors(URE) per Bits Read</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Calculate-failt-ratio-of-unrecoverable-read-error"><span class="nav-number">1.1.</span> <span class="nav-text">Calculate failt ratio of unrecoverable read error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rebuild-device-error-ratio-by-MTBF"><span class="nav-number">1.2.</span> <span class="nav-text">rebuild device error ratio by MTBF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Production-environment-data-read-size"><span class="nav-number">1.3.</span> <span class="nav-text">Production environment data read size</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ratio-of-2-devices-damaged-simultaneously-some-case-could-be-cause-data-loss"><span class="nav-number">1.3.1.</span> <span class="nav-text">Ratio of 2 devices damaged simultaneously (some case could be cause data loss)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDD-DWPD"><span class="nav-number">2.</span> <span class="nav-text">HDD DWPD</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -806,9 +814,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2015/12/04/Replace-HDD-for-openzfs/';
-      var disqus_title = 'Replace HDD for openzfs';
-      var disqus_url = 'http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/';
+      var disqus_identifier = '2016/07/20/Calculate_HDD_SSD_fault_ratio/';
+      var disqus_title = 'Calculate HDD SSD fault ratio';
+      var disqus_url = 'http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
