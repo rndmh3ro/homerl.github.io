@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-09T16:32:43.738Z</updated>
+  <updated>2016-09-04T11:30:07.773Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kcptun_and_shadowsocks</title>
+    <link href="http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/"/>
+    <id>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</id>
+    <published>2016-09-04T11:06:05.000Z</published>
+    <updated>2016-09-04T11:30:07.773Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Server-Parameters&quot;&gt;&lt;a href=&quot;#Server-Parameters&quot; class=&quot;headerlink&quot; title=&quot;Server Parameters&quot;&gt;&lt;/a&gt;Server Parameters&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;su &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; /bin/bash nobody -c &lt;span class=&quot;string&quot;&gt;&#39;./server_linux_amd64 -l &quot;vps_ip:kcptun_port&quot; -t &quot;serer_ip:shadowsocks_port&quot; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Client-Parameters&quot;&gt;&lt;a href=&quot;#Client-Parameters&quot; class=&quot;headerlink&quot; title=&quot;Client Parameters&quot;&gt;&lt;/a&gt;Client Parameters&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;./client_linux_amd64 -r &lt;span class=&quot;string&quot;&gt;&quot;vps_ip:kcptun_port&quot;&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;:kcptun_client_port&quot;&lt;/span&gt; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Modify-shadowsocks-config&quot;&gt;&lt;a href=&quot;#Modify-shadowsocks-config&quot; class=&quot;headerlink&quot; title=&quot;Modify shadowsocks config&quot;&gt;&lt;/a&gt;Modify shadowsocks config&lt;/h3&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&quot;server&quot;:&quot;127.0.0.1&quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&quot;server_port&quot;:kcptun_client_port,&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Browser proxy setting no changed (local port of shadowsocks client)&lt;/p&gt;
+&lt;h3 id=&quot;Some-of-issues&quot;&gt;&lt;a href=&quot;#Some-of-issues&quot; class=&quot;headerlink&quot; title=&quot;Some of issues&quot;&gt;&lt;/a&gt;Some of issues&lt;/h3&gt;&lt;p&gt;There is no “localhost/127.0.0.1” in openvz envirnoment, you need replace it by ip address&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Server-Parameters&quot;&gt;&lt;a href=&quot;#Server-Parameters&quot; class=&quot;headerlink&quot; title=&quot;Server Parameters&quot;&gt;&lt;/a&gt;Server Parameters&lt;/h3&gt;&lt;figure class
+    
+    </summary>
+    
+      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
+    
+    
+      <category term="shadowsocks" scheme="http://yoursite.com/tags/shadowsocks/"/>
+    
+  </entry>
   
   <entry>
     <title>Advance reformat 4Kn HDD to 512 Bytes</title>
@@ -42,9 +69,9 @@
       <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
     
     
-      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
+    
+      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
     
       <category term="sas" scheme="http://yoursite.com/tags/sas/"/>
     
@@ -78,9 +105,9 @@
       <category term="tips" scheme="http://yoursite.com/categories/tips/"/>
     
     
-      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
+    
+      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
     
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
@@ -1252,40 +1279,6 @@
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="xfs" scheme="http://yoursite.com/tags/xfs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Yum tips</title>
-    <link href="http://yoursite.com/2016/03/22/Yum-tips/"/>
-    <id>http://yoursite.com/2016/03/22/Yum-tips/</id>
-    <published>2016-03-22T09:19:55.000Z</published>
-    <updated>2016-03-23T05:44:09.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Exclude-packages&quot;&gt;&lt;a href=&quot;#Exclude-packages&quot; class=&quot;headerlink&quot; title=&quot;Exclude packages&quot;&gt;&lt;/a&gt;Exclude packages&lt;/h3&gt;&lt;h4 id=&quot;Cli&quot;&gt;&lt;a href=&quot;#Cli&quot; class=&quot;headerlink&quot; title=&quot;Cli&quot;&gt;&lt;/a&gt;Cli&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ yum update --exclude=kernel*&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;yum-conf&quot;&gt;&lt;a href=&quot;#yum-conf&quot; class=&quot;headerlink&quot; title=&quot;yum.conf&quot;&gt;&lt;/a&gt;yum.conf&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[main]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cachedir=/var/cache/yum/&lt;span class=&quot;variable&quot;&gt;$basearch&lt;/span&gt;/&lt;span class=&quot;variable&quot;&gt;$releasever&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keepcache=0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;debuglevel=2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;logfile=/var/&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;/yum.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exclude=kernel* redhat-release* *.i?86&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;a href=&quot;https://access.redhat.com/solutions/10185&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Switch-version&quot;&gt;&lt;a href=&quot;#Switch-version&quot; class=&quot;headerlink&quot; title=&quot;Switch version&quot;&gt;&lt;/a&gt;Switch version&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ yum --showduplicates list kernel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Installed Packages&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Installed Packages&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.el6       @anaconda-CentOS-201508042137.x86_64/6.7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.8.1.el6   @update                                 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Available Packages&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.el6       base                                    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.1.1.el6   update                                  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.3.1.el6   update                                  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.7.1.el6   update                                  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.8.1.el6   update                                  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.12.1.el6  update                                  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel.x86_64       2.6.32-573.18.1.el6  update  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;``` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;### Save rpms to local&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#### Yum.conf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```apacheconf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keepcache = 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;Cli-1&quot;&gt;&lt;a href=&quot;#Cli-1&quot; class=&quot;headerlink&quot; title=&quot;Cli&quot;&gt;&lt;/a&gt;Cli&lt;/h4&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ yum -y install yum-plugin-downloadonly&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ yum install --downloadonly --downloaddir=&amp;lt;directory&amp;gt; &amp;lt;package&lt;span class=&quot;string&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;a href=&quot;https://access.redhat.com/solutions/10154&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Resolve-dependency-resolution-errors&quot;&gt;&lt;a href=&quot;#Resolve-dependency-resolution-errors&quot; class=&quot;headerlink&quot; title=&quot;Resolve dependency resolution errors&quot;&gt;&lt;/a&gt;Resolve dependency resolution errors&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# yum update&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;** Found 5 pre-existing rpmdb problem(s), &lt;span class=&quot;string&quot;&gt;&#39;yum check&#39;&lt;/span&gt; output follows:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;MegaCli-8.04.10-1.noarch is a duplicate with MegaCli-8.04.07-1.noarch&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel-2.6.32-279.5.1.el6_lustre.gb16fe80.x86_64 has missing requires of kernel-firmware &amp;gt;= (&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;2.6.32&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;279.5.1.el6_lustre.gb16fe80&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel-firmware-2.6.32-279.5.1.el6.noarch is a duplicate with kernel-firmware-2.6.32-279.el6.noarch&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kernel-headers-2.6.32-279.5.1.el6.x86_64 is a duplicate with kernel-headers-2.6.32-279.el6.x86_64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;libcom_err-1.42.3.wc3-7.el6.x86_64 is a duplicate with libcom_err-1.41.12-12.el6.i686&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;......&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;You could try using --skip-broken to work around the problem&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;You could try running: rpm -Va --nofiles --nodigest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;Uninstall-rpm-packages-from-rpmdb&quot;&gt;&lt;a href=&quot;#Uninstall-rpm-packages-from-rpmdb&quot; class=&quot;headerlink&quot; title=&quot;Uninstall rpm packages from rpmdb&quot;&gt;&lt;/a&gt;Uninstall rpm packages from rpmdb&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ rpm &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; --justdb --nodeps &lt;span class=&quot;string&quot;&gt;&quot;bad rpm packages&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rpm -ivh --force &lt;span class=&quot;string&quot;&gt;&quot;replace normal rpm packages&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# rebuild rpmdb&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /var/lib/rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rm  &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; __db*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rpm --rebuilddb &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ yum clean all&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ yum -y update&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Exclude-packages&quot;&gt;&lt;a href=&quot;#Exclude-packages&quot; class=&quot;headerlink&quot; title=&quot;Exclude packages&quot;&gt;&lt;/a&gt;Exclude packages&lt;/h3&gt;&lt;h4 id=&quot;Cli&quot;&gt;&lt;a h
-    
-    </summary>
-    
-      <category term="tips" scheme="http://yoursite.com/categories/tips/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="cli" scheme="http://yoursite.com/tags/cli/"/>
-    
-      <category term="yum" scheme="http://yoursite.com/tags/yum/"/>
     
   </entry>
   
