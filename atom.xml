@@ -1031,31 +1031,6 @@
   </entry>
   
   <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -1078,6 +1053,31 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
