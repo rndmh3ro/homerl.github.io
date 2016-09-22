@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,centos,zfs," />
+  <meta name="keywords" content="linux,zfs,centos," />
 
 
 
@@ -62,7 +62,7 @@
 <meta name="description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
+Rmount1zpool set mou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openzfs tips">
 <meta property="og:url" content="http://yoursite.com/2015/12/04/Openzfs-tips/index.html">
@@ -70,14 +70,14 @@ Zpool rename12zpool">
 <meta property="og:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
-<meta property="og:updated_time" content="2016-04-14T02:02:23.000Z">
+Rmount1zpool set mou">
+<meta property="og:updated_time" content="2016-09-14T08:24:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openzfs tips">
 <meta name="twitter:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Zpool rename12zpool">
+Rmount1zpool set mou">
 
 
 
@@ -350,7 +350,8 @@ Zpool rename12zpool">
       
         <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
 <h3 id="Xattr"><a href="#Xattr" class="headerlink" title="Xattr"></a>Xattr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> xattr=sa tank</span><br></pre></td></tr></table></figure>
-<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs set acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>
+<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>
+<h3 id="Rmount"><a href="#Rmount" class="headerlink" title="Rmount"></a>Rmount</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">set</span> mountpoint=/var/lib/mysql /tank</span><br></pre></td></tr></table></figure>
 <h3 id="Zpool-rename"><a href="#Zpool-rename" class="headerlink" title="Zpool rename"></a>Zpool rename</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">export</span> app</span><br><span class="line">zpool import app apps</span><br></pre></td></tr></table></figure>
 <h3 id="Detach-hdd-from-mirror"><a href="#Detach-hdd-from-mirror" class="headerlink" title="Detach hdd from mirror"></a>Detach hdd from mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zpool detach tank sdz <span class="comment">#detach zda from mirror-17</span></span><br><span class="line">only sdal <span class="keyword">in</span> mirror-17, and mirror-17 is missing</span><br><span class="line"></span><br><span class="line">          mirror-16  ONLINE       0     0     0</span><br><span class="line">            sdai     ONLINE       0     0     0</span><br><span class="line">            sdaj     ONLINE       0     0     0</span><br><span class="line">          sdal       ONLINE       0     0     0</span><br><span class="line">          mirror-18  ONLINE       0     0     0</span><br><span class="line">            sdam     ONLINE       0     0     0</span><br><span class="line">            sdan     ONLINE       0     0     0</span><br></pre></td></tr></table></figure>
 <h3 id="Attach-one-hdd-to-mirror"><a href="#Attach-one-hdd-to-mirror" class="headerlink" title="Attach one hdd to mirror"></a>Attach one hdd to mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zpool attach tank sdal sdz</span><br><span class="line">          mirror-17  ONLINE       0     0     0</span><br><span class="line">            sdal     ONLINE       0     0     0</span><br><span class="line">            sdz      ONLINE       0     0     0  (resilvering)</span><br></pre></td></tr></table></figure>
@@ -400,9 +401,9 @@ Zpool rename12zpool">
           
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/centos/" rel="tag">#centos</a>
-          
             <a href="/tags/zfs/" rel="tag">#zfs</a>
+          
+            <a href="/tags/centos/" rel="tag">#centos</a>
           
         </div>
       
@@ -496,7 +497,7 @@ Zpool rename12zpool">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -577,7 +578,7 @@ Zpool rename12zpool">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compression"><span class="nav-number">1.</span> <span class="nav-text">Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xattr"><span class="nav-number">2.</span> <span class="nav-text">Xattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL"><span class="nav-number">3.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zpool-rename"><span class="nav-number">4.</span> <span class="nav-text">Zpool rename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detach-hdd-from-mirror"><span class="nav-number">5.</span> <span class="nav-text">Detach hdd from mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attach-one-hdd-to-mirror"><span class="nav-number">6.</span> <span class="nav-text">Attach one hdd to mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-number">7.</span> <span class="nav-text">dir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quota"><span class="nav-number">8.</span> <span class="nav-text">Quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-quota"><span class="nav-number">9.</span> <span class="nav-text">user quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limit-memory-usage"><span class="nav-number">10.</span> <span class="nav-text">Limit memory usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Custome-mount-path"><span class="nav-number">11.</span> <span class="nav-text">Custome mount path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-and-remove-hotspare"><span class="nav-number">12.</span> <span class="nav-text">Add and remove hotspare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-zfs-label"><span class="nav-number">13.</span> <span class="nav-text">Clear zfs label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lz4-Compression-ratio"><span class="nav-number">14.</span> <span class="nav-text">Lz4 Compression ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-rebuild"><span class="nav-number">15.</span> <span class="nav-text">Auto rebuild</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-performance"><span class="nav-number">16.</span> <span class="nav-text">Show performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuning-for-Scrubs-and-Resilvers"><span class="nav-number">17.</span> <span class="nav-text">Tuning for Scrubs and Resilvers</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Compression"><span class="nav-number">1.</span> <span class="nav-text">Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xattr"><span class="nav-number">2.</span> <span class="nav-text">Xattr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL"><span class="nav-number">3.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rmount"><span class="nav-number">4.</span> <span class="nav-text">Rmount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zpool-rename"><span class="nav-number">5.</span> <span class="nav-text">Zpool rename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detach-hdd-from-mirror"><span class="nav-number">6.</span> <span class="nav-text">Detach hdd from mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attach-one-hdd-to-mirror"><span class="nav-number">7.</span> <span class="nav-text">Attach one hdd to mirror</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-number">8.</span> <span class="nav-text">dir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quota"><span class="nav-number">9.</span> <span class="nav-text">Quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-quota"><span class="nav-number">10.</span> <span class="nav-text">user quota</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limit-memory-usage"><span class="nav-number">11.</span> <span class="nav-text">Limit memory usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Custome-mount-path"><span class="nav-number">12.</span> <span class="nav-text">Custome mount path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-and-remove-hotspare"><span class="nav-number">13.</span> <span class="nav-text">Add and remove hotspare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clear-zfs-label"><span class="nav-number">14.</span> <span class="nav-text">Clear zfs label</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lz4-Compression-ratio"><span class="nav-number">15.</span> <span class="nav-text">Lz4 Compression ratio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-rebuild"><span class="nav-number">16.</span> <span class="nav-text">Auto rebuild</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-performance"><span class="nav-number">17.</span> <span class="nav-text">Show performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuning-for-Scrubs-and-Resilvers"><span class="nav-number">18.</span> <span class="nav-text">Tuning for Scrubs and Resilvers</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
