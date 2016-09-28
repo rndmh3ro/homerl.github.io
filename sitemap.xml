@@ -4,7 +4,7 @@
   <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2016-09-22T05:41:13.000Z</lastmod>
+    <lastmod>2016-09-22T05:41:13.947Z</lastmod>
     
   </url>
   
@@ -18,14 +18,14 @@
   <url>
     <loc>http://yoursite.com/2016/09/14/Robinhood-3-mysql-5-7-and-openzfs-archive-data-to-cloud/</loc>
     
-    <lastmod>2016-09-14T08:46:20.000Z</lastmod>
+    <lastmod>2016-09-14T08:46:20.345Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
-    <lastmod>2016-09-14T08:24:24.000Z</lastmod>
+    <lastmod>2016-09-14T08:24:24.740Z</lastmod>
     
   </url>
   
@@ -46,35 +46,35 @@
   <url>
     <loc>http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/</loc>
     
-    <lastmod>2016-07-20T09:23:11.000Z</lastmod>
+    <lastmod>2016-07-20T09:23:11.187Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/07/04/Monitor-ssd-device/</loc>
     
-    <lastmod>2016-07-05T10:36:19.000Z</lastmod>
+    <lastmod>2016-07-05T10:36:19.036Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/</loc>
     
-    <lastmod>2016-07-05T10:32:06.000Z</lastmod>
+    <lastmod>2016-07-05T10:32:06.682Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/</loc>
     
-    <lastmod>2016-06-16T07:41:45.000Z</lastmod>
+    <lastmod>2016-06-16T07:41:45.422Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/06/03/Benchmark_ConnectX%C2%AE_3_Pro/</loc>
     
-    <lastmod>2016-06-14T08:55:53.000Z</lastmod>
+    <lastmod>2016-06-14T08:55:53.874Z</lastmod>
     
   </url>
   
@@ -88,7 +88,7 @@
   <url>
     <loc>http://yoursite.com/2016/04/25/Raid-in-SSD/</loc>
     
-    <lastmod>2016-05-13T06:00:21.000Z</lastmod>
+    <lastmod>2016-05-13T06:00:21.752Z</lastmod>
     
   </url>
   
@@ -102,7 +102,7 @@
   <url>
     <loc>http://yoursite.com/2016/03/01/Mariadb-benchmark-iops/</loc>
     
-    <lastmod>2016-05-05T03:12:14.000Z</lastmod>
+    <lastmod>2016-05-05T03:12:14.867Z</lastmod>
     
   </url>
   
@@ -130,28 +130,28 @@
   <url>
     <loc>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</loc>
     
-    <lastmod>2016-04-08T07:39:38.000Z</lastmod>
+    <lastmod>2016-04-08T07:39:38.506Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/05/Cut-file-by-byte/</loc>
     
-    <lastmod>2016-04-05T09:58:19.000Z</lastmod>
+    <lastmod>2016-04-05T09:58:19.126Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
-    <lastmod>2016-04-05T03:01:47.000Z</lastmod>
+    <lastmod>2016-04-05T03:01:47.526Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/03/29/golang-bitwise-operators/</loc>
     
-    <lastmod>2016-04-05T02:25:03.000Z</lastmod>
+    <lastmod>2016-04-05T02:25:03.630Z</lastmod>
     
   </url>
   
@@ -172,35 +172,35 @@
   <url>
     <loc>http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/</loc>
     
-    <lastmod>2016-03-23T07:15:30.000Z</lastmod>
+    <lastmod>2016-03-23T07:15:30.840Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/03/22/Yum-tips/</loc>
     
-    <lastmod>2016-03-23T05:44:09.000Z</lastmod>
+    <lastmod>2016-03-23T05:44:09.780Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/03/22/Software-install-at-centos-5-6/</loc>
     
-    <lastmod>2016-03-23T02:24:27.000Z</lastmod>
+    <lastmod>2016-03-23T02:24:27.824Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/03/22/High-availability-cluster-in-linux/</loc>
     
-    <lastmod>2016-03-22T09:10:32.000Z</lastmod>
+    <lastmod>2016-03-22T09:10:32.877Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tools/index.html</loc>
     
-    <lastmod>2016-03-21T06:54:02.000Z</lastmod>
+    <lastmod>2016-03-21T06:54:02.090Z</lastmod>
     
   </url>
   
@@ -233,7 +233,35 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -254,20 +282,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/11/06/Some%20of%20Important%20HDD%20spec/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
@@ -275,21 +289,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
