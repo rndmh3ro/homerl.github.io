@@ -4,7 +4,14 @@
   <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2016-09-22T05:41:13.947Z</lastmod>
+    <lastmod>2016-11-09T09:00:13.506Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2016-09-29T15:04:45.224Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2016/09/14/Robinhood-3-mysql-5-7-and-openzfs-archive-data-to-cloud/</loc>
     
     <lastmod>2016-09-14T08:46:20.345Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2016-09-14T08:24:24.740Z</lastmod>
     
   </url>
   
@@ -233,14 +233,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
+    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -254,13 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
-    
-    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
@@ -268,14 +254,28 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
+    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
+    <loc>http://yoursite.com/2016/01/25/rdesktop-to-windows10/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Replace-HDD-for-openzfs/</loc>
+    
+    <lastmod>2016-03-08T16:08:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/08/Encrypt-block-device/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     
@@ -289,7 +289,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
+    <loc>http://yoursite.com/2015/11/06/Tips-hard-drive-disk/</loc>
     
     <lastmod>2016-03-08T16:08:11.000Z</lastmod>
     

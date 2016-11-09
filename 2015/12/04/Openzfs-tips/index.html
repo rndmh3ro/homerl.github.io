@@ -62,7 +62,7 @@
 <meta name="description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Rmount1zpool set mou">
+Rmount123zfs set mou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openzfs tips">
 <meta property="og:url" content="http://yoursite.com/2015/12/04/Openzfs-tips/index.html">
@@ -70,14 +70,14 @@ Rmount1zpool set mou">
 <meta property="og:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Rmount1zpool set mou">
-<meta property="og:updated_time" content="2016-09-14T08:24:24.740Z">
+Rmount123zfs set mou">
+<meta property="og:updated_time" content="2016-09-29T15:04:45.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openzfs tips">
 <meta name="twitter:description" content="Compression12zfs set compression=lz4 tankzfs set compression=gzip-9 tank
 Xattr1zfs set xattr=sa tank
 ACL12zfs set acltype=posixacl tank/gentoo/homezfs get acltype tank/gentoo/home
-Rmount1zpool set mou">
+Rmount123zfs set mou">
 
 
 
@@ -351,7 +351,7 @@ Rmount1zpool set mou">
         <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
 <h3 id="Xattr"><a href="#Xattr" class="headerlink" title="Xattr"></a>Xattr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> xattr=sa tank</span><br></pre></td></tr></table></figure>
 <h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>
-<h3 id="Rmount"><a href="#Rmount" class="headerlink" title="Rmount"></a>Rmount</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">set</span> mountpoint=/var/lib/mysql /tank</span><br></pre></td></tr></table></figure>
+<h3 id="Rmount"><a href="#Rmount" class="headerlink" title="Rmount"></a>Rmount</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> mountpoint=/var/lib/mysql tank/mysql</span><br><span class="line">zfs umount tank/mysql</span><br><span class="line">zfs mount tank/mysql</span><br></pre></td></tr></table></figure>
 <h3 id="Zpool-rename"><a href="#Zpool-rename" class="headerlink" title="Zpool rename"></a>Zpool rename</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">export</span> app</span><br><span class="line">zpool import app apps</span><br></pre></td></tr></table></figure>
 <h3 id="Detach-hdd-from-mirror"><a href="#Detach-hdd-from-mirror" class="headerlink" title="Detach hdd from mirror"></a>Detach hdd from mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zpool detach tank sdz <span class="comment">#detach zda from mirror-17</span></span><br><span class="line">only sdal <span class="keyword">in</span> mirror-17, and mirror-17 is missing</span><br><span class="line"></span><br><span class="line">          mirror-16  ONLINE       0     0     0</span><br><span class="line">            sdai     ONLINE       0     0     0</span><br><span class="line">            sdaj     ONLINE       0     0     0</span><br><span class="line">          sdal       ONLINE       0     0     0</span><br><span class="line">          mirror-18  ONLINE       0     0     0</span><br><span class="line">            sdam     ONLINE       0     0     0</span><br><span class="line">            sdan     ONLINE       0     0     0</span><br></pre></td></tr></table></figure>
 <h3 id="Attach-one-hdd-to-mirror"><a href="#Attach-one-hdd-to-mirror" class="headerlink" title="Attach one hdd to mirror"></a>Attach one hdd to mirror</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zpool attach tank sdal sdz</span><br><span class="line">          mirror-17  ONLINE       0     0     0</span><br><span class="line">            sdal     ONLINE       0     0     0</span><br><span class="line">            sdz      ONLINE       0     0     0  (resilvering)</span><br></pre></td></tr></table></figure>
