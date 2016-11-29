@@ -4,12 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[Robinhood 3, mysql 5.7  and openzfs archive data to cloud]]></title>
-      <url>http://yoursite.com/2016/09/14/Robinhood-3-mysql-5-7-and-openzfs-archive-data-to-cloud/</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[kcptun_and_shadowsocks]]></title>
       <url>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</url>
       <content type="html"><![CDATA[<h3 id="Server-Parameters"><a href="#Server-Parameters" class="headerlink" title="Server Parameters"></a>Server Parameters</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su <span class="_">-s</span> /bin/bash nobody -c <span class="string">'./server_linux_amd64 -l "vps_ip:kcptun_port" -t "serer_ip:shadowsocks_port" -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3'</span></span><br></pre></td></tr></table></figure>
@@ -795,17 +789,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SSD Interface]]></title>
-      <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
-      <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
-<h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
 ]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
+      <title><![CDATA[SSD Interface]]></title>
+      <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
+      <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
+<h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
 ]]></content>
     </entry>
     
