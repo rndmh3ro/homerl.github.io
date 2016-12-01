@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-04T11:30:07.000Z</updated>
+  <updated>2016-12-01T05:35:19.024Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Record and Replay Linux Terminal</title>
+    <link href="http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/"/>
+    <id>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</id>
+    <published>2016-12-01T05:30:33.000Z</published>
+    <updated>2016-12-01T05:35:19.024Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;script-and-scriptreplay&quot;&gt;&lt;a href=&quot;#script-and-scriptreplay&quot; class=&quot;headerlink&quot; title=&quot;script and scriptreplay&quot;&gt;&lt;/a&gt;script and scriptreplay&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ script --timing=time.txt script.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# record what you do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ scriptreplay --timing=time.txt script.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# replay&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;script-and-scriptreplay&quot;&gt;&lt;a href=&quot;#script-and-scriptreplay&quot; class=&quot;headerlink&quot; title=&quot;script and scriptreplay&quot;&gt;&lt;/a&gt;script and script
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://yoursite.com/categories/Tools/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="terminal" scheme="http://yoursite.com/tags/terminal/"/>
+    
+      <category term="record" scheme="http://yoursite.com/tags/record/"/>
+    
+  </entry>
   
   <entry>
     <title>kcptun_and_shadowsocks</title>
@@ -1257,34 +1284,6 @@
       <category term="golang" scheme="http://yoursite.com/tags/golang/"/>
     
       <category term="bitwise" scheme="http://yoursite.com/tags/bitwise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XFS regularly truncating files after crash</title>
-    <link href="http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/"/>
-    <id>http://yoursite.com/2016/03/23/XFS-regularly-truncating-files-after-crash/</id>
-    <published>2016-03-23T06:35:37.000Z</published>
-    <updated>2016-03-23T07:15:30.840Z</updated>
-    
-    <content type="html">&lt;p&gt;There are some CentOS 6.2 server loss xxGB data, write a script to recovery&lt;/p&gt;
-&lt;h3 id=&quot;Recover-file&quot;&gt;&lt;a href=&quot;#Recover-file&quot; class=&quot;headerlink&quot; title=&quot;Recover file&quot;&gt;&lt;/a&gt;Recover file&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ls -ih&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ xfs_db -r /dev/sdb -c &lt;span class=&quot;string&quot;&gt;&quot;inode 70179&quot;&lt;/span&gt; -c &lt;span class=&quot;string&quot;&gt;&quot;bmap&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;data offset 0 startblock 2459337662 (9/43418558) count 1 flag 0a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ agblocks=$(xfs_db -r /dev/sdb -c sb -c p | grep ^agblocks | sed &lt;span class=&quot;string&quot;&gt;&#39;s/.* = //&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$agblocks&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;268435455&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ agcount=9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ b=43418558&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ c=1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; $((&lt;span class=&quot;variable&quot;&gt;$agblocks&lt;/span&gt;*&lt;span class=&quot;variable&quot;&gt;$agcount&lt;/span&gt;+&lt;span class=&quot;variable&quot;&gt;$b&lt;/span&gt;)) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2459337653&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; $((2459337662-9))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2459337653&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sdb bs=4096 skip=$((&lt;span class=&quot;variable&quot;&gt;$agblocks&lt;/span&gt;*&lt;span class=&quot;variable&quot;&gt;$agcount&lt;/span&gt;+&lt;span class=&quot;variable&quot;&gt;$b&lt;/span&gt;)) count=&lt;span class=&quot;variable&quot;&gt;$c&lt;/span&gt; of=/tmp/report.htm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1+0 records &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1+0 records out&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4096 bytes (4.1 kB) copied, 4.6345e-05 s, 88.4 MB/s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat /tmp/report.htm   &lt;span class=&quot;comment&quot;&gt;# file come back&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta http-equiv=&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; content=&lt;span class=&quot;string&quot;&gt;&quot;text/html; charset=gbk&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;a href=&quot;https://bugzilla.redhat.com/show_bug.cgi?id=845233&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redhat reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://oss.sgi.com/archives/xfs/2012-02/msg00561.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sgi reference&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;There are some CentOS 6.2 server loss xxGB data, write a script to recovery&lt;/p&gt;
-&lt;h3 id=&quot;Recover-file&quot;&gt;&lt;a href=&quot;#Recover-file&quot; class=&quot;head
-    
-    </summary>
-    
-      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="xfs" scheme="http://yoursite.com/tags/xfs/"/>
     
   </entry>
   

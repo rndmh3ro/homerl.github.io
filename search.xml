@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[Record and Replay Linux Terminal]]></title>
+      <url>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</url>
+      <content type="html"><![CDATA[<h3 id="script-and-scriptreplay"><a href="#script-and-scriptreplay" class="headerlink" title="script and scriptreplay"></a>script and scriptreplay</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ script --timing=time.txt script.log</span><br><span class="line"><span class="comment"># record what you do</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ scriptreplay --timing=time.txt script.log</span><br><span class="line"><span class="comment"># replay</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[kcptun_and_shadowsocks]]></title>
       <url>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</url>
       <content type="html"><![CDATA[<h3 id="Server-Parameters"><a href="#Server-Parameters" class="headerlink" title="Server Parameters"></a>Server Parameters</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su <span class="_">-s</span> /bin/bash nobody -c <span class="string">'./server_linux_amd64 -l "vps_ip:kcptun_port" -t "serer_ip:shadowsocks_port" -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3'</span></span><br></pre></td></tr></table></figure>
