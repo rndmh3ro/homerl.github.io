@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[Ping test in serial link]]></title>
+      <url>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</url>
+      <content type="html"><![CDATA[<h3 id="Calculate-upload-download-speed-by-ping"><a href="#Calculate-upload-download-speed-by-ping" class="headerlink" title="Calculate upload/download speed by ping"></a><a href="http://stackoverflow.com/questions/4575537/calculate-upload-download-speed-by-ping" target="_blank" rel="external">Calculate upload/download speed by ping</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping <span class="_">-f</span> -c 10000 <span class="_">-s</span> 1472 10.100.100.100</span><br></pre></td></tr></table></figure>
+<p>At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms<br>so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s<br>If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.</p>
+<p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
+<p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Record and Replay Linux Terminal]]></title>
       <url>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</url>
       <content type="html"><![CDATA[<h3 id="script-and-scriptreplay"><a href="#script-and-scriptreplay" class="headerlink" title="script and scriptreplay"></a>script and scriptreplay</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ script --timing=time.txt script.log</span><br><span class="line"><span class="comment"># record what you do</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ scriptreplay --timing=time.txt script.log</span><br><span class="line"><span class="comment"># replay</span></span><br></pre></td></tr></table></figure>
@@ -796,17 +806,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[SSD Interface]]></title>
       <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
       <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
 <h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
 ]]></content>
     </entry>
     

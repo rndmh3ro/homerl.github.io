@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-01T05:35:19.024Z</updated>
+  <updated>2016-12-05T07:39:53.759Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ping test in serial link</title>
+    <link href="http://yoursite.com/2016/12/05/Ping-test-in-serial-link/"/>
+    <id>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</id>
+    <published>2016-12-05T07:13:14.000Z</published>
+    <updated>2016-12-05T07:39:53.759Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Calculate-upload-download-speed-by-ping&quot;&gt;&lt;a href=&quot;#Calculate-upload-download-speed-by-ping&quot; class=&quot;headerlink&quot; title=&quot;Calculate upload/download speed by ping&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4575537/calculate-upload-download-speed-by-ping&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Calculate upload/download speed by ping&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ping &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; -c 10000 &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; 1472 10.100.100.100&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms&lt;br&gt;so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s&lt;br&gt;If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.&lt;/p&gt;
+&lt;p&gt;1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits&lt;br&gt;24000 / 0.219 = 109.589 Mb/s&lt;/p&gt;
+&lt;p&gt;It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Calculate-upload-download-speed-by-ping&quot;&gt;&lt;a href=&quot;#Calculate-upload-download-speed-by-ping&quot; class=&quot;headerlink&quot; title=&quot;Calculate uplo
+    
+    </summary>
+    
+      <category term="network" scheme="http://yoursite.com/categories/network/"/>
+    
+    
+      <category term="net" scheme="http://yoursite.com/tags/net/"/>
+    
+      <category term="ethernet" scheme="http://yoursite.com/tags/ethernet/"/>
+    
+  </entry>
   
   <entry>
     <title>Record and Replay Linux Terminal</title>
@@ -134,9 +162,9 @@
     
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
-      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
     
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
     
@@ -1058,31 +1086,6 @@
   </entry>
   
   <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.506Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -1105,6 +1108,31 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.506Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
@@ -1259,31 +1287,6 @@
       <category term="io" scheme="http://yoursite.com/tags/io/"/>
     
       <category term="trace" scheme="http://yoursite.com/tags/trace/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang bitwise operators</title>
-    <link href="http://yoursite.com/2016/03/29/golang-bitwise-operators/"/>
-    <id>http://yoursite.com/2016/03/29/golang-bitwise-operators/</id>
-    <published>2016-03-28T16:35:52.000Z</published>
-    <updated>2016-04-05T02:25:03.630Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;bitwise-operators-example&quot;&gt;&lt;a href=&quot;#bitwise-operators-example&quot; class=&quot;headerlink&quot; title=&quot;bitwise operators example&quot;&gt;&lt;/a&gt;bitwise operators example&lt;/h3&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fmt&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; main() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use bitwise OR | to get the bits that are in 1 OR 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 1     = 00000001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 2     = 00000010&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 1 | 2 = 00000011 = 3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; | &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use bitwise OR | to get the bits that are in 1 OR 5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 1     = 00000001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 5     = 00000101&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 1 | 5 = 00000101 = 5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; | &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use bitwise XOR ^ to get the bits that are in 3 OR 6 BUT NOT BOTH&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3     = 00000011&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 6     = 00000110&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3 ^ 6 = 00000101 = 5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; ^ &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use bitwise AND &amp;amp; to get the bits that are in 3 AND 6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3     = 00000011&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 6     = 00000110&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3 &amp;amp; 6 = 00000010 = 2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &amp;amp; &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use bit clear AND NOT &amp;amp;^ to get the bits that are in 3 AND NOT 6 (order matters)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 26     = 00011010&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 6      = 00000110&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// turn          11111001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 3 &amp;amp;^ 6 = 00011000 = 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fmt.Println(&lt;span class=&quot;number&quot;&gt;26&lt;/span&gt; &amp;amp;^ &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 5  00000101&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//-5  11111010+1=1111011 (two&#39;s complement of 5, the value was -5)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 6  00000110&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//-6  11111001+1=11111010&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 5  00000101&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//-6  11111010 (one&#39;s complement of 5, the value was -6)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     fmt.Println(^&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     a := &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     a |= &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;comment&quot;&gt;// 0000100 | 00000001 = 0000101 =5 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     fmt.Println(a)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     a |= &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;comment&quot;&gt;// 0000101 | 0100000 = 0100101 =69&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     fmt.Println(a)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     fmt.Println(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;lt;&amp;lt;&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;comment&quot;&gt;//0000001 &amp;lt;&amp;lt;6 = 1000000 = 64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;-6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;69&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;bitwise-operators-example&quot;&gt;&lt;a href=&quot;#bitwise-operators-example&quot; class=&quot;headerlink&quot; title=&quot;bitwise operators example&quot;&gt;&lt;/a&gt;bitwise ope
-    
-    </summary>
-    
-      <category term="golang" scheme="http://yoursite.com/categories/golang/"/>
-    
-    
-      <category term="golang" scheme="http://yoursite.com/tags/golang/"/>
-    
-      <category term="bitwise" scheme="http://yoursite.com/tags/bitwise/"/>
     
   </entry>
   
