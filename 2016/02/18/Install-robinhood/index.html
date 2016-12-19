@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Just analyse lustre data, not remove or move any file and directory.And I created zfs pool in /var/lib/mysql, and enable lz4 compression.Now here is compressratio123# zfs get compressratio tankNAME  P">
 <meta property="og:image" content="http://yoursite.com/img/robinhood_size.png">
-<meta property="og:updated_time" content="2016-09-19T16:14:10.000Z">
+<meta property="og:updated_time" content="2016-12-13T02:05:45.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install robinhood">
 <meta name="twitter:description" content="Just analyse lustre data, not remove or move any file and directory.And I created zfs pool in /var/lib/mysql, and enable lz4 compression.Now here is compressratio123# zfs get compressratio tankNAME  P">
@@ -342,7 +342,7 @@
 
       
         <p>Just analyse lustre data, not remove or move any file and directory.<br>And I created zfs pool in /var/lib/mysql, and enable lz4 compression.<br>Now here is compressratio<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zfs get compressratio tank</span></span><br><span class="line">NAME  PROPERTY       VALUE  SOURCE</span><br><span class="line">tank  compressratio  2.50x  -</span><br></pre></td></tr></table></figure></p>
-<p>CentOS 7.2 and Robinhood 2.5.5<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install mariadb-devel libuuid-devel mailx glib2-devel libattr-devel mariadb-server</span></span><br><span class="line"><span class="comment"># tar xzvf robinhood-2.5.5.tar.gz</span></span><br><span class="line"><span class="comment"># cd robinhood</span></span><br><span class="line"><span class="comment"># ./configure --with-purpose=TMPFS</span></span><br><span class="line">or</span><br><span class="line"><span class="comment"># ./configure --with-purpose=LUSTRE_HSM</span></span><br><span class="line"><span class="comment"># make rpm</span></span><br><span class="line"><span class="comment"># rpm -ivh robinhood-tmpfs-2.5.5-4.lustre2.5.el7.centos.x86_64 robinhood-adm-2.5.5-4.noarch.x86_64</span></span><br></pre></td></tr></table></figure></p>
+<p>CentOS 7.2 and Robinhood 2.5.5<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install mariadb-devel libuuid-devel mailx glib2-devel libattr-devel mariadb-server attr</span></span><br><span class="line"><span class="comment"># tar xzvf robinhood-2.5.5.tar.gz</span></span><br><span class="line"><span class="comment"># cd robinhood</span></span><br><span class="line"><span class="comment"># ./configure --with-purpose=TMPFS</span></span><br><span class="line">or</span><br><span class="line"><span class="comment"># ./configure --with-purpose=LUSTRE_HSM</span></span><br><span class="line"><span class="comment"># make rpm</span></span><br><span class="line"><span class="comment"># rpm -ivh robinhood-tmpfs-2.5.5-4.lustre2.5.el7.centos.x86_64 robinhood-adm-2.5.5-4.noarch.x86_64</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Init-mariadb"><a href="#Init-mariadb" class="headerlink" title="Init mariadb"></a>Init mariadb</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl enable mariadb</span></span><br><span class="line"><span class="comment"># systemctl start mariadb</span></span><br><span class="line"><span class="comment"># mysqladmin -u root password "your root password";</span></span><br><span class="line"><span class="comment"># rbh-config create_db</span></span><br></pre></td></tr></table></figure>
 <p>Modify /etc/robinhood.d/tmpfs/templates/tmpfs_detailed.conf as your wish, and save it to /etc/robinhood.d/tmpfs/tmpfs.conf.</p>
 <h3 id="Enable-lustre-changelog"><a href="#Enable-lustre-changelog" class="headerlink" title="Enable lustre changelog"></a>Enable lustre changelog</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ChangeLog</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"># 1 MDT block for each MDT :</span></span><br><span class="line">    MDT</span><br><span class="line">    &#123;</span><br><span class="line">        mdt_name = <span class="string">"MDT0000"</span> ;</span><br><span class="line">        reader_id = <span class="string">"cl1"</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># clear changelog every 1024 records:</span></span><br><span class="line">    batch_ack_count = 1024 ;</span><br><span class="line"></span><br><span class="line">    force_polling    = ON ;</span><br><span class="line">    polling_interval = 1s ;</span><br><span class="line">    queue_max_size   = 1000 ;</span><br><span class="line">    queue_max_age    = 5s ;</span><br><span class="line">    queue_check_interval = 1s ;</span><br><span class="line">    dump_file = <span class="string">"/var/lib/mysql/robinhood/changelog_dump.log"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># lctl --device lustrefs-MDT0000 changelog_register</span></span><br><span class="line">lustrefs-MDT0000: Registered changlog userid <span class="string">'cl1'</span></span><br><span class="line"><span class="comment"># lctl set_param mdd.lustrefs-MDT*.changelog_mask "MARK CREAT MKDIR HLINK SLINK MKNOD UNLNK RMDIR RENME RNMTO OPEN LYOUT TRUNC SATTR XATTR HSM MTIME CTIME"</span></span><br><span class="line"><span class="comment"># lctl get_param mdd.lustrefs-MDT*.changelog_mask </span></span><br><span class="line">MARK CREAT MKDIR HLINK SLINK MKNOD UNLNK RMDIR RENME RNMTO OPEN LYOUT TRUNC SATTR XATTR HSM MTIME CTIME</span><br></pre></td></tr></table></figure>
@@ -466,7 +466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -474,7 +474,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -483,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

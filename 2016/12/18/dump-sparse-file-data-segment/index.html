@@ -1,0 +1,988 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="data," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Test file12345678910111213141516171819202122$ rm data-A$ for i in &amp;#123;1..1500&amp;#125;; do echo $i &amp;gt;&amp;gt; data-A ; done$ filefrag -v data-A Filesystem type is: ef53File size of data-A is 6394 (2 bloc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dump sparse file data segment">
+<meta property="og:url" content="http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Test file12345678910111213141516171819202122$ rm data-A$ for i in &amp;#123;1..1500&amp;#125;; do echo $i &amp;gt;&amp;gt; data-A ; done$ filefrag -v data-A Filesystem type is: ef53File size of data-A is 6394 (2 bloc">
+<meta property="og:updated_time" content="2016-12-19T08:07:18.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dump sparse file data segment">
+<meta name="twitter:description" content="Test file12345678910111213141516171819202122$ rm data-A$ for i in &amp;#123;1..1500&amp;#125;; do echo $i &amp;gt;&amp;gt; data-A ; done$ filefrag -v data-A Filesystem type is: ef53File size of data-A is 6394 (2 bloc">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Dump sparse file data segment | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Dump sparse file data segment
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-18T21:31:17+08:00" content="2016-12-18">
+              2016-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/file/" itemprop="url" rel="index">
+                    <span itemprop="name">file</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/18/dump-sparse-file-data-segment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/18/dump-sparse-file-data-segment/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Test-file"><a href="#Test-file" class="headerlink" title="Test file"></a>Test file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ rm data-A</span><br><span class="line">$ <span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..1500&#125;; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span> &gt;&gt; data-A ; <span class="keyword">done</span></span><br><span class="line">$ filefrag -v data-A </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of data-A is 6394 (2 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..       0:    3464588..   3464588:      1:            </span><br><span class="line">   1:        1..       1:          0..         0:      1:    3464589: last,unknown_loc,delalloc,eof</span><br><span class="line">$ dd <span class="keyword">if</span>=data-A of=data-A-1 bs=4096 count=1</span><br><span class="line">$ dd <span class="keyword">if</span>=data-A of=data-A-2 bs=4096 count=1 skip=1</span><br><span class="line">$ head data-A-2</span><br><span class="line">1</span><br><span class="line">1042</span><br><span class="line">1043</span><br><span class="line">1044</span><br><span class="line">1045</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ cat data-A-1 data-A-2 | md5sum</span><br><span class="line">30ef7f11d29b8ad47542e97ed9d2a398  -</span><br><span class="line">$ cat data-A | md5sum</span><br><span class="line">30ef7f11d29b8ad47542e97ed9d2a398  -</span><br></pre></td></tr></table></figure>
+<h3 id="Test-sparse-file"><a href="#Test-sparse-file" class="headerlink" title="Test sparse file"></a>Test sparse file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">$ rm ./data-A;<span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..1500&#125;; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span> &gt;&gt; data-A ; <span class="keyword">done</span></span><br><span class="line">$ filefrag -v data-A </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of data-A is 6393 (2 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..       1:          0..         1:      2:             last,unknown_loc,delalloc,eof</span><br><span class="line">data-A: 1 extent found</span><br><span class="line"></span><br><span class="line">$ dd <span class="keyword">if</span>=/dev/zero of=<span class="built_in">test</span> bs=4096 count=0 seek=25 <span class="comment">#write 100K sparse file</span></span><br><span class="line">$ cat data-A &gt;&gt; <span class="built_in">test</span></span><br><span class="line">$ ls -lhs </span><br><span class="line">total 16K</span><br><span class="line">8.0K -rw-rw-r-- 1 homerl homerl 6.3K 12月 19 14:04 data-A</span><br><span class="line">8.0K -rw-rw-r-- 1 homerl homerl 107K 12月 19 14:06 <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">$ df -h / </span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/sda2       101G   35G   61G  37% /</span><br><span class="line"></span><br><span class="line">$ sudo dumpe2fs /dev/sda2 | grep -i <span class="string">"Block size"</span></span><br><span class="line">dumpe2fs 1.42.13 (17-May-2015)</span><br><span class="line">Block size:               4096</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ filefrag -v data-A </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of data-A is 6393 (2 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..       1:    3713508..   3713509:      2:             last,eof</span><br><span class="line">data-A: 1 extent found</span><br><span class="line"></span><br><span class="line">$ sudo dd <span class="keyword">if</span>=/dev/sda2 of=<span class="built_in">test</span>-1 bs=4096 count=1 skip=3713508</span><br><span class="line">$ head <span class="built_in">test</span>-1 </span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line"></span><br><span class="line">$ tail <span class="built_in">test</span>-1</span><br><span class="line">1039</span><br><span class="line">1040</span><br><span class="line">104</span><br><span class="line"></span><br><span class="line">$ cat <span class="built_in">test</span>-1 | md5sum</span><br><span class="line">27260c41d34d5a01f5fba073f9059a90  -</span><br><span class="line"></span><br><span class="line">$ filefrag -v <span class="built_in">test</span></span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of <span class="built_in">test</span> is 108793 (27 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:       25..      26:    3713510..   3713511:      2:             last,eof</span><br><span class="line"><span class="built_in">test</span>: 1 extent found</span><br><span class="line"></span><br><span class="line">$ sudo dd <span class="keyword">if</span>=/dev/sda2 of=<span class="built_in">test</span><span class="_">-s</span>-1 bs=4096 count=1 skip=3713510</span><br><span class="line"></span><br><span class="line">$ md5sum <span class="built_in">test</span>-*</span><br><span class="line">27260c41d34d5a01f5fba073f9059a90  <span class="built_in">test</span>-1</span><br><span class="line">27260c41d34d5a01f5fba073f9059a90  <span class="built_in">test</span><span class="_">-s</span>-1</span><br><span class="line"></span><br><span class="line">$ sudo dd <span class="keyword">if</span>=/dev/sda2 of=<span class="built_in">test</span><span class="_">-s</span>-2 bs=4096 count=1 skip=3713511</span><br><span class="line"></span><br><span class="line"><span class="comment"># the checksum difference between test-s-2 and test</span></span><br><span class="line">$ hexdump <span class="built_in">test</span><span class="_">-s</span>-2 | tail</span><br><span class="line">0000890 3431 3038 310a 3834 0a31 3431 3238 310a</span><br><span class="line">00008a0 3834 0a33 3431 3438 310a 3834 0a35 3431</span><br><span class="line">00008b0 3638 310a 3834 0a37 3431 3838 310a 3834</span><br><span class="line">00008c0 0a39 3431 3039 310a 3934 0a31 3431 3239</span><br><span class="line">00008d0 310a 3934 0a33 3431 3439 310a 3934 0a35</span><br><span class="line">00008e0 3431 3639 310a 3934 0a37 3431 3839 310a</span><br><span class="line">00008f0 3934 0a39 3531 3030 000a 0000 0000 0000</span><br><span class="line">0000900 0000 0000 0000 0000 0000 0000 0000 0000</span><br><span class="line">*</span><br><span class="line">0001000</span><br><span class="line"></span><br><span class="line">$ hexdump <span class="built_in">test</span> | tail</span><br><span class="line">001a870 0a33 3431 3437 310a 3734 0a35 3431 3637</span><br><span class="line">001a880 310a 3734 0a37 3431 3837 310a 3734 0a39</span><br><span class="line">001a890 3431 3038 310a 3834 0a31 3431 3238 310a</span><br><span class="line">001a8a0 3834 0a33 3431 3438 310a 3834 0a35 3431</span><br><span class="line">001a8b0 3638 310a 3834 0a37 3431 3838 310a 3834</span><br><span class="line">001a8c0 0a39 3431 3039 310a 3934 0a31 3431 3239</span><br><span class="line">001a8d0 310a 3934 0a33 3431 3439 310a 3934 0a35</span><br><span class="line">001a8e0 3431 3639 310a 3934 0a37 3431 3839 310a</span><br><span class="line">001a8f0 3934 0a39 3531 3030 000a               </span><br><span class="line">001a8f9</span><br></pre></td></tr></table></figure>
+<p>There are some of zero fill in the file bottom.</p>
+<h3 id="dd-update"><a href="#dd-update" class="headerlink" title="dd update"></a>dd update</h3><p>operate single byte<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="keyword">if</span>=data-A of=data-A-1Byte bs=1  count=1 ibs=1 obs=1</span><br><span class="line">$ dd <span class="keyword">if</span>=data-A of=data-A-skip-1byte bs=1  skip=2 count=1 ibs=1 obs=1 iflag=count_bytes iflag=skip_bytes</span><br><span class="line"></span><br><span class="line">$ ls -ls | grep -i by</span><br><span class="line"></span><br><span class="line"><span class="comment">#first column is KiB , 4 is 4KiB</span></span><br><span class="line"><span class="comment">#sixth column is byte , 1 byte</span></span><br><span class="line"></span><br><span class="line">  4 -rw-rw-r-- 1 homerl homerl      1 12月 19 15:23 data-A-1Byte</span><br><span class="line">  4 -rw-rw-r-- 1 homerl homerl      1 12月 19 15:22 data-A-skip-1byte</span><br><span class="line"></span><br><span class="line">$ cat data-A-1Byte</span><br><span class="line">1 $ cat data-A-skip-1byte</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">$ ls -ls <span class="built_in">test</span> data-A </span><br><span class="line">8 -rw-rw-r-- 1 homerl homerl   6393 12月 19 14:54 data-A</span><br><span class="line">8 -rw-rw-r-- 1 homerl homerl 108793 12月 19 15:30 <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">$  dd <span class="keyword">if</span>=<span class="built_in">test</span> of=<span class="built_in">test</span>-data bs=1 count=6393 skip=102400 iflag=skip_bytes ibs=1 obs=1</span><br><span class="line">$ $ sha1sum   data-A <span class="built_in">test</span>-data <span class="built_in">test</span></span><br><span class="line">8f8374832cb6536f580eef3b316ad08293a47617  data-A</span><br><span class="line">8f8374832cb6536f580eef3b316ad08293a47617  <span class="built_in">test</span>-data</span><br><span class="line">03e31af4c89c9003ee0f43e49a65ad2e24367024  <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">$ hexdump data-A | tail</span><br><span class="line">0001870 0a33 3431 3437 310a 3734 0a35 3431 3637</span><br><span class="line">0001880 310a 3734 0a37 3431 3837 310a 3734 0a39</span><br><span class="line">0001890 3431 3038 310a 3834 0a31 3431 3238 310a</span><br><span class="line">00018a0 3834 0a33 3431 3438 310a 3834 0a35 3431</span><br><span class="line">00018b0 3638 310a 3834 0a37 3431 3838 310a 3834</span><br><span class="line">00018c0 0a39 3431 3039 310a 3934 0a31 3431 3239</span><br><span class="line">00018d0 310a 3934 0a33 3431 3439 310a 3934 0a35</span><br><span class="line">00018e0 3431 3639 310a 3934 0a37 3431 3839 310a</span><br><span class="line">00018f0 3934 0a39 3531 3030 000a               </span><br><span class="line">00018f9</span><br><span class="line">$ hexdump <span class="built_in">test</span>-data | tail</span><br><span class="line">0001870 0a33 3431 3437 310a 3734 0a35 3431 3637</span><br><span class="line">0001880 310a 3734 0a37 3431 3837 310a 3734 0a39</span><br><span class="line">0001890 3431 3038 310a 3834 0a31 3431 3238 310a</span><br><span class="line">00018a0 3834 0a33 3431 3438 310a 3834 0a35 3431</span><br><span class="line">00018b0 3638 310a 3834 0a37 3431 3838 310a 3834</span><br><span class="line">00018c0 0a39 3431 3039 310a 3934 0a31 3431 3239</span><br><span class="line">00018d0 310a 3934 0a33 3431 3439 310a 3934 0a35</span><br><span class="line">00018e0 3431 3639 310a 3934 0a37 3431 3839 310a</span><br><span class="line">00018f0 3934 0a39 3531 3030 000a               </span><br><span class="line">00018f9</span><br><span class="line">$ hexdump <span class="built_in">test</span> | tail</span><br><span class="line">001a870 0a33 3431 3437 310a 3734 0a35 3431 3637</span><br><span class="line">001a880 310a 3734 0a37 3431 3837 310a 3734 0a39</span><br><span class="line">001a890 3431 3038 310a 3834 0a31 3431 3238 310a</span><br><span class="line">001a8a0 3834 0a33 3431 3438 310a 3834 0a35 3431</span><br><span class="line">001a8b0 3638 310a 3834 0a37 3431 3838 310a 3834</span><br><span class="line">001a8c0 0a39 3431 3039 310a 3934 0a31 3431 3239</span><br><span class="line">001a8d0 310a 3934 0a33 3431 3439 310a 3934 0a35</span><br><span class="line">001a8e0 3431 3639 310a 3934 0a37 3431 3839 310a</span><br><span class="line">001a8f0 3934 0a39 3531 3030 000a               </span><br><span class="line">001a8f9</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/data/" rel="tag">#data</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/05/Ping-test-in-serial-link/" rel="next" title="Ping test in serial link">
+                <i class="fa fa-chevron-left"></i> Ping test in serial link
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-file"><span class="nav-number">1.</span> <span class="nav-text">Test file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-sparse-file"><span class="nav-number">2.</span> <span class="nav-text">Test sparse file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dd-update"><span class="nav-number">3.</span> <span class="nav-text">dd update</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2016/12/18/dump-sparse-file-data-segment/';
+      var disqus_title = 'Dump sparse file data segment';
+      var disqus_url = 'http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>
