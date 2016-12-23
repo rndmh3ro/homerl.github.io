@@ -610,15 +610,21 @@
 <p>Why 3416 and 3408 have the same PCIE lanes (x8 ?)</p>
 <ul>
 <li>SFF-8639<ul>
-<li>PCIE Gen3 1,2,4 lanes</li>
+<li>PCIE Gen3 1,2,4 lanes<ul>
 <li>3.938 GB/s (if full-duplex, x2)</li>
-<li>SAS3 1,2,4 lanes</li>
+</ul>
+</li>
+<li>SAS3 1,2,4 lanes<ul>
 <li>4.8GB/s</li>
 </ul>
 </li>
+</ul>
+</li>
 <li>SFF-8680<ul>
-<li>SAS3 1,2 lanes</li>
+<li>SAS3 1,2 lanes<ul>
 <li>2.4GB/s</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
