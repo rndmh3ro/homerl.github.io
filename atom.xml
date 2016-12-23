@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-23T13:13:52.014Z</updated>
+  <updated>2016-12-23T13:57:03.785Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>blk-mq with SAS SSD</title>
+    <link href="http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/"/>
+    <id>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</id>
+    <published>2016-12-23T13:19:55.000Z</published>
+    <updated>2016-12-23T13:57:03.785Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;blk-mq-in-RHEL-7-2&quot;&gt;&lt;a href=&quot;#blk-mq-in-RHEL-7-2&quot; class=&quot;headerlink&quot; title=&quot;blk-mq in RHEL 7.2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blk-mq in RHEL 7.2&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.&lt;br&gt;If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).&lt;br&gt;It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.&lt;br&gt;To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;High Performance Storage with blk-mq and scsi-mq&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux Multi-Queue Block IO Queueing Mechanism&lt;/a&gt;)&lt;br&gt;&lt;a href=&quot;http://chuansong.me/n/362178648541&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blk-mq SCSI performance&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;blk-mq-in-RHEL-7-2&quot;&gt;&lt;a href=&quot;#blk-mq-in-RHEL-7-2&quot; class=&quot;headerlink&quot; title=&quot;blk-mq in RHEL 7.2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://access.redhat.c
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="blk-mq" scheme="http://yoursite.com/tags/blk-mq/"/>
+    
+      <category term="queue" scheme="http://yoursite.com/tags/queue/"/>
+    
+  </entry>
   
   <entry>
     <title>Hardware index</title>
@@ -1260,9 +1286,9 @@
     
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
-      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
     
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
     
@@ -2184,31 +2210,6 @@
   </entry>
   
   <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -2231,6 +2232,31 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
@@ -2292,34 +2318,6 @@
     
     
       <category term="lustre" scheme="http://yoursite.com/tags/lustre/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cut file by byte</title>
-    <link href="http://yoursite.com/2016/04/05/Cut-file-by-byte/"/>
-    <id>http://yoursite.com/2016/04/05/Cut-file-by-byte/</id>
-    <published>2016-04-05T09:54:01.000Z</published>
-    <updated>2016-04-05T09:58:19.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;By-KB&quot;&gt;&lt;a href=&quot;#By-KB&quot; class=&quot;headerlink&quot; title=&quot;By KB&quot;&gt;&lt;/a&gt;By KB&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#123;0..100000&amp;#125;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$i&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;1; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; ------------ &amp;gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;1; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;Read-10th-KB-data&quot;&gt;&lt;a href=&quot;#Read-10th-KB-data&quot; class=&quot;headerlink&quot; title=&quot;Read 10th KB data&quot;&gt;&lt;/a&gt;Read 10th KB data&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;head -c 10k &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;1 | tail -c 1k &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;1 of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;2 bs=1k skip=9 count=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;Read-by-Byte&quot;&gt;&lt;a href=&quot;#Read-by-Byte&quot; class=&quot;headerlink&quot; title=&quot;Read by Byte&quot;&gt;&lt;/a&gt;Read by Byte&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;By-KB&quot;&gt;&lt;a href=&quot;#By-KB&quot; class=&quot;headerlink&quot; title=&quot;By KB&quot;&gt;&lt;/a&gt;By KB&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;
-    
-    </summary>
-    
-      <category term="bash" scheme="http://yoursite.com/categories/bash/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="bash" scheme="http://yoursite.com/tags/bash/"/>
     
   </entry>
   

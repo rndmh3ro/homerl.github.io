@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[blk-mq with SAS SSD]]></title>
+      <url>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</url>
+      <content type="html"><![CDATA[<h3 id="blk-mq-in-RHEL-7-2"><a href="#blk-mq-in-RHEL-7-2" class="headerlink" title="blk-mq in RHEL 7.2"></a><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">blk-mq in RHEL 7.2</a></h3><p>It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.<br>If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).<br>It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.<br>To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.</p>
+<p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">High Performance Storage with blk-mq and scsi-mq</a><br><a href="http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf" target="_blank" rel="external">Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach</a><br><a href="https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq" target="_blank" rel="external">Linux Multi-Queue Block IO Queueing Mechanism</a>)<br><a href="http://chuansong.me/n/362178648541" target="_blank" rel="external">blk-mq SCSI performance</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hardware index]]></title>
       <url>http://yoursite.com/2016/12/22/Hardware-index/</url>
       <content type="html"><![CDATA[<h3 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h3><h4 id="Dual-nodes-redundance-SAS-link"><a href="#Dual-nodes-redundance-SAS-link" class="headerlink" title="Dual nodes, redundance SAS link"></a>Dual nodes, redundance SAS link</h4><h5 id="2U"><a href="#2U" class="headerlink" title="2U"></a>2U</h5><p><a href="https://www.supermicro.com/solutions/Lustre.cfm" target="_blank" rel="external">SSG-927R-E2CJB</a>, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander</p>
@@ -1864,17 +1872,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[SSD Interface]]></title>
       <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
       <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
 <h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
 ]]></content>
     </entry>
     
