@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-23T09:50:53.725Z</updated>
+  <updated>2016-12-23T09:55:25.259Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/12/22/General-hardware/"/>
     <id>http://yoursite.com/2016/12/22/General-hardware/</id>
     <published>2016-12-22T09:39:27.000Z</published>
-    <updated>2016-12-23T09:50:53.725Z</updated>
+    <updated>2016-12-23T09:55:25.259Z</updated>
     
     <content type="html">&lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundance-SAS-link&quot; class=&quot;headerlink&quot; title=&quot;Dual nodes, redundance SAS link&quot;&gt;&lt;/a&gt;Dual nodes, redundance SAS link&lt;/h4&gt;&lt;h5 id=&quot;2U&quot;&gt;&lt;a href=&quot;#2U&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.supermicro.com/solutions/Lustre.cfm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSG-927R-E2CJB&lt;/a&gt;, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander&lt;/p&gt;
 &lt;table&gt;
@@ -820,7 +820,120 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&quot;SATA&quot;&gt;&lt;a href=&quot;#SATA&quot; class=&quot;headerlink&quot; title=&quot;SATA&quot;&gt;&lt;/a&gt;SATA&lt;/h4&gt;&lt;p&gt;Intel DC S3100 is good choice to install operating system&lt;br&gt;| Model                     |SIZE(TB) |DWPD (5y)|Nand       |R/W(GB/s)    |ios(k)   |interface   | UBER  | MTBF&lt;br&gt;|—————————|———|———|———–|————-|———|————|——-|———&lt;br&gt;| SD CloudSpeed Eco GenII   |1.92     |0.6      |15nm emlc  |0.53/0.46    | 75/14   | 6Gbps      | 10^18 | 2M&lt;br&gt;| SD CloudSpeed Ultra GenII |1.6      |1.8      |15nm emlc  |0.53/0.46    | 76/32   | 6Gbps      | 10^18 | 2M&lt;br&gt;| Intel DC s3100            |1        |0.06     |16nm tlc   |0.50/0.11    | 59/3.9  | 6Gbps      | 10^16 | 1.6M&lt;br&gt;| Intel DC s3100            |0.48     |0.84     |16nm tlc   |0.50/0.11    | 55/4.7  | 6Gbps      | 10^16 | 1.6M&lt;br&gt;| Intel DC s3510            |1.6      |0.35     |16nm emlc  |0.50/0.43    | 65/15   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Intel DC s3520            |1.6      |0.35     |16 3d emlc |0.45/0.38    | 67/17   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Intel DC s3610            |1.6      |3        |20nm emlc  |0.55/0.5     | 84/27   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Samsung PM863             |3.8      |0.78     |3d TLC     |0.55/0.5     | 99/18   | 6Gbps      |       |&lt;br&gt;| Samsung SM863             |3.8      |3.5      |3d MLC     |0.52/0.48    | 97/29   | 6Gbps      |       |&lt;/p&gt;
+&lt;h4 id=&quot;SATA&quot;&gt;&lt;a href=&quot;#SATA&quot; class=&quot;headerlink&quot; title=&quot;SATA&quot;&gt;&lt;/a&gt;SATA&lt;/h4&gt;&lt;p&gt;Intel DC S3100 is good choice to install operating system&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;SIZE(TB)&lt;/th&gt;
+&lt;th&gt;DWPD (5y)&lt;/th&gt;
+&lt;th&gt;Nand&lt;/th&gt;
+&lt;th&gt;R/W(GB/s)&lt;/th&gt;
+&lt;th&gt;ios(k)&lt;/th&gt;
+&lt;th&gt;interface&lt;/th&gt;
+&lt;th&gt;UBER&lt;/th&gt;
+&lt;th&gt;MTBF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SD CloudSpeed Eco GenII&lt;/td&gt;
+&lt;td&gt;1.92&lt;/td&gt;
+&lt;td&gt;0.6&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.53,0.46&lt;/td&gt;
+&lt;td&gt;75,14&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD CloudSpeed Ultra GenII&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;1.8&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.53,0.46&lt;/td&gt;
+&lt;td&gt;76,32&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3100&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0.06&lt;/td&gt;
+&lt;td&gt;16nm tlc&lt;/td&gt;
+&lt;td&gt;0.50,0.11&lt;/td&gt;
+&lt;td&gt;59,3.9&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^16&lt;/td&gt;
+&lt;td&gt;1.6M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3100&lt;/td&gt;
+&lt;td&gt;0.48&lt;/td&gt;
+&lt;td&gt;0.84&lt;/td&gt;
+&lt;td&gt;16nm tlc&lt;/td&gt;
+&lt;td&gt;0.50,0.11&lt;/td&gt;
+&lt;td&gt;55,4.7&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^16&lt;/td&gt;
+&lt;td&gt;1.6M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3510&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;0.35&lt;/td&gt;
+&lt;td&gt;16nm emlc&lt;/td&gt;
+&lt;td&gt;0.50,0.43&lt;/td&gt;
+&lt;td&gt;65,15&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3520&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;0.35&lt;/td&gt;
+&lt;td&gt;16 3d emlc&lt;/td&gt;
+&lt;td&gt;0.45,0.38&lt;/td&gt;
+&lt;td&gt;67,17&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3610&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;20nm emlc&lt;/td&gt;
+&lt;td&gt;0.55,0.5&lt;/td&gt;
+&lt;td&gt;84,27&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung PM863&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;0.78&lt;/td&gt;
+&lt;td&gt;3d TLC&lt;/td&gt;
+&lt;td&gt;0.55,0.5&lt;/td&gt;
+&lt;td&gt;99,18&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung SM863&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;3.5&lt;/td&gt;
+&lt;td&gt;3d MLC&lt;/td&gt;
+&lt;td&gt;0.52,0.48&lt;/td&gt;
+&lt;td&gt;97,29&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </content>
     
     <summary type="html">
