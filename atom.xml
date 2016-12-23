@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-23T12:47:06.216Z</updated>
+  <updated>2016-12-23T13:13:52.014Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>General hardware</title>
-    <link href="http://yoursite.com/2016/12/22/General-hardware/"/>
-    <id>http://yoursite.com/2016/12/22/General-hardware/</id>
+    <title>Hardware index</title>
+    <link href="http://yoursite.com/2016/12/22/Hardware-index/"/>
+    <id>http://yoursite.com/2016/12/22/Hardware-index/</id>
     <published>2016-12-22T09:39:27.000Z</published>
-    <updated>2016-12-23T12:47:06.216Z</updated>
+    <updated>2016-12-23T13:13:52.014Z</updated>
     
     <content type="html">&lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundance-SAS-link&quot; class=&quot;headerlink&quot; title=&quot;Dual nodes, redundance SAS link&quot;&gt;&lt;/a&gt;Dual nodes, redundance SAS link&lt;/h4&gt;&lt;h5 id=&quot;2U&quot;&gt;&lt;a href=&quot;#2U&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.supermicro.com/solutions/Lustre.cfm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSG-927R-E2CJB&lt;/a&gt;, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander&lt;/p&gt;
 &lt;table&gt;
@@ -2184,6 +2184,31 @@
   </entry>
   
   <entry>
+    <title>SFP+ VS 10GBaseT</title>
+    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
+    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
+    <published>2016-04-08T07:36:54.000Z</published>
+    <updated>2016-04-08T07:39:38.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SSD Interface</title>
     <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
     <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
@@ -2206,31 +2231,6 @@
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   

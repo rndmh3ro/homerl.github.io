@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[General hardware]]></title>
-      <url>http://yoursite.com/2016/12/22/General-hardware/</url>
+      <title><![CDATA[Hardware index]]></title>
+      <url>http://yoursite.com/2016/12/22/Hardware-index/</url>
       <content type="html"><![CDATA[<h3 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h3><h4 id="Dual-nodes-redundance-SAS-link"><a href="#Dual-nodes-redundance-SAS-link" class="headerlink" title="Dual nodes, redundance SAS link"></a>Dual nodes, redundance SAS link</h4><h5 id="2U"><a href="#2U" class="headerlink" title="2U"></a>2U</h5><p><a href="https://www.supermicro.com/solutions/Lustre.cfm" target="_blank" rel="external">SSG-927R-E2CJB</a>, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander</p>
 <table>
 <thead>
@@ -1864,17 +1864,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SSD Interface]]></title>
-      <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
-      <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
-<h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
 ]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
+      <title><![CDATA[SSD Interface]]></title>
+      <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
+      <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
+<h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
 ]]></content>
     </entry>
     
