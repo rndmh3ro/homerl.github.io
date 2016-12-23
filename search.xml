@@ -137,7 +137,128 @@
 </tbody>
 </table>
 <h6 id="Supermicro-6017R-73HDP"><a href="#Supermicro-6017R-73HDP" class="headerlink" title="Supermicro 6017R-73HDP+"></a>Supermicro 6017R-73HDP+</h6><p><img src="http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg" alt=""></p>
-<h5 id="2U-1"><a href="#2U-1" class="headerlink" title="2U"></a>2U</h5><p>There are 24 x 3.5 inch + 2 x 2.5 inch slot in 6028R-E1CR24N<br>6028R-E1CR12N 6xPCI-Express 3+1xPCIE 2<br>| Model         |MEM|PCIE|socks|2.5HDD|3.5HDD |chip|io<br>| ————- |—|—-|—–|——|——-|—-|————-<br>| 6028R-E1CR12N |24 |6+1 |  2  | 2    | 12    |c612|4x10GbE BT+LSI 3108<br>| 6028R-E1CR16T |16 |7   |  2  | 2    | 16    |c612|2x10GbE+LSI 3108<br>| 6028R-E1CR24N |24 |3   |  2  | 2    | 24    |c612|SIOM flexible+LSI 3108<br>| 6028R-E1CR12L |16 |7   |  2  | 2    | 12    |c612|2xX540+LSI 3008<br>| 2028R-E1CR48N |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3108<br>| 2028R-E1CR48L |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3008<br>| Dell R730xd   |24 |6   |  2  | 2    | 16    |c610|daughter card+LSI 3008/3108<br>| HP DL180G9    |16 |6   |  2  | 0    | 12    |c610|flexible card<br>| HP 4200 G9    |16 |6   |  2  | 54   | 28    |c610|flexible card</p>
+<h5 id="2U-1"><a href="#2U-1" class="headerlink" title="2U"></a>2U</h5><p>6xPCI-Express 3+1xPCI-Express 2.0 x4 </p>
+<ul>
+<li><p>6028R-E1CR12N</p>
+<ul>
+<li>6xPCI-Express 3</li>
+<li>1xPCI-Express 2</li>
+<li>Lustre OSS</li>
+</ul>
+</li>
+<li><p>6028R-E1CR24N</p>
+<ul>
+<li>24 x 3.5 inch</li>
+<li>2 x 2.5 inch</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6028R-E1CR12N</td>
+<td>24</td>
+<td>6+1</td>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>c612</td>
+<td>4x10GbE BT+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR16T</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>16</td>
+<td>c612</td>
+<td>2x10GbE+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR24N</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>24</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR12L</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>c612</td>
+<td>2xX540+LSI 3008</td>
+</tr>
+<tr>
+<td>2028R-E1CR48N</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>48+2</td>
+<td>0</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3108</td>
+</tr>
+<tr>
+<td>2028R-E1CR48L</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>48+2</td>
+<td>0</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3008</td>
+</tr>
+<tr>
+<td>Dell R730xd</td>
+<td>24</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+<td>16</td>
+<td>c610</td>
+<td>daughter card+LSI 3008/3108</td>
+</tr>
+<tr>
+<td>HP DL180G9</td>
+<td>16</td>
+<td>6</td>
+<td>2</td>
+<td>0</td>
+<td>12</td>
+<td>c610</td>
+<td>flexible card</td>
+</tr>
+<tr>
+<td>HP 4200 G9</td>
+<td>16</td>
+<td>6</td>
+<td>2</td>
+<td>54</td>
+<td>28</td>
+<td>c610</td>
+<td>flexible card</td>
+</tr>
+</tbody>
+</table>
 <h5 id="Supermicro-6028R-E1CR12N-lustre-OSS"><a href="#Supermicro-6028R-E1CR12N-lustre-OSS" class="headerlink" title="Supermicro 6028R-E1CR12N (lustre OSS)"></a>Supermicro 6028R-E1CR12N (lustre OSS)</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg" alt=""></p>
 <h5 id="Supermicro-6028R-E1CR16T"><a href="#Supermicro-6028R-E1CR16T" class="headerlink" title="Supermicro 6028R-E1CR16T"></a>Supermicro 6028R-E1CR16T</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg" alt=""></p>
 <h5 id="Supermicro-6028R-E1CR24N"><a href="#Supermicro-6028R-E1CR24N" class="headerlink" title="Supermicro 6028R-E1CR24N"></a>Supermicro 6028R-E1CR24N</h5><p><img src="http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg" alt=""></p>
