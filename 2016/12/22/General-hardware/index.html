@@ -1,0 +1,1870 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="raid,hardware,jbod,das,server," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="DASDual nodes, redundance SAS link2USSG-927R-E2CJB, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander
+
+
+
+Model
+MEM
+PCIE
+socks
+2.5HDD
+3.5HDD
+chip
+io
+
+
+
+
+SSG-927R-E2CJB
+
+2x3
+2x2
+24
+0
+c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="General hardware">
+<meta property="og:url" content="http://yoursite.com/2016/12/22/General-hardware/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="DASDual nodes, redundance SAS link2USSG-927R-E2CJB, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander
+
+
+
+Model
+MEM
+PCIE
+socks
+2.5HDD
+3.5HDD
+chip
+io
+
+
+
+
+SSG-927R-E2CJB
+
+2x3
+2x2
+24
+0
+c">
+<meta property="og:image" content="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg">
+<meta property="og:image" content="http://www.wayho.cn/web/1208/wz/6fbb195b6441f67c.png">
+<meta property="og:image" content="http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg">
+<meta property="og:image" content="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg">
+<meta property="og:image" content="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg">
+<meta property="og:image" content="http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg">
+<meta property="og:image" content="https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg">
+<meta property="og:image" content="https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg">
+<meta property="og:image" content="https://www.supermicro.com/CDS_Image/uploads/chassis/sc946ed_ad_pull-out_new_20150727.jpg">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/SFF-8644.jpg/200px-SFF-8644.jpg">
+<meta property="og:image" content="http://img.thuexeminhanh.com/pic/z29cc701-200x200-1/40g_qsfp_sff_8436_to_qsfp_passive_copper_cable.jpg">
+<meta property="og:image" content="http://sierra-cables.com/Cables/images/SFF-8088_small.jpg">
+<meta property="og:updated_time" content="2016-12-23T09:50:53.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="General hardware">
+<meta name="twitter:description" content="DASDual nodes, redundance SAS link2USSG-927R-E2CJB, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander
+
+
+
+Model
+MEM
+PCIE
+socks
+2.5HDD
+3.5HDD
+chip
+io
+
+
+
+
+SSG-927R-E2CJB
+
+2x3
+2x2
+24
+0
+c">
+<meta name="twitter:image" content="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> General hardware | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                General hardware
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T17:39:27+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hardware/" itemprop="url" rel="index">
+                    <span itemprop="name">Hardware</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/22/General-hardware/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/22/General-hardware/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h3><h4 id="Dual-nodes-redundance-SAS-link"><a href="#Dual-nodes-redundance-SAS-link" class="headerlink" title="Dual nodes, redundance SAS link"></a>Dual nodes, redundance SAS link</h4><h5 id="2U"><a href="#2U" class="headerlink" title="2U"></a>2U</h5><p><a href="https://www.supermicro.com/solutions/Lustre.cfm" target="_blank" rel="external">SSG-927R-E2CJB</a>, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSG-927R-E2CJB</td>
+<td></td>
+<td>2x3</td>
+<td>2x2</td>
+<td>24</td>
+<td>0</td>
+<td>c602</td>
+<td>dual</td>
+</tr>
+<tr>
+<td>U90G3</td>
+<td>16x2</td>
+<td>2x3</td>
+<td>2x2</td>
+<td>4</td>
+<td>70</td>
+<td>c612</td>
+<td>dual</td>
+</tr>
+<tr>
+<td>HPE 4520</td>
+<td>16x2</td>
+<td>2x4</td>
+<td>2x2</td>
+<td>4</td>
+<td>46</td>
+<td>c612</td>
+<td>dual</td>
+</tr>
+</tbody>
+</table>
+<h6 id="Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it"><a href="#Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it" class="headerlink" title="Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)"></a>Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)</h6><p><img src="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg" alt=""></p>
+<h6 id="Inventec-U90G3"><a href="#Inventec-U90G3" class="headerlink" title="Inventec U90G3"></a>Inventec U90G3</h6><p><img src="http://www.wayho.cn/web/1208/wz/6fbb195b6441f67c.png" alt=""></p>
+<h5 id="4U-SBB"><a href="#4U-SBB" class="headerlink" title="4U (SBB)"></a>4U (SBB)</h5><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6048R-DE2CR24L</td>
+<td>8x2</td>
+<td>2x3</td>
+<td>2x2</td>
+<td>0</td>
+<td>24</td>
+<td>c612</td>
+<td>dual+LSI3008</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Single-node"><a href="#Single-node" class="headerlink" title="Single node"></a>Single node</h4><h5 id="1U"><a href="#1U" class="headerlink" title="1U"></a>1U</h5><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6017R-73HDP+</td>
+<td>16</td>
+<td>2</td>
+<td>2</td>
+<td>2(os)</td>
+<td>12</td>
+<td>c602</td>
+<td>dual</td>
+</tr>
+<tr>
+<td>1028R-WTR</td>
+<td>16</td>
+<td>2</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>dual+Mezzanine HAB</td>
+</tr>
+<tr>
+<td>SYS-1028U-E1CRTP+</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>10GbE SFP and 1xinternal PCIE</td>
+</tr>
+<tr>
+<td>Dell R630</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>dual+Daughter card</td>
+</tr>
+</tbody>
+</table>
+<h6 id="Supermicro-6017R-73HDP"><a href="#Supermicro-6017R-73HDP" class="headerlink" title="Supermicro 6017R-73HDP+"></a>Supermicro 6017R-73HDP+</h6><p><img src="http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg" alt=""></p>
+<h5 id="2U-1"><a href="#2U-1" class="headerlink" title="2U"></a>2U</h5><p>There are 24 x 3.5 inch + 2 x 2.5 inch slot in 6028R-E1CR24N<br>| Model         |MEM|PCIE|socks|2.5HDD|3.5HDD |chip|io<br>| ————- |—|—-|—–|——|——-|—-|————-<br>| 6028R-E1CR12N |24 |6+1(2.0) |  2  | 2    | 12    |c612|4x10GbE BT+LSI 3108<br>| 6028R-E1CR16T |16 |7   |  2  | 2    | 16    |c612|2x10GbE+LSI 3108<br>| 6028R-E1CR24N |24 |3   |  2  | 2    | 24    |c612|SIOM flexible+LSI 3108<br>| 6028R-E1CR12L |16 |7   |  2  | 2    | 12    |c612|2xX540+LSI 3008<br>| 2028R-E1CR48N |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3108<br>| 2028R-E1CR48L |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3008<br>| Dell R730xd   |24 |6   |  2  | 2    | 16    |c610|daughter card+LSI 3008/3108<br>| HP DL180G9    |16 |6   |  2  | 0    | 12    |c610|flexible card<br>| HP 4200 G9    |16 |6   |  2  | 54   | 28    |c610|flexible card</p>
+<h5 id="Supermicro-6028R-E1CR12N-lustre-OSS"><a href="#Supermicro-6028R-E1CR12N-lustre-OSS" class="headerlink" title="Supermicro 6028R-E1CR12N (lustre OSS)"></a>Supermicro 6028R-E1CR12N (lustre OSS)</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg" alt=""></p>
+<h5 id="Supermicro-6028R-E1CR16T"><a href="#Supermicro-6028R-E1CR16T" class="headerlink" title="Supermicro 6028R-E1CR16T"></a>Supermicro 6028R-E1CR16T</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg" alt=""></p>
+<h5 id="Supermicro-6028R-E1CR24N"><a href="#Supermicro-6028R-E1CR24N" class="headerlink" title="Supermicro 6028R-E1CR24N"></a>Supermicro 6028R-E1CR24N</h5><p><img src="http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg" alt=""></p>
+<h5 id="4U"><a href="#4U" class="headerlink" title="4U"></a>4U</h5><h6 id="2-socket"><a href="#2-socket" class="headerlink" title="2 socket"></a>2 socket</h6><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>IO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6048R-E1CR36L</td>
+<td>8</td>
+<td>4+2(2.0)</td>
+<td>1</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>4xi350+LSI 3008</td>
+</tr>
+<tr>
+<td>6048R-E1CR36L</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>x540+LSI 3008</td>
+</tr>
+<tr>
+<td>6048R-E1CR36H</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>x540+LSI 3108</td>
+</tr>
+</tbody>
+</table>
+<h6 id="4-socket"><a href="#4-socket" class="headerlink" title="4 socket"></a>4 socket</h6><p>8048B-TR4FT 96 x 128G<br>8048B-TRFT 96 x 64G</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>IO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8048B-TRFT</td>
+<td>96</td>
+<td>11</td>
+<td>4</td>
+<td>AHCI 2xSATA3</td>
+<td>24</td>
+<td>c602J</td>
+<td>x540</td>
+</tr>
+<tr>
+<td>4048B-TRFT</td>
+<td>96</td>
+<td>11</td>
+<td>4</td>
+<td>48 +AHCI 2xSATA3</td>
+<td>0</td>
+<td>c602J</td>
+<td>x540</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Supermicro-8048B-TRFT"><a href="#Supermicro-8048B-TRFT" class="headerlink" title="Supermicro 8048B-TRFT"></a>Supermicro 8048B-TRFT</h5><p><img src="https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg" alt=""></p>
+<h5 id="AHCI-SATA-DOM-x10-6Gb-SATA3"><a href="#AHCI-SATA-DOM-x10-6Gb-SATA3" class="headerlink" title="AHCI SATA DOM x10 6Gb SATA3"></a>AHCI SATA DOM x10 6Gb SATA3</h5><p><img src="https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg" alt=""></p>
+<h3 id="JBOD"><a href="#JBOD" class="headerlink" title="JBOD"></a>JBOD</h3><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>H</th>
+<th>H(mm)</th>
+<th>W</th>
+<th>Depth</th>
+<th>Fans</th>
+<th>3.5 slot</th>
+<th>power(w)</th>
+<th>Weight(max)</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>946ED-R2KJBOD</td>
+<td>4U</td>
+<td>178</td>
+<td>447</td>
+<td>906</td>
+<td>4+1</td>
+<td>90</td>
+<td>4x1000</td>
+<td>102.06kg</td>
+<td>SAS3 SFF-8644</td>
+</tr>
+<tr>
+<td>HGST JBOD 4U60</td>
+<td>4U</td>
+<td>175</td>
+<td>424</td>
+<td>938</td>
+<td>N+1</td>
+<td>60</td>
+<td>2x1650</td>
+<td>89.81 kg</td>
+<td>SAS3 SFF-8436</td>
+</tr>
+<tr>
+<td>Dell MD1280</td>
+<td>5U</td>
+<td>223</td>
+<td>483</td>
+<td>915</td>
+<td>N+1</td>
+<td>84</td>
+<td>2x2800</td>
+<td>130.1 kg</td>
+<td>SAS2 SFF-8088</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Humidity</th>
+<th>Random Vibration</th>
+<th>Sinusoidal Vibration</th>
+<th>Temperature Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>946ED-R2KJBOD</td>
+<td>8%-90%</td>
+<td></td>
+<td></td>
+<td>5°C-35°C(air)40°C (helium)       </td>
+</tr>
+<tr>
+<td>HGST JBOD 4U60</td>
+<td>8%-80%</td>
+<td>0.25Grms 5-10Hz</td>
+<td>0.05 g, 10-300Hz</td>
+<td>5°C-35°C(air)40°C (helium)</td>
+</tr>
+<tr>
+<td>Dell MD1280</td>
+<td>10%-80%</td>
+<td></td>
+<td>1.04 g,2-200Hz(max)</td>
+<td>5°C-35°C(air)40°C (helium)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Supermicro-946ED-R2KJBOD"><a href="#Supermicro-946ED-R2KJBOD" class="headerlink" title="Supermicro 946ED-R2KJBOD"></a>Supermicro 946ED-R2KJBOD</h4><p><img src="https://www.supermicro.com/CDS_Image/uploads/chassis/sc946ed_ad_pull-out_new_20150727.jpg" alt=""></p>
+<h4 id="SFF-8644"><a href="#SFF-8644" class="headerlink" title="SFF-8644"></a>SFF-8644</h4><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/SFF-8644.jpg/200px-SFF-8644.jpg" alt=""></p>
+<h4 id="SFF-8436"><a href="#SFF-8436" class="headerlink" title="SFF-8436"></a>SFF-8436</h4><p><img src="http://img.thuexeminhanh.com/pic/z29cc701-200x200-1/40g_qsfp_sff_8436_to_qsfp_passive_copper_cable.jpg" alt=""></p>
+<h4 id="SFF-8088"><a href="#SFF-8088" class="headerlink" title="SFF-8088"></a>SFF-8088</h4><p><img src="http://sierra-cables.com/Cables/images/SFF-8088_small.jpg" alt=""></p>
+<h3 id="SAS-HBA-and-Raid"><a href="#SAS-HBA-and-Raid" class="headerlink" title="SAS HBA and Raid"></a>SAS HBA and Raid</h3><h4 id="Raid"><a href="#Raid" class="headerlink" title="Raid"></a>Raid</h4><table>
+<thead>
+<tr>
+<th>RAID</th>
+<th>SAS chip</th>
+<th>dell</th>
+<th>Cache</th>
+<th>SAS</th>
+<th>SAS port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9380-8e</td>
+<td>LSI 3108</td>
+<td>H830</td>
+<td>2GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>9361-8i</td>
+<td>LSI 3108</td>
+<td>H730</td>
+<td>1-2G</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>9341-8i</td>
+<td>LSI 3008</td>
+<td>H330</td>
+<td>1GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>9260-8i</td>
+<td>LSI 2108</td>
+<td>none</td>
+<td>0.5G</td>
+<td>2x4x6G</td>
+<td>SFF-8087</td>
+</tr>
+<tr>
+<td>9260-8i</td>
+<td>LSI 2208</td>
+<td>H710</td>
+<td>1GB</td>
+<td>2x4x6G</td>
+<td>SFF-8087</td>
+</tr>
+<tr>
+<td>9286-8e</td>
+<td>LSI 2208</td>
+<td>H810</td>
+<td>1GB</td>
+<td>2x4x6G</td>
+<td>SFF-8088</td>
+</tr>
+<tr>
+<td>HP P244br</td>
+<td>PMC</td>
+<td></td>
+<td>1GB</td>
+<td>2x1x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>HP P440ar</td>
+<td>PMC</td>
+<td></td>
+<td>2GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>HP P440</td>
+<td>PMC</td>
+<td></td>
+<td>2GB</td>
+<td>1x8x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>P431-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>HP P441</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>P741m-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>P841-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>4x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="LSI-Fusion-MPT"><a href="#LSI-Fusion-MPT" class="headerlink" title="LSI Fusion-MPT"></a>LSI Fusion-MPT</h4><table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>dell</th>
+<th>LSI</th>
+<th>SAS</th>
+<th>SAS port</th>
+<th>Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3008</td>
+<td>HBA12i</td>
+<td>9311-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>14.5W</td>
+</tr>
+<tr>
+<td>LSI 3008</td>
+<td>HBA12e</td>
+<td>9300-8e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>14.5W</td>
+</tr>
+<tr>
+<td>LSI 3216</td>
+<td></td>
+<td>9305-16e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>13w</td>
+</tr>
+<tr>
+<td>LSI3008x2</td>
+<td></td>
+<td>9302-16e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>30W</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td></td>
+<td>9305-24i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>16.2w</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td></td>
+<td>9305-24i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>16.2w</td>
+</tr>
+<tr>
+<td>LSI 2008</td>
+<td>HBA6i</td>
+<td>9211-8i</td>
+<td>2</td>
+<td>SFF8087</td>
+<td>7w</td>
+</tr>
+<tr>
+<td>LSI 2308</td>
+<td>none</td>
+<td>9207-8e</td>
+<td>2</td>
+<td>SFF8088</td>
+<td>9.8w</td>
+</tr>
+<tr>
+<td>LSI2008x2</td>
+<td>none</td>
+<td>9202-16e</td>
+<td>2</td>
+<td>SFF8088</td>
+<td>9.8w</td>
+</tr>
+<tr>
+<td>LSI2008x2</td>
+<td>HBA6e</td>
+<td>9200-8e</td>
+<td>2</td>
+<td>SFF8088</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H220-8i</td>
+<td>2</td>
+<td>SFF8087</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H221-8e</td>
+<td>2</td>
+<td>SFF8087</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H240-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H240br-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H240br-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H241-8e</td>
+<td>3</td>
+<td>SFF8644</td>
+</tr>
+</tbody>
+</table>
+<h5 id="LSI-ARM-arch-SAS-SATA-NVME"><a href="#LSI-ARM-arch-SAS-SATA-NVME" class="headerlink" title="LSI ARM arch, SAS, SATA, NVME"></a>LSI ARM arch, SAS, SATA, NVME</h5><table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>PCIE lanes</th>
+<th>PCIE BW</th>
+<th>SAS BW</th>
+<th>CPU</th>
+<th>DA</th>
+<th>DA</th>
+<th>PCIE devices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3416</td>
+<td>x8 G3</td>
+<td>16GBps</td>
+<td>19.2GBps</td>
+<td>ARM A15 1.2G</td>
+<td>2xSFF-8639</td>
+<td>4xSFF-8680</td>
+<td>16          </td>
+</tr>
+<tr>
+<td>LSI 3408</td>
+<td>x8 G3</td>
+<td>8GBps</td>
+<td>9.6GBps</td>
+<td>ARM A15 1.2G</td>
+<td>2xSFF-8639</td>
+<td>4xSFF-8680</td>
+<td>16          </td>
+</tr>
+</tbody>
+</table>
+<p>Why 3416 and 3408 have the same PCIE lanes (x8 ?)</p>
+<ul>
+<li>SFF-8639<ul>
+<li>PCIE Gen3 1,2,4 lanes</li>
+<li>3.938 GB/s (if full-duplex, x2)</li>
+<li>SAS3 1,2,4 lanes</li>
+<li>4.8GB/s</li>
+</ul>
+</li>
+<li>SFF-8680<ul>
+<li>SAS3 1,2 lanes</li>
+<li>2.4GB/s</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://www.snia.org/sites/default/education/tutorials/2012/fall/solid/AnilVasudeva_NVMe_NextGen_SSD%20Interface-r1-nc1.pdf" target="_blank" rel="external">NVME interface</a></p>
+<h4 id="LSI-SAS-Chip"><a href="#LSI-SAS-Chip" class="headerlink" title="LSI SAS Chip"></a>LSI SAS Chip</h4><ul>
+<li>Fd (Full duplex)</li>
+<li>BW (bandwidth)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>Power CPU</th>
+<th>16xPCIE3 BW</th>
+<th>SAS3 BW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3008</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>9.6GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 3108</td>
+<td>Dual PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>9.6GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 3216</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>19.2GB/s Fd 16p</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>28.8GB/s Fd 24p</td>
+</tr>
+<tr>
+<td>LSI 2108</td>
+<td>PPC440 800MHz</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2008</td>
+<td>PPC440 533M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2308</td>
+<td>PPC440 800M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2208</td>
+<td>Dual PPC440 800M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><h4 id="SAS"><a href="#SAS" class="headerlink" title="SAS"></a>SAS</h4><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>SIZE(TB)</th>
+<th>DWPD (5y)</th>
+<th>Nand</th>
+<th>R/W(GB/s)</th>
+<th>ios(k)</th>
+<th>interface</th>
+<th>UBER</th>
+<th>MTBF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SanDisk Optimus MAX</td>
+<td>4</td>
+<td>0.5</td>
+<td>19nm emlc</td>
+<td>0.4/0.4</td>
+<td>85/11</td>
+<td>6Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>SD Lightning Eco GenII</td>
+<td>1.6</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>0.98/0.6</td>
+<td>195/81</td>
+<td>12Gbps SAS</td>
+<td>10^18</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>SD Lightning Ultra GenII</td>
+<td>0.8</td>
+<td>25</td>
+<td>15nm emlc</td>
+<td>0.98/0.74</td>
+<td>199/115</td>
+<td>12Gbps SAS</td>
+<td>10^19</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SSD1600MR</td>
+<td>1.9</td>
+<td>2.6</td>
+<td>emlc</td>
+<td>1/0.7</td>
+<td>130/30</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SS200</td>
+<td>0.48-7.6</td>
+<td>1</td>
+<td>15nm emlc</td>
+<td>1.8/1</td>
+<td>250/37</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SS200</td>
+<td>0.4-6.4</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>1.8/1</td>
+<td>250/86</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST s842</td>
+<td>2</td>
+<td>14~40</td>
+<td>emlc</td>
+<td>0.53/0.38</td>
+<td>84/28</td>
+<td>6Gbps SAS</td>
+<td></td>
+<td>2M</td>
+</tr>
+<tr>
+<td>1200.2 ST3840FM0003</td>
+<td>3.8</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>1.1/0.77</td>
+<td>180/30</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Samsung PM1635</td>
+<td>1.6</td>
+<td>3</td>
+<td>TLC ?</td>
+<td>0.94/0.79</td>
+<td>190/50</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+</tbody>
+</table>
+<h4 id="SATA"><a href="#SATA" class="headerlink" title="SATA"></a>SATA</h4><p>Intel DC S3100 is good choice to install operating system<br>| Model                     |SIZE(TB) |DWPD (5y)|Nand       |R/W(GB/s)    |ios(k)   |interface   | UBER  | MTBF<br>|—————————|———|———|———–|————-|———|————|——-|———<br>| SD CloudSpeed Eco GenII   |1.92     |0.6      |15nm emlc  |0.53/0.46    | 75/14   | 6Gbps      | 10^18 | 2M<br>| SD CloudSpeed Ultra GenII |1.6      |1.8      |15nm emlc  |0.53/0.46    | 76/32   | 6Gbps      | 10^18 | 2M<br>| Intel DC s3100            |1        |0.06     |16nm tlc   |0.50/0.11    | 59/3.9  | 6Gbps      | 10^16 | 1.6M<br>| Intel DC s3100            |0.48     |0.84     |16nm tlc   |0.50/0.11    | 55/4.7  | 6Gbps      | 10^16 | 1.6M<br>| Intel DC s3510            |1.6      |0.35     |16nm emlc  |0.50/0.43    | 65/15   | 6Gbps      | 10^17 | 2M<br>| Intel DC s3520            |1.6      |0.35     |16 3d emlc |0.45/0.38    | 67/17   | 6Gbps      | 10^17 | 2M<br>| Intel DC s3610            |1.6      |3        |20nm emlc  |0.55/0.5     | 84/27   | 6Gbps      | 10^17 | 2M<br>| Samsung PM863             |3.8      |0.78     |3d TLC     |0.55/0.5     | 99/18   | 6Gbps      |       |<br>| Samsung SM863             |3.8      |3.5      |3d MLC     |0.52/0.48    | 97/29   | 6Gbps      |       |</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/raid/" rel="tag">#raid</a>
+          
+            <a href="/tags/hardware/" rel="tag">#hardware</a>
+          
+            <a href="/tags/jbod/" rel="tag">#jbod</a>
+          
+            <a href="/tags/das/" rel="tag">#das</a>
+          
+            <a href="/tags/server/" rel="tag">#server</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/18/dump-sparse-file-data-segment/" rel="next" title="Dump sparse file data segment">
+                <i class="fa fa-chevron-left"></i> Dump sparse file data segment
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DAS"><span class="nav-number">1.</span> <span class="nav-text">DAS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dual-nodes-redundance-SAS-link"><span class="nav-number">1.1.</span> <span class="nav-text">Dual nodes, redundance SAS link</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2U"><span class="nav-number">1.1.1.</span> <span class="nav-text">2U</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Inventec-U90G3"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Inventec U90G3</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4U-SBB"><span class="nav-number">1.1.2.</span> <span class="nav-text">4U (SBB)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-node"><span class="nav-number">1.2.</span> <span class="nav-text">Single node</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1U"><span class="nav-number">1.2.1.</span> <span class="nav-text">1U</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Supermicro-6017R-73HDP"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Supermicro 6017R-73HDP+</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2U-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">2U</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Supermicro-6028R-E1CR12N-lustre-OSS"><span class="nav-number">1.2.3.</span> <span class="nav-text">Supermicro 6028R-E1CR12N (lustre OSS)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Supermicro-6028R-E1CR16T"><span class="nav-number">1.2.4.</span> <span class="nav-text">Supermicro 6028R-E1CR16T</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Supermicro-6028R-E1CR24N"><span class="nav-number">1.2.5.</span> <span class="nav-text">Supermicro 6028R-E1CR24N</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4U"><span class="nav-number">1.2.6.</span> <span class="nav-text">4U</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-socket"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">2 socket</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-socket"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">4 socket</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Supermicro-8048B-TRFT"><span class="nav-number">1.2.7.</span> <span class="nav-text">Supermicro 8048B-TRFT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AHCI-SATA-DOM-x10-6Gb-SATA3"><span class="nav-number">1.2.8.</span> <span class="nav-text">AHCI SATA DOM x10 6Gb SATA3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JBOD"><span class="nav-number">2.</span> <span class="nav-text">JBOD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Supermicro-946ED-R2KJBOD"><span class="nav-number">2.1.</span> <span class="nav-text">Supermicro 946ED-R2KJBOD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SFF-8644"><span class="nav-number">2.2.</span> <span class="nav-text">SFF-8644</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SFF-8436"><span class="nav-number">2.3.</span> <span class="nav-text">SFF-8436</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SFF-8088"><span class="nav-number">2.4.</span> <span class="nav-text">SFF-8088</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SAS-HBA-and-Raid"><span class="nav-number">3.</span> <span class="nav-text">SAS HBA and Raid</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Raid"><span class="nav-number">3.1.</span> <span class="nav-text">Raid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSI-Fusion-MPT"><span class="nav-number">3.2.</span> <span class="nav-text">LSI Fusion-MPT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#LSI-ARM-arch-SAS-SATA-NVME"><span class="nav-number">3.2.1.</span> <span class="nav-text">LSI ARM arch, SAS, SATA, NVME</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSI-SAS-Chip"><span class="nav-number">3.3.</span> <span class="nav-text">LSI SAS Chip</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSD"><span class="nav-number">4.</span> <span class="nav-text">SSD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SAS"><span class="nav-number">4.1.</span> <span class="nav-text">SAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SATA"><span class="nav-number">4.2.</span> <span class="nav-text">SATA</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2016/12/22/General-hardware/';
+      var disqus_title = 'General hardware';
+      var disqus_url = 'http://yoursite.com/2016/12/22/General-hardware/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>

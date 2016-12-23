@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-19T09:59:48.948Z</updated>
+  <updated>2016-12-23T09:50:53.725Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,835 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>General hardware</title>
+    <link href="http://yoursite.com/2016/12/22/General-hardware/"/>
+    <id>http://yoursite.com/2016/12/22/General-hardware/</id>
+    <published>2016-12-22T09:39:27.000Z</published>
+    <updated>2016-12-23T09:50:53.725Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundance-SAS-link&quot; class=&quot;headerlink&quot; title=&quot;Dual nodes, redundance SAS link&quot;&gt;&lt;/a&gt;Dual nodes, redundance SAS link&lt;/h4&gt;&lt;h5 id=&quot;2U&quot;&gt;&lt;a href=&quot;#2U&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.supermicro.com/solutions/Lustre.cfm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSG-927R-E2CJB&lt;/a&gt;, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SSG-927R-E2CJB&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c602&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;U90G3&lt;/td&gt;
+&lt;td&gt;16x2&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;70&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HPE 4520&lt;/td&gt;
+&lt;td&gt;16x2&lt;/td&gt;
+&lt;td&gt;2x4&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;46&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&quot;Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it&quot;&gt;&lt;a href=&quot;#Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it&quot; class=&quot;headerlink&quot; title=&quot;Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)&quot;&gt;&lt;/a&gt;Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)&lt;/h6&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h6 id=&quot;Inventec-U90G3&quot;&gt;&lt;a href=&quot;#Inventec-U90G3&quot; class=&quot;headerlink&quot; title=&quot;Inventec U90G3&quot;&gt;&lt;/a&gt;Inventec U90G3&lt;/h6&gt;&lt;p&gt;&lt;img src=&quot;http://www.wayho.cn/web/1208/wz/6fbb195b6441f67c.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;4U-SBB&quot;&gt;&lt;a href=&quot;#4U-SBB&quot; class=&quot;headerlink&quot; title=&quot;4U (SBB)&quot;&gt;&lt;/a&gt;4U (SBB)&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-DE2CR24L&lt;/td&gt;
+&lt;td&gt;8x2&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+LSI3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Single-node&quot;&gt;&lt;a href=&quot;#Single-node&quot; class=&quot;headerlink&quot; title=&quot;Single node&quot;&gt;&lt;/a&gt;Single node&lt;/h4&gt;&lt;h5 id=&quot;1U&quot;&gt;&lt;a href=&quot;#1U&quot; class=&quot;headerlink&quot; title=&quot;1U&quot;&gt;&lt;/a&gt;1U&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6017R-73HDP+&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2(os)&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;c602&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1028R-WTR&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+Mezzanine HAB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SYS-1028U-E1CRTP+&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;10GbE SFP and 1xinternal PCIE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell R630&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+Daughter card&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&quot;Supermicro-6017R-73HDP&quot;&gt;&lt;a href=&quot;#Supermicro-6017R-73HDP&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6017R-73HDP+&quot;&gt;&lt;/a&gt;Supermicro 6017R-73HDP+&lt;/h6&gt;&lt;p&gt;&lt;img src=&quot;http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;2U-1&quot;&gt;&lt;a href=&quot;#2U-1&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;There are 24 x 3.5 inch + 2 x 2.5 inch slot in 6028R-E1CR24N&lt;br&gt;| Model         |MEM|PCIE|socks|2.5HDD|3.5HDD |chip|io&lt;br&gt;| ————- |—|—-|—–|——|——-|—-|————-&lt;br&gt;| 6028R-E1CR12N |24 |6+1(2.0) |  2  | 2    | 12    |c612|4x10GbE BT+LSI 3108&lt;br&gt;| 6028R-E1CR16T |16 |7   |  2  | 2    | 16    |c612|2x10GbE+LSI 3108&lt;br&gt;| 6028R-E1CR24N |24 |3   |  2  | 2    | 24    |c612|SIOM flexible+LSI 3108&lt;br&gt;| 6028R-E1CR12L |16 |7   |  2  | 2    | 12    |c612|2xX540+LSI 3008&lt;br&gt;| 2028R-E1CR48N |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3108&lt;br&gt;| 2028R-E1CR48L |24 |3   |  2  | 48+2 | 0     |c612|SIOM flexible+LSI 3008&lt;br&gt;| Dell R730xd   |24 |6   |  2  | 2    | 16    |c610|daughter card+LSI 3008/3108&lt;br&gt;| HP DL180G9    |16 |6   |  2  | 0    | 12    |c610|flexible card&lt;br&gt;| HP 4200 G9    |16 |6   |  2  | 54   | 28    |c610|flexible card&lt;/p&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR12N-lustre-OSS&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR12N-lustre-OSS&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR12N (lustre OSS)&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR12N (lustre OSS)&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR16T&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR16T&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR16T&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR16T&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR24N&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR24N&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR24N&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR24N&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;4U&quot;&gt;&lt;a href=&quot;#4U&quot; class=&quot;headerlink&quot; title=&quot;4U&quot;&gt;&lt;/a&gt;4U&lt;/h5&gt;&lt;h6 id=&quot;2-socket&quot;&gt;&lt;a href=&quot;#2-socket&quot; class=&quot;headerlink&quot; title=&quot;2 socket&quot;&gt;&lt;/a&gt;2 socket&lt;/h6&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;IO&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36L&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;4+2(2.0)&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;4xi350+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36L&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;x540+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36H&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;x540+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&quot;4-socket&quot;&gt;&lt;a href=&quot;#4-socket&quot; class=&quot;headerlink&quot; title=&quot;4 socket&quot;&gt;&lt;/a&gt;4 socket&lt;/h6&gt;&lt;p&gt;8048B-TR4FT 96 x 128G&lt;br&gt;8048B-TRFT 96 x 64G&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;IO&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;8048B-TRFT&lt;/td&gt;
+&lt;td&gt;96&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;AHCI 2xSATA3&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;c602J&lt;/td&gt;
+&lt;td&gt;x540&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4048B-TRFT&lt;/td&gt;
+&lt;td&gt;96&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;48 +AHCI 2xSATA3&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c602J&lt;/td&gt;
+&lt;td&gt;x540&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;Supermicro-8048B-TRFT&quot;&gt;&lt;a href=&quot;#Supermicro-8048B-TRFT&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 8048B-TRFT&quot;&gt;&lt;/a&gt;Supermicro 8048B-TRFT&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;AHCI-SATA-DOM-x10-6Gb-SATA3&quot;&gt;&lt;a href=&quot;#AHCI-SATA-DOM-x10-6Gb-SATA3&quot; class=&quot;headerlink&quot; title=&quot;AHCI SATA DOM x10 6Gb SATA3&quot;&gt;&lt;/a&gt;AHCI SATA DOM x10 6Gb SATA3&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;JBOD&quot;&gt;&lt;a href=&quot;#JBOD&quot; class=&quot;headerlink&quot; title=&quot;JBOD&quot;&gt;&lt;/a&gt;JBOD&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;H&lt;/th&gt;
+&lt;th&gt;H(mm)&lt;/th&gt;
+&lt;th&gt;W&lt;/th&gt;
+&lt;th&gt;Depth&lt;/th&gt;
+&lt;th&gt;Fans&lt;/th&gt;
+&lt;th&gt;3.5 slot&lt;/th&gt;
+&lt;th&gt;power(w)&lt;/th&gt;
+&lt;th&gt;Weight(max)&lt;/th&gt;
+&lt;th&gt;Interface&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;946ED-R2KJBOD&lt;/td&gt;
+&lt;td&gt;4U&lt;/td&gt;
+&lt;td&gt;178&lt;/td&gt;
+&lt;td&gt;447&lt;/td&gt;
+&lt;td&gt;906&lt;/td&gt;
+&lt;td&gt;4+1&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;4x1000&lt;/td&gt;
+&lt;td&gt;102.06kg&lt;/td&gt;
+&lt;td&gt;SAS3 SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST JBOD 4U60&lt;/td&gt;
+&lt;td&gt;4U&lt;/td&gt;
+&lt;td&gt;175&lt;/td&gt;
+&lt;td&gt;424&lt;/td&gt;
+&lt;td&gt;938&lt;/td&gt;
+&lt;td&gt;N+1&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;2x1650&lt;/td&gt;
+&lt;td&gt;89.81 kg&lt;/td&gt;
+&lt;td&gt;SAS3 SFF-8436&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell MD1280&lt;/td&gt;
+&lt;td&gt;5U&lt;/td&gt;
+&lt;td&gt;223&lt;/td&gt;
+&lt;td&gt;483&lt;/td&gt;
+&lt;td&gt;915&lt;/td&gt;
+&lt;td&gt;N+1&lt;/td&gt;
+&lt;td&gt;84&lt;/td&gt;
+&lt;td&gt;2x2800&lt;/td&gt;
+&lt;td&gt;130.1 kg&lt;/td&gt;
+&lt;td&gt;SAS2 SFF-8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;Humidity&lt;/th&gt;
+&lt;th&gt;Random Vibration&lt;/th&gt;
+&lt;th&gt;Sinusoidal Vibration&lt;/th&gt;
+&lt;th&gt;Temperature Range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;946ED-R2KJBOD&lt;/td&gt;
+&lt;td&gt;8%-90%&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)       &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST JBOD 4U60&lt;/td&gt;
+&lt;td&gt;8%-80%&lt;/td&gt;
+&lt;td&gt;0.25Grms 5-10Hz&lt;/td&gt;
+&lt;td&gt;0.05 g, 10-300Hz&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell MD1280&lt;/td&gt;
+&lt;td&gt;10%-80%&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1.04 g,2-200Hz(max)&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Supermicro-946ED-R2KJBOD&quot;&gt;&lt;a href=&quot;#Supermicro-946ED-R2KJBOD&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 946ED-R2KJBOD&quot;&gt;&lt;/a&gt;Supermicro 946ED-R2KJBOD&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/CDS_Image/uploads/chassis/sc946ed_ad_pull-out_new_20150727.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8644&quot;&gt;&lt;a href=&quot;#SFF-8644&quot; class=&quot;headerlink&quot; title=&quot;SFF-8644&quot;&gt;&lt;/a&gt;SFF-8644&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/SFF-8644.jpg/200px-SFF-8644.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8436&quot;&gt;&lt;a href=&quot;#SFF-8436&quot; class=&quot;headerlink&quot; title=&quot;SFF-8436&quot;&gt;&lt;/a&gt;SFF-8436&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://img.thuexeminhanh.com/pic/z29cc701-200x200-1/40g_qsfp_sff_8436_to_qsfp_passive_copper_cable.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8088&quot;&gt;&lt;a href=&quot;#SFF-8088&quot; class=&quot;headerlink&quot; title=&quot;SFF-8088&quot;&gt;&lt;/a&gt;SFF-8088&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://sierra-cables.com/Cables/images/SFF-8088_small.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SAS-HBA-and-Raid&quot;&gt;&lt;a href=&quot;#SAS-HBA-and-Raid&quot; class=&quot;headerlink&quot; title=&quot;SAS HBA and Raid&quot;&gt;&lt;/a&gt;SAS HBA and Raid&lt;/h3&gt;&lt;h4 id=&quot;Raid&quot;&gt;&lt;a href=&quot;#Raid&quot; class=&quot;headerlink&quot; title=&quot;Raid&quot;&gt;&lt;/a&gt;Raid&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;RAID&lt;/th&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;dell&lt;/th&gt;
+&lt;th&gt;Cache&lt;/th&gt;
+&lt;th&gt;SAS&lt;/th&gt;
+&lt;th&gt;SAS port&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;9380-8e&lt;/td&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;H830&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9361-8i&lt;/td&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;H730&lt;/td&gt;
+&lt;td&gt;1-2G&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9341-8i&lt;/td&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;H330&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9260-8i&lt;/td&gt;
+&lt;td&gt;LSI 2108&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;0.5G&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9260-8i&lt;/td&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;H710&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9286-8e&lt;/td&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;H810&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P244br&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x1x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P440ar&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P440&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;1x8x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P431-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P441&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P741m-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P841-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;4x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;LSI-Fusion-MPT&quot;&gt;&lt;a href=&quot;#LSI-Fusion-MPT&quot; class=&quot;headerlink&quot; title=&quot;LSI Fusion-MPT&quot;&gt;&lt;/a&gt;LSI Fusion-MPT&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;dell&lt;/th&gt;
+&lt;th&gt;LSI&lt;/th&gt;
+&lt;th&gt;SAS&lt;/th&gt;
+&lt;th&gt;SAS port&lt;/th&gt;
+&lt;th&gt;Power&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;HBA12i&lt;/td&gt;
+&lt;td&gt;9311-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;14.5W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;HBA12e&lt;/td&gt;
+&lt;td&gt;9300-8e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;14.5W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3216&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-16e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;13w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI3008x2&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9302-16e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;30W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-24i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;16.2w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-24i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;16.2w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2008&lt;/td&gt;
+&lt;td&gt;HBA6i&lt;/td&gt;
+&lt;td&gt;9211-8i&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;td&gt;7w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2308&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;9207-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;td&gt;9.8w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI2008x2&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;9202-16e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;td&gt;9.8w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI2008x2&lt;/td&gt;
+&lt;td&gt;HBA6e&lt;/td&gt;
+&lt;td&gt;9200-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H220-8i&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H221-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H240-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H240br-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H240br-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H241-8e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;LSI-ARM-arch-SAS-SATA-NVME&quot;&gt;&lt;a href=&quot;#LSI-ARM-arch-SAS-SATA-NVME&quot; class=&quot;headerlink&quot; title=&quot;LSI ARM arch, SAS, SATA, NVME&quot;&gt;&lt;/a&gt;LSI ARM arch, SAS, SATA, NVME&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;PCIE lanes&lt;/th&gt;
+&lt;th&gt;PCIE BW&lt;/th&gt;
+&lt;th&gt;SAS BW&lt;/th&gt;
+&lt;th&gt;CPU&lt;/th&gt;
+&lt;th&gt;DA&lt;/th&gt;
+&lt;th&gt;DA&lt;/th&gt;
+&lt;th&gt;PCIE devices&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3416&lt;/td&gt;
+&lt;td&gt;x8 G3&lt;/td&gt;
+&lt;td&gt;16GBps&lt;/td&gt;
+&lt;td&gt;19.2GBps&lt;/td&gt;
+&lt;td&gt;ARM A15 1.2G&lt;/td&gt;
+&lt;td&gt;2xSFF-8639&lt;/td&gt;
+&lt;td&gt;4xSFF-8680&lt;/td&gt;
+&lt;td&gt;16          &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3408&lt;/td&gt;
+&lt;td&gt;x8 G3&lt;/td&gt;
+&lt;td&gt;8GBps&lt;/td&gt;
+&lt;td&gt;9.6GBps&lt;/td&gt;
+&lt;td&gt;ARM A15 1.2G&lt;/td&gt;
+&lt;td&gt;2xSFF-8639&lt;/td&gt;
+&lt;td&gt;4xSFF-8680&lt;/td&gt;
+&lt;td&gt;16          &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Why 3416 and 3408 have the same PCIE lanes (x8 ?)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SFF-8639&lt;ul&gt;
+&lt;li&gt;PCIE Gen3 1,2,4 lanes&lt;/li&gt;
+&lt;li&gt;3.938 GB/s (if full-duplex, x2)&lt;/li&gt;
+&lt;li&gt;SAS3 1,2,4 lanes&lt;/li&gt;
+&lt;li&gt;4.8GB/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SFF-8680&lt;ul&gt;
+&lt;li&gt;SAS3 1,2 lanes&lt;/li&gt;
+&lt;li&gt;2.4GB/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.snia.org/sites/default/education/tutorials/2012/fall/solid/AnilVasudeva_NVMe_NextGen_SSD%20Interface-r1-nc1.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NVME interface&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;LSI-SAS-Chip&quot;&gt;&lt;a href=&quot;#LSI-SAS-Chip&quot; class=&quot;headerlink&quot; title=&quot;LSI SAS Chip&quot;&gt;&lt;/a&gt;LSI SAS Chip&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Fd (Full duplex)&lt;/li&gt;
+&lt;li&gt;BW (bandwidth)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;Power CPU&lt;/th&gt;
+&lt;th&gt;16xPCIE3 BW&lt;/th&gt;
+&lt;th&gt;SAS3 BW&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;9.6GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;Dual PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;9.6GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3216&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;19.2GB/s Fd 16p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;28.8GB/s Fd 24p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2108&lt;/td&gt;
+&lt;td&gt;PPC440 800MHz&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2008&lt;/td&gt;
+&lt;td&gt;PPC440 533M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2308&lt;/td&gt;
+&lt;td&gt;PPC440 800M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;Dual PPC440 800M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;SSD&quot;&gt;&lt;a href=&quot;#SSD&quot; class=&quot;headerlink&quot; title=&quot;SSD&quot;&gt;&lt;/a&gt;SSD&lt;/h3&gt;&lt;h4 id=&quot;SAS&quot;&gt;&lt;a href=&quot;#SAS&quot; class=&quot;headerlink&quot; title=&quot;SAS&quot;&gt;&lt;/a&gt;SAS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;SIZE(TB)&lt;/th&gt;
+&lt;th&gt;DWPD (5y)&lt;/th&gt;
+&lt;th&gt;Nand&lt;/th&gt;
+&lt;th&gt;R/W(GB/s)&lt;/th&gt;
+&lt;th&gt;ios(k)&lt;/th&gt;
+&lt;th&gt;interface&lt;/th&gt;
+&lt;th&gt;UBER&lt;/th&gt;
+&lt;th&gt;MTBF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SanDisk Optimus MAX&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;td&gt;19nm emlc&lt;/td&gt;
+&lt;td&gt;0.4/0.4&lt;/td&gt;
+&lt;td&gt;85/11&lt;/td&gt;
+&lt;td&gt;6Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD Lightning Eco GenII&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.98/0.6&lt;/td&gt;
+&lt;td&gt;195/81&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD Lightning Ultra GenII&lt;/td&gt;
+&lt;td&gt;0.8&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.98/0.74&lt;/td&gt;
+&lt;td&gt;199/115&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^19&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SSD1600MR&lt;/td&gt;
+&lt;td&gt;1.9&lt;/td&gt;
+&lt;td&gt;2.6&lt;/td&gt;
+&lt;td&gt;emlc&lt;/td&gt;
+&lt;td&gt;1/0.7&lt;/td&gt;
+&lt;td&gt;130/30&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SS200&lt;/td&gt;
+&lt;td&gt;0.48-7.6&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.8/1&lt;/td&gt;
+&lt;td&gt;250/37&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SS200&lt;/td&gt;
+&lt;td&gt;0.4-6.4&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.8/1&lt;/td&gt;
+&lt;td&gt;250/86&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST s842&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;14~40&lt;/td&gt;
+&lt;td&gt;emlc&lt;/td&gt;
+&lt;td&gt;0.53/0.38&lt;/td&gt;
+&lt;td&gt;84/28&lt;/td&gt;
+&lt;td&gt;6Gbps SAS&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1200.2 ST3840FM0003&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.1/0.77&lt;/td&gt;
+&lt;td&gt;180/30&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung PM1635&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;TLC ?&lt;/td&gt;
+&lt;td&gt;0.94/0.79&lt;/td&gt;
+&lt;td&gt;190/50&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;SATA&quot;&gt;&lt;a href=&quot;#SATA&quot; class=&quot;headerlink&quot; title=&quot;SATA&quot;&gt;&lt;/a&gt;SATA&lt;/h4&gt;&lt;p&gt;Intel DC S3100 is good choice to install operating system&lt;br&gt;| Model                     |SIZE(TB) |DWPD (5y)|Nand       |R/W(GB/s)    |ios(k)   |interface   | UBER  | MTBF&lt;br&gt;|—————————|———|———|———–|————-|———|————|——-|———&lt;br&gt;| SD CloudSpeed Eco GenII   |1.92     |0.6      |15nm emlc  |0.53/0.46    | 75/14   | 6Gbps      | 10^18 | 2M&lt;br&gt;| SD CloudSpeed Ultra GenII |1.6      |1.8      |15nm emlc  |0.53/0.46    | 76/32   | 6Gbps      | 10^18 | 2M&lt;br&gt;| Intel DC s3100            |1        |0.06     |16nm tlc   |0.50/0.11    | 59/3.9  | 6Gbps      | 10^16 | 1.6M&lt;br&gt;| Intel DC s3100            |0.48     |0.84     |16nm tlc   |0.50/0.11    | 55/4.7  | 6Gbps      | 10^16 | 1.6M&lt;br&gt;| Intel DC s3510            |1.6      |0.35     |16nm emlc  |0.50/0.43    | 65/15   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Intel DC s3520            |1.6      |0.35     |16 3d emlc |0.45/0.38    | 67/17   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Intel DC s3610            |1.6      |3        |20nm emlc  |0.55/0.5     | 84/27   | 6Gbps      | 10^17 | 2M&lt;br&gt;| Samsung PM863             |3.8      |0.78     |3d TLC     |0.55/0.5     | 99/18   | 6Gbps      |       |&lt;br&gt;| Samsung SM863             |3.8      |3.5      |3d MLC     |0.52/0.48    | 97/29   | 6Gbps      |       |&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundan
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
+    
+      <category term="hardware" scheme="http://yoursite.com/tags/hardware/"/>
+    
+      <category term="jbod" scheme="http://yoursite.com/tags/jbod/"/>
+    
+      <category term="das" scheme="http://yoursite.com/tags/das/"/>
+    
+      <category term="server" scheme="http://yoursite.com/tags/server/"/>
+    
+  </entry>
   
   <entry>
     <title>Dump sparse file data segment</title>
@@ -190,11 +1019,11 @@
       <category term="tips" scheme="http://yoursite.com/categories/tips/"/>
     
     
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
     
@@ -251,9 +1080,9 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
-    
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
   </entry>
   
@@ -951,9 +1780,9 @@
     
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
-      <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
-    
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
+    
+      <category term="zfs" scheme="http://yoursite.com/tags/zfs/"/>
     
       <category term="trim" scheme="http://yoursite.com/tags/trim/"/>
     
@@ -1252,36 +2081,6 @@
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="bash" scheme="http://yoursite.com/tags/bash/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sort array with GAWK4</title>
-    <link href="http://yoursite.com/2016/04/04/Sort-array-with-GAWK4/"/>
-    <id>http://yoursite.com/2016/04/04/Sort-array-with-GAWK4/</id>
-    <published>2016-04-03T16:03:44.000Z</published>
-    <updated>2016-04-03T16:27:03.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Sort-array-by-awk&quot;&gt;&lt;a href=&quot;#Sort-array-by-awk&quot; class=&quot;headerlink&quot; title=&quot;Sort array by awk&quot;&gt;&lt;/a&gt;Sort array by awk&lt;/h3&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ cat file&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;zest &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;status &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;flash &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hero &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;innovation &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;test &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;Sort-index-descend&quot;&gt;&lt;a href=&quot;#Sort-index-descend&quot; class=&quot;headerlink&quot; title=&quot;Sort index (descend)&quot;&gt;&lt;/a&gt;Sort index (descend)&lt;/h4&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#!/usr/bin/awk -f&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	a[$&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]=$&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        PROCINFO[&lt;span class=&quot;string&quot;&gt;&quot;sorted_in&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&quot;@ind_str_desc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;END &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i in a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt; i, a[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;output&lt;br&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/tmp/awkscript file&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;zest &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;test &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;status &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;innovation &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hero &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;flash &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Sort-value-ascend&quot;&gt;&lt;a href=&quot;#Sort-value-ascend&quot; class=&quot;headerlink&quot; title=&quot;Sort value (ascend)&quot;&gt;&lt;/a&gt;Sort value (ascend)&lt;/h4&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#!/usr/bin/awk -f&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	a[$&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]=$&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	PROCINFO[&lt;span class=&quot;string&quot;&gt;&quot;sorted_in&quot;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&quot;@val_num_asc&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;END &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (i in a) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt; i, a[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;output&lt;br&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/tmp/awkscript file&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;test &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;zest &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hero &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;flash &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;status &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;innovation &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;port &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gawk reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/5342782/sort-associative-array-with-awk&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;stackoverflow reference&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Sort-array-by-awk&quot;&gt;&lt;a href=&quot;#Sort-array-by-awk&quot; class=&quot;headerlink&quot; title=&quot;Sort array by awk&quot;&gt;&lt;/a&gt;Sort array by awk&lt;/h3&gt;&lt;figure class
-    
-    </summary>
-    
-      <category term="awk" scheme="http://yoursite.com/categories/awk/"/>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-      <category term="awk" scheme="http://yoursite.com/tags/awk/"/>
     
   </entry>
   
