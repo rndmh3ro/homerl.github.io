@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2016-12-26T08:06:38.271Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/</loc>
     
     <lastmod>2016-12-26T03:18:09.260Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
     <lastmod>2016-11-27T00:56:45.522Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2016-09-29T15:04:45.000Z</lastmod>
     
   </url>
   
