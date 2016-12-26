@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/</loc>
+    
+    <lastmod>2016-12-26T03:18:09.260Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/08/10/Advance-reformat-4Kn-HDD-to-512-Bytes/</loc>
+    
+    <lastmod>2016-12-26T03:17:19.552Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</loc>
     
     <lastmod>2016-12-23T13:57:03.785Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://yoursite.com/2016/12/22/Hardware-index/</loc>
     
     <lastmod>2016-12-23T13:13:52.014Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/</loc>
-    
-    <lastmod>2016-12-19T09:59:48.000Z</lastmod>
     
   </url>
   
@@ -61,13 +68,6 @@
     <loc>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</loc>
     
     <lastmod>2016-09-04T11:30:07.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/08/10/Advance-reformat-4Kn-HDD-to-512-Bytes/</loc>
-    
-    <lastmod>2016-08-09T16:32:43.738Z</lastmod>
     
   </url>
   
