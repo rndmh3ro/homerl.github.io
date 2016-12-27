@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/22/Hardware-index/</loc>
+    
+    <lastmod>2016-12-27T06:00:10.651Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
-    <lastmod>2016-12-26T08:06:38.271Z</lastmod>
+    <lastmod>2016-12-26T08:29:10.178Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</loc>
     
     <lastmod>2016-12-23T13:57:03.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/22/Hardware-index/</loc>
-    
-    <lastmod>2016-12-23T13:13:52.014Z</lastmod>
     
   </url>
   

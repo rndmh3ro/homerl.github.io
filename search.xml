@@ -30,14 +30,24 @@
 </thead>
 <tbody>
 <tr>
-<td>SSG-927R-E2CJB</td>
-<td></td>
+<td>2028R-DE2CR24L</td>
+<td>2x8</td>
 <td>2x3</td>
-<td>2x2</td>
+<td>2</td>
 <td>24</td>
 <td>0</td>
-<td>c602</td>
-<td>dual</td>
+<td>c612</td>
+<td>X540+LSI 3008</td>
+</tr>
+<tr>
+<td>SG-2028R-DE2CR24</td>
+<td>2x8</td>
+<td>2x3</td>
+<td>2</td>
+<td>24</td>
+<td>0</td>
+<td>c612</td>
+<td>X540+LSI 3108</td>
 </tr>
 <tr>
 <td>Inventec U90G3</td>
@@ -61,7 +71,7 @@
 </tr>
 </tbody>
 </table>
-<h6 id="Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it"><a href="#Supermicro-SSG-927R-E2CJB-picture-is-SG-2028R-DE2CR24-same-with-it" class="headerlink" title="Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)"></a>Supermicro SSG-927R-E2CJB (picture is SG-2028R-DE2CR24, same with it)</h6><p><img src="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg" alt=""></p>
+<h6 id="Supermicro-2028R-DE2CR24L"><a href="#Supermicro-2028R-DE2CR24L" class="headerlink" title="Supermicro 2028R-DE2CR24L"></a>Supermicro 2028R-DE2CR24L</h6><p><img src="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg" alt=""></p>
 <h5 id="4U-SBB"><a href="#4U-SBB" class="headerlink" title="4U (SBB)"></a>4U (SBB)</h5><table>
 <thead>
 <tr>
@@ -355,7 +365,8 @@
 </table>
 <h5 id="Supermicro-8048B-TRFT"><a href="#Supermicro-8048B-TRFT" class="headerlink" title="Supermicro 8048B-TRFT"></a>Supermicro 8048B-TRFT</h5><p><img src="https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg" alt=""></p>
 <h5 id="AHCI-SATA-DOM-x10-6Gb-SATA3"><a href="#AHCI-SATA-DOM-x10-6Gb-SATA3" class="headerlink" title="AHCI SATA DOM x10 6Gb SATA3"></a>AHCI SATA DOM x10 6Gb SATA3</h5><p><img src="https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg" alt=""></p>
-<h3 id="JBOD"><a href="#JBOD" class="headerlink" title="JBOD"></a>JBOD</h3><table>
+<h3 id="JBOD"><a href="#JBOD" class="headerlink" title="JBOD"></a>JBOD</h3><p>SSG-927R-E2CJB is a 2U JBOD</p>
+<table>
 <thead>
 <tr>
 <th>Model</th>
@@ -2125,7 +2136,7 @@
       <title><![CDATA[Openzfs tips]]></title>
       <url>http://yoursite.com/2015/12/04/Openzfs-tips/</url>
       <content type="html"><![CDATA[<h3 id="Optimize-with-lustre"><a href="#Optimize-with-lustre" class="headerlink" title="Optimize with lustre"></a><a href="http://wiki.lustre.org/images/4/48/ZFS-As-Backend-File-System_Paciucci.pdf" target="_blank" rel="external">Optimize with lustre</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/modprobe.d/zfs.conf</span><br><span class="line">options zfs zfs_prefetch_<span class="built_in">disable</span>=1</span><br><span class="line">options zfs metaslab_debug_unload=1</span><br><span class="line">options zfs zfs_arc_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.6&#125;'</span> /proc/meminfo) <span class="comment">#60%, 3/5</span></span><br><span class="line">options zfs zfs_arc_meta_<span class="built_in">limit</span>=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.75&#125;'</span> /proc/meminfo) <span class="comment">#MDS only,75%</span></span><br><span class="line">options zfs zfs_dirty_data_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.15&#125;'</span> /proc/meminfo) <span class="comment">#15%</span></span><br><span class="line">options zfs zfs_vdev_async_write_min_active=5 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_async_write_max_active=15</span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_min_active=16 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_max_active=16</span><br><span class="line">options zfs zfs_vdev_async_write_active_min_dirty_percent=20</span><br><span class="line">options zfs zfs_vdev_scheduler=deadline <span class="comment">#noop for SSD</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://lustre.ornl.gov/ecosystem-2016/documents/tutorials/Stearman-LLNL-ZFS.pdf?nsukey=bhv7iiMMjjJsYnkAxMSM3VKQP9Ff9IdVwnl3uDR21Jpfj8hmA8eeQicYm%2FJWBsclJSWZFYbSPGj1%2F5sZvm%2FKGt4qyq%2F0UzJX%2F1c5oAlPYlXP9f3isH580zHjQcIsauqC%2F3oYkdK7uwCw3yJraL7Q6kF2oygRHoKGjBSqXCUoWY6cwjVfYO6zfJ4wlKGNCswy" target="_blank" rel="external">Tutorial: How to install, tune and Monitor a ZFS based Lustre file system</a></p>
+<p><a href="http://lustre.ornl.gov/ecosystem-2016/documents/tutorials/Stearman-LLNL-ZFS.pdf" target="_blank" rel="external">Tutorial: How to install, tune and Monitor a ZFS based Lustre file system</a></p>
 <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
 <h3 id="Xattr"><a href="#Xattr" class="headerlink" title="Xattr"></a>Xattr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> xattr=sa tank</span><br></pre></td></tr></table></figure>
 <h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>
