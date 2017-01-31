@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title></title>
+      <url>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</url>
+      <content type="html"><![CDATA[<p>$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512<br>$ mfks.ext3 -b 4096 /dev/shm/test<br>$ mount /dev/shm/test /mnt</p>
+<p>$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &gt;&gt; test; done<br>$ filefrag -v test<br>Filesystem type is: ef53<br>Filesystem cylinder groups approximately 4<br>File size of test is 146688 (36 blocks of 4096 bytes)<br> ext:     logical_offset:        physical_offset: length:   expected: flags:<br>   0:        0..      15:       2576..      2591:     16:             merged<br>   1:       16..      16:      33424..     33424:      1:       2592: merged<br>   2:       17..      17:      33457..     33457:      1:      33425: merged<br>   3:       18..      18:      33490..     33490:      1:      33458: merged<br>   4:       19..      19:      33523..     33523:      1:      33491: merged<br>   5:       20..      20:      33556..     33556:      1:      33524: merged<br>   6:       21..      21:      33589..     33589:      1:      33557: merged<br>   7:       22..      22:      33622..     33622:      1:      33590: merged<br>   8:       23..      23:      33655..     33655:      1:      33623: merged<br>   9:       24..      24:      33688..     33688:      1:      33656: merged<br>  10:       25..      25:      33721..     33721:      1:      33689: merged<br>  11:       26..      26:      33754..     33754:      1:      33722: merged<br>  12:       27..      27:      33787..     33787:      1:      33755: merged<br>  13:       28..      28:      33820..     33820:      1:      33788: merged<br>  14:       29..      29:      33853..     33853:      1:      33821: merged<br>  15:       30..      30:      33886..     33886:      1:      33854: merged<br>  16:       31..      31:      33919..     33919:      1:      33887: merged<br>  17:       32..      32:      33952..     33952:      1:      33920: merged<br>  18:       33..      33:      34017..     34017:      1:      33953: merged<br>  19:       34..      34:      34082..     34082:      1:      34018: merged<br>  20:       35..      35:      34147..     34147:      1:      34083: last,merged,eof</p>
+<p>debugfs /dev/shm/test<br>debugfs 1.42.13 (17-May-2015)<br>debugfs: stat <14> </14></p>
+<p>Inode: 14   Type: regular    Mode:  0644   Flags: 0x0<br>Generation: 3749441442    Version: 0x00000000:00000001<br>User:     0   Group:     0   Size: 146688<br>File ACL: 0    Directory ACL: 0<br>Links: 1   Blockcount: 296<br>Fragment:  Address: 0    Number: 0    Size: 0<br> ctime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017<br> atime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017<br> mtime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017<br>crtime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017<br>Size of extra inode fields: 32<br>BLOCKS:<br>(0-11):2576-2587, (IND):1538, (12-15):2588-2591, (16):33424, (17):33457, (18):33490, (19):33523, (20):33556, (21):33589, (22):33622, (23):33655, (24):33688, (25):33721, (26):33754, (27):33787, (28):33820, (29):33853, (30):33886, (31):33919, (32):33952, (33):34017, (34):34082, (35):34147<br>TOTAL: 37</p>
+<p>dd if=/dev/shm/test of=test-1 bs=4K skip=2576 count=$((2591-2576+1))<br>head test-1 ; wc -l test-1 ;tail test-1<br>0-0-0<br>1-1-1<br>2-2-2<br>3-3-3<br>4-4-4<br>5-5-5<br>6-6-6<br>7-7-7<br>8-8-8<br>9-9-9<br>4591 test-1<br>4582-4582-4582<br>4583-4583-4583<br>4584-4584-4584<br>4585-4585-4585<br>4586-4586-4586<br>4587-4587-4587<br>4588-4588-4588<br>4589-4589-4589<br>4590-4590-4590<br>4</p>
+<p>dd if=/dev/shm/test of=test-2 bs=4K skip=33424 count=1<br>1+0 records in<br>1+0 records out<br>4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193943 s, 21.1 MB/s<br>root@homerl-System-Product-Name:/mnt# head test-2 ; wc -l test-2 ;tail test-2<br>591-4591-4591<br>4592-4592-4592<br>4593-4593-4593<br>4594-4594-4594<br>4595-4595-4595<br>4596-4596-4596<br>4597-4597-4597<br>4598-4598-4598<br>4599-4599-4599<br>4600-4600-4600<br>273 test-2<br>4855-4855-4855<br>4856-4856-4856<br>4857-4857-4857<br>4858-4858-4858<br>4859-4859-4859<br>4860-4860-4860<br>4861-4861-4861<br>4862-4862-4862<br>4863-4863-4863<br>48</p>
+<p>root@homerl-System-Product-Name:/mnt# dd if=/dev/shm/test of=test-3 bs=4K skip=33457 count=1<br>1+0 records in<br>1+0 records out<br>4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193132 s, 21.2 MB/s<br>root@homerl-System-Product-Name:/mnt# head test-3 ; wc -l test-3 ;tail test-3<br>64-4864-4864<br>4865-4865-4865<br>4866-4866-4866<br>4867-4867-4867<br>4868-4868-4868<br>4869-4869-4869<br>4870-4870-4870<br>4871-4871-4871<br>4872-4872-4872<br>4873-4873-4873<br>273 test-3<br>5128-5128-5128<br>5129-5129-5129<br>5130-5130-5130<br>5131-5131-5131<br>5132-5132-5132<br>5133-5133-5133<br>5134-5134-5134<br>5135-5135-5135<br>5136-5136-5136<br>513</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Learn openzfs]]></title>
+      <url>http://yoursite.com/2017/01/03/Learn-openzfs/</url>
+      <content type="html"><![CDATA[<p>###</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|</span><br><span class="line">...</span><br><span class="line">000043c0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|</span><br><span class="line">...</span><br><span class="line">00020010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">...</span><br><span class="line">000210b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|</span><br><span class="line">...</span><br><span class="line">000214b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|</span><br><span class="line">000217e0  51 c5 e5 d7 3c d9 79 66  b2 6d 81 67 56 bd 92 df  |Q...&lt;.yf.m.gV...|</span><br><span class="line">000217f0  f7 c7 03 02 fa fb 73 8c  2b 8c 9c 74 8a 9e a3 b2  |......s.+..t....|</span><br><span class="line">00021800  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|</span><br><span class="line">0003ffe0  4a 12 20 c9 20 33 d9 75  a4 0b 73 a6 7f 7e 7f 06  |J. . 3.u..s..~..|</span><br><span class="line">0003fff0  da 88 65 39 62 62 86 01  75 68 a3 f8 be a3 bf fd  |..e9bb..uh......|</span><br><span class="line">00040000</span><br></pre></td></tr></table></figure>
+<p>0x3fd0=12240<br>0x1ffd0=131024<br>0x20010=131088<br>0x213d0=136144<br>0x217d0=137168<br>0x3ffd0=262096<br>0x40000=262144</p>
+<p>awk ‘BEGIN{print 12240/1024}’<br>11.9531<br>awk ‘BEGIN{print 131024/1024}’<br>127.953<br>awk ‘BEGIN{print 131088/1024}’<br>128.016<br>awk ‘BEGIN{print 136144/1024}’<br>132.953<br>awk ‘BEGIN{print 137168/1024}’<br>133.953<br>awk ‘BEGIN{print 262096/1024}’<br>255.953<br>awk ‘BEGIN{print 262144/1024}’<br>256</p>
+<p>``bash<br>dd if=/mnt/disk0 of=test bs=1K count=256<br>dd if=/mnt/disk0 of=test1 bs=1K count=256 skip=256<br>hexdump -C test1  | grep “11 7a 0c b1”<br>00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|</p>
+<p>hexdump -C test  | grep “11 7a 0c b1”<br>00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br>0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">zbt_magic: ZIO block tail magic number. The value is</span><br><span class="line">0x210da7ab10c7a11 (zio-data-bloc-tail). </span><br><span class="line">Why reverse order ?</span><br><span class="line"></span><br><span class="line">#### Uberblock</span><br><span class="line">ub_magic</span><br><span class="line">The uberblock magic number is a 64 bit integer used to identify a device as containing ZFS data.</span><br><span class="line">Big Endian: 0x00bab10c</span><br><span class="line">Little Endian: 0x0cb1ba00</span><br><span class="line"></span><br><span class="line">0x21000=135168</span><br><span class="line">awk &apos;BEGIN&#123;print 135168/1024-128&#125;&apos;</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">hexdump -C disk0 | grep &quot;0c b1 ba 00&quot; -i</span><br><span class="line">00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00021400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00061000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00061400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffa1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffa1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffe1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffe1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[A copy about ZFS Internals(p1-p5)]]></title>
       <url>http://yoursite.com/2016/12/28/Learn-ZFS-Internals-p1-p5/</url>
       <content type="html"><![CDATA[<h3 id="ZFS-Internals-It-‘s-dangerous-operations"><a href="#ZFS-Internals-It-‘s-dangerous-operations" class="headerlink" title="ZFS Internals It ‘s dangerous operations"></a><a href="http://www.eall.com.br/blog/?p=312" target="_blank" rel="external">ZFS Internals</a> It ‘s dangerous operations</h3><p>After 8 years, I ‘m try to study openzfs</p>
@@ -39,6 +64,7 @@
 <h3 id="Same-with-openzfs"><a href="#Same-with-openzfs" class="headerlink" title="Same with openzfs"></a>Same with openzfs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">-bash-4.1<span class="comment"># zpool destroy test-pool</span></span><br><span class="line">$ zpool create <span class="built_in">test</span>-pool /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ zpool create <span class="built_in">test</span>-pool -o ashift=9 /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ rm <span class="_">-f</span> testfile ;<span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..65535&#125;; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span> &gt;&gt; testfile; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">0040f6a0  ff ff ff a6 50 00 00 00  00 00 00 00 00 00 00 00  |....P...........|</span><br><span class="line">0040f6b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</span><br><span class="line">*</span><br><span class="line">0040f800  30 0a 31 0a 32 0a 33 0a  34 0a 35 0a 36 0a 37 0a  |0.1.2.3.4.5.6.7.|</span><br><span class="line">0040f810  38 0a 39 0a 31 30 0a 31  31 0a 31 32 0a 31 33 0a  |8.9.10.11.12.13.|</span><br><span class="line">0040f820  31 34 0a 31 35 0a 31 36  0a 31 37 0a 31 38 0a 31  |14.15.16.17.18.1|</span><br><span class="line">0040f830  39 0a 32 30 0a 32 31 0a  32 32 0a 32 33 0a 32 34  |9.20.21.22.23.24|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ ls -li /<span class="built_in">test</span>-pool/testfile </span><br><span class="line">7 -rw-r--r-- 1 root root 382106 12月 28 17:31 /<span class="built_in">test</span>-pool/testfile</span><br><span class="line"></span><br><span class="line">$ zdb -dddddd <span class="built_in">test</span>-pool/ 7</span><br><span class="line">Dataset <span class="built_in">test</span>-pool [ZPL], ID 21, cr_txg 1, 404K, 7 objects, rootbp DVA[0]=&lt;0:71c00:200&gt; DVA[1]=&lt;0:71e00:200&gt; [L0 DMU objset] fletcher4 lz4 LE contiguous unique double size=800L/200P birth=7L/7P fill=7 cksum=d25a82905:4fd05e01a15:f9b25d4668de:21890ed460fd11</span><br><span class="line"></span><br><span class="line">    Object  lvl   iblk   dblk  dsize  lsize   %full  <span class="built_in">type</span></span><br><span class="line">         7    2    16K   128K   385K   384K  100.00  ZFS plain file (K=inherit) (Z=inherit)</span><br><span class="line">                                        168   bonus  System attributes</span><br><span class="line">	dnode flags: USED_BYTES USERUSED_ACCOUNTED </span><br><span class="line">	dnode maxblkid: 2</span><br><span class="line">	path	/testfile</span><br><span class="line">	uid     0</span><br><span class="line">	gid     0</span><br><span class="line">	atime	Wed Dec 28 17:31:11 2016</span><br><span class="line">	mtime	Wed Dec 28 17:31:13 2016</span><br><span class="line">	ctime	Wed Dec 28 17:31:13 2016</span><br><span class="line">	crtime	Wed Dec 28 17:31:11 2016</span><br><span class="line">	gen	7</span><br><span class="line">	mode	100644</span><br><span class="line">	size	382106</span><br><span class="line">	parent	4</span><br><span class="line">	links	1</span><br><span class="line">	pflags	40800000004</span><br><span class="line">Indirect blocks:</span><br><span class="line">               0 L1  0:4800:200 0:4a00:200 4000L/200P F=3 B=7/7</span><br><span class="line">               0  L0 0:f800:20000 20000L/20000P F=1 B=7/7</span><br><span class="line">           20000  L0 0:2f800:20000 20000L/20000P F=1 B=7/7</span><br><span class="line">           40000  L0 0:4f800:20000 20000L/20000P F=1 B=7/7</span><br><span class="line"></span><br><span class="line">		segment [0000000000000000, 0000000000060000) size  384K</span><br><span class="line"></span><br><span class="line">$ 40f800=4257792</span><br><span class="line">$ f800=63488</span><br><span class="line">$ awk <span class="string">'BEGIN&#123;print (4257792-63488)/1024&#125;'</span></span><br><span class="line">4096</span><br></pre></td></tr></table></figure>
 <p>Header is 4MiB, and offset 63488 begin to write real data</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;print strtonum("0x40f800")/1024&#125;'</span></span><br><span class="line">4158</span><br><span class="line"></span><br><span class="line">$ zdb -R <span class="built_in">test</span>-pool 0:f800:20000:r &gt; /tmp/file1</span><br><span class="line">-bash-4.1<span class="comment"># head /tmp/file1 </span></span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line"><span class="comment"># modify /tmp/file1</span></span><br><span class="line">$ head -n 4 /tmp/file1</span><br><span class="line"><span class="comment">#0</span></span><br><span class="line"><span class="comment">#1</span></span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-1 bs=1k count=4158</span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-2 bs=1k skip=4158 count=1</span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-3 bs=1k skip=4159</span><br><span class="line"></span><br><span class="line">$ head /tmp/disk0-2 </span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line">-bash-4.1<span class="comment"># tail /tmp/disk0-2 </span></span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">28</span><br><span class="line"></span><br><span class="line">$ ls <span class="_">-l</span> /tmp/disk0-*</span><br><span class="line">-rw-r--r-- 1 root root   4257792 12月 28 19:59 /tmp/disk0-1</span><br><span class="line">-rw-r--r-- 1 root root      1024 12月 28 19:59 /tmp/disk0-2</span><br><span class="line">-rw-r--r-- 1 root root 100598784 12月 28 20:03 /tmp/disk0-3</span><br><span class="line"></span><br><span class="line"><span class="comment"># modify disk0-2</span></span><br><span class="line">$ vi /tmp/disk0-2 </span><br><span class="line">-bash-4.1<span class="comment"># head -n 2 /tmp/disk0-2 </span></span><br><span class="line"><span class="comment">#0</span></span><br><span class="line"><span class="comment">#1</span></span><br><span class="line"></span><br><span class="line">$ cp /tmp/disk0-1 /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ cat /tmp/disk0-2 &gt;&gt; /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ cat /tmp/disk0-3 &gt;&gt; /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ zpool import <span class="_">-d</span> /tank/<span class="built_in">test</span>/ <span class="built_in">test</span>-pool</span><br><span class="line">cannot import <span class="string">'test-pool'</span>: I/O error</span><br><span class="line">	Destroy and re-create the pool from</span><br><span class="line">	a backup source.</span><br><span class="line"></span><br><span class="line">$ zdb <span class="_">-l</span> /tank/<span class="built_in">test</span>/disk0 </span><br><span class="line">zdb <span class="_">-l</span> /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 0</span><br><span class="line">--------------------------------------------</span><br><span class="line">    version: 5000</span><br><span class="line">    name: <span class="string">'test-pool'</span></span><br><span class="line">    state: 0</span><br><span class="line">    txg: 1277</span><br><span class="line">    pool_guid: 2913619627256210242</span><br><span class="line">    errata: 0</span><br><span class="line">    hostname: <span class="string">'nas-57-11.local'</span></span><br><span class="line">    top_guid: 14729225611287826913</span><br><span class="line">    guid: 14729225611287826913</span><br><span class="line">    vdev_children: 1</span><br><span class="line">    vdev_tree:</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'file'</span></span><br><span class="line">        id: 0</span><br><span class="line">        guid: 14729225611287826913</span><br><span class="line">        path: <span class="string">'/tank/test/disk0'</span></span><br><span class="line">        metaslab_array: 35</span><br><span class="line">        metaslab_<span class="built_in">shift</span>: 24</span><br><span class="line">        ashift: 9</span><br><span class="line">        asize: 100139008</span><br><span class="line">        is_<span class="built_in">log</span>: 0</span><br><span class="line">        create_txg: 4</span><br><span class="line">    features_<span class="keyword">for</span>_<span class="built_in">read</span>:</span><br><span class="line">        com.delphix:hole_birth</span><br><span class="line">        com.delphix:embedded_data</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 1</span><br><span class="line">--------------------------------------------</span><br><span class="line">    version: 5000</span><br><span class="line">    name: <span class="string">'test-pool'</span></span><br><span class="line">    state: 0</span><br><span class="line">    txg: 1277</span><br><span class="line">    pool_guid: 2913619627256210242</span><br><span class="line">    errata: 0</span><br><span class="line">    hostname: <span class="string">'nas-57-11.local'</span></span><br><span class="line">    top_guid: 14729225611287826913</span><br><span class="line">    guid: 14729225611287826913</span><br><span class="line">    vdev_children: 1</span><br><span class="line">    vdev_tree:</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'file'</span></span><br><span class="line">        id: 0</span><br><span class="line">        guid: 14729225611287826913</span><br><span class="line">        path: <span class="string">'/tank/test/disk0'</span></span><br><span class="line">        metaslab_array: 35</span><br><span class="line">        metaslab_<span class="built_in">shift</span>: 24</span><br><span class="line">        ashift: 9</span><br><span class="line">        asize: 100139008</span><br><span class="line">        is_<span class="built_in">log</span>: 0</span><br><span class="line">        create_txg: 4</span><br><span class="line">    features_<span class="keyword">for</span>_<span class="built_in">read</span>:</span><br><span class="line">        com.delphix:hole_birth</span><br><span class="line">        com.delphix:embedded_data</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 2</span><br><span class="line">--------------------------------------------</span><br><span class="line">failed to unpack label 2</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 3</span><br><span class="line">--------------------------------------------</span><br><span class="line">failed to unpack label 3</span><br><span class="line"></span><br><span class="line">$ zpool import -N -o <span class="built_in">readonly</span>=on <span class="_">-f</span> <span class="_">-d</span> /tank/<span class="built_in">test</span>/ -F -T 1277</span><br><span class="line">   pool: <span class="built_in">test</span>-pool</span><br><span class="line">     id: 2913619627256210242</span><br><span class="line">  state: FAULTED</span><br><span class="line"> status: The pool metadata is corrupted.</span><br><span class="line"> action: The pool cannot be imported due to damaged devices or data.</span><br><span class="line">	The pool may be active on another system, but can be imported using</span><br><span class="line">	the <span class="string">'-f'</span> flag.</span><br><span class="line">   see: http://zfsonlinux.org/msg/ZFS-8000-72</span><br><span class="line"> config:</span><br><span class="line"></span><br><span class="line">	<span class="built_in">test</span>-pool           FAULTED  corrupted data</span><br><span class="line">	  /tank/<span class="built_in">test</span>/disk0  ONLINE</span><br></pre></td></tr></table></figure>
+<h3 id="Raidz-size"><a href="#Raidz-size" class="headerlink" title="Raidz size"></a><a href="http://blog.gjpvanwesten.nl/2014/08/part-iv-how-much-space-do-you-lose-with.html" target="_blank" rel="external">Raidz size</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;print 128/7&#125;'</span></span><br><span class="line">18.2857</span><br><span class="line">awk <span class="string">'BEGIN&#123;print 18.2857/20&#125;'</span></span><br><span class="line">0.914285</span><br><span class="line">awk <span class="string">'BEGIN&#123;print 18.2857/18.5&#125;'</span></span><br><span class="line">0.988416</span><br></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
@@ -47,6 +73,1073 @@
       <url>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</url>
       <content type="html"><![CDATA[<h3 id="blk-mq-in-RHEL-7-2"><a href="#blk-mq-in-RHEL-7-2" class="headerlink" title="blk-mq in RHEL 7.2"></a><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">blk-mq in RHEL 7.2</a></h3><p>It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.<br>If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).<br>It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.<br>To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.</p>
 <p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">High Performance Storage with blk-mq and scsi-mq</a><br><a href="http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf" target="_blank" rel="external">Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach</a><br><a href="https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq" target="_blank" rel="external">Linux Multi-Queue Block IO Queueing Mechanism</a>)<br><a href="http://chuansong.me/n/362178648541" target="_blank" rel="external">blk-mq SCSI performance</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hardware index]]></title>
+      <url>http://yoursite.com/2016/12/22/Hardware-index%20(homerl-System-Product-Name's%20conflicted%20copy%202017-01-14)/</url>
+      <content type="html"><![CDATA[<h3 id="DAS"><a href="#DAS" class="headerlink" title="DAS"></a>DAS</h3><h4 id="Dual-nodes-redundance-SAS-link"><a href="#Dual-nodes-redundance-SAS-link" class="headerlink" title="Dual nodes, redundance SAS link"></a>Dual nodes, redundance SAS link</h4><h5 id="2U"><a href="#2U" class="headerlink" title="2U"></a>2U</h5><p><a href="https://www.supermicro.com/solutions/Lustre.cfm" target="_blank" rel="external">SSG-927R-E2CJB</a>, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2028R-DE2CR24L</td>
+<td>2x8</td>
+<td>2x3</td>
+<td>2</td>
+<td>24</td>
+<td>0</td>
+<td>c612</td>
+<td>X540+LSI 3008</td>
+</tr>
+<tr>
+<td>SG-2028R-DE2CR24</td>
+<td>2x8</td>
+<td>2x3</td>
+<td>2</td>
+<td>24</td>
+<td>0</td>
+<td>c612</td>
+<td>X540+LSI 3108</td>
+</tr>
+<tr>
+<td>Inventec U90G3</td>
+<td>16x2</td>
+<td>2x3</td>
+<td>2x2</td>
+<td>4</td>
+<td>70</td>
+<td>c612</td>
+<td>dual</td>
+</tr>
+<tr>
+<td>HPE 4520</td>
+<td>16x2</td>
+<td>2x4</td>
+<td>2x2</td>
+<td>4</td>
+<td>46</td>
+<td>c612</td>
+<td>dual</td>
+</tr>
+</tbody>
+</table>
+<h6 id="Supermicro-2028R-DE2CR24L"><a href="#Supermicro-2028R-DE2CR24L" class="headerlink" title="Supermicro 2028R-DE2CR24L"></a>Supermicro 2028R-DE2CR24L</h6><p><img src="https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg" alt=""></p>
+<h5 id="4U-SBB"><a href="#4U-SBB" class="headerlink" title="4U (SBB)"></a>4U (SBB)</h5><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6048R-DE2CR24L</td>
+<td>8x2</td>
+<td>2x3</td>
+<td>2x2</td>
+<td>0</td>
+<td>24</td>
+<td>c612</td>
+<td>dual+LSI3008</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Single-node"><a href="#Single-node" class="headerlink" title="Single node"></a>Single node</h4><h5 id="1U"><a href="#1U" class="headerlink" title="1U"></a>1U</h5><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6017R-73HDP+</td>
+<td>16</td>
+<td>2</td>
+<td>2</td>
+<td>2(os)</td>
+<td>12</td>
+<td>c602</td>
+<td>dual</td>
+</tr>
+<tr>
+<td>1028R-WTR</td>
+<td>16</td>
+<td>2</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>dual+Mezzanine HAB</td>
+</tr>
+<tr>
+<td>SYS-1028U-E1CRTP+</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>10GbE SFP and 1xinternal PCIE</td>
+</tr>
+<tr>
+<td>Dell R630</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>c612</td>
+<td>dual+Daughter card</td>
+</tr>
+</tbody>
+</table>
+<h6 id="Supermicro-6017R-73HDP"><a href="#Supermicro-6017R-73HDP" class="headerlink" title="Supermicro 6017R-73HDP+"></a>Supermicro 6017R-73HDP+</h6><p><img src="http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg" alt=""></p>
+<h5 id="2U-1"><a href="#2U-1" class="headerlink" title="2U"></a>2U</h5><p>6xPCI-Express 3+1xPCI-Express 2.0 x4 </p>
+<ul>
+<li><p>6028R-E1CR12N</p>
+<ul>
+<li>6xPCI-Express 3</li>
+<li>1xPCI-Express 2</li>
+<li>Lustre OSS</li>
+</ul>
+</li>
+<li><p>6028R-E1CR24N</p>
+<ul>
+<li>24 x 3.5 inch</li>
+<li>2 x 2.5 inch</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>io</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6028R-E1CR12N</td>
+<td>24</td>
+<td>6+1</td>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>c612</td>
+<td>4x10GbE BT+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR16T</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>16</td>
+<td>c612</td>
+<td>2x10GbE+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR24N</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>24</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3108</td>
+</tr>
+<tr>
+<td>6028R-E1CR12L</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>12</td>
+<td>c612</td>
+<td>2xX540+LSI 3008</td>
+</tr>
+<tr>
+<td>2028R-E1CR48N</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>48+2</td>
+<td>0</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3108</td>
+</tr>
+<tr>
+<td>2028R-E1CR48L</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>48+2</td>
+<td>0</td>
+<td>c612</td>
+<td>SIOM flexible+LSI 3008</td>
+</tr>
+<tr>
+<td>Dell R730xd</td>
+<td>24</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+<td>16</td>
+<td>c610</td>
+<td>daughter card+LSI 3008/3108</td>
+</tr>
+<tr>
+<td>HP DL180G9</td>
+<td>16</td>
+<td>6</td>
+<td>2</td>
+<td>0</td>
+<td>12</td>
+<td>c610</td>
+<td>flexible card</td>
+</tr>
+<tr>
+<td>HP 4200 G9</td>
+<td>16</td>
+<td>6</td>
+<td>2</td>
+<td>54</td>
+<td>28</td>
+<td>c610</td>
+<td>flexible card</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Supermicro-6028R-E1CR12N-lustre-OSS"><a href="#Supermicro-6028R-E1CR12N-lustre-OSS" class="headerlink" title="Supermicro 6028R-E1CR12N (lustre OSS)"></a>Supermicro 6028R-E1CR12N (lustre OSS)</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg" alt=""></p>
+<h5 id="Supermicro-6028R-E1CR16T"><a href="#Supermicro-6028R-E1CR16T" class="headerlink" title="Supermicro 6028R-E1CR16T"></a>Supermicro 6028R-E1CR16T</h5><p><img src="https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg" alt=""></p>
+<h5 id="Supermicro-6028R-E1CR24N"><a href="#Supermicro-6028R-E1CR24N" class="headerlink" title="Supermicro 6028R-E1CR24N"></a>Supermicro 6028R-E1CR24N</h5><p><img src="http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg" alt=""></p>
+<h5 id="4U"><a href="#4U" class="headerlink" title="4U"></a>4U</h5><h6 id="2-socket"><a href="#2-socket" class="headerlink" title="2 socket"></a>2 socket</h6><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>IO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6048R-E1CR36L</td>
+<td>8</td>
+<td>4+2(2.0)</td>
+<td>1</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>4xi350+LSI 3008</td>
+</tr>
+<tr>
+<td>6048R-E1CR36L</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>x540+LSI 3008</td>
+</tr>
+<tr>
+<td>6048R-E1CR36H</td>
+<td>16</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>36</td>
+<td>c612</td>
+<td>x540+LSI 3108</td>
+</tr>
+<tr>
+<td>6048R-E1CR90L</td>
+<td>8</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>90</td>
+<td>c612</td>
+<td>4x10GbE+2xLSI 3108</td>
+</tr>
+</tbody>
+</table>
+<h5 id="6048R-E1CR90L"><a href="#6048R-E1CR90L" class="headerlink" title="6048R-E1CR90L"></a>6048R-E1CR90L</h5><p><img src="https://www.supermicro.com/a_images/products/SuperServer/4U/SSG-6048R-E1CR90L.jpg" alt=""></p>
+<h6 id="4-socket"><a href="#4-socket" class="headerlink" title="4 socket"></a>4 socket</h6><p>8048B-TR4FT 96 x 128G<br>8048B-TRFT 96 x 64G</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MEM</th>
+<th>PCIE</th>
+<th>socks</th>
+<th>2.5HDD</th>
+<th>3.5HDD</th>
+<th>chip</th>
+<th>IO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8048B-TRFT</td>
+<td>96</td>
+<td>11</td>
+<td>4</td>
+<td>AHCI 2xSATA3</td>
+<td>24</td>
+<td>c602J</td>
+<td>x540</td>
+</tr>
+<tr>
+<td>4048B-TRFT</td>
+<td>96</td>
+<td>11</td>
+<td>4</td>
+<td>48 +AHCI 2xSATA3</td>
+<td>0</td>
+<td>c602J</td>
+<td>x540</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Supermicro-8048B-TRFT"><a href="#Supermicro-8048B-TRFT" class="headerlink" title="Supermicro 8048B-TRFT"></a>Supermicro 8048B-TRFT</h5><p><img src="https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg" alt=""></p>
+<h5 id="AHCI-SATA-DOM-x10-6Gb-SATA3"><a href="#AHCI-SATA-DOM-x10-6Gb-SATA3" class="headerlink" title="AHCI SATA DOM x10 6Gb SATA3"></a>AHCI SATA DOM x10 6Gb SATA3</h5><p><img src="https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg" alt=""></p>
+<h3 id="JBOD"><a href="#JBOD" class="headerlink" title="JBOD"></a>JBOD</h3><p>SSG-927R-E2CJB is a 2U JBOD</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>H</th>
+<th>H(mm)</th>
+<th>W</th>
+<th>Depth</th>
+<th>Fans</th>
+<th>3.5 slot</th>
+<th>power(w)</th>
+<th>Weight(max)</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>946ED-R2KJBOD</td>
+<td>4U</td>
+<td>178</td>
+<td>447</td>
+<td>906</td>
+<td>4+1</td>
+<td>90</td>
+<td>4x1000</td>
+<td>102.06kg</td>
+<td>SAS3 SFF-8644</td>
+</tr>
+<tr>
+<td>HGST JBOD 4U60</td>
+<td>4U</td>
+<td>175</td>
+<td>424</td>
+<td>938</td>
+<td>N+1</td>
+<td>60</td>
+<td>2x1650</td>
+<td>89.81 kg</td>
+<td>SAS3 SFF-8436</td>
+</tr>
+<tr>
+<td>Dell MD1280</td>
+<td>5U</td>
+<td>223</td>
+<td>483</td>
+<td>915</td>
+<td>N+1</td>
+<td>84</td>
+<td>2x2800</td>
+<td>130.1 kg</td>
+<td>SAS2 SFF-8088</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Humidity</th>
+<th>Random Vibration</th>
+<th>Sinusoidal Vibration</th>
+<th>Temperature Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>946ED-R2KJBOD</td>
+<td>8%-90%</td>
+<td></td>
+<td></td>
+<td>5°C-35°C(air)40°C (helium)       </td>
+</tr>
+<tr>
+<td>HGST JBOD 4U60</td>
+<td>8%-80%</td>
+<td>0.25Grms 5-10Hz</td>
+<td>0.05 g, 10-300Hz</td>
+<td>5°C-35°C(air)40°C (helium)</td>
+</tr>
+<tr>
+<td>Dell MD1280</td>
+<td>10%-80%</td>
+<td></td>
+<td>1.04 g,2-200Hz(max)</td>
+<td>5°C-35°C(air)40°C (helium)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Supermicro-946ED-R2KJBOD"><a href="#Supermicro-946ED-R2KJBOD" class="headerlink" title="Supermicro 946ED-R2KJBOD"></a>Supermicro 946ED-R2KJBOD</h4><p><img src="https://cdn.shopify.com/s/files/1/1040/6656/files/CSE-946ED-R2KJBOD_large.jpg?12087391912493687778" alt=""></p>
+<h4 id="SFF-8644"><a href="#SFF-8644" class="headerlink" title="SFF-8644"></a>SFF-8644</h4><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/SFF-8644.jpg/200px-SFF-8644.jpg" alt=""></p>
+<h4 id="SFF-8436"><a href="#SFF-8436" class="headerlink" title="SFF-8436"></a>SFF-8436</h4><p><img src="http://img.thuexeminhanh.com/pic/z29cc701-200x200-1/40g_qsfp_sff_8436_to_qsfp_passive_copper_cable.jpg" alt=""></p>
+<h4 id="SFF-8088"><a href="#SFF-8088" class="headerlink" title="SFF-8088"></a>SFF-8088</h4><p><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSCbG7orrSXih0_w2CbkBAkXnk0tUwaojoyWQ9wltVwhIt0pUR9" alt=""></p>
+<h3 id="SAS-HBA-and-Raid"><a href="#SAS-HBA-and-Raid" class="headerlink" title="SAS HBA and Raid"></a>SAS HBA and Raid</h3><h4 id="Raid"><a href="#Raid" class="headerlink" title="Raid"></a>Raid</h4><table>
+<thead>
+<tr>
+<th>RAID</th>
+<th>SAS chip</th>
+<th>dell</th>
+<th>Cache</th>
+<th>SAS</th>
+<th>SAS port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9380-8e</td>
+<td>LSI 3108</td>
+<td>H830</td>
+<td>2GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>9361-8i</td>
+<td>LSI 3108</td>
+<td>H730</td>
+<td>1-2G</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>9341-8i</td>
+<td>LSI 3008</td>
+<td>H330</td>
+<td>1GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>9260-8i</td>
+<td>LSI 2108</td>
+<td>none</td>
+<td>0.5G</td>
+<td>2x4x6G</td>
+<td>SFF-8087</td>
+</tr>
+<tr>
+<td>9260-8i</td>
+<td>LSI 2208</td>
+<td>H710</td>
+<td>1GB</td>
+<td>2x4x6G</td>
+<td>SFF-8087</td>
+</tr>
+<tr>
+<td>9286-8e</td>
+<td>LSI 2208</td>
+<td>H810</td>
+<td>1GB</td>
+<td>2x4x6G</td>
+<td>SFF-8088</td>
+</tr>
+<tr>
+<td>HP P244br</td>
+<td>PMC</td>
+<td></td>
+<td>1GB</td>
+<td>2x1x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>HP P440ar</td>
+<td>PMC</td>
+<td></td>
+<td>2GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>HP P440</td>
+<td>PMC</td>
+<td></td>
+<td>2GB</td>
+<td>1x8x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>P431-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>HP P441</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8643</td>
+</tr>
+<tr>
+<td>P741m-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>2x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+<tr>
+<td>P841-8e</td>
+<td>PMC</td>
+<td></td>
+<td>4GB</td>
+<td>4x4x12G</td>
+<td>SFF-8644</td>
+</tr>
+</tbody>
+</table>
+<h4 id="LSI-Fusion-MPT"><a href="#LSI-Fusion-MPT" class="headerlink" title="LSI Fusion-MPT"></a>LSI Fusion-MPT</h4><table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>dell</th>
+<th>LSI</th>
+<th>SAS</th>
+<th>SAS port</th>
+<th>Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3008</td>
+<td>HBA12i</td>
+<td>9311-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>14.5W</td>
+</tr>
+<tr>
+<td>LSI 3008</td>
+<td>HBA12e</td>
+<td>9300-8e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>14.5W</td>
+</tr>
+<tr>
+<td>LSI 3216</td>
+<td></td>
+<td>9305-16e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>13w</td>
+</tr>
+<tr>
+<td>LSI3008x2</td>
+<td></td>
+<td>9302-16e</td>
+<td>3</td>
+<td>SFF8644</td>
+<td>30W</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td></td>
+<td>9305-24i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>16.2w</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td></td>
+<td>9305-24i</td>
+<td>3</td>
+<td>SFF8643</td>
+<td>16.2w</td>
+</tr>
+<tr>
+<td>LSI 2008</td>
+<td>HBA6i</td>
+<td>9211-8i</td>
+<td>2</td>
+<td>SFF8087</td>
+<td>7w</td>
+</tr>
+<tr>
+<td>LSI 2308</td>
+<td>none</td>
+<td>9207-8e</td>
+<td>2</td>
+<td>SFF8088</td>
+<td>9.8w</td>
+</tr>
+<tr>
+<td>LSI2008x2</td>
+<td>none</td>
+<td>9202-16e</td>
+<td>2</td>
+<td>SFF8088</td>
+<td>9.8w</td>
+</tr>
+<tr>
+<td>LSI2008x2</td>
+<td>HBA6e</td>
+<td>9200-8e</td>
+<td>2</td>
+<td>SFF8088</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H220-8i</td>
+<td>2</td>
+<td>SFF8087</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H221-8e</td>
+<td>2</td>
+<td>SFF8087</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>HP H240-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H240br-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H240br-8i</td>
+<td>3</td>
+<td>SFF8643</td>
+</tr>
+<tr>
+<td>PMC</td>
+<td></td>
+<td>H241-8e</td>
+<td>3</td>
+<td>SFF8644</td>
+</tr>
+</tbody>
+</table>
+<h5 id="LSI-ARM-arch-SAS-SATA-NVME"><a href="#LSI-ARM-arch-SAS-SATA-NVME" class="headerlink" title="LSI ARM arch, SAS, SATA, NVME"></a>LSI ARM arch, SAS, SATA, NVME</h5><table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>PCIE lanes</th>
+<th>PCIE BW</th>
+<th>SAS BW</th>
+<th>CPU</th>
+<th>DA</th>
+<th>DA</th>
+<th>PCIE devices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3416</td>
+<td>x8 G3</td>
+<td>16GBps</td>
+<td>19.2GBps</td>
+<td>ARM A15 1.2G</td>
+<td>2xSFF-8639</td>
+<td>4xSFF-8680</td>
+<td>16          </td>
+</tr>
+<tr>
+<td>LSI 3408</td>
+<td>x8 G3</td>
+<td>8GBps</td>
+<td>9.6GBps</td>
+<td>ARM A15 1.2G</td>
+<td>2xSFF-8639</td>
+<td>4xSFF-8680</td>
+<td>16          </td>
+</tr>
+</tbody>
+</table>
+<p>Why 3416 and 3408 have the same PCIE lanes (x8 ?)</p>
+<ul>
+<li>SFF-8639<ul>
+<li>PCIE Gen3 1,2,4 lanes<ul>
+<li>3.938 GB/s (if full-duplex, x2)</li>
+</ul>
+</li>
+<li>SAS3 1,2,4 lanes<ul>
+<li>4.8GB/s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SFF-8680<ul>
+<li>SAS3 1,2 lanes<ul>
+<li>2.4GB/s</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://www.snia.org/sites/default/education/tutorials/2012/fall/solid/AnilVasudeva_NVMe_NextGen_SSD%20Interface-r1-nc1.pdf" target="_blank" rel="external">NVME interface</a></p>
+<h4 id="LSI-SAS-Chip"><a href="#LSI-SAS-Chip" class="headerlink" title="LSI SAS Chip"></a>LSI SAS Chip</h4><ul>
+<li>Fd (Full duplex)</li>
+<li>BW (bandwidth)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SAS chip</th>
+<th>Power CPU</th>
+<th>16xPCIE3 BW</th>
+<th>SAS3 BW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSI 3008</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>9.6GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 3108</td>
+<td>Dual PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>9.6GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 3216</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>19.2GB/s Fd 16p</td>
+</tr>
+<tr>
+<td>LSI 3224</td>
+<td>PPC476 1.2G</td>
+<td>16GB/s Fd</td>
+<td>28.8GB/s Fd 24p</td>
+</tr>
+<tr>
+<td>LSI 2108</td>
+<td>PPC440 800MHz</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2008</td>
+<td>PPC440 533M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2308</td>
+<td>PPC440 800M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+<tr>
+<td>LSI 2208</td>
+<td>Dual PPC440 800M</td>
+<td>16GB/s Fd</td>
+<td>4.8GB/s Fd 8p</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><h4 id="SAS"><a href="#SAS" class="headerlink" title="SAS"></a>SAS</h4><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>SIZE(TB)</th>
+<th>DWPD (5y)</th>
+<th>Nand</th>
+<th>R/W(GB/s)</th>
+<th>ios(k)</th>
+<th>interface</th>
+<th>UBER</th>
+<th>MTBF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SanDisk Optimus MAX</td>
+<td>4</td>
+<td>0.5</td>
+<td>19nm emlc</td>
+<td>0.4/0.4</td>
+<td>85/11</td>
+<td>6Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>SD Lightning Eco GenII</td>
+<td>1.6</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>0.98/0.6</td>
+<td>195/81</td>
+<td>12Gbps SAS</td>
+<td>10^18</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>SD Lightning Ultra GenII</td>
+<td>0.8</td>
+<td>25</td>
+<td>15nm emlc</td>
+<td>0.98/0.74</td>
+<td>199/115</td>
+<td>12Gbps SAS</td>
+<td>10^19</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SSD1600MR</td>
+<td>1.9</td>
+<td>2.6</td>
+<td>emlc</td>
+<td>1/0.7</td>
+<td>130/30</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SS200</td>
+<td>0.48-7.6</td>
+<td>1</td>
+<td>15nm emlc</td>
+<td>1.8/1</td>
+<td>250/37</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST Ultrastar SS200</td>
+<td>0.4-6.4</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>1.8/1</td>
+<td>250/86</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+<tr>
+<td>HGST s842</td>
+<td>2</td>
+<td>14~40</td>
+<td>emlc</td>
+<td>0.53/0.38</td>
+<td>84/28</td>
+<td>6Gbps SAS</td>
+<td></td>
+<td>2M</td>
+</tr>
+<tr>
+<td>1200.2 ST3840FM0003</td>
+<td>3.8</td>
+<td>3</td>
+<td>15nm emlc</td>
+<td>1.1/0.77</td>
+<td>180/30</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Samsung PM1635</td>
+<td>1.6</td>
+<td>3</td>
+<td>TLC ?</td>
+<td>0.94/0.79</td>
+<td>190/50</td>
+<td>12Gbps SAS</td>
+<td>10^17</td>
+<td>2.5M</td>
+</tr>
+</tbody>
+</table>
+<h4 id="SATA"><a href="#SATA" class="headerlink" title="SATA"></a>SATA</h4><p>Intel DC S3100 is good choice to install operating system</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>SIZE(TB)</th>
+<th>DWPD (5y)</th>
+<th>Nand</th>
+<th>R/W(GB/s)</th>
+<th>ios(k)</th>
+<th>interface</th>
+<th>UBER</th>
+<th>MTBF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SD CloudSpeed Eco GenII</td>
+<td>1.92</td>
+<td>0.6</td>
+<td>15nm emlc</td>
+<td>0.53,0.46</td>
+<td>75,14</td>
+<td>6Gbps</td>
+<td>10^18</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>SD CloudSpeed Ultra GenII</td>
+<td>1.6</td>
+<td>1.8</td>
+<td>15nm emlc</td>
+<td>0.53,0.46</td>
+<td>76,32</td>
+<td>6Gbps</td>
+<td>10^18</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Intel DC s3100</td>
+<td>1</td>
+<td>0.06</td>
+<td>16nm tlc</td>
+<td>0.50,0.11</td>
+<td>59,3.9</td>
+<td>6Gbps</td>
+<td>10^16</td>
+<td>1.6M</td>
+</tr>
+<tr>
+<td>Intel DC s3100</td>
+<td>0.48</td>
+<td>0.84</td>
+<td>16nm tlc</td>
+<td>0.50,0.11</td>
+<td>55,4.7</td>
+<td>6Gbps</td>
+<td>10^16</td>
+<td>1.6M</td>
+</tr>
+<tr>
+<td>Intel DC s3510</td>
+<td>1.6</td>
+<td>0.35</td>
+<td>16nm emlc</td>
+<td>0.50,0.43</td>
+<td>65,15</td>
+<td>6Gbps</td>
+<td>10^17</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Intel DC s3520</td>
+<td>1.6</td>
+<td>0.35</td>
+<td>16 3d emlc</td>
+<td>0.45,0.38</td>
+<td>67,17</td>
+<td>6Gbps</td>
+<td>10^17</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Intel DC s3610</td>
+<td>1.6</td>
+<td>3</td>
+<td>20nm emlc</td>
+<td>0.55,0.5</td>
+<td>84,27</td>
+<td>6Gbps</td>
+<td>10^17</td>
+<td>2M</td>
+</tr>
+<tr>
+<td>Samsung PM863</td>
+<td>3.8</td>
+<td>0.78</td>
+<td>3d TLC</td>
+<td>0.55,0.5</td>
+<td>99,18</td>
+<td>6Gbps</td>
+<td></td>
+</tr>
+<tr>
+<td>Samsung SM863</td>
+<td>3.8</td>
+<td>3.5</td>
+<td>3d MLC</td>
+<td>0.52,0.48</td>
+<td>97,29</td>
+<td>6Gbps</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Compute-node"><a href="#Compute-node" class="headerlink" title="Compute node"></a>Compute node</h3><p>SYS-4048B-TR4FT-EC028</p>
 ]]></content>
     </entry>
     
@@ -362,6 +1455,26 @@
 <td>36</td>
 <td>c612</td>
 <td>x540+LSI 3108</td>
+</tr>
+<tr>
+<td>6048R-E1CR60L</td>
+<td>24</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>60</td>
+<td>c612</td>
+<td>1xLSI 3008</td>
+</tr>
+<tr>
+<td>6048R-E1CR90L</td>
+<td>8</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>90</td>
+<td>c612</td>
+<td>4x10GbE+2xLSI 3008</td>
 </tr>
 </tbody>
 </table>
@@ -1102,6 +2215,7 @@
 </tr>
 </tbody>
 </table>
+<h3 id="Compute-node"><a href="#Compute-node" class="headerlink" title="Compute node"></a>Compute node</h3><p>SYS-4048B-TR4FT-EC028</p>
 ]]></content>
     </entry>
     
@@ -1166,7 +2280,13 @@
     <entry>
       <title><![CDATA[Calculate HDD SSD fault ratio]]></title>
       <url>http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/</url>
-      <content type="html"><![CDATA[<h3 id="Nonrecoverable-Read-Errors-URE-per-Bits-Read"><a href="#Nonrecoverable-Read-Errors-URE-per-Bits-Read" class="headerlink" title="Nonrecoverable Read Errors(URE) per Bits Read"></a>Nonrecoverable Read Errors(URE) per Bits Read</h3><p>1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e12*8 bytes = 1 (TB)</span><br><span class="line">(1e15)/(1e12*8)=125 (TB)</span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h3 id="2017-update"><a href="#2017-update" class="headerlink" title="2017 update"></a>2017 update</h3><p>First year failure four HDD at the same time,single HDD fault rate 0.01<br>Third year failure four HDD at the same time,single HDD fault rate 0.03<br>Fifth year failure four HDD at the same time,single HDD fault rate 0.05</p>
+<p>In third year, Raidz3 broken four HDD at the same time<br>$ awk ‘BEGIN{printf “%.12f\n”, 1-(480/(365*24/0.03)+0.03)^4}’<br>0.999998997334</p>
+<p>Real MTBF<br>$ awk ‘BEGIN{printf “%.10f\n”, 365*24/0.03}’<br>292000.0000000000</p>
+<p><a href="http://wintelguy.com/raidmttdl.pl" target="_blank" rel="external">RAID Reliability Calculator</a></p>
+<p><a href="http://evadman.blogspot.com/2010/08/raid-array-failure-probabilities.html?showComment=1337533818123#c7465506102422346169" target="_blank" rel="external">The article</a><br>It ‘s said<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">You&apos;ve got your probabilities wrong. Probability of failure of RAID 0, 5 and 6 is easily calculated using the binomial probability distribution. Note that because URE during rebuild may be perceived as a disk failure by some hardware/software RAIDs, the probability of an array failing is even higher. So the following probabilities assume no UREs, implying that they are the lowest possible probabilities of failure for a given array. </span><br><span class="line"></span><br><span class="line">If the probability of any single drive failing = p, array size (i.e. no. of disks) = n, and number of drives that fail simultaneously = X, then:</span><br><span class="line">Pr(X) = (n&quot;COMBINATION&quot;X) * (p)^X * (1-p)^(n-X)</span><br><span class="line">For p=0.03, n=4 we have</span><br><span class="line">Pr(X) = (4&quot;COMBINATION&quot;X) * 0.03^X * 0.97^(4-X)</span><br><span class="line">So: X 0 1 2 3 4</span><br><span class="line">Pr(X) 0.88529281 0.10952076 0.00508086 0.00010476 0.00000081</span><br><span class="line">For RAID 0, the array fails when X&gt;=1, so Pr(RAID0 failure) = 0.10952076 + 0.00508086 + 0.00010476 + 0.00000081 = 0.11470719 ~ 1 in 9.</span><br><span class="line">For RAID 5, the array fails when X&gt;=2, so Pr(RAID5 failure) = 0.00508086 + 0.00010476 + 0.00000081 = 0.00518643 ~ 1 in 193.</span><br><span class="line">For RAID 6, the array fails when X&gt;=3, so Pr(RAID6 failure) = 0.00010476 + 0.00000081 = 0.00010557 ~ 1 in 9472.</span><br><span class="line">So for an array 4 disks in size, 1/9 RAID 0 arrays fail, 1/193 RAID 5 arrays fail, and 1/9472 RAID 6 arrays fail. </span><br><span class="line">Similarly, for an array 6 disks in size, 1/6 RAID 0 arrays fail, 1/80 RAID 5 arrays fail, and 1/1982 RAID 6 arrays fail.</span><br><span class="line">Also, for an array 24 disks in size, 1/2 RAID 0 arrays fail, 1/6 RAID 5 arrays fail, and 1/29 RAID 6 arrays fail.</span><br><span class="line"></span><br><span class="line">Every year %3 failure rate, 0.03 ,I think it &apos;s contains URE ratio.</span><br><span class="line">2 HDD</span><br><span class="line">$ awk &apos;BEGIN&#123;printf &quot;%.20f\n&quot;, 11*0.03^2*0.97^(9)&#125;&apos;</span><br><span class="line">0.00752628748068019399</span><br><span class="line"></span><br><span class="line">3 HDD</span><br><span class="line">$ awk &apos;BEGIN&#123;printf &quot;%.20f\n&quot;, 11*0.03^3*0.97^(8)&#125;&apos;</span><br><span class="line">0.00023277177775299571</span><br><span class="line"></span><br><span class="line">4 HDD</span><br><span class="line">$ awk &apos;BEGIN&#123;printf &quot;%.20f\n&quot;, 11*0.03^4*0.97^(7)&#125;&apos;</span><br><span class="line">0.00000719912714699987</span><br><span class="line"></span><br><span class="line">$ awk &apos;BEGIN&#123;printf &quot;%.20f\n&quot;,0.00752628748068019399+0.00023277177775299571+0.00000719912714699987&#125;&apos;</span><br><span class="line">0.00776625838558018915</span><br><span class="line"></span><br><span class="line">Raidz3</span><br><span class="line">$ awk &apos;BEGIN&#123;printf &quot;%.20f\n&quot;,0.00023277177775299571+0.00000719912714699987&#125;&apos;</span><br><span class="line">0.00023997090489999559</span><br><span class="line"></span><br><span class="line">2M MTBF, 0.44% </span><br><span class="line">1M MTBF, 0.88%</span><br></pre></td></tr></table></figure></p>
+<h3 id="AFR"><a href="#AFR" class="headerlink" title="AFR"></a>AFR</h3><p><a href="https://www.hgst.com/sites/default/files/resources/Ultrastar-He8-DS.pdf" target="_blank" rel="external">https://www.hgst.com/sites/default/files/resources/Ultrastar-He8-DS.pdf</a><br>2.5M hours MTBF2 and 0.35% AFR, I think real AFR=0.03<br>356x24=8760<br>$ awk ‘BEGIN{printf “%.2f\n”, 8760/0.004}’<br>2190000.00<br>$ awk ‘BEGIN{printf “%.2f\n”, 8760/0.035}’<br>2502857.14</p>
+<h3 id="Nonrecoverable-Read-Errors-URE-per-Bits-Read"><a href="#Nonrecoverable-Read-Errors-URE-per-Bits-Read" class="headerlink" title="Nonrecoverable Read Errors(URE) per Bits Read"></a>Nonrecoverable Read Errors(URE) per Bits Read</h3><p>1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e12*8 bytes = 1 (TB)</span><br><span class="line">(1e15)/(1e12*8)=125 (TB)</span><br></pre></td></tr></table></figure></p>
 <p>1 byte per 10E14 (Desktop 5.9k/7.2k HDD)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1e14)/(1e12*8)=12.5 (TB)</span><br></pre></td></tr></table></figure></p>
 <p>1 byte per 10E17 (Enterprise SSD)<br>1 byte per 10E16 (Desktop SSD/SAS 15k HDD)</p>
 <h4 id="Calculate-failt-ratio-of-unrecoverable-read-error"><a href="#Calculate-failt-ratio-of-unrecoverable-read-error" class="headerlink" title="Calculate failt ratio of unrecoverable read error"></a><a href="https://www.high-rely.com/blog/why-raid-5-stops-working-in-2009-not/" target="_blank" rel="external">Calculate failt ratio of unrecoverable read error</a></h4><p>The probability equation they use for a successful read of all bits on a drive is<br>(1-1/b)^a<br>“b” = the Bit Error Rate (BER) also known as Unrecoverable Read Error(URE) rate<br>“a” = Number of Bits read (the amount of data on an entire volume or drive)</p>
@@ -1940,7 +3060,8 @@
     <entry>
       <title><![CDATA[Lustre operations]]></title>
       <url>http://yoursite.com/2016/04/06/Lustre-operations/</url>
-      <content type="html"><![CDATA[<h3 id="Fsck-ldiskfs-file-system-corruption"><a href="#Fsck-ldiskfs-file-system-corruption" class="headerlink" title="Fsck ldiskfs file system corruption"></a>Fsck ldiskfs file system corruption</h3><h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode <span class="number">5384166</span> in dir <span class="comment">#145170469</span></span><br><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: Remounting filesystem read-only</span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<p>###Dump log<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MDS, OSS, Client</span></span><br><span class="line">lctl dk filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># in MDS</span></span><br><span class="line">mount -t lustre /dev/sdb1 /mnt/mgs;</span><br><span class="line">mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;</span><br><span class="line">llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool</span><br></pre></td></tr></table></figure></p>
+<h3 id="Fsck-ldiskfs-file-system-corruption"><a href="#Fsck-ldiskfs-file-system-corruption" class="headerlink" title="Fsck ldiskfs file system corruption"></a>Fsck ldiskfs file system corruption</h3><h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode <span class="number">5384166</span> in dir <span class="comment">#145170469</span></span><br><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: Remounting filesystem read-only</span><br></pre></td></tr></table></figure>
 <h4 id="Flush-the-journal"><a href="#Flush-the-journal" class="headerlink" title="Flush the journal"></a>Flush the journal</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ umount /ostxx</span><br><span class="line">$ mount -t ldiskfs /dev/sdx /mnt/ost</span><br><span class="line">$ umount /mnt/ost</span><br></pre></td></tr></table></figure>
 <h4 id="Caution"><a href="#Caution" class="headerlink" title="Caution"></a>Caution</h4><ul>
 <li><p>Ensure e2fsprogs version ,it ‘s not default linux version ,it ‘s lustre version</p>
@@ -2176,6 +3297,7 @@
       <url>http://yoursite.com/2015/12/04/Openzfs-tips/</url>
       <content type="html"><![CDATA[<h3 id="Optimize-with-lustre"><a href="#Optimize-with-lustre" class="headerlink" title="Optimize with lustre"></a><a href="http://wiki.lustre.org/images/4/48/ZFS-As-Backend-File-System_Paciucci.pdf" target="_blank" rel="external">Optimize with lustre</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/modprobe.d/zfs.conf</span><br><span class="line">options zfs zfs_prefetch_<span class="built_in">disable</span>=1</span><br><span class="line">options zfs metaslab_debug_unload=1</span><br><span class="line">options zfs zfs_arc_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.6&#125;'</span> /proc/meminfo) <span class="comment">#60%, 3/5</span></span><br><span class="line">options zfs zfs_arc_meta_<span class="built_in">limit</span>=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.75&#125;'</span> /proc/meminfo) <span class="comment">#MDS only,75%</span></span><br><span class="line">options zfs zfs_dirty_data_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.15&#125;'</span> /proc/meminfo) <span class="comment">#15%</span></span><br><span class="line">options zfs zfs_vdev_async_write_min_active=5 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_async_write_max_active=15</span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_min_active=16 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_max_active=16</span><br><span class="line">options zfs zfs_vdev_async_write_active_min_dirty_percent=20</span><br><span class="line">options zfs zfs_vdev_scheduler=deadline <span class="comment">#noop for SSD</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://lustre.ornl.gov/ecosystem-2016/documents/tutorials/Stearman-LLNL-ZFS.pdf" target="_blank" rel="external">Tutorial: How to install, tune and Monitor a ZFS based Lustre file system</a></p>
+<h3 id="Readonly-mount"><a href="#Readonly-mount" class="headerlink" title="Readonly mount"></a>Readonly mount</h3><p>The /etc/zfs/zpool.cache file will be automatically updated when your pool configuration is changed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">set</span> cachefile=none tank</span><br><span class="line">zpool import -N -o cachefile=none <span class="_">-d</span> /dev/disk/by-id tank01</span><br><span class="line">zfs mount -o ro tank01</span><br><span class="line"><span class="comment">#deafult zfs mount -o rw,zfsutil tank01</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
 <h3 id="Xattr"><a href="#Xattr" class="headerlink" title="Xattr"></a>Xattr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> xattr=sa tank</span><br></pre></td></tr></table></figure>
 <h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> acltype=posixacl tank/gentoo/home</span><br><span class="line">zfs get acltype tank/gentoo/home</span><br></pre></td></tr></table></figure>

@@ -59,16 +59,19 @@
 
 
 
-<meta name="description" content="Fsck ldiskfs file system corruptionErrors12Dec 29 14:11:32 mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode 5384166 in dir #145170469Dec 29 14:11:32 mookie kernel: Remounti">
+<meta name="description" content="###Dump log1234567# MDS, OSS, Clientlctl dk filename# in MDSmount -t lustre /dev/sdb1 /mnt/mgs;mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool
+Fsc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lustre operations">
 <meta property="og:url" content="http://yoursite.com/2016/04/06/Lustre-operations/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Fsck ldiskfs file system corruptionErrors12Dec 29 14:11:32 mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode 5384166 in dir #145170469Dec 29 14:11:32 mookie kernel: Remounti">
-<meta property="og:updated_time" content="2016-11-27T00:56:45.000Z">
+<meta property="og:description" content="###Dump log1234567# MDS, OSS, Clientlctl dk filename# in MDSmount -t lustre /dev/sdb1 /mnt/mgs;mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool
+Fsc">
+<meta property="og:updated_time" content="2017-01-31T08:19:58.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lustre operations">
-<meta name="twitter:description" content="Fsck ldiskfs file system corruptionErrors12Dec 29 14:11:32 mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode 5384166 in dir #145170469Dec 29 14:11:32 mookie kernel: Remounti">
+<meta name="twitter:description" content="###Dump log1234567# MDS, OSS, Clientlctl dk filename# in MDSmount -t lustre /dev/sdb1 /mnt/mgs;mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool
+Fsc">
 
 
 
@@ -339,7 +342,8 @@
       
 
       
-        <h3 id="Fsck-ldiskfs-file-system-corruption"><a href="#Fsck-ldiskfs-file-system-corruption" class="headerlink" title="Fsck ldiskfs file system corruption"></a>Fsck ldiskfs file system corruption</h3><h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode <span class="number">5384166</span> in dir <span class="comment">#145170469</span></span><br><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: Remounting filesystem read-only</span><br></pre></td></tr></table></figure>
+        <p>###Dump log<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MDS, OSS, Client</span></span><br><span class="line">lctl dk filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># in MDS</span></span><br><span class="line">mount -t lustre /dev/sdb1 /mnt/mgs;</span><br><span class="line">mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;</span><br><span class="line">llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool</span><br></pre></td></tr></table></figure></p>
+<h3 id="Fsck-ldiskfs-file-system-corruption"><a href="#Fsck-ldiskfs-file-system-corruption" class="headerlink" title="Fsck ldiskfs file system corruption"></a>Fsck ldiskfs file system corruption</h3><h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode <span class="number">5384166</span> in dir <span class="comment">#145170469</span></span><br><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: Remounting filesystem read-only</span><br></pre></td></tr></table></figure>
 <h4 id="Flush-the-journal"><a href="#Flush-the-journal" class="headerlink" title="Flush the journal"></a>Flush the journal</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ umount /ostxx</span><br><span class="line">$ mount -t ldiskfs /dev/sdx /mnt/ost</span><br><span class="line">$ umount /mnt/ost</span><br></pre></td></tr></table></figure>
 <h4 id="Caution"><a href="#Caution" class="headerlink" title="Caution"></a>Caution</h4><ul>
 <li><p>Ensure e2fsprogs version ,it ‘s not default linux version ,it ‘s lustre version</p>
@@ -486,7 +490,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -590,7 +594,7 @@
 <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

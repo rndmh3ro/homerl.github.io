@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-28T12:42:47.714Z</updated>
+  <updated>2017-01-11T14:19:33.272Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/01/11/Ext_filesystem_recovery/"/>
+    <id>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</id>
+    <published>2017-01-11T14:19:33.344Z</published>
+    <updated>2017-01-11T14:19:33.272Z</updated>
+    
+    <content type="html">&lt;p&gt;$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512&lt;br&gt;$ mfks.ext3 -b 4096 /dev/shm/test&lt;br&gt;$ mount /dev/shm/test /mnt&lt;/p&gt;
+&lt;p&gt;$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done&lt;br&gt;$ filefrag -v test&lt;br&gt;Filesystem type is: ef53&lt;br&gt;Filesystem cylinder groups approximately 4&lt;br&gt;File size of test is 146688 (36 blocks of 4096 bytes)&lt;br&gt; ext:     logical_offset:        physical_offset: length:   expected: flags:&lt;br&gt;   0:        0..      15:       2576..      2591:     16:             merged&lt;br&gt;   1:       16..      16:      33424..     33424:      1:       2592: merged&lt;br&gt;   2:       17..      17:      33457..     33457:      1:      33425: merged&lt;br&gt;   3:       18..      18:      33490..     33490:      1:      33458: merged&lt;br&gt;   4:       19..      19:      33523..     33523:      1:      33491: merged&lt;br&gt;   5:       20..      20:      33556..     33556:      1:      33524: merged&lt;br&gt;   6:       21..      21:      33589..     33589:      1:      33557: merged&lt;br&gt;   7:       22..      22:      33622..     33622:      1:      33590: merged&lt;br&gt;   8:       23..      23:      33655..     33655:      1:      33623: merged&lt;br&gt;   9:       24..      24:      33688..     33688:      1:      33656: merged&lt;br&gt;  10:       25..      25:      33721..     33721:      1:      33689: merged&lt;br&gt;  11:       26..      26:      33754..     33754:      1:      33722: merged&lt;br&gt;  12:       27..      27:      33787..     33787:      1:      33755: merged&lt;br&gt;  13:       28..      28:      33820..     33820:      1:      33788: merged&lt;br&gt;  14:       29..      29:      33853..     33853:      1:      33821: merged&lt;br&gt;  15:       30..      30:      33886..     33886:      1:      33854: merged&lt;br&gt;  16:       31..      31:      33919..     33919:      1:      33887: merged&lt;br&gt;  17:       32..      32:      33952..     33952:      1:      33920: merged&lt;br&gt;  18:       33..      33:      34017..     34017:      1:      33953: merged&lt;br&gt;  19:       34..      34:      34082..     34082:      1:      34018: merged&lt;br&gt;  20:       35..      35:      34147..     34147:      1:      34083: last,merged,eof&lt;/p&gt;
+&lt;p&gt;debugfs /dev/shm/test&lt;br&gt;debugfs 1.42.13 (17-May-2015)&lt;br&gt;debugfs: stat &lt;14&gt; &lt;/14&gt;&lt;/p&gt;
+&lt;p&gt;Inode: 14   Type: regular    Mode:  0644   Flags: 0x0&lt;br&gt;Generation: 3749441442    Version: 0x00000000:00000001&lt;br&gt;User:     0   Group:     0   Size: 146688&lt;br&gt;File ACL: 0    Directory ACL: 0&lt;br&gt;Links: 1   Blockcount: 296&lt;br&gt;Fragment:  Address: 0    Number: 0    Size: 0&lt;br&gt; ctime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017&lt;br&gt; atime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017&lt;br&gt; mtime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017&lt;br&gt;crtime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017&lt;br&gt;Size of extra inode fields: 32&lt;br&gt;BLOCKS:&lt;br&gt;(0-11):2576-2587, (IND):1538, (12-15):2588-2591, (16):33424, (17):33457, (18):33490, (19):33523, (20):33556, (21):33589, (22):33622, (23):33655, (24):33688, (25):33721, (26):33754, (27):33787, (28):33820, (29):33853, (30):33886, (31):33919, (32):33952, (33):34017, (34):34082, (35):34147&lt;br&gt;TOTAL: 37&lt;/p&gt;
+&lt;p&gt;dd if=/dev/shm/test of=test-1 bs=4K skip=2576 count=$((2591-2576+1))&lt;br&gt;head test-1 ; wc -l test-1 ;tail test-1&lt;br&gt;0-0-0&lt;br&gt;1-1-1&lt;br&gt;2-2-2&lt;br&gt;3-3-3&lt;br&gt;4-4-4&lt;br&gt;5-5-5&lt;br&gt;6-6-6&lt;br&gt;7-7-7&lt;br&gt;8-8-8&lt;br&gt;9-9-9&lt;br&gt;4591 test-1&lt;br&gt;4582-4582-4582&lt;br&gt;4583-4583-4583&lt;br&gt;4584-4584-4584&lt;br&gt;4585-4585-4585&lt;br&gt;4586-4586-4586&lt;br&gt;4587-4587-4587&lt;br&gt;4588-4588-4588&lt;br&gt;4589-4589-4589&lt;br&gt;4590-4590-4590&lt;br&gt;4&lt;/p&gt;
+&lt;p&gt;dd if=/dev/shm/test of=test-2 bs=4K skip=33424 count=1&lt;br&gt;1+0 records in&lt;br&gt;1+0 records out&lt;br&gt;4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193943 s, 21.1 MB/s&lt;br&gt;root@homerl-System-Product-Name:/mnt# head test-2 ; wc -l test-2 ;tail test-2&lt;br&gt;591-4591-4591&lt;br&gt;4592-4592-4592&lt;br&gt;4593-4593-4593&lt;br&gt;4594-4594-4594&lt;br&gt;4595-4595-4595&lt;br&gt;4596-4596-4596&lt;br&gt;4597-4597-4597&lt;br&gt;4598-4598-4598&lt;br&gt;4599-4599-4599&lt;br&gt;4600-4600-4600&lt;br&gt;273 test-2&lt;br&gt;4855-4855-4855&lt;br&gt;4856-4856-4856&lt;br&gt;4857-4857-4857&lt;br&gt;4858-4858-4858&lt;br&gt;4859-4859-4859&lt;br&gt;4860-4860-4860&lt;br&gt;4861-4861-4861&lt;br&gt;4862-4862-4862&lt;br&gt;4863-4863-4863&lt;br&gt;48&lt;/p&gt;
+&lt;p&gt;root@homerl-System-Product-Name:/mnt# dd if=/dev/shm/test of=test-3 bs=4K skip=33457 count=1&lt;br&gt;1+0 records in&lt;br&gt;1+0 records out&lt;br&gt;4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193132 s, 21.2 MB/s&lt;br&gt;root@homerl-System-Product-Name:/mnt# head test-3 ; wc -l test-3 ;tail test-3&lt;br&gt;64-4864-4864&lt;br&gt;4865-4865-4865&lt;br&gt;4866-4866-4866&lt;br&gt;4867-4867-4867&lt;br&gt;4868-4868-4868&lt;br&gt;4869-4869-4869&lt;br&gt;4870-4870-4870&lt;br&gt;4871-4871-4871&lt;br&gt;4872-4872-4872&lt;br&gt;4873-4873-4873&lt;br&gt;273 test-3&lt;br&gt;5128-5128-5128&lt;br&gt;5129-5129-5129&lt;br&gt;5130-5130-5130&lt;br&gt;5131-5131-5131&lt;br&gt;5132-5132-5132&lt;br&gt;5133-5133-5133&lt;br&gt;5134-5134-5134&lt;br&gt;5135-5135-5135&lt;br&gt;5136-5136-5136&lt;br&gt;513&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512&lt;br&gt;$ mfks.ext3 -b 4096 /dev/shm/test&lt;br&gt;$ mount /dev/shm/test /mnt&lt;/p&gt;
+&lt;p&gt;$ rm -f test
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Learn openzfs</title>
+    <link href="http://yoursite.com/2017/01/03/Learn-openzfs/"/>
+    <id>http://yoursite.com/2017/01/03/Learn-openzfs/</id>
+    <published>2017-01-03T12:16:44.000Z</published>
+    <updated>2017-01-04T11:45:14.649Z</updated>
+    
+    <content type="html">&lt;p&gt;###&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000043c0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00020010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000210b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000214b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000217e0  51 c5 e5 d7 3c d9 79 66  b2 6d 81 67 56 bd 92 df  |Q...&amp;lt;.yf.m.gV...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;000217f0  f7 c7 03 02 fa fb 73 8c  2b 8c 9c 74 8a 9e a3 b2  |......s.+..t....|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00021800  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |.........z..z...|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0003ffe0  4a 12 20 c9 20 33 d9 75  a4 0b 73 a6 7f 7e 7f 06  |J. . 3.u..s..~..|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0003fff0  da 88 65 39 62 62 86 01  75 68 a3 f8 be a3 bf fd  |..e9bb..uh......|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00040000&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;0x3fd0=12240&lt;br&gt;0x1ffd0=131024&lt;br&gt;0x20010=131088&lt;br&gt;0x213d0=136144&lt;br&gt;0x217d0=137168&lt;br&gt;0x3ffd0=262096&lt;br&gt;0x40000=262144&lt;/p&gt;
+&lt;p&gt;awk ‘BEGIN{print 12240/1024}’&lt;br&gt;11.9531&lt;br&gt;awk ‘BEGIN{print 131024/1024}’&lt;br&gt;127.953&lt;br&gt;awk ‘BEGIN{print 131088/1024}’&lt;br&gt;128.016&lt;br&gt;awk ‘BEGIN{print 136144/1024}’&lt;br&gt;132.953&lt;br&gt;awk ‘BEGIN{print 137168/1024}’&lt;br&gt;133.953&lt;br&gt;awk ‘BEGIN{print 262096/1024}’&lt;br&gt;255.953&lt;br&gt;awk ‘BEGIN{print 262144/1024}’&lt;br&gt;256&lt;/p&gt;
+&lt;p&gt;``bash&lt;br&gt;dd if=/mnt/disk0 of=test bs=1K count=256&lt;br&gt;dd if=/mnt/disk0 of=test1 bs=1K count=256 skip=256&lt;br&gt;hexdump -C test1  | grep “11 7a 0c b1”&lt;br&gt;00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;/p&gt;
+&lt;p&gt;hexdump -C test  | grep “11 7a 0c b1”&lt;br&gt;00003fd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;0001ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;000213d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;000217d0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;0003ffd0  00 00 00 00 00 00 00 00  11 7a 0c b1 7a da 10 02  |………z..z…|&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;zbt_magic: ZIO block tail magic number. The value is&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0x210da7ab10c7a11 (zio-data-bloc-tail). &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Why reverse order ?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#### Uberblock&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ub_magic&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The uberblock magic number is a 64 bit integer used to identify a device as containing ZFS data.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Big Endian: 0x00bab10c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Little Endian: 0x0cb1ba00&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0x21000=135168&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &amp;apos;BEGIN&amp;#123;print 135168/1024-128&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexdump -C disk0 | grep &amp;quot;0c b1 ba 00&amp;quot; -i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00021400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00061000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00061400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3ffa1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3ffa1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3ffe1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3ffe1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>A copy about ZFS Internals(p1-p5)</title>
     <link href="http://yoursite.com/2016/12/28/Learn-ZFS-Internals-p1-p5/"/>
     <id>http://yoursite.com/2016/12/28/Learn-ZFS-Internals-p1-p5/</id>
     <published>2016-12-28T02:38:38.000Z</published>
-    <updated>2016-12-28T12:42:47.714Z</updated>
+    <updated>2016-12-28T13:38:41.143Z</updated>
     
     <content type="html">&lt;h3 id=&quot;ZFS-Internals-It-‘s-dangerous-operations&quot;&gt;&lt;a href=&quot;#ZFS-Internals-It-‘s-dangerous-operations&quot; class=&quot;headerlink&quot; title=&quot;ZFS Internals It ‘s dangerous operations&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.eall.com.br/blog/?p=312&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ZFS Internals&lt;/a&gt; It ‘s dangerous operations&lt;/h3&gt;&lt;p&gt;After 8 years, I ‘m try to study openzfs&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=disk0 bs=1M count=100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104857600 bytes (105 MB) copied, 0.0582985 s, 1.8 GB/s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=disk1 bs=1M count=100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104857600 bytes (105 MB) copied, 0.0587067 s, 1.8 GB/s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool create &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0  /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk1 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# I don &#39;t know why only 128M could be used. loss a lot of capacity&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool list &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME        SIZE  ALLOC   FREE  EXPANDSZ   FRAG    CAP  DEDUP  HEALTH  ALTROOT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool   160M   244K   160M         -     1%     0%  1.00x  ONLINE  -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zfs get compression &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME       PROPERTY     VALUE     SOURCE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool  compression  off       default&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zfs get recordsize &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME       PROPERTY    VALUE    SOURCE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool  recordsize  128K     default&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ touch /&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/empty &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ du -hs /&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/empty&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;512	/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/empty&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# ashift=0 ?&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool  ashift    0       default&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rm &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; testfile ;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#123;0..65535&amp;#125;; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$i&lt;/span&gt; &amp;gt;&amp;gt; testfile; &lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ls -li&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7 -rw-r--r-- 1 root root 382106 12月 28 12:45 testfile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zdb -dddddddd &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/ 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Dataset &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool [ZPL], ID 21, cr_txg 1, 404K, 7 objects, rootbp DVA[0]=&amp;lt;0:16600:200&amp;gt; DVA[1]=&amp;lt;1:89200:200&amp;gt; [L0 DMU objset] fletcher4 lz4 LE contiguous unique double size=800L/200P birth=77L/77P fill=7 cksum=b706a1be7:479be3ec2c2:e63cf120702c:1fa949c8882cfd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Object  lvl   iblk   dblk  dsize  lsize   %full  &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         7    2    16K   128K   385K   384K  100.00  ZFS plain file (K=inherit) (Z=inherit)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                        168   bonus  System attributes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dnode flags: USED_BYTES USERUSED_ACCOUNTED &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dnode maxblkid: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	path	/testfile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	uid     0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	gid     0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	atime	Wed Dec 28 12:45:10 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mtime	Wed Dec 28 12:45:12 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	ctime	Wed Dec 28 12:45:12 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	crtime	Wed Dec 28 12:45:10 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	gen	77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mode	100644&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	size	382106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	parent	4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	links	1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	pflags	40800000004&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Indirect blocks:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               0 L1  0:2400:200 1:2400:200 4000L/200P F=3 B=77/77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               0  L0 1:28000:20000 20000L/20000P F=1 B=77/77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           20000  L0 1:48000:20000 20000L/20000P F=1 B=77/77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           40000  L0 1:68000:20000 20000L/20000P F=1 B=77/77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		segment [0000000000000000, 0000000000060000) size  384K&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print strtonum(&quot;0x&quot;20000)&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;131072&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -55,6 +106,7 @@
 &lt;h3 id=&quot;Same-with-openzfs&quot;&gt;&lt;a href=&quot;#Same-with-openzfs&quot; class=&quot;headerlink&quot; title=&quot;Same with openzfs&quot;&gt;&lt;/a&gt;Same with openzfs&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-bash-4.1&lt;span class=&quot;comment&quot;&gt;# zpool destroy test-pool&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool create &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool create &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool -o ashift=9 /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ rm &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; testfile ;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#123;0..65535&amp;#125;; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$i&lt;/span&gt; &amp;gt;&amp;gt; testfile; &lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f6a0  ff ff ff a6 50 00 00 00  00 00 00 00 00 00 00 00  |....P...........|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f6b0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f800  30 0a 31 0a 32 0a 33 0a  34 0a 35 0a 36 0a 37 0a  |0.1.2.3.4.5.6.7.|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f810  38 0a 39 0a 31 30 0a 31  31 0a 31 32 0a 31 33 0a  |8.9.10.11.12.13.|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f820  31 34 0a 31 35 0a 31 36  0a 31 37 0a 31 38 0a 31  |14.15.16.17.18.1|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0040f830  39 0a 32 30 0a 32 31 0a  32 32 0a 32 33 0a 32 34  |9.20.21.22.23.24|&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ls -li /&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/testfile &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7 -rw-r--r-- 1 root root 382106 12月 28 17:31 /&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/testfile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zdb -dddddd &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool/ 7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Dataset &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool [ZPL], ID 21, cr_txg 1, 404K, 7 objects, rootbp DVA[0]=&amp;lt;0:71c00:200&amp;gt; DVA[1]=&amp;lt;0:71e00:200&amp;gt; [L0 DMU objset] fletcher4 lz4 LE contiguous unique double size=800L/200P birth=7L/7P fill=7 cksum=d25a82905:4fd05e01a15:f9b25d4668de:21890ed460fd11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Object  lvl   iblk   dblk  dsize  lsize   %full  &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         7    2    16K   128K   385K   384K  100.00  ZFS plain file (K=inherit) (Z=inherit)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                        168   bonus  System attributes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dnode flags: USED_BYTES USERUSED_ACCOUNTED &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dnode maxblkid: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	path	/testfile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	uid     0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	gid     0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	atime	Wed Dec 28 17:31:11 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mtime	Wed Dec 28 17:31:13 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	ctime	Wed Dec 28 17:31:13 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	crtime	Wed Dec 28 17:31:11 2016&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	gen	7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mode	100644&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	size	382106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	parent	4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	links	1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	pflags	40800000004&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Indirect blocks:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               0 L1  0:4800:200 0:4a00:200 4000L/200P F=3 B=7/7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;               0  L0 0:f800:20000 20000L/20000P F=1 B=7/7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           20000  L0 0:2f800:20000 20000L/20000P F=1 B=7/7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           40000  L0 0:4f800:20000 20000L/20000P F=1 B=7/7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		segment [0000000000000000, 0000000000060000) size  384K&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ 40f800=4257792&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ f800=63488&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print (4257792-63488)/1024&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4096&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;Header is 4MiB, and offset 63488 begin to write real data&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;105&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;107&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;108&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;109&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;110&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;111&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;112&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;113&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;114&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;115&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;116&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;117&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;118&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;119&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;120&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;121&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;122&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;124&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;125&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;126&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;127&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;128&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;129&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;130&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;131&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;132&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;133&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;134&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;135&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;136&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;137&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;138&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;139&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;140&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;141&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;142&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;143&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;144&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;145&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;146&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;147&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;148&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print strtonum(&quot;0x40f800&quot;)/1024&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4158&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zdb -R &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool 0:f800:20000:r &amp;gt; /tmp/file1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-bash-4.1&lt;span class=&quot;comment&quot;&gt;# head /tmp/file1 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# modify /tmp/file1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ head -n 4 /tmp/file1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0 of=/tmp/disk0-1 bs=1k count=4158&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0 of=/tmp/disk0-2 bs=1k skip=4158 count=1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0 of=/tmp/disk0-3 bs=1k skip=4159&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ head /tmp/disk0-2 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-bash-4.1&lt;span class=&quot;comment&quot;&gt;# tail /tmp/disk0-2 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;274&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;276&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;277&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;278&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;279&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;280&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;281&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;282&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ls &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; /tmp/disk0-*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-r--r-- 1 root root   4257792 12月 28 19:59 /tmp/disk0-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-r--r-- 1 root root      1024 12月 28 19:59 /tmp/disk0-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-r--r-- 1 root root 100598784 12月 28 20:03 /tmp/disk0-3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# modify disk0-2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ vi /tmp/disk0-2 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-bash-4.1&lt;span class=&quot;comment&quot;&gt;# head -n 2 /tmp/disk0-2 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cp /tmp/disk0-1 /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat /tmp/disk0-2 &amp;gt;&amp;gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat /tmp/disk0-3 &amp;gt;&amp;gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool import &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/ &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cannot import &lt;span class=&quot;string&quot;&gt;&#39;test-pool&#39;&lt;/span&gt;: I/O error&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	Destroy and re-create the pool from&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	a backup source.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zdb &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;zdb &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;LABEL 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    version: 5000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: &lt;span class=&quot;string&quot;&gt;&#39;test-pool&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    state: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    txg: 1277&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pool_guid: 2913619627256210242&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    errata: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    hostname: &lt;span class=&quot;string&quot;&gt;&#39;nas-57-11.local&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    top_guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    vdev_children: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    vdev_tree:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;file&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        id: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        path: &lt;span class=&quot;string&quot;&gt;&#39;/tank/test/disk0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        metaslab_array: 35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        metaslab_&lt;span class=&quot;built_in&quot;&gt;shift&lt;/span&gt;: 24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ashift: 9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        asize: 100139008&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        is_&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        create_txg: 4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    features_&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;_&lt;span class=&quot;built_in&quot;&gt;read&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        com.delphix:hole_birth&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        com.delphix:embedded_data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;LABEL 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    version: 5000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: &lt;span class=&quot;string&quot;&gt;&#39;test-pool&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    state: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    txg: 1277&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    pool_guid: 2913619627256210242&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    errata: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    hostname: &lt;span class=&quot;string&quot;&gt;&#39;nas-57-11.local&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    top_guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    vdev_children: 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    vdev_tree:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;file&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        id: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        guid: 14729225611287826913&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        path: &lt;span class=&quot;string&quot;&gt;&#39;/tank/test/disk0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        metaslab_array: 35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        metaslab_&lt;span class=&quot;built_in&quot;&gt;shift&lt;/span&gt;: 24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ashift: 9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        asize: 100139008&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        is_&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;: 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        create_txg: 4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    features_&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;_&lt;span class=&quot;built_in&quot;&gt;read&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        com.delphix:hole_birth&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        com.delphix:embedded_data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;LABEL 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;failed to unpack label 2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;LABEL 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;failed to unpack label 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ zpool import -N -o &lt;span class=&quot;built_in&quot;&gt;readonly&lt;/span&gt;=on &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/ -F -T 1277&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   pool: &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     id: 2913619627256210242&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  state: FAULTED&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; status: The pool metadata is corrupted.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; action: The pool cannot be imported due to damaged devices or data.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	The pool may be active on another system, but can be imported using&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	the &lt;span class=&quot;string&quot;&gt;&#39;-f&#39;&lt;/span&gt; flag.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   see: http://zfsonlinux.org/msg/ZFS-8000-72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; config:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-pool           FAULTED  corrupted data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	  /tank/&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;/disk0  ONLINE&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Raidz-size&quot;&gt;&lt;a href=&quot;#Raidz-size&quot; class=&quot;headerlink&quot; title=&quot;Raidz size&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://blog.gjpvanwesten.nl/2014/08/part-iv-how-much-space-do-you-lose-with.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Raidz size&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print 128/7&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18.2857&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print 18.2857/20&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.914285&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;awk &lt;span class=&quot;string&quot;&gt;&#39;BEGIN&amp;#123;print 18.2857/18.5&amp;#125;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.988416&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -75,7 +127,7 @@
     <link href="http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/"/>
     <id>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</id>
     <published>2016-12-23T13:19:55.000Z</published>
-    <updated>2016-12-23T13:57:03.000Z</updated>
+    <updated>2016-12-23T13:57:03.785Z</updated>
     
     <content type="html">&lt;h3 id=&quot;blk-mq-in-RHEL-7-2&quot;&gt;&lt;a href=&quot;#blk-mq-in-RHEL-7-2&quot; class=&quot;headerlink&quot; title=&quot;blk-mq in RHEL 7.2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blk-mq in RHEL 7.2&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.&lt;br&gt;If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).&lt;br&gt;It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.&lt;br&gt;To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;High Performance Storage with blk-mq and scsi-mq&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux Multi-Queue Block IO Queueing Mechanism&lt;/a&gt;)&lt;br&gt;&lt;a href=&quot;http://chuansong.me/n/362178648541&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blk-mq SCSI performance&lt;/a&gt;&lt;/p&gt;
@@ -98,10 +150,10 @@
   
   <entry>
     <title>Hardware index</title>
-    <link href="http://yoursite.com/2016/12/22/Hardware-index/"/>
-    <id>http://yoursite.com/2016/12/22/Hardware-index/</id>
+    <link href="http://yoursite.com/2016/12/22/Hardware-index%20(homerl-System-Product-Name's%20conflicted%20copy%202017-01-14)/"/>
+    <id>http://yoursite.com/2016/12/22/Hardware-index (homerl-System-Product-Name's conflicted copy 2017-01-14)/</id>
     <published>2016-12-22T09:39:27.000Z</published>
-    <updated>2016-12-27T06:00:10.651Z</updated>
+    <updated>2017-01-12T15:19:23.261Z</updated>
     
     <content type="html">&lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundance-SAS-link&quot; class=&quot;headerlink&quot; title=&quot;Dual nodes, redundance SAS link&quot;&gt;&lt;/a&gt;Dual nodes, redundance SAS link&lt;/h4&gt;&lt;h5 id=&quot;2U&quot;&gt;&lt;a href=&quot;#2U&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.supermicro.com/solutions/Lustre.cfm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSG-927R-E2CJB&lt;/a&gt;, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander&lt;/p&gt;
 &lt;table&gt;
@@ -412,6 +464,1117 @@
 &lt;td&gt;36&lt;/td&gt;
 &lt;td&gt;c612&lt;/td&gt;
 &lt;td&gt;x540+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR90L&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;4x10GbE+2xLSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;6048R-E1CR90L&quot;&gt;&lt;a href=&quot;#6048R-E1CR90L&quot; class=&quot;headerlink&quot; title=&quot;6048R-E1CR90L&quot;&gt;&lt;/a&gt;6048R-E1CR90L&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/SuperServer/4U/SSG-6048R-E1CR90L.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h6 id=&quot;4-socket&quot;&gt;&lt;a href=&quot;#4-socket&quot; class=&quot;headerlink&quot; title=&quot;4 socket&quot;&gt;&lt;/a&gt;4 socket&lt;/h6&gt;&lt;p&gt;8048B-TR4FT 96 x 128G&lt;br&gt;8048B-TRFT 96 x 64G&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;IO&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;8048B-TRFT&lt;/td&gt;
+&lt;td&gt;96&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;AHCI 2xSATA3&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;c602J&lt;/td&gt;
+&lt;td&gt;x540&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4048B-TRFT&lt;/td&gt;
+&lt;td&gt;96&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;48 +AHCI 2xSATA3&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c602J&lt;/td&gt;
+&lt;td&gt;x540&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;Supermicro-8048B-TRFT&quot;&gt;&lt;a href=&quot;#Supermicro-8048B-TRFT&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 8048B-TRFT&quot;&gt;&lt;/a&gt;Supermicro 8048B-TRFT&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/SuperServer/4U/SYS-8048B-TRFT.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;AHCI-SATA-DOM-x10-6Gb-SATA3&quot;&gt;&lt;a href=&quot;#AHCI-SATA-DOM-x10-6Gb-SATA3&quot; class=&quot;headerlink&quot; title=&quot;AHCI SATA DOM x10 6Gb SATA3&quot;&gt;&lt;/a&gt;AHCI SATA DOM x10 6Gb SATA3&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/nfo/SATADOM_x10_connect.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;JBOD&quot;&gt;&lt;a href=&quot;#JBOD&quot; class=&quot;headerlink&quot; title=&quot;JBOD&quot;&gt;&lt;/a&gt;JBOD&lt;/h3&gt;&lt;p&gt;SSG-927R-E2CJB is a 2U JBOD&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;H&lt;/th&gt;
+&lt;th&gt;H(mm)&lt;/th&gt;
+&lt;th&gt;W&lt;/th&gt;
+&lt;th&gt;Depth&lt;/th&gt;
+&lt;th&gt;Fans&lt;/th&gt;
+&lt;th&gt;3.5 slot&lt;/th&gt;
+&lt;th&gt;power(w)&lt;/th&gt;
+&lt;th&gt;Weight(max)&lt;/th&gt;
+&lt;th&gt;Interface&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;946ED-R2KJBOD&lt;/td&gt;
+&lt;td&gt;4U&lt;/td&gt;
+&lt;td&gt;178&lt;/td&gt;
+&lt;td&gt;447&lt;/td&gt;
+&lt;td&gt;906&lt;/td&gt;
+&lt;td&gt;4+1&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;4x1000&lt;/td&gt;
+&lt;td&gt;102.06kg&lt;/td&gt;
+&lt;td&gt;SAS3 SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST JBOD 4U60&lt;/td&gt;
+&lt;td&gt;4U&lt;/td&gt;
+&lt;td&gt;175&lt;/td&gt;
+&lt;td&gt;424&lt;/td&gt;
+&lt;td&gt;938&lt;/td&gt;
+&lt;td&gt;N+1&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;2x1650&lt;/td&gt;
+&lt;td&gt;89.81 kg&lt;/td&gt;
+&lt;td&gt;SAS3 SFF-8436&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell MD1280&lt;/td&gt;
+&lt;td&gt;5U&lt;/td&gt;
+&lt;td&gt;223&lt;/td&gt;
+&lt;td&gt;483&lt;/td&gt;
+&lt;td&gt;915&lt;/td&gt;
+&lt;td&gt;N+1&lt;/td&gt;
+&lt;td&gt;84&lt;/td&gt;
+&lt;td&gt;2x2800&lt;/td&gt;
+&lt;td&gt;130.1 kg&lt;/td&gt;
+&lt;td&gt;SAS2 SFF-8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;Humidity&lt;/th&gt;
+&lt;th&gt;Random Vibration&lt;/th&gt;
+&lt;th&gt;Sinusoidal Vibration&lt;/th&gt;
+&lt;th&gt;Temperature Range&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;946ED-R2KJBOD&lt;/td&gt;
+&lt;td&gt;8%-90%&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)       &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST JBOD 4U60&lt;/td&gt;
+&lt;td&gt;8%-80%&lt;/td&gt;
+&lt;td&gt;0.25Grms 5-10Hz&lt;/td&gt;
+&lt;td&gt;0.05 g, 10-300Hz&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell MD1280&lt;/td&gt;
+&lt;td&gt;10%-80%&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1.04 g,2-200Hz(max)&lt;/td&gt;
+&lt;td&gt;5°C-35°C(air)40°C (helium)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Supermicro-946ED-R2KJBOD&quot;&gt;&lt;a href=&quot;#Supermicro-946ED-R2KJBOD&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 946ED-R2KJBOD&quot;&gt;&lt;/a&gt;Supermicro 946ED-R2KJBOD&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.shopify.com/s/files/1/1040/6656/files/CSE-946ED-R2KJBOD_large.jpg?12087391912493687778&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8644&quot;&gt;&lt;a href=&quot;#SFF-8644&quot; class=&quot;headerlink&quot; title=&quot;SFF-8644&quot;&gt;&lt;/a&gt;SFF-8644&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/SFF-8644.jpg/200px-SFF-8644.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8436&quot;&gt;&lt;a href=&quot;#SFF-8436&quot; class=&quot;headerlink&quot; title=&quot;SFF-8436&quot;&gt;&lt;/a&gt;SFF-8436&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://img.thuexeminhanh.com/pic/z29cc701-200x200-1/40g_qsfp_sff_8436_to_qsfp_passive_copper_cable.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;SFF-8088&quot;&gt;&lt;a href=&quot;#SFF-8088&quot; class=&quot;headerlink&quot; title=&quot;SFF-8088&quot;&gt;&lt;/a&gt;SFF-8088&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSCbG7orrSXih0_w2CbkBAkXnk0tUwaojoyWQ9wltVwhIt0pUR9&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SAS-HBA-and-Raid&quot;&gt;&lt;a href=&quot;#SAS-HBA-and-Raid&quot; class=&quot;headerlink&quot; title=&quot;SAS HBA and Raid&quot;&gt;&lt;/a&gt;SAS HBA and Raid&lt;/h3&gt;&lt;h4 id=&quot;Raid&quot;&gt;&lt;a href=&quot;#Raid&quot; class=&quot;headerlink&quot; title=&quot;Raid&quot;&gt;&lt;/a&gt;Raid&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;RAID&lt;/th&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;dell&lt;/th&gt;
+&lt;th&gt;Cache&lt;/th&gt;
+&lt;th&gt;SAS&lt;/th&gt;
+&lt;th&gt;SAS port&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;9380-8e&lt;/td&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;H830&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9361-8i&lt;/td&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;H730&lt;/td&gt;
+&lt;td&gt;1-2G&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9341-8i&lt;/td&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;H330&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9260-8i&lt;/td&gt;
+&lt;td&gt;LSI 2108&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;0.5G&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9260-8i&lt;/td&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;H710&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9286-8e&lt;/td&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;H810&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x4x6G&lt;/td&gt;
+&lt;td&gt;SFF-8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P244br&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1GB&lt;/td&gt;
+&lt;td&gt;2x1x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P440ar&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P440&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2GB&lt;/td&gt;
+&lt;td&gt;1x8x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P431-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP P441&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P741m-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;2x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P841-8e&lt;/td&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4GB&lt;/td&gt;
+&lt;td&gt;4x4x12G&lt;/td&gt;
+&lt;td&gt;SFF-8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;LSI-Fusion-MPT&quot;&gt;&lt;a href=&quot;#LSI-Fusion-MPT&quot; class=&quot;headerlink&quot; title=&quot;LSI Fusion-MPT&quot;&gt;&lt;/a&gt;LSI Fusion-MPT&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;dell&lt;/th&gt;
+&lt;th&gt;LSI&lt;/th&gt;
+&lt;th&gt;SAS&lt;/th&gt;
+&lt;th&gt;SAS port&lt;/th&gt;
+&lt;th&gt;Power&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;HBA12i&lt;/td&gt;
+&lt;td&gt;9311-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;14.5W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;HBA12e&lt;/td&gt;
+&lt;td&gt;9300-8e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;14.5W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3216&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-16e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;13w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI3008x2&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9302-16e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;td&gt;30W&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-24i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;16.2w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;9305-24i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;td&gt;16.2w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2008&lt;/td&gt;
+&lt;td&gt;HBA6i&lt;/td&gt;
+&lt;td&gt;9211-8i&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;td&gt;7w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2308&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;9207-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;td&gt;9.8w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI2008x2&lt;/td&gt;
+&lt;td&gt;none&lt;/td&gt;
+&lt;td&gt;9202-16e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;td&gt;9.8w&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI2008x2&lt;/td&gt;
+&lt;td&gt;HBA6e&lt;/td&gt;
+&lt;td&gt;9200-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8088&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H220-8i&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H221-8e&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;SFF8087&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;HP H240-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H240br-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H240br-8i&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PMC&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;H241-8e&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;SFF8644&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;LSI-ARM-arch-SAS-SATA-NVME&quot;&gt;&lt;a href=&quot;#LSI-ARM-arch-SAS-SATA-NVME&quot; class=&quot;headerlink&quot; title=&quot;LSI ARM arch, SAS, SATA, NVME&quot;&gt;&lt;/a&gt;LSI ARM arch, SAS, SATA, NVME&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;PCIE lanes&lt;/th&gt;
+&lt;th&gt;PCIE BW&lt;/th&gt;
+&lt;th&gt;SAS BW&lt;/th&gt;
+&lt;th&gt;CPU&lt;/th&gt;
+&lt;th&gt;DA&lt;/th&gt;
+&lt;th&gt;DA&lt;/th&gt;
+&lt;th&gt;PCIE devices&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3416&lt;/td&gt;
+&lt;td&gt;x8 G3&lt;/td&gt;
+&lt;td&gt;16GBps&lt;/td&gt;
+&lt;td&gt;19.2GBps&lt;/td&gt;
+&lt;td&gt;ARM A15 1.2G&lt;/td&gt;
+&lt;td&gt;2xSFF-8639&lt;/td&gt;
+&lt;td&gt;4xSFF-8680&lt;/td&gt;
+&lt;td&gt;16          &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3408&lt;/td&gt;
+&lt;td&gt;x8 G3&lt;/td&gt;
+&lt;td&gt;8GBps&lt;/td&gt;
+&lt;td&gt;9.6GBps&lt;/td&gt;
+&lt;td&gt;ARM A15 1.2G&lt;/td&gt;
+&lt;td&gt;2xSFF-8639&lt;/td&gt;
+&lt;td&gt;4xSFF-8680&lt;/td&gt;
+&lt;td&gt;16          &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Why 3416 and 3408 have the same PCIE lanes (x8 ?)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SFF-8639&lt;ul&gt;
+&lt;li&gt;PCIE Gen3 1,2,4 lanes&lt;ul&gt;
+&lt;li&gt;3.938 GB/s (if full-duplex, x2)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SAS3 1,2,4 lanes&lt;ul&gt;
+&lt;li&gt;4.8GB/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SFF-8680&lt;ul&gt;
+&lt;li&gt;SAS3 1,2 lanes&lt;ul&gt;
+&lt;li&gt;2.4GB/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.snia.org/sites/default/education/tutorials/2012/fall/solid/AnilVasudeva_NVMe_NextGen_SSD%20Interface-r1-nc1.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NVME interface&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;LSI-SAS-Chip&quot;&gt;&lt;a href=&quot;#LSI-SAS-Chip&quot; class=&quot;headerlink&quot; title=&quot;LSI SAS Chip&quot;&gt;&lt;/a&gt;LSI SAS Chip&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Fd (Full duplex)&lt;/li&gt;
+&lt;li&gt;BW (bandwidth)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SAS chip&lt;/th&gt;
+&lt;th&gt;Power CPU&lt;/th&gt;
+&lt;th&gt;16xPCIE3 BW&lt;/th&gt;
+&lt;th&gt;SAS3 BW&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3008&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;9.6GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3108&lt;/td&gt;
+&lt;td&gt;Dual PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;9.6GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3216&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;19.2GB/s Fd 16p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 3224&lt;/td&gt;
+&lt;td&gt;PPC476 1.2G&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;28.8GB/s Fd 24p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2108&lt;/td&gt;
+&lt;td&gt;PPC440 800MHz&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2008&lt;/td&gt;
+&lt;td&gt;PPC440 533M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2308&lt;/td&gt;
+&lt;td&gt;PPC440 800M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LSI 2208&lt;/td&gt;
+&lt;td&gt;Dual PPC440 800M&lt;/td&gt;
+&lt;td&gt;16GB/s Fd&lt;/td&gt;
+&lt;td&gt;4.8GB/s Fd 8p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;SSD&quot;&gt;&lt;a href=&quot;#SSD&quot; class=&quot;headerlink&quot; title=&quot;SSD&quot;&gt;&lt;/a&gt;SSD&lt;/h3&gt;&lt;h4 id=&quot;SAS&quot;&gt;&lt;a href=&quot;#SAS&quot; class=&quot;headerlink&quot; title=&quot;SAS&quot;&gt;&lt;/a&gt;SAS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;SIZE(TB)&lt;/th&gt;
+&lt;th&gt;DWPD (5y)&lt;/th&gt;
+&lt;th&gt;Nand&lt;/th&gt;
+&lt;th&gt;R/W(GB/s)&lt;/th&gt;
+&lt;th&gt;ios(k)&lt;/th&gt;
+&lt;th&gt;interface&lt;/th&gt;
+&lt;th&gt;UBER&lt;/th&gt;
+&lt;th&gt;MTBF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SanDisk Optimus MAX&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;td&gt;19nm emlc&lt;/td&gt;
+&lt;td&gt;0.4/0.4&lt;/td&gt;
+&lt;td&gt;85/11&lt;/td&gt;
+&lt;td&gt;6Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD Lightning Eco GenII&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.98/0.6&lt;/td&gt;
+&lt;td&gt;195/81&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD Lightning Ultra GenII&lt;/td&gt;
+&lt;td&gt;0.8&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.98/0.74&lt;/td&gt;
+&lt;td&gt;199/115&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^19&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SSD1600MR&lt;/td&gt;
+&lt;td&gt;1.9&lt;/td&gt;
+&lt;td&gt;2.6&lt;/td&gt;
+&lt;td&gt;emlc&lt;/td&gt;
+&lt;td&gt;1/0.7&lt;/td&gt;
+&lt;td&gt;130/30&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SS200&lt;/td&gt;
+&lt;td&gt;0.48-7.6&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.8/1&lt;/td&gt;
+&lt;td&gt;250/37&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST Ultrastar SS200&lt;/td&gt;
+&lt;td&gt;0.4-6.4&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.8/1&lt;/td&gt;
+&lt;td&gt;250/86&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HGST s842&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;14~40&lt;/td&gt;
+&lt;td&gt;emlc&lt;/td&gt;
+&lt;td&gt;0.53/0.38&lt;/td&gt;
+&lt;td&gt;84/28&lt;/td&gt;
+&lt;td&gt;6Gbps SAS&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1200.2 ST3840FM0003&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;1.1/0.77&lt;/td&gt;
+&lt;td&gt;180/30&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung PM1635&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;TLC ?&lt;/td&gt;
+&lt;td&gt;0.94/0.79&lt;/td&gt;
+&lt;td&gt;190/50&lt;/td&gt;
+&lt;td&gt;12Gbps SAS&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2.5M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;SATA&quot;&gt;&lt;a href=&quot;#SATA&quot; class=&quot;headerlink&quot; title=&quot;SATA&quot;&gt;&lt;/a&gt;SATA&lt;/h4&gt;&lt;p&gt;Intel DC S3100 is good choice to install operating system&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;SIZE(TB)&lt;/th&gt;
+&lt;th&gt;DWPD (5y)&lt;/th&gt;
+&lt;th&gt;Nand&lt;/th&gt;
+&lt;th&gt;R/W(GB/s)&lt;/th&gt;
+&lt;th&gt;ios(k)&lt;/th&gt;
+&lt;th&gt;interface&lt;/th&gt;
+&lt;th&gt;UBER&lt;/th&gt;
+&lt;th&gt;MTBF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;SD CloudSpeed Eco GenII&lt;/td&gt;
+&lt;td&gt;1.92&lt;/td&gt;
+&lt;td&gt;0.6&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.53,0.46&lt;/td&gt;
+&lt;td&gt;75,14&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SD CloudSpeed Ultra GenII&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;1.8&lt;/td&gt;
+&lt;td&gt;15nm emlc&lt;/td&gt;
+&lt;td&gt;0.53,0.46&lt;/td&gt;
+&lt;td&gt;76,32&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^18&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3100&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0.06&lt;/td&gt;
+&lt;td&gt;16nm tlc&lt;/td&gt;
+&lt;td&gt;0.50,0.11&lt;/td&gt;
+&lt;td&gt;59,3.9&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^16&lt;/td&gt;
+&lt;td&gt;1.6M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3100&lt;/td&gt;
+&lt;td&gt;0.48&lt;/td&gt;
+&lt;td&gt;0.84&lt;/td&gt;
+&lt;td&gt;16nm tlc&lt;/td&gt;
+&lt;td&gt;0.50,0.11&lt;/td&gt;
+&lt;td&gt;55,4.7&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^16&lt;/td&gt;
+&lt;td&gt;1.6M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3510&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;0.35&lt;/td&gt;
+&lt;td&gt;16nm emlc&lt;/td&gt;
+&lt;td&gt;0.50,0.43&lt;/td&gt;
+&lt;td&gt;65,15&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3520&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;0.35&lt;/td&gt;
+&lt;td&gt;16 3d emlc&lt;/td&gt;
+&lt;td&gt;0.45,0.38&lt;/td&gt;
+&lt;td&gt;67,17&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Intel DC s3610&lt;/td&gt;
+&lt;td&gt;1.6&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;20nm emlc&lt;/td&gt;
+&lt;td&gt;0.55,0.5&lt;/td&gt;
+&lt;td&gt;84,27&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;10^17&lt;/td&gt;
+&lt;td&gt;2M&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung PM863&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;0.78&lt;/td&gt;
+&lt;td&gt;3d TLC&lt;/td&gt;
+&lt;td&gt;0.55,0.5&lt;/td&gt;
+&lt;td&gt;99,18&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Samsung SM863&lt;/td&gt;
+&lt;td&gt;3.8&lt;/td&gt;
+&lt;td&gt;3.5&lt;/td&gt;
+&lt;td&gt;3d MLC&lt;/td&gt;
+&lt;td&gt;0.52,0.48&lt;/td&gt;
+&lt;td&gt;97,29&lt;/td&gt;
+&lt;td&gt;6Gbps&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;Compute-node&quot;&gt;&lt;a href=&quot;#Compute-node&quot; class=&quot;headerlink&quot; title=&quot;Compute node&quot;&gt;&lt;/a&gt;Compute node&lt;/h3&gt;&lt;p&gt;SYS-4048B-TR4FT-EC028&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundan
+    
+    </summary>
+    
+      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
+    
+    
+      <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
+    
+      <category term="hardware" scheme="http://yoursite.com/tags/hardware/"/>
+    
+      <category term="jbod" scheme="http://yoursite.com/tags/jbod/"/>
+    
+      <category term="das" scheme="http://yoursite.com/tags/das/"/>
+    
+      <category term="server" scheme="http://yoursite.com/tags/server/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hardware index</title>
+    <link href="http://yoursite.com/2016/12/22/Hardware-index/"/>
+    <id>http://yoursite.com/2016/12/22/Hardware-index/</id>
+    <published>2016-12-22T09:39:27.000Z</published>
+    <updated>2017-01-13T02:05:57.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;DAS&quot;&gt;&lt;a href=&quot;#DAS&quot; class=&quot;headerlink&quot; title=&quot;DAS&quot;&gt;&lt;/a&gt;DAS&lt;/h3&gt;&lt;h4 id=&quot;Dual-nodes-redundance-SAS-link&quot;&gt;&lt;a href=&quot;#Dual-nodes-redundance-SAS-link&quot; class=&quot;headerlink&quot; title=&quot;Dual nodes, redundance SAS link&quot;&gt;&lt;/a&gt;Dual nodes, redundance SAS link&lt;/h4&gt;&lt;h5 id=&quot;2U&quot;&gt;&lt;a href=&quot;#2U&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.supermicro.com/solutions/Lustre.cfm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SSG-927R-E2CJB&lt;/a&gt;, Lustre+openzfs 2U 24 2.5” Drive JBOD with shared redundant expander&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2028R-DE2CR24L&lt;/td&gt;
+&lt;td&gt;2x8&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;X540+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SG-2028R-DE2CR24&lt;/td&gt;
+&lt;td&gt;2x8&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;X540+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Inventec U90G3&lt;/td&gt;
+&lt;td&gt;16x2&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;70&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HPE 4520&lt;/td&gt;
+&lt;td&gt;16x2&lt;/td&gt;
+&lt;td&gt;2x4&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;46&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&quot;Supermicro-2028R-DE2CR24L&quot;&gt;&lt;a href=&quot;#Supermicro-2028R-DE2CR24L&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 2028R-DE2CR24L&quot;&gt;&lt;/a&gt;Supermicro 2028R-DE2CR24L&lt;/h6&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/SuperServer/2U/SSG-2028R-DE2CR24L.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;4U-SBB&quot;&gt;&lt;a href=&quot;#4U-SBB&quot; class=&quot;headerlink&quot; title=&quot;4U (SBB)&quot;&gt;&lt;/a&gt;4U (SBB)&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-DE2CR24L&lt;/td&gt;
+&lt;td&gt;8x2&lt;/td&gt;
+&lt;td&gt;2x3&lt;/td&gt;
+&lt;td&gt;2x2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+LSI3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;Single-node&quot;&gt;&lt;a href=&quot;#Single-node&quot; class=&quot;headerlink&quot; title=&quot;Single node&quot;&gt;&lt;/a&gt;Single node&lt;/h4&gt;&lt;h5 id=&quot;1U&quot;&gt;&lt;a href=&quot;#1U&quot; class=&quot;headerlink&quot; title=&quot;1U&quot;&gt;&lt;/a&gt;1U&lt;/h5&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6017R-73HDP+&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2(os)&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;c602&lt;/td&gt;
+&lt;td&gt;dual&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1028R-WTR&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+Mezzanine HAB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SYS-1028U-E1CRTP+&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;10GbE SFP and 1xinternal PCIE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell R630&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;dual+Daughter card&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h6 id=&quot;Supermicro-6017R-73HDP&quot;&gt;&lt;a href=&quot;#Supermicro-6017R-73HDP&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6017R-73HDP+&quot;&gt;&lt;/a&gt;Supermicro 6017R-73HDP+&lt;/h6&gt;&lt;p&gt;&lt;img src=&quot;http://www.supermicro.com/a_images/products/SuperServer/1U/SYS-6017R-73THDP__Spec.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;2U-1&quot;&gt;&lt;a href=&quot;#2U-1&quot; class=&quot;headerlink&quot; title=&quot;2U&quot;&gt;&lt;/a&gt;2U&lt;/h5&gt;&lt;p&gt;6xPCI-Express 3+1xPCI-Express 2.0 x4 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;6028R-E1CR12N&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;6xPCI-Express 3&lt;/li&gt;
+&lt;li&gt;1xPCI-Express 2&lt;/li&gt;
+&lt;li&gt;Lustre OSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6028R-E1CR24N&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;24 x 3.5 inch&lt;/li&gt;
+&lt;li&gt;2 x 2.5 inch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;io&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6028R-E1CR12N&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;6+1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;4x10GbE BT+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6028R-E1CR16T&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;2x10GbE+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6028R-E1CR24N&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;SIOM flexible+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6028R-E1CR12L&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;2xX540+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2028R-E1CR48N&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;48+2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;SIOM flexible+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2028R-E1CR48L&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;48+2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;SIOM flexible+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dell R730xd&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;c610&lt;/td&gt;
+&lt;td&gt;daughter card+LSI 3008/3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP DL180G9&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;c610&lt;/td&gt;
+&lt;td&gt;flexible card&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HP 4200 G9&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;54&lt;/td&gt;
+&lt;td&gt;28&lt;/td&gt;
+&lt;td&gt;c610&lt;/td&gt;
+&lt;td&gt;flexible card&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR12N-lustre-OSS&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR12N-lustre-OSS&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR12N (lustre OSS)&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR12N (lustre OSS)&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR12N.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR16T&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR16T&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR16T&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR16T&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;https://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR16T.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Supermicro-6028R-E1CR24N&quot;&gt;&lt;a href=&quot;#Supermicro-6028R-E1CR24N&quot; class=&quot;headerlink&quot; title=&quot;Supermicro 6028R-E1CR24N&quot;&gt;&lt;/a&gt;Supermicro 6028R-E1CR24N&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://www.supermicro.com/a_images/products/superserver/2U/SSG-6028R-E1CR24N.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;4U&quot;&gt;&lt;a href=&quot;#4U&quot; class=&quot;headerlink&quot; title=&quot;4U&quot;&gt;&lt;/a&gt;4U&lt;/h5&gt;&lt;h6 id=&quot;2-socket&quot;&gt;&lt;a href=&quot;#2-socket&quot; class=&quot;headerlink&quot; title=&quot;2 socket&quot;&gt;&lt;/a&gt;2 socket&lt;/h6&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Model&lt;/th&gt;
+&lt;th&gt;MEM&lt;/th&gt;
+&lt;th&gt;PCIE&lt;/th&gt;
+&lt;th&gt;socks&lt;/th&gt;
+&lt;th&gt;2.5HDD&lt;/th&gt;
+&lt;th&gt;3.5HDD&lt;/th&gt;
+&lt;th&gt;chip&lt;/th&gt;
+&lt;th&gt;IO&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36L&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;4+2(2.0)&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;4xi350+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36L&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;x540+LSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR36H&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;x540+LSI 3108&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR60L&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;1xLSI 3008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6048R-E1CR90L&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;90&lt;/td&gt;
+&lt;td&gt;c612&lt;/td&gt;
+&lt;td&gt;4x10GbE+2xLSI 3008&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1152,6 +2315,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h3 id=&quot;Compute-node&quot;&gt;&lt;a href=&quot;#Compute-node&quot; class=&quot;headerlink&quot; title=&quot;Compute node&quot;&gt;&lt;/a&gt;Compute node&lt;/h3&gt;&lt;p&gt;SYS-4048B-TR4FT-EC028&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1180,7 +2344,7 @@
     <link href="http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/"/>
     <id>http://yoursite.com/2016/12/18/dump-sparse-file-data-segment/</id>
     <published>2016-12-18T13:31:17.000Z</published>
-    <updated>2016-12-26T03:18:09.260Z</updated>
+    <updated>2016-12-26T03:18:09.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Test-file&quot;&gt;&lt;a href=&quot;#Test-file&quot; class=&quot;headerlink&quot; title=&quot;Test file&quot;&gt;&lt;/a&gt;Test file&lt;/h3&gt;&lt;p&gt;ubuntu 16.04&lt;br&gt;ext4 file system&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ rm data-A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#123;1..1500&amp;#125;; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$i&lt;/span&gt; &amp;gt;&amp;gt; data-A ; &lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ filefrag -v data-A &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Filesystem &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt; is: ef53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;File size of data-A is 6394 (2 blocks of 4096 bytes)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ext:     logical_offset:        physical_offset: length:   expected: flags:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   0:        0..       0:    3464588..   3464588:      1:            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   1:        1..       1:          0..         0:      1:    3464589: last,unknown_loc,delalloc,eof&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=data-A of=data-A-1 bs=4096 count=1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=data-A of=data-A-2 bs=4096 count=1 skip=1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ head data-A-2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1042&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1043&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1044&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1045&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat data-A-1 data-A-2 | md5sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30ef7f11d29b8ad47542e97ed9d2a398  -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat data-A | md5sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30ef7f11d29b8ad47542e97ed9d2a398  -&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Test-sparse-file&quot;&gt;&lt;a href=&quot;#Test-sparse-file&quot; class=&quot;headerlink&quot; title=&quot;Test sparse file&quot;&gt;&lt;/a&gt;Test sparse file&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ rm ./data-A;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#123;1..1500&amp;#125;; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$i&lt;/span&gt; &amp;gt;&amp;gt; data-A ; &lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ filefrag -v data-A &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Filesystem &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt; is: ef53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;File size of data-A is 6393 (2 blocks of 4096 bytes)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ext:     logical_offset:        physical_offset: length:   expected: flags:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   0:        0..       1:          0..         1:      2:             last,unknown_loc,delalloc,eof&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;data-A: 1 extent found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=4096 count=0 seek=25 &lt;span class=&quot;comment&quot;&gt;#write 100K sparse file&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat data-A &amp;gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ls -lhs &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;total 16K&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8.0K -rw-rw-r-- 1 homerl homerl 6.3K 12月 19 14:04 data-A&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8.0K -rw-rw-r-- 1 homerl homerl 107K 12月 19 14:06 &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ df -h / &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Filesystem      Size  Used Avail Use% Mounted on&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/dev/sda2       101G   35G   61G  37% /&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo dumpe2fs /dev/sda2 | grep -i &lt;span class=&quot;string&quot;&gt;&quot;Block size&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dumpe2fs 1.42.13 (17-May-2015)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Block size:               4096&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ filefrag -v data-A &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Filesystem &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt; is: ef53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;File size of data-A is 6393 (2 blocks of 4096 bytes)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ext:     logical_offset:        physical_offset: length:   expected: flags:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   0:        0..       1:    3713508..   3713509:      2:             last,eof&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;data-A: 1 extent found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sda2 of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-1 bs=4096 count=1 skip=3713508&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ head &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-1 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ tail &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1039&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1040&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-1 | md5sum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27260c41d34d5a01f5fba073f9059a90  -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ filefrag -v &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Filesystem &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt; is: ef53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;File size of &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; is 108793 (27 blocks of 4096 bytes)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ext:     logical_offset:        physical_offset: length:   expected: flags:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   0:       25..      26:    3713510..   3713511:      2:             last,eof&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;: 1 extent found&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sda2 of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;-1 bs=4096 count=1 skip=3713510&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ md5sum &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27260c41d34d5a01f5fba073f9059a90  &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27260c41d34d5a01f5fba073f9059a90  &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;-1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ sudo dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/sda2 of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;-2 bs=4096 count=1 skip=3713511&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# the checksum difference between test-s-2 and test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexdump &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;-2 | tail&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0000890 3431 3038 310a 3834 0a31 3431 3238 310a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008a0 3834 0a33 3431 3438 310a 3834 0a35 3431&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008b0 3638 310a 3834 0a37 3431 3838 310a 3834&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008c0 0a39 3431 3039 310a 3934 0a31 3431 3239&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008d0 310a 3934 0a33 3431 3439 310a 3934 0a35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008e0 3431 3639 310a 3934 0a37 3431 3839 310a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;00008f0 3934 0a39 3531 3030 000a 0000 0000 0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0000900 0000 0000 0000 0000 0000 0000 0000 0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0001000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexdump &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; | tail&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a870 0a33 3431 3437 310a 3734 0a35 3431 3637&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a880 310a 3734 0a37 3431 3837 310a 3734 0a39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a890 3431 3038 310a 3834 0a31 3431 3238 310a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8a0 3834 0a33 3431 3438 310a 3834 0a35 3431&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8b0 3638 310a 3834 0a37 3431 3838 310a 3834&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8c0 0a39 3431 3039 310a 3934 0a31 3431 3239&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8d0 310a 3934 0a33 3431 3439 310a 3934 0a35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8e0 3431 3639 310a 3934 0a37 3431 3839 310a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8f0 3934 0a39 3531 3030 000a               &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;001a8f9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1210,7 +2374,7 @@
     <link href="http://yoursite.com/2016/12/05/Ping-test-in-serial-link/"/>
     <id>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</id>
     <published>2016-12-05T07:13:14.000Z</published>
-    <updated>2016-12-05T07:39:53.759Z</updated>
+    <updated>2016-12-05T07:39:53.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Calculate-upload-download-speed-by-ping&quot;&gt;&lt;a href=&quot;#Calculate-upload-download-speed-by-ping&quot; class=&quot;headerlink&quot; title=&quot;Calculate upload/download speed by ping&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4575537/calculate-upload-download-speed-by-ping&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Calculate upload/download speed by ping&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ping &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; -c 10000 &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; 1472 10.100.100.100&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms&lt;br&gt;so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s&lt;br&gt;If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.&lt;/p&gt;
@@ -1238,7 +2402,7 @@
     <link href="http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/"/>
     <id>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</id>
     <published>2016-12-01T05:30:33.000Z</published>
-    <updated>2016-12-01T05:35:19.024Z</updated>
+    <updated>2016-12-01T05:35:19.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;script-and-scriptreplay&quot;&gt;&lt;a href=&quot;#script-and-scriptreplay&quot; class=&quot;headerlink&quot; title=&quot;script and scriptreplay&quot;&gt;&lt;/a&gt;script and scriptreplay&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ script --timing=time.txt script.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# record what you do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ scriptreplay --timing=time.txt script.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# replay&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
@@ -1265,7 +2429,7 @@
     <link href="http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/"/>
     <id>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</id>
     <published>2016-09-04T11:06:05.000Z</published>
-    <updated>2016-09-04T11:30:07.000Z</updated>
+    <updated>2016-09-04T11:30:07.773Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Server-Parameters&quot;&gt;&lt;a href=&quot;#Server-Parameters&quot; class=&quot;headerlink&quot; title=&quot;Server Parameters&quot;&gt;&lt;/a&gt;Server Parameters&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;su &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; /bin/bash nobody -c &lt;span class=&quot;string&quot;&gt;&#39;./server_linux_amd64 -l &quot;vps_ip:kcptun_port&quot; -t &quot;serer_ip:shadowsocks_port&quot; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;Client-Parameters&quot;&gt;&lt;a href=&quot;#Client-Parameters&quot; class=&quot;headerlink&quot; title=&quot;Client Parameters&quot;&gt;&lt;/a&gt;Client Parameters&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;./client_linux_amd64 -r &lt;span class=&quot;string&quot;&gt;&quot;vps_ip:kcptun_port&quot;&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;:kcptun_client_port&quot;&lt;/span&gt; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1292,7 +2456,7 @@
     <link href="http://yoursite.com/2016/08/10/Advance-reformat-4Kn-HDD-to-512-Bytes/"/>
     <id>http://yoursite.com/2016/08/10/Advance-reformat-4Kn-HDD-to-512-Bytes/</id>
     <published>2016-08-09T16:04:26.000Z</published>
-    <updated>2016-12-26T03:17:19.552Z</updated>
+    <updated>2016-12-26T03:17:19.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;4Kn-HDD-to-512-Bytes-sectora&quot;&gt;&lt;a href=&quot;#4Kn-HDD-to-512-Bytes-sectora&quot; class=&quot;headerlink&quot; title=&quot;4Kn HDD to 512 Bytes sectora&quot;&gt;&lt;/a&gt;4Kn HDD to 512 Bytes sectora&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ smartctl &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; scsi /dev/sdd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smartctl 5.43 2012-06-30 r3573 [x86_64-linux-2.6.32-504.30.3.el6_lustre.x86_64] (&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt; build)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Copyright (C) 2002-12 by Bruce Allen, http://smartmontools.sourceforge.net&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Vendor:               HGST    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Product:              HUH728080AL4200 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Revision:             A7J0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;User Capacity:        8,001,563,222,016 bytes [8.00 TB]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Logical block size:   4096 bytes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ smartctl &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; scsi /dev/sdc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smartctl 5.43 2012-06-30 r3573 [x86_64-linux-2.6.32-504.30.3.el6_lustre.x86_64] (&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt; build)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Copyright (C) 2002-12 by Bruce Allen, http://smartmontools.sourceforge.net&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Vendor:               HGST    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Product:              HUH728080AL4200 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Revision:             A7J0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;User Capacity:        8,001,563,222,016 bytes [8.00 TB]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Logical block size:   512 bytes&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;sg3-utils-format&quot;&gt;&lt;a href=&quot;#sg3-utils-format&quot; class=&quot;headerlink&quot; title=&quot;sg3_utils format&quot;&gt;&lt;/a&gt;sg3_utils format&lt;/h4&gt;&lt;p&gt;Update: If you have a lot of drives to format, it may take a long time with sg_format as it wait until it finished before doing the next one (with a while loop I mean). Useful tip is to use the “-e” flag with sg_format then monitor operations with sg_turs -p but it may hang you tty as well.&lt;/p&gt;
@@ -1328,9 +2492,15 @@
     <link href="http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/"/>
     <id>http://yoursite.com/2016/07/20/Calculate_HDD_SSD_fault_ratio/</id>
     <published>2016-07-20T06:30:04.000Z</published>
-    <updated>2016-07-20T09:23:11.187Z</updated>
+    <updated>2017-01-13T09:27:12.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot;&gt;&lt;a href=&quot;#Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot; class=&quot;headerlink&quot; title=&quot;Nonrecoverable Read Errors(URE) per Bits Read&quot;&gt;&lt;/a&gt;Nonrecoverable Read Errors(URE) per Bits Read&lt;/h3&gt;&lt;p&gt;1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1e12*8 bytes = 1 (TB)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(1e15)/(1e12*8)=125 (TB)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    <content type="html">&lt;h3 id=&quot;2017-update&quot;&gt;&lt;a href=&quot;#2017-update&quot; class=&quot;headerlink&quot; title=&quot;2017 update&quot;&gt;&lt;/a&gt;2017 update&lt;/h3&gt;&lt;p&gt;First year failure four HDD at the same time,single HDD fault rate 0.01&lt;br&gt;Third year failure four HDD at the same time,single HDD fault rate 0.03&lt;br&gt;Fifth year failure four HDD at the same time,single HDD fault rate 0.05&lt;/p&gt;
+&lt;p&gt;In third year, Raidz3 broken four HDD at the same time&lt;br&gt;$ awk ‘BEGIN{printf “%.12f\n”, 1-(480/(365*24/0.03)+0.03)^4}’&lt;br&gt;0.999998997334&lt;/p&gt;
+&lt;p&gt;Real MTBF&lt;br&gt;$ awk ‘BEGIN{printf “%.10f\n”, 365*24/0.03}’&lt;br&gt;292000.0000000000&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://wintelguy.com/raidmttdl.pl&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;RAID Reliability Calculator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://evadman.blogspot.com/2010/08/raid-array-failure-probabilities.html?showComment=1337533818123#c7465506102422346169&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The article&lt;/a&gt;&lt;br&gt;It ‘s said&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;You&amp;apos;ve got your probabilities wrong. Probability of failure of RAID 0, 5 and 6 is easily calculated using the binomial probability distribution. Note that because URE during rebuild may be perceived as a disk failure by some hardware/software RAIDs, the probability of an array failing is even higher. So the following probabilities assume no UREs, implying that they are the lowest possible probabilities of failure for a given array. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;If the probability of any single drive failing = p, array size (i.e. no. of disks) = n, and number of drives that fail simultaneously = X, then:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Pr(X) = (n&amp;quot;COMBINATION&amp;quot;X) * (p)^X * (1-p)^(n-X)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For p=0.03, n=4 we have&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Pr(X) = (4&amp;quot;COMBINATION&amp;quot;X) * 0.03^X * 0.97^(4-X)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;So: X 0 1 2 3 4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Pr(X) 0.88529281 0.10952076 0.00508086 0.00010476 0.00000081&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For RAID 0, the array fails when X&amp;gt;=1, so Pr(RAID0 failure) = 0.10952076 + 0.00508086 + 0.00010476 + 0.00000081 = 0.11470719 ~ 1 in 9.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For RAID 5, the array fails when X&amp;gt;=2, so Pr(RAID5 failure) = 0.00508086 + 0.00010476 + 0.00000081 = 0.00518643 ~ 1 in 193.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;For RAID 6, the array fails when X&amp;gt;=3, so Pr(RAID6 failure) = 0.00010476 + 0.00000081 = 0.00010557 ~ 1 in 9472.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;So for an array 4 disks in size, 1/9 RAID 0 arrays fail, 1/193 RAID 5 arrays fail, and 1/9472 RAID 6 arrays fail. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Similarly, for an array 6 disks in size, 1/6 RAID 0 arrays fail, 1/80 RAID 5 arrays fail, and 1/1982 RAID 6 arrays fail.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Also, for an array 24 disks in size, 1/2 RAID 0 arrays fail, 1/6 RAID 5 arrays fail, and 1/29 RAID 6 arrays fail.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Every year %3 failure rate, 0.03 ,I think it &amp;apos;s contains URE ratio.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2 HDD&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &amp;apos;BEGIN&amp;#123;printf &amp;quot;%.20f\n&amp;quot;, 11*0.03^2*0.97^(9)&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.00752628748068019399&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3 HDD&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &amp;apos;BEGIN&amp;#123;printf &amp;quot;%.20f\n&amp;quot;, 11*0.03^3*0.97^(8)&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.00023277177775299571&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4 HDD&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &amp;apos;BEGIN&amp;#123;printf &amp;quot;%.20f\n&amp;quot;, 11*0.03^4*0.97^(7)&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.00000719912714699987&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &amp;apos;BEGIN&amp;#123;printf &amp;quot;%.20f\n&amp;quot;,0.00752628748068019399+0.00023277177775299571+0.00000719912714699987&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.00776625838558018915&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raidz3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ awk &amp;apos;BEGIN&amp;#123;printf &amp;quot;%.20f\n&amp;quot;,0.00023277177775299571+0.00000719912714699987&amp;#125;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.00023997090489999559&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2M MTBF, 0.44% &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1M MTBF, 0.88%&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;AFR&quot;&gt;&lt;a href=&quot;#AFR&quot; class=&quot;headerlink&quot; title=&quot;AFR&quot;&gt;&lt;/a&gt;AFR&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.hgst.com/sites/default/files/resources/Ultrastar-He8-DS.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.hgst.com/sites/default/files/resources/Ultrastar-He8-DS.pdf&lt;/a&gt;&lt;br&gt;2.5M hours MTBF2 and 0.35% AFR, I think real AFR=0.03&lt;br&gt;356x24=8760&lt;br&gt;$ awk ‘BEGIN{printf “%.2f\n”, 8760/0.004}’&lt;br&gt;2190000.00&lt;br&gt;$ awk ‘BEGIN{printf “%.2f\n”, 8760/0.035}’&lt;br&gt;2502857.14&lt;/p&gt;
+&lt;h3 id=&quot;Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot;&gt;&lt;a href=&quot;#Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot; class=&quot;headerlink&quot; title=&quot;Nonrecoverable Read Errors(URE) per Bits Read&quot;&gt;&lt;/a&gt;Nonrecoverable Read Errors(URE) per Bits Read&lt;/h3&gt;&lt;p&gt;1 byte per 10E15 (Enterprise 7.2k HDD 10E15=1000000000000000)&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1e12*8 bytes = 1 (TB)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(1e15)/(1e12*8)=125 (TB)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;1 byte per 10E14 (Desktop 5.9k/7.2k HDD)&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(1e14)/(1e12*8)=12.5 (TB)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;1 byte per 10E17 (Enterprise SSD)&lt;br&gt;1 byte per 10E16 (Desktop SSD/SAS 15k HDD)&lt;/p&gt;
 &lt;h4 id=&quot;Calculate-failt-ratio-of-unrecoverable-read-error&quot;&gt;&lt;a href=&quot;#Calculate-failt-ratio-of-unrecoverable-read-error&quot; class=&quot;headerlink&quot; title=&quot;Calculate failt ratio of unrecoverable read error&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.high-rely.com/blog/why-raid-5-stops-working-in-2009-not/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Calculate failt ratio of unrecoverable read error&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The probability equation they use for a successful read of all bits on a drive is&lt;br&gt;(1-1/b)^a&lt;br&gt;“b” = the Bit Error Rate (BER) also known as Unrecoverable Read Error(URE) rate&lt;br&gt;“a” = Number of Bits read (the amount of data on an entire volume or drive)&lt;/p&gt;
@@ -1344,18 +2514,18 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot;&gt;&lt;a href=&quot;#Nonrecoverable-Read-Errors-URE-per-Bits-Read&quot; class=&quot;headerlink&quot; title=&quot;Nonr
+      &lt;h3 id=&quot;2017-update&quot;&gt;&lt;a href=&quot;#2017-update&quot; class=&quot;headerlink&quot; title=&quot;2017 update&quot;&gt;&lt;/a&gt;2017 update&lt;/h3&gt;&lt;p&gt;First year failure four HDD at the
     
     </summary>
     
       <category term="tips" scheme="http://yoursite.com/categories/tips/"/>
     
     
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
       <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
       <category term="hdd" scheme="http://yoursite.com/tags/hdd/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="raid" scheme="http://yoursite.com/tags/raid/"/>
     
@@ -1366,7 +2536,7 @@
     <link href="http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/"/>
     <id>http://yoursite.com/2016/07/05/Install-blasr-in-CentOS6/</id>
     <published>2016-07-05T10:16:11.000Z</published>
-    <updated>2016-07-05T10:32:06.682Z</updated>
+    <updated>2016-07-05T10:32:06.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Install-GCC-5-2-0&quot;&gt;&lt;a href=&quot;#Install-GCC-5-2-0&quot; class=&quot;headerlink&quot; title=&quot;Install GCC 5.2.0&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://en.librehat.com/blog/build-gcc-5-dot-2-on-rhel-6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Install GCC 5.2.0&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xf gcc-5.2.0.tar.bz2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xf gmp-6.0.0a.tar.xz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mv gmp-6.0.0 gcc-5.2.0/gmp &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xf mpc-1.0.3.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mv mpc-1.0.3 gcc-5.2.0/mpc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wget http://www.mpfr.org/mpfr-current/mpfr-3.1.4.tar.xz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xf mpfr-3.1.3.tar.xz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mv mpfr-3.1.3 gcc-5.2.0/mpfr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir gcc-5.2.0/gcc-build &amp;amp;&amp;amp; &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; gcc-5.2.0/gcc-build&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;../configure --prefix=&lt;span class=&quot;variable&quot;&gt;$HOME&lt;/span&gt;/gcc5 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --disable-multilib &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --enable-languages=c,c++ &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --enable-libstdcxx-threads &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --enable-libstdcxx-time &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --enable-shared &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --enable-__cxa_atexit &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --disable-libunwind-exceptions &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --disable-libada &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --host x86_64-redhat-linux-gnu &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --build x86_64-redhat-linux-gnu &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            --with-default-libstdcxx-abi=gcc4-compatible&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make -j 40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;Check-C-11-support&quot;&gt;&lt;a href=&quot;#Check-C-11-support&quot; class=&quot;headerlink&quot; title=&quot;Check C++11 support&quot;&gt;&lt;/a&gt;Check C++11 support&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cat test.cpp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        #if __cplusplus==201402L&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        std::cout &amp;lt;&amp;lt; &amp;quot;C++14&amp;quot; &amp;lt;&amp;lt; std::endl;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        #elif __cplusplus==201103L&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        std::cout &amp;lt;&amp;lt; &amp;quot;C++11&amp;quot; &amp;lt;&amp;lt; std::endl;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        #else&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        std::cout &amp;lt;&amp;lt; &amp;quot;C++&amp;quot; &amp;lt;&amp;lt; std::endl;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        #endif&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;g++ -std=c++11 test.cpp -o test&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1394,7 +2564,7 @@
     <link href="http://yoursite.com/2016/07/04/Monitor-ssd-device/"/>
     <id>http://yoursite.com/2016/07/04/Monitor-ssd-device/</id>
     <published>2016-07-04T02:01:10.000Z</published>
-    <updated>2016-07-05T10:36:19.036Z</updated>
+    <updated>2016-07-05T10:35:51.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Monitor-Intel-SATA-SSD&quot;&gt;&lt;a href=&quot;#Monitor-Intel-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Monitor Intel SATA SSD&quot;&gt;&lt;/a&gt;Monitor Intel SATA SSD&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;smartctl &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; /dev/sdaa&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24439&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=1M count=1024&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24471&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;You can see write 32*32=1024M write to ssd. the value is “MB”.&lt;/p&gt;
@@ -1412,9 +2582,9 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
-      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
-    
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
     
   </entry>
   
@@ -1423,7 +2593,7 @@
     <link href="http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/"/>
     <id>http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/</id>
     <published>2016-06-16T07:35:11.000Z</published>
-    <updated>2016-06-16T07:41:45.422Z</updated>
+    <updated>2016-06-16T07:41:45.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;/img/Dt9p6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;DMI 2.0 2 GB/s&lt;br&gt;DMI 3.0 3.93 GB/s&lt;br&gt;SATA SSD 500MB/s x 4/8 = 2000/4000MB/s&lt;br&gt;&lt;a href=&quot;http://electronics.stackexchange.com/questions/219440/why-do-cpus-typically-connect-to-only-one-bus/219446&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -1446,7 +2616,7 @@
     <link href="http://yoursite.com/2016/06/03/Benchmark_ConnectX%C2%AE_3_Pro/"/>
     <id>http://yoursite.com/2016/06/03/Benchmark_ConnectX®_3_Pro/</id>
     <published>2016-06-03T03:22:42.000Z</published>
-    <updated>2016-06-14T08:55:53.874Z</updated>
+    <updated>2016-06-14T08:55:45.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;RDMA-support&quot;&gt;&lt;a href=&quot;#RDMA-support&quot; class=&quot;headerlink&quot; title=&quot;RDMA support&quot;&gt;&lt;/a&gt;RDMA support&lt;/h3&gt;&lt;p&gt;RDMA allows for communication between systems but can bypass the overhead associated with the operating system kernel, so applications have reduced latency and much lower CPU utilization.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Mellanox/libvma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libvma&lt;/a&gt;&lt;br&gt;Linux user space library for network socket acceleration based on RDMA compatible network adaptors&lt;/p&gt;
@@ -2063,7 +3233,7 @@
     <link href="http://yoursite.com/2016/06/02/About-SSD-power-loss/"/>
     <id>http://yoursite.com/2016/06/02/About-SSD-power-loss/</id>
     <published>2016-06-01T17:08:37.000Z</published>
-    <updated>2016-06-01T17:21:13.000Z</updated>
+    <updated>2016-06-01T17:24:45.845Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Risks-of-unexpected-power-loss-on-solid-state-drives&quot;&gt;&lt;a href=&quot;#Risks-of-unexpected-power-loss-on-solid-state-drives&quot; class=&quot;headerlink&quot; title=&quot;Risks of unexpected power loss on solid state drives&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www8.hp.com/h20195/v2/GetPDF.aspx/4AA6-1470ENW.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Risks of unexpected power loss on solid state drives&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Each time data is accessed or modified on the SSD, metadata is modified pertaining to the state of the data. This information allows for the storage controller to choose what data should be in the drive’s volatile cache at any given moment as well as the ability to implement techniques which increase performance and endurance&lt;/p&gt;
 &lt;p&gt;The drive then translates the LBA to the Physical Block Address (PBA) by way a flash translation table (FTL). The FTL is stored in cache and it is the responsibility of the controller to flush this table to non-volatile memory at times it deems appropriate or during a clean shutdown. The metadata associated with each page of data written also has information that can be used to rebuild the FTL if it is lost, but this rebuild takes time at the next power-on. If both the FTL and metadata are corrupted due to a sudden power loss event, the data stored on the SSD can become lost or even worse, the SSD, as a whole, can become inaccessible&lt;/p&gt;
@@ -2091,7 +3261,7 @@
     <link href="http://yoursite.com/2016/05/06/Trim-discard-support/"/>
     <id>http://yoursite.com/2016/05/06/Trim-discard-support/</id>
     <published>2016-05-05T16:17:35.000Z</published>
-    <updated>2016-05-06T16:13:32.000Z</updated>
+    <updated>2016-05-06T16:13:32.103Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Why-Trim&quot;&gt;&lt;a href=&quot;#Why-Trim&quot; class=&quot;headerlink&quot; title=&quot;Why Trim&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Trim_(computing)&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Why Trim&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Trim command is designed to enable the operating system to notify the SSD which pages no longer contain valid data due to erases either by the user or operating system itself. During a delete operation, the OS will mark the sectors as free for new data and send a Trim command to the SSD to mark them as not containing valid data. After that the SSD knows not to preserve the contents of the block when writing a page, resulting in less write amplification with fewer writes to the flash, higher write speed, and increased drive life.&lt;br&gt;Different SSDs implement the Trim command somewhat differently, so performance can vary.&lt;br&gt;&lt;img src=&quot;http://images.anandtech.com/reviews/storage/Intel/34nmSSD/Review/garbagecollection.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;SoftRaid&quot;&gt;&lt;a href=&quot;#SoftRaid&quot; class=&quot;headerlink&quot; title=&quot;SoftRaid&quot;&gt;&lt;/a&gt;SoftRaid&lt;/h3&gt;&lt;h4 id=&quot;Openzfs-on-linux&quot;&gt;&lt;a href=&quot;#Openzfs-on-linux&quot; class=&quot;headerlink&quot; title=&quot;Openzfs on linux&quot;&gt;&lt;/a&gt;Openzfs on linux&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zfsonlinux/zfs/pull/1016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;not support trim funtion&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://list.zfsonlinux.org/pipermail/zfs-discuss/2016-January/024437.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;expect to get a upgrade this year that will add TRIM support&lt;/a&gt;&lt;/p&gt;
@@ -2125,7 +3295,7 @@
     <link href="http://yoursite.com/2016/04/25/Raid-in-SSD/"/>
     <id>http://yoursite.com/2016/04/25/Raid-in-SSD/</id>
     <published>2016-04-25T12:28:13.000Z</published>
-    <updated>2016-05-13T06:00:21.752Z</updated>
+    <updated>2016-05-13T06:00:21.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot;&gt;&lt;a href=&quot;#Chipset-Bottlenecks-can-occur-SSDs-in-a-RAID&quot; class=&quot;headerlink&quot; title=&quot;Chipset Bottlenecks can occur SSDs in a RAID&quot;&gt;&lt;/a&gt;Chipset Bottlenecks can occur SSDs in a RAID&lt;/h3&gt;&lt;p&gt;Evaluate the I/O topology of the used machine and eliminate bottlenecks&lt;br&gt;e.g., distribute SSDs to multiple controllers&lt;/p&gt;
 &lt;p&gt;Where is your ssd connectted ?&lt;br&gt;Some sata/M.2 ports through DMI conencetted.&lt;br&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/5/53/Intel_5_Series_architecture.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -2215,7 +3385,7 @@
     <link href="http://yoursite.com/2016/04/20/SSD-partition-alignment/"/>
     <id>http://yoursite.com/2016/04/20/SSD-partition-alignment/</id>
     <published>2016-04-19T16:06:21.000Z</published>
-    <updated>2016-04-19T16:31:44.000Z</updated>
+    <updated>2016-04-19T16:31:44.819Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Intel-Reference&quot;&gt;&lt;a href=&quot;#Intel-Reference&quot; class=&quot;headerlink&quot; title=&quot;Intel Reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.intel.com/content/dam/www/public/us/en/documents/technology-briefs/ssd-partition-alignment-tech-brief.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Intel Reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The default file system for Windows Server 2003, NTFS, uses 4 KB clusters by default.&lt;br&gt;Traditionally,these 4KB clusters take up 8 – 512 Byte sectors. With Intel SSDs, 1 - NTFS cluster takes up less than one NAND page when alignment is correct.&lt;br&gt;When the alignment is not correct, some of the 4 KB clusters will write across 2 NAND pages. &lt;/p&gt;
 &lt;p&gt;This is illustrated in Figure 1 using 4 KB pages for clarity:&lt;/p&gt;
@@ -2245,85 +3415,6 @@
       <category term="parted" scheme="http://yoursite.com/tags/parted/"/>
     
       <category term="mkfs" scheme="http://yoursite.com/tags/mkfs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang io.reader to string</title>
-    <link href="http://yoursite.com/2016/04/12/golang-io-reader-to-string/"/>
-    <id>http://yoursite.com/2016/04/12/golang-io-reader-to-string/</id>
-    <published>2016-04-12T13:45:53.000Z</published>
-    <updated>2016-04-12T14:37:49.000Z</updated>
-    
-    <content type="html">&lt;p&gt;###Reader to string&lt;br&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;buf := &lt;span class=&quot;built_in&quot;&gt;new&lt;/span&gt;(bytes.Buffer)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;buf.ReadFrom(yourReader)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s := buf.String() &lt;span class=&quot;comment&quot;&gt;// Does a complete copy of the bytes in the buffer.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;buf := &lt;span class=&quot;built_in&quot;&gt;new&lt;/span&gt;(bytes.Buffer)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;buf.ReadFrom(yourReader)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b := buf.Bytes()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;s := *(*&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;)(unsafe.Pointer(&amp;amp;b))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; b, err := ioutil.ReadAll(rc); err == &lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(b)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;or gzip the buffer&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   raw := bytes.NewBuffer(data)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   unz, err := gzip.NewReader(raw)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   buf, err := ioutil.ReadAll(unz)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; json.Unmarshal(buf, &amp;amp;v)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;string-to-reader&quot;&gt;&lt;a href=&quot;#string-to-reader&quot; class=&quot;headerlink&quot; title=&quot;string to reader&quot;&gt;&lt;/a&gt;string to reader&lt;/h3&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;	r:=strings.NewReader(&lt;span class=&quot;string&quot;&gt;&quot;(1,2,34,55,666)&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; d [&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	fmt.Fscanf(r,&lt;span class=&quot;string&quot;&gt;&quot;(%d,%d,%d,%d,%d)&quot;&lt;/span&gt;,&amp;amp;d[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&amp;amp;d[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&amp;amp;d[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;],&amp;amp;d[&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;],&amp;amp;d[&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	fmt.Println(d)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;or &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	buf := bytes.NewBufferString(&lt;span class=&quot;string&quot;&gt;&quot;R29waGVycyBydWxlIQ==&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	dec := base64.NewDecoder(base64.StdEncoding, buf)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	io.Copy(os.Stdout, dec)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;Ouput-to-stdout&quot;&gt;&lt;a href=&quot;#Ouput-to-stdout&quot; class=&quot;headerlink&quot; title=&quot;Ouput to stdout&quot;&gt;&lt;/a&gt;Ouput to stdout&lt;/h3&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;reader := bufio.NewReader(os.Stdin)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Print(&lt;span class=&quot;string&quot;&gt;&quot;What is your name:&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;data, _, _ := reader.ReadLine()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fmt.Printf(&lt;span class=&quot;string&quot;&gt;&quot;Your name is %s.\r\n&quot;&lt;/span&gt;, data)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/9644139/from-io-reader-to-string-in-go&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.datadoghq.com/blog/crossing-streams-love-letter-gos-io-reader/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;###Reader to string&lt;br&gt;&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;
-    
-    </summary>
-    
-      <category term="golang" scheme="http://yoursite.com/categories/golang/"/>
-    
-    
-      <category term="golang" scheme="http://yoursite.com/tags/golang/"/>
-    
-      <category term="string" scheme="http://yoursite.com/tags/string/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SSD Interface</title>
-    <link href="http://yoursite.com/2016/04/08/SSD-interface/"/>
-    <id>http://yoursite.com/2016/04/08/SSD-interface/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-19T15:39:50.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Interface-reference&quot;&gt;&lt;a href=&quot;#Interface-reference&quot; class=&quot;headerlink&quot; title=&quot;Interface reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Interface reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/nvme-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-2.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-4.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-5.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-6.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-7.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-9.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-10.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/nvme-11.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;supermicro-benchmark&quot;&gt;&lt;a href=&quot;#supermicro-benchmark&quot; class=&quot;headerlink&quot; title=&quot;supermicro benchmark&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.supermicro.com/white_paper/white_paper_NVMe.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;supermicro benchmark&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/nvme-12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Interface-reference&quot;&gt;&lt;a href=&quot;#Interface-reference&quot; class=&quot;headerlink&quot; title=&quot;Interface reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.nvmexpres
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SFP+ VS 10GBaseT</title>
-    <link href="http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/"/>
-    <id>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</id>
-    <published>2016-04-08T07:36:54.000Z</published>
-    <updated>2016-04-08T07:39:38.506Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/img/sfp-10bt-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;/img/sfp-10bt-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.missioncriticalmagazine.com/ext/resourc
-    
-    </summary>
-    
-      <category term="Hardware" scheme="http://yoursite.com/categories/Hardware/"/>
-    
-    
-      <category term="interface" scheme="http://yoursite.com/tags/interface/"/>
-    
-      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
