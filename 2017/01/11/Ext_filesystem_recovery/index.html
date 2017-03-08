@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux,ext4," />
 
 
 
@@ -59,19 +59,16 @@
 
 
 
-<meta name="description" content="$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512$ mfks.ext3 -b 4096 /dev/shm/test$ mount /dev/shm/test /mnt
-$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ filefrag -v testFi">
+<meta name="description" content="Exclude packagesCli1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Homer's Blog">
+<meta property="og:title" content="Ext filesystem recovery">
 <meta property="og:url" content="http://yoursite.com/2017/01/11/Ext_filesystem_recovery/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512$ mfks.ext3 -b 4096 /dev/shm/test$ mount /dev/shm/test /mnt
-$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ filefrag -v testFi">
-<meta property="og:updated_time" content="2017-01-11T14:19:33.272Z">
+<meta property="og:description" content="Exclude packagesCli1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495">
+<meta property="og:updated_time" content="2017-03-08T12:48:20.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Homer's Blog">
-<meta name="twitter:description" content="$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512$ mfks.ext3 -b 4096 /dev/shm/test$ mount /dev/shm/test /mnt
-$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ filefrag -v testFi">
+<meta name="twitter:title" content="Ext filesystem recovery">
+<meta name="twitter:description" content="Exclude packagesCli1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495">
 
 
 
@@ -89,7 +86,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
   };
 </script>
 
-  <title>  | Homer's Blog </title>
+  <title> Ext filesystem recovery | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -277,7 +274,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
             
             
               
-                
+                Ext filesystem recovery
               
             
           </h1>
@@ -289,11 +286,30 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-01-11T22:19:33+08:00" content="2017-01-11">
+            <time itemprop="dateCreated" datetime="2017-01-11T22:19:55+08:00" content="2017-01-11">
               2017-01-11
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/filesystem/" itemprop="url" rel="index">
+                    <span itemprop="name">filesystem</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -323,13 +339,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
       
 
       
-        <p>$ dd if=/dev/zero of=/dev/shm/test bs=1M count=512<br>$ mfks.ext3 -b 4096 /dev/shm/test<br>$ mount /dev/shm/test /mnt</p>
-<p>$ rm -f test;for i in {0..10000}; do echo $i-$i-$i &gt;&gt; test; done<br>$ filefrag -v test<br>Filesystem type is: ef53<br>Filesystem cylinder groups approximately 4<br>File size of test is 146688 (36 blocks of 4096 bytes)<br> ext:     logical_offset:        physical_offset: length:   expected: flags:<br>   0:        0..      15:       2576..      2591:     16:             merged<br>   1:       16..      16:      33424..     33424:      1:       2592: merged<br>   2:       17..      17:      33457..     33457:      1:      33425: merged<br>   3:       18..      18:      33490..     33490:      1:      33458: merged<br>   4:       19..      19:      33523..     33523:      1:      33491: merged<br>   5:       20..      20:      33556..     33556:      1:      33524: merged<br>   6:       21..      21:      33589..     33589:      1:      33557: merged<br>   7:       22..      22:      33622..     33622:      1:      33590: merged<br>   8:       23..      23:      33655..     33655:      1:      33623: merged<br>   9:       24..      24:      33688..     33688:      1:      33656: merged<br>  10:       25..      25:      33721..     33721:      1:      33689: merged<br>  11:       26..      26:      33754..     33754:      1:      33722: merged<br>  12:       27..      27:      33787..     33787:      1:      33755: merged<br>  13:       28..      28:      33820..     33820:      1:      33788: merged<br>  14:       29..      29:      33853..     33853:      1:      33821: merged<br>  15:       30..      30:      33886..     33886:      1:      33854: merged<br>  16:       31..      31:      33919..     33919:      1:      33887: merged<br>  17:       32..      32:      33952..     33952:      1:      33920: merged<br>  18:       33..      33:      34017..     34017:      1:      33953: merged<br>  19:       34..      34:      34082..     34082:      1:      34018: merged<br>  20:       35..      35:      34147..     34147:      1:      34083: last,merged,eof</p>
-<p>debugfs /dev/shm/test<br>debugfs 1.42.13 (17-May-2015)<br>debugfs: stat <14> </14></p>
-<p>Inode: 14   Type: regular    Mode:  0644   Flags: 0x0<br>Generation: 3749441442    Version: 0x00000000:00000001<br>User:     0   Group:     0   Size: 146688<br>File ACL: 0    Directory ACL: 0<br>Links: 1   Blockcount: 296<br>Fragment:  Address: 0    Number: 0    Size: 0<br> ctime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017<br> atime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017<br> mtime: 0x58763a68:1f1d1ee4 – Wed Jan 11 22:00:08 2017<br>crtime: 0x58763a67:e66e9d44 – Wed Jan 11 22:00:07 2017<br>Size of extra inode fields: 32<br>BLOCKS:<br>(0-11):2576-2587, (IND):1538, (12-15):2588-2591, (16):33424, (17):33457, (18):33490, (19):33523, (20):33556, (21):33589, (22):33622, (23):33655, (24):33688, (25):33721, (26):33754, (27):33787, (28):33820, (29):33853, (30):33886, (31):33919, (32):33952, (33):34017, (34):34082, (35):34147<br>TOTAL: 37</p>
-<p>dd if=/dev/shm/test of=test-1 bs=4K skip=2576 count=$((2591-2576+1))<br>head test-1 ; wc -l test-1 ;tail test-1<br>0-0-0<br>1-1-1<br>2-2-2<br>3-3-3<br>4-4-4<br>5-5-5<br>6-6-6<br>7-7-7<br>8-8-8<br>9-9-9<br>4591 test-1<br>4582-4582-4582<br>4583-4583-4583<br>4584-4584-4584<br>4585-4585-4585<br>4586-4586-4586<br>4587-4587-4587<br>4588-4588-4588<br>4589-4589-4589<br>4590-4590-4590<br>4</p>
-<p>dd if=/dev/shm/test of=test-2 bs=4K skip=33424 count=1<br>1+0 records in<br>1+0 records out<br>4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193943 s, 21.1 MB/s<br>root@homerl-System-Product-Name:/mnt# head test-2 ; wc -l test-2 ;tail test-2<br>591-4591-4591<br>4592-4592-4592<br>4593-4593-4593<br>4594-4594-4594<br>4595-4595-4595<br>4596-4596-4596<br>4597-4597-4597<br>4598-4598-4598<br>4599-4599-4599<br>4600-4600-4600<br>273 test-2<br>4855-4855-4855<br>4856-4856-4856<br>4857-4857-4857<br>4858-4858-4858<br>4859-4859-4859<br>4860-4860-4860<br>4861-4861-4861<br>4862-4862-4862<br>4863-4863-4863<br>48</p>
-<p>root@homerl-System-Product-Name:/mnt# dd if=/dev/shm/test of=test-3 bs=4K skip=33457 count=1<br>1+0 records in<br>1+0 records out<br>4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193132 s, 21.2 MB/s<br>root@homerl-System-Product-Name:/mnt# head test-3 ; wc -l test-3 ;tail test-3<br>64-4864-4864<br>4865-4865-4865<br>4866-4866-4866<br>4867-4867-4867<br>4868-4868-4868<br>4869-4869-4869<br>4870-4870-4870<br>4871-4871-4871<br>4872-4872-4872<br>4873-4873-4873<br>273 test-3<br>5128-5128-5128<br>5129-5129-5129<br>5130-5130-5130<br>5131-5131-5131<br>5132-5132-5132<br>5133-5133-5133<br>5134-5134-5134<br>5135-5135-5135<br>5136-5136-5136<br>513</p>
+        <h3 id="Exclude-packages"><a href="#Exclude-packages" class="headerlink" title="Exclude packages"></a>Exclude packages</h3><h4 id="Cli"><a href="#Cli" class="headerlink" title="Cli"></a>Cli</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="keyword">if</span>=/dev/zero of=/dev/shm/<span class="built_in">test</span> bs=1M count=512</span><br><span class="line">$ mfks.ext3 -b 4096 /dev/shm/<span class="built_in">test</span></span><br><span class="line">$ mount /dev/shm/<span class="built_in">test</span> /mnt</span><br><span class="line"></span><br><span class="line">$ rm <span class="_">-f</span> <span class="built_in">test</span>;<span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..10000&#125;; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span>-<span class="variable">$i</span>-<span class="variable">$i</span> &gt;&gt; <span class="built_in">test</span>; <span class="keyword">done</span> </span><br><span class="line">$ filefrag -v <span class="built_in">test</span> </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">Filesystem cylinder groups approximately 4</span><br><span class="line">File size of <span class="built_in">test</span> is 146688 (36 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..      15:       2576..      2591:     16:             merged</span><br><span class="line">   1:       16..      16:      33424..     33424:      1:       2592: merged</span><br><span class="line">   2:       17..      17:      33457..     33457:      1:      33425: merged</span><br><span class="line">   3:       18..      18:      33490..     33490:      1:      33458: merged</span><br><span class="line">   4:       19..      19:      33523..     33523:      1:      33491: merged</span><br><span class="line">   5:       20..      20:      33556..     33556:      1:      33524: merged</span><br><span class="line">   6:       21..      21:      33589..     33589:      1:      33557: merged</span><br><span class="line">   7:       22..      22:      33622..     33622:      1:      33590: merged</span><br><span class="line">   8:       23..      23:      33655..     33655:      1:      33623: merged</span><br><span class="line">   9:       24..      24:      33688..     33688:      1:      33656: merged</span><br><span class="line">  10:       25..      25:      33721..     33721:      1:      33689: merged</span><br><span class="line">  11:       26..      26:      33754..     33754:      1:      33722: merged</span><br><span class="line">  12:       27..      27:      33787..     33787:      1:      33755: merged</span><br><span class="line">  13:       28..      28:      33820..     33820:      1:      33788: merged</span><br><span class="line">  14:       29..      29:      33853..     33853:      1:      33821: merged</span><br><span class="line">  15:       30..      30:      33886..     33886:      1:      33854: merged</span><br><span class="line">  16:       31..      31:      33919..     33919:      1:      33887: merged</span><br><span class="line">  17:       32..      32:      33952..     33952:      1:      33920: merged</span><br><span class="line">  18:       33..      33:      34017..     34017:      1:      33953: merged</span><br><span class="line">  19:       34..      34:      34082..     34082:      1:      34018: merged</span><br><span class="line">  20:       35..      35:      34147..     34147:      1:      34083: last,merged,eof</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">debugfs /dev/shm/<span class="built_in">test</span> </span><br><span class="line">debugfs 1.42.13 (17-May-2015)</span><br><span class="line">debugfs: <span class="built_in">stat</span> &lt;14&gt; </span><br><span class="line"></span><br><span class="line">Inode: 14   Type: regular    Mode:  0644   Flags: 0x0</span><br><span class="line">Generation: 3749441442    Version: 0x00000000:00000001</span><br><span class="line">User:     0   Group:     0   Size: 146688</span><br><span class="line">File ACL: 0    Directory ACL: 0</span><br><span class="line">Links: 1   Blockcount: 296</span><br><span class="line">Fragment:  Address: 0    Number: 0    Size: 0</span><br><span class="line"> ctime: 0x58763a68:1f1d1ee4 -- Wed Jan 11 22:00:08 2017</span><br><span class="line"> atime: 0x58763a67:e66e9d44 -- Wed Jan 11 22:00:07 2017</span><br><span class="line"> mtime: 0x58763a68:1f1d1ee4 -- Wed Jan 11 22:00:08 2017</span><br><span class="line">crtime: 0x58763a67:e66e9d44 -- Wed Jan 11 22:00:07 2017</span><br><span class="line">Size of extra inode fields: 32</span><br><span class="line">BLOCKS:</span><br><span class="line">(0-11):2576-2587, (IND):1538, (12-15):2588-2591, (16):33424, (17):33457, (18):33490, (19):33523, (20):33556, (21):33589, (22):33622, (23):33655, (24):33688, (25):33721, (26):33754, (27):33787, (28):33820, (29):33853, (30):33886, (31):33919, (32):33952, (33):34017, (34):34082, (35):34147</span><br><span class="line">TOTAL: 37</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/shm/<span class="built_in">test</span> of=<span class="built_in">test</span>-1 bs=4K skip=2576 count=$((2591-2576+1))</span><br><span class="line">head <span class="built_in">test</span>-1 ; wc <span class="_">-l</span> <span class="built_in">test</span>-1 ;tail <span class="built_in">test</span>-1</span><br><span class="line">0-0-0</span><br><span class="line">1-1-1</span><br><span class="line">2-2-2</span><br><span class="line">3-3-3</span><br><span class="line">4-4-4</span><br><span class="line">5-5-5</span><br><span class="line">6-6-6</span><br><span class="line">7-7-7</span><br><span class="line">8-8-8</span><br><span class="line">9-9-9</span><br><span class="line">4591 <span class="built_in">test</span>-1</span><br><span class="line">4582-4582-4582</span><br><span class="line">4583-4583-4583</span><br><span class="line">4584-4584-4584</span><br><span class="line">4585-4585-4585</span><br><span class="line">4586-4586-4586</span><br><span class="line">4587-4587-4587</span><br><span class="line">4588-4588-4588</span><br><span class="line">4589-4589-4589</span><br><span class="line">4590-4590-4590</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/shm/<span class="built_in">test</span> of=<span class="built_in">test</span>-2 bs=4K skip=33424 count=1</span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193943 s, 21.1 MB/s</span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># head test-2 ; wc -l test-2 ;tail test-2</span></span><br><span class="line">591-4591-4591</span><br><span class="line">4592-4592-4592</span><br><span class="line">4593-4593-4593</span><br><span class="line">4594-4594-4594</span><br><span class="line">4595-4595-4595</span><br><span class="line">4596-4596-4596</span><br><span class="line">4597-4597-4597</span><br><span class="line">4598-4598-4598</span><br><span class="line">4599-4599-4599</span><br><span class="line">4600-4600-4600</span><br><span class="line">273 <span class="built_in">test</span>-2</span><br><span class="line">4855-4855-4855</span><br><span class="line">4856-4856-4856</span><br><span class="line">4857-4857-4857</span><br><span class="line">4858-4858-4858</span><br><span class="line">4859-4859-4859</span><br><span class="line">4860-4860-4860</span><br><span class="line">4861-4861-4861</span><br><span class="line">4862-4862-4862</span><br><span class="line">4863-4863-4863</span><br><span class="line">48</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># dd if=/dev/shm/test of=test-3 bs=4K skip=33457 count=1</span></span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193132 s, 21.2 MB/s</span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># head test-3 ; wc -l test-3 ;tail test-3</span></span><br><span class="line">64-4864-4864</span><br><span class="line">4865-4865-4865</span><br><span class="line">4866-4866-4866</span><br><span class="line">4867-4867-4867</span><br><span class="line">4868-4868-4868</span><br><span class="line">4869-4869-4869</span><br><span class="line">4870-4870-4870</span><br><span class="line">4871-4871-4871</span><br><span class="line">4872-4872-4872</span><br><span class="line">4873-4873-4873</span><br><span class="line">273 <span class="built_in">test</span>-3</span><br><span class="line">5128-5128-5128</span><br><span class="line">5129-5129-5129</span><br><span class="line">5130-5130-5130</span><br><span class="line">5131-5131-5131</span><br><span class="line">5132-5132-5132</span><br><span class="line">5133-5133-5133</span><br><span class="line">5134-5134-5134</span><br><span class="line">5135-5135-5135</span><br><span class="line">5136-5136-5136</span><br><span class="line">513</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -341,6 +351,14 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/ext4/" rel="tag">#ext4</a>
+          
+        </div>
       
 
       
@@ -445,7 +463,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">73</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -509,7 +527,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exclude-packages"><span class="nav-number">1.</span> <span class="nav-text">Exclude packages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cli"><span class="nav-number">1.1.</span> <span class="nav-text">Cli</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -781,7 +799,7 @@ $ rm -f test;for i in {0..10000}; do echo $i-$i-$i &amp;gt;&amp;gt; test; done$ 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
       var disqus_identifier = '2017/01/11/Ext_filesystem_recovery/';
-      var disqus_title = '';
+      var disqus_title = 'Ext filesystem recovery';
       var disqus_url = 'http://yoursite.com/2017/01/11/Ext_filesystem_recovery/';
 
       function run_disqus_script(disqus_script){

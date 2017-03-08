@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
+    
+    <lastmod>2017-03-08T12:48:20.611Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2017-01-31T11:06:30.911Z</lastmod>
+    <lastmod>2017-03-03T09:45:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
+    
+    <lastmod>2017-03-02T12:57:31.457Z</lastmod>
     
   </url>
   
@@ -26,13 +40,6 @@
     <loc>http://yoursite.com/2016/12/22/Hardware-index%20(homerl-System-Product-Name's%20conflicted%20copy%202017-01-14)/</loc>
     
     <lastmod>2017-01-12T15:19:23.261Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
-    
-    <lastmod>2017-01-11T14:19:33.272Z</lastmod>
     
   </url>
   
@@ -341,13 +348,6 @@
     <loc>http://yoursite.com/2015/11/20/Recover%20openzfs%20partition%20table/</loc>
     
     <lastmod>2015-12-02T02:18:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
-    
-    <lastmod>2015-12-02T02:17:20.000Z</lastmod>
     
   </url>
   
