@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/03/09/kvm-tips/</loc>
+    
+    <lastmod>2017-03-09T13:52:57.302Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/01/03/Learn-openzfs/</loc>
     
     <lastmod>2017-03-08T13:06:08.893Z</lastmod>
