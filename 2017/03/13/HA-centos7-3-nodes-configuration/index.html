@@ -1,0 +1,1076 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,centos,ha,cluster,3 nodes,corosync,pacemaker,kvm,virtualization," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HA centos 7 configuration">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+<meta property="og:updated_time" content="2017-03-14T05:18:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HA centos 7 configuration">
+<meta name="twitter:description" content="Just for test , not in my production environment, it is incomplete
+3 nodes linux HA replace 2 nodes
+fence kvm
+
+Physical node OS
+CentOS Linux release 7.1.1503 (Core) 
+3.10.0-229.14.1.el7.x86_64
+
+Virtua">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> HA centos 7 configuration | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HA centos 7 configuration
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T09:56:08+08:00" content="2017-03-13">
+              2017-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-configuration/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux configuration</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/13/HA-centos7-3-nodes-configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/13/HA-centos7-3-nodes-configuration/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Just-for-test-not-in-my-production-environment-it-is-incomplete"><a href="#Just-for-test-not-in-my-production-environment-it-is-incomplete" class="headerlink" title="Just for test , not in my production environment, it is incomplete"></a>Just for test , not in my production environment, it is incomplete</h3><ul>
+<li>3 nodes linux HA replace 2 nodes</li>
+<li>fence kvm</li>
+</ul>
+<h3 id="Physical-node-OS"><a href="#Physical-node-OS" class="headerlink" title="Physical node OS"></a>Physical node OS</h3><ul>
+<li>CentOS Linux release 7.1.1503 (Core) </li>
+<li>3.10.0-229.14.1.el7.x86_64</li>
+</ul>
+<h3 id="Virtual-machine-OS"><a href="#Virtual-machine-OS" class="headerlink" title="Virtual machine OS"></a>Virtual machine OS</h3><ul>
+<li>CentOS release 6.7 (Final)</li>
+<li>2.6.32-504.30.3.el6_lustre.x86_64</li>
+<li>Not support SR-IOV</li>
+<li>Virtaul disk cache set to none</li>
+</ul>
+<h3 id="Create-linux-HA-3-x-physical-server"><a href="#Create-linux-HA-3-x-physical-server" class="headerlink" title="Create linux HA ,3 x physical server"></a>Create linux HA ,3 x physical server</h3><p>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4<br>::1         localhost localhost.localdomain localhost6 localhost6.localdomain6<br>192.xx.xx.130 node01<br>192.xx.xx.131 node02<br>192.xx.xx.132 node03</p>
+<h3 id="Share-strorages"><a href="#Share-strorages" class="headerlink" title="Share strorages"></a>Share strorages</h3><p>NFS/Lustre</p>
+<h3 id="Setup-HA-cluster"><a href="#Setup-HA-cluster" class="headerlink" title="Setup HA cluster"></a>Setup HA cluster</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install pacemaker corosync fence-agents-all fence-agents-virsh \</span></span><br><span class="line">  fence-virt pacemaker-remote pcs fence-virtd resource-agents \</span><br><span class="line">  fence-virtd-libvirt fence-virtd-multicast</span><br></pre></td></tr></table></figure>
+<h3 id="3-nodes-glusterfs-config"><a href="#3-nodes-glusterfs-config" class="headerlink" title="3 nodes glusterfs config"></a>3 nodes glusterfs config</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ zpool create tank -O canmount=on -o ashift=9 -o cachefile=none -O xattr=sa -O compression=lz4 -O acltype=posixacl raidz2 /dev/sd&#123;c..h&#125;</span><br><span class="line">$ zpool add tank cache /dev/sda4 /dev/sdb4</span><br><span class="line">$ zpool add tank <span class="built_in">log</span> mirror /dev/sda3 /dev/sdb3</span><br><span class="line">$ gluster volume create ec-test disperse-data 2 redundancy 1  transport tcp node1:/tank/glusterfs node2:/tank/glusterfs node3:/tank/glusterfs force</span><br></pre></td></tr></table></figure>
+<h4 id="Setup-physical-server"><a href="#Setup-physical-server" class="headerlink" title="Setup physical server"></a>Setup physical server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> hacluster | passwd --stdin hacluster</span><br><span class="line">$ systemctl <span class="built_in">enable</span> pcsd.service</span><br><span class="line">$ systemctl <span class="built_in">disable</span> corosync.service pcaemaker.service</span><br><span class="line">$ systemctl stop corosync.service pcaemaker.service</span><br><span class="line">$ systemctl start pcsd.service</span><br><span class="line">$ systemctl is-active pcsd.service</span><br><span class="line">$ pcs cluster auth node01 node02 node03 <span class="comment">##input hacluster password for auth</span></span><br><span class="line">$ pcs cluster setup --name ha-cluster node01,172.29.xx.xx node02,172.92.xx.xx node03,172.29.xx.xx --transport udpu --rrpmode passive --token 17000 --addr0 172.29.xx.0 --addr1 192.168.101.0 </span><br><span class="line">$ pcs cluster setup --start --name ha-cluster node01 node02 node03</span><br><span class="line"><span class="comment">## pcs property set no-quorum-policy=stop #don't need to stop</span></span><br></pre></td></tr></table></figure>
+<p>4.1.2 Option no-quorum-policy</p>
+<p>This global option defines what to do when a cluster partition does not have quorum (no majority of nodes is part of the partition).</p>
+<p>Allowed values are:</p>
+<p>ignore<br>The quorum state does not influence the cluster behavior; resource management is continued.</p>
+<p>This setting is useful for the following scenarios:</p>
+<p>Two-node clusters: Since a single node failure would always result in a loss of majority, usually you want the cluster to carry on regardless. Resource integrity is ensured using fencing, which also prevents split brain scenarios.</p>
+<p>Resource-driven clusters: For local clusters with redundant communication channels, a split brain scenario only has a certain probability. Thus, a loss of communication with a node most likely indicates that the node has crashed, and that the surviving nodes should recover and start serving the resources again.</p>
+<p>If no-quorum-policy is set to ignore, a 4-node cluster can sustain concurrent failure of three nodes before service is lost. With the other settings, it would lose quorum after concurrent failure of two nodes.</p>
+<p>freeze<br>If quorum is lost, the cluster partition freezes. Resource management is continued: running resources are not stopped (but possibly restarted in response to monitor events), but no further resources are started within the affected partition.</p>
+<p>This setting is recommended for clusters where certain resources depend on communication with other nodes (for example, OCFS2 mounts). In this case, the default setting no-quorum-policy=stop is not useful, as it would lead to the following scenario: Stopping those resources would not be possible while the peer nodes are unreachable. Instead, an attempt to stop them would eventually time out and cause a stop failure, triggering escalated recovery and fencing.</p>
+<p>stop (default value)<br>If quorum is lost, all resources in the affected cluster partition are stopped in an orderly fashion.</p>
+<p>suicide<br>If quorum is lost, all nodes in the affected cluster partition are fenced.</p>
+<h4 id="Setting-etc-corosync-corosync-conf-for-every-node"><a href="#Setting-etc-corosync-corosync-conf-for-every-node" class="headerlink" title="Setting /etc/corosync/corosync.conf for every node"></a>Setting /etc/corosync/corosync.conf for every node</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">totem &#123;</span><br><span class="line">    version: 2</span><br><span class="line">    secauth: off</span><br><span class="line">    cluster_name: homer-test</span><br><span class="line">    transport: udpu</span><br><span class="line">    rrp_mode: passive</span><br><span class="line">    token: 17000</span><br><span class="line"></span><br><span class="line">    interface &#123;</span><br><span class="line">        ringnumber: 0</span><br><span class="line">        bindnetaddr: 192.168.xx.0</span><br><span class="line">        mcastaddr: 239.255.1.1</span><br><span class="line">        mcastport: 5405</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    interface &#123;</span><br><span class="line">        ringnumber: 1</span><br><span class="line">        bindnetaddr: 172.29.xx.0</span><br><span class="line">        mcastaddr: 239.255.2.1</span><br><span class="line">        mcastport: 5405</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nodelist &#123;</span><br><span class="line">    node &#123;</span><br><span class="line">        ring0_addr: bgi-sz1-homer-test73</span><br><span class="line">        ring1_addr: 172.29.xx.xx</span><br><span class="line">        nodeid: 1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node &#123;</span><br><span class="line">        ring0_addr: bgi-sz1-homer-test74</span><br><span class="line">        ring1_addr: 172.29.xx.xx</span><br><span class="line">        nodeid: 2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node &#123;</span><br><span class="line">        ring0_addr: bgi-sz1-homer-test76</span><br><span class="line">        ring1_addr: 172.29.xx.xx</span><br><span class="line">        nodeid: 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">quorum &#123;</span><br><span class="line">    provider: corosync_votequorum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">    to_logfile: yes</span><br><span class="line">    logfile: /var/<span class="built_in">log</span>/cluster/corosync.log</span><br><span class="line">    to_syslog: yes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Start-cluster"><a href="#Start-cluster" class="headerlink" title="Start cluster"></a>Start cluster</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ pcs cluster start --all</span><br><span class="line">$ corosync-cfgtool <span class="_">-s</span></span><br><span class="line">Printing ring status.</span><br><span class="line">Local node ID 1</span><br><span class="line">RING ID 0</span><br><span class="line">	id	= 192.168.xx.130</span><br><span class="line">	status	= ring 0 active with no faults</span><br><span class="line">RING ID 1</span><br><span class="line">	id	= 172.29.xx.73</span><br><span class="line">	status	= ring 1 active with no faults</span><br></pre></td></tr></table></figure>
+<h4 id="Create-stonith-for-physical-server"><a href="#Create-stonith-for-physical-server" class="headerlink" title="Create stonith for physical server"></a>Create stonith for physical server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pcs stonith create node01-fencing fence_ipmilan pcmk_host_list="nod01" \</span></span><br><span class="line">ipaddr=<span class="string">"node1_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 \</span><br><span class="line">op monitor interval=60s</span><br><span class="line"><span class="comment"># pcs stonith create node02-fencing fence_ipmilan pcmk_host_list="node02" \</span></span><br><span class="line"> ipaddr=<span class="string">"node2_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 \</span><br><span class="line">op monitor interval=60s</span><br><span class="line"><span class="comment"># pcs stonith create node03-fencing fence_ipmilan pcmk_host_list="node03" \</span></span><br><span class="line">ipaddr=<span class="string">"node3_ipmi_ipaddr"</span> login=ADMIN passwd=ADMIN lanplus=<span class="literal">true</span> power_<span class="built_in">wait</span>=4 op \</span><br><span class="line">monitor interval=60s</span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs property set stonith-enabled=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pcs status</span></span><br><span class="line">Cluster name: ha-cluster</span><br><span class="line">...</span><br><span class="line">Online: [ node02 node03 node01 ]</span><br><span class="line"></span><br><span class="line">Full list of resources:</span><br><span class="line"></span><br><span class="line"> node01-fencing	(stonith:fence_ipmilan):	Started node02</span><br><span class="line"> node03-fencing	(stonith:fence_ipmilan):	Started node01</span><br><span class="line"> node02-fencing	(stonith:fence_ipmilan):	Started node03</span><br><span class="line"></span><br><span class="line">PCSD Status:</span><br><span class="line">  node03: Online</span><br><span class="line">  node01: Online</span><br><span class="line">  node02: Online</span><br><span class="line"></span><br><span class="line">Daemon Status:</span><br><span class="line">  corosync: active/disabled</span><br><span class="line">  pacemaker: active/disabled</span><br><span class="line">  pcsd: active/enabled</span><br></pre></td></tr></table></figure>
+<h4 id="Get-quorum-info"><a href="#Get-quorum-info" class="headerlink" title="Get quorum info"></a>Get quorum info</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">$ corosync-quorumtool</span><br><span class="line">Quorum information</span><br><span class="line">------------------</span><br><span class="line">Date:             Mon Mar 13 22:08:01 2017</span><br><span class="line">Quorum provider:  corosync_votequorum</span><br><span class="line">Nodes:            3</span><br><span class="line">Node ID:          0x00000001</span><br><span class="line">Ring ID:          1/568</span><br><span class="line">Quorate:          Yes</span><br><span class="line"></span><br><span class="line">Votequorum information</span><br><span class="line">----------------------</span><br><span class="line">Expected votes:   3</span><br><span class="line">Highest expected: 3</span><br><span class="line">Total votes:      3</span><br><span class="line">Quorum:           2  </span><br><span class="line">Flags:            Quorate </span><br><span class="line"></span><br><span class="line">Membership information</span><br><span class="line">----------------------</span><br><span class="line">    Nodeid      Votes Name</span><br><span class="line">0x00000001          1 192.168.3.130 (<span class="built_in">local</span>)</span><br><span class="line">0x00000002          1 192.168.3.131</span><br><span class="line">0x00000003          1 192.168.3.132</span><br><span class="line"></span><br><span class="line">$ </span><br><span class="line"></span><br><span class="line">$  corosync-cmapctl|grep members</span><br><span class="line">runtime.totem.pg.mrp.srp.members.1.config_version (u64) = 0</span><br><span class="line">runtime.totem.pg.mrp.srp.members.1.ip (str) = r(0) ip(192.168.3.130) r(1) ip(172.29.59.73) </span><br><span class="line">runtime.totem.pg.mrp.srp.members.1.join_count (u32) = 1</span><br><span class="line">runtime.totem.pg.mrp.srp.members.1.status (str) = joined</span><br><span class="line">runtime.totem.pg.mrp.srp.members.2.config_version (u64) = 0</span><br><span class="line">runtime.totem.pg.mrp.srp.members.2.ip (str) = r(0) ip(192.168.3.131) r(1) ip(172.29.59.74) </span><br><span class="line">runtime.totem.pg.mrp.srp.members.2.join_count (u32) = 1</span><br><span class="line">runtime.totem.pg.mrp.srp.members.2.status (str) = joined</span><br><span class="line">runtime.totem.pg.mrp.srp.members.3.config_version (u64) = 0</span><br><span class="line">runtime.totem.pg.mrp.srp.members.3.ip (str) = r(0) ip(192.168.3.132) r(1) ip(172.29.59.76) </span><br><span class="line">runtime.totem.pg.mrp.srp.members.3.join_count (u32) = 1</span><br><span class="line">runtime.totem.pg.mrp.srp.members.3.status (str) = joined</span><br></pre></td></tr></table></figure>
+<h4 id="backup-and-restore-configuration"><a href="#backup-and-restore-configuration" class="headerlink" title="backup and restore configuration"></a>backup and restore configuration</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ pcs cluster cib &gt; xx.xml</span><br><span class="line">$ pcs cluster cib-push xx.xml</span><br><span class="line"></span><br><span class="line">$ pcs config</span><br></pre></td></tr></table></figure>
+<h4 id="Create-resources"><a href="#Create-resources" class="headerlink" title="Create resources"></a>Create resources</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ pcs resource create VirtualIP1 ocf:heartbeat:IPaddr2 ip=10.0.0.77 cidr_netmask=8 nic=br0 op monitor interval=60s</span><br><span class="line">$ pcs constraint location VirtualIP prefers bgi-sz1-homer-test73=0</span><br><span class="line"></span><br><span class="line">$ pcs resource create ansible-kvm VirtualDomain hypervisor=<span class="string">"qemu:///system"</span> config=<span class="string">"/export/glusterfs/vms/kvm/xml/ansible-kvm.xml"</span> migration_transport=ssh op start timeout=<span class="string">"60s"</span> op stop timeout=<span class="string">"60s"</span> op monitor  timeout=<span class="string">"30"</span> interval=<span class="string">"20"</span>  meta allow-migrate=<span class="string">"true"</span> op migrate_from interval=<span class="string">"0"</span> timeout=<span class="string">"120s"</span> op migrate_to interval=<span class="string">"0"</span> timeout=<span class="string">"120"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if you want add to group, add --group xxx</span></span><br><span class="line">$ pcs resource create ansible-kvm VirtualDomain hypervisor=<span class="string">"qemu:///system"</span> config=<span class="string">"/export/glusterfs/vms/kvm/xml/ansible-kvm.xml"</span> migration_transport=ssh op start timeout=<span class="string">"60s"</span> op stop timeout=<span class="string">"60s"</span> op monitor  timeout=<span class="string">"30"</span> interval=<span class="string">"20"</span>  meta allow-migrate=<span class="string">"true"</span> op migrate_from interval=<span class="string">"0"</span> timeout=<span class="string">"120s"</span> op migrate_to interval=<span class="string">"0"</span> timeout=<span class="string">"120"</span> --group GROUP-A</span><br><span class="line"></span><br><span class="line"><span class="comment"># http</span></span><br><span class="line"><span class="comment"># pcs resource create webres apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status"</span></span><br></pre></td></tr></table></figure>
+<h4 id="Create-the-resource-group"><a href="#Create-the-resource-group" class="headerlink" title="Create the resource group"></a>Create the resource group</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcs resource group add GROUP-A resource-1 resource-2 resource-3</span><br></pre></td></tr></table></figure>
+<h4 id="monitor"><a href="#monitor" class="headerlink" title="monitor"></a>monitor</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crm_mon</span><br><span class="line">pcs status nodes</span><br></pre></td></tr></table></figure>
+<h4 id="Standby-and-maintance"><a href="#Standby-and-maintance" class="headerlink" title="Standby and maintance"></a>Standby and maintance</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pcs cluster standby</span><br><span class="line">pcs cluster unstandby</span><br><span class="line">pcs cluster stop</span><br><span class="line">pcs cluster stop --all</span><br><span class="line"></span><br><span class="line"><span class="comment">#BAN" the resource group  in which you would like to stop the cluster services</span></span><br><span class="line">pcs resource ban resource-name node-name</span><br><span class="line"></span><br><span class="line"><span class="comment">#maintenance</span></span><br><span class="line">pcs property <span class="built_in">set</span> maintenance-mode=<span class="literal">true</span></span><br><span class="line">pcs property <span class="built_in">set</span> maintenance-mode=flase</span><br></pre></td></tr></table></figure>
+<h4 id="Resource-constraint"><a href="#Resource-constraint" class="headerlink" title="Resource constraint"></a>Resource constraint</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ pcs constraint</span><br><span class="line">Location Constraints:</span><br><span class="line">  Resource: VirtualIP</span><br><span class="line">    Enabled on: bgi-sz1-homer-test73 (score:0)</span><br><span class="line">  Resource: VirtualIP2</span><br><span class="line">    Enabled on: bgi-sz1-homer-test74 (score:0)</span><br><span class="line">  Resource: VirtualIP3</span><br><span class="line">    Enabled on: bgi-sz1-homer-test76 (score:0)</span><br><span class="line">Ordering Constraints:</span><br><span class="line">Colocation Constraints:</span><br><span class="line">Ticket Constraints:</span><br><span class="line"></span><br><span class="line">$ pcs constraint location resource-name prefers nodename=50</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using location constraint, you can also avoid specific node to run a particular resource</span></span><br><span class="line">$ pcs constraint location resource-name avoids nodename=50</span><br></pre></td></tr></table></figure>
+<h4 id="Resource-order"><a href="#Resource-order" class="headerlink" title="Resource order"></a>Resource order</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create</span></span><br><span class="line">$ pcs constraint order resource1 <span class="keyword">then</span> resource2</span><br><span class="line">$ pcs constraint order resource2 <span class="keyword">then</span> resource3</span><br><span class="line">$ pcs constraint</span><br><span class="line"></span><br><span class="line"><span class="comment"># remove</span></span><br><span class="line">$ pcs constraint order --full</span><br><span class="line">$ pcs constraint order remove resource1 id_output</span><br><span class="line"></span><br><span class="line"><span class="comment"># example</span></span><br><span class="line"></span><br><span class="line">$ pcs constraint order VirtualIP1 <span class="keyword">then</span> manager-kvm</span><br><span class="line">Adding VirtualIP1 manager-kvm (kind: Mandatory) (Options: first-action=start <span class="keyword">then</span>-action=start)</span><br><span class="line">$ pcs constraint</span><br><span class="line">Location Constraints:</span><br><span class="line">  Resource: VirtualIP</span><br><span class="line">    Enabled on: bgi-sz1-homer-test73 (score:0)</span><br><span class="line">  Resource: VirtualIP2</span><br><span class="line">    Enabled on: bgi-sz1-homer-test74 (score:0)</span><br><span class="line">  Resource: VirtualIP3</span><br><span class="line">    Enabled on: bgi-sz1-homer-test76 (score:0)</span><br><span class="line">Ordering Constraints:</span><br><span class="line">  start VirtualIP1 <span class="keyword">then</span> start manager-kvm (kind:Mandatory)</span><br><span class="line">Colocation Constraints:</span><br><span class="line">Ticket Constraints:</span><br><span class="line"></span><br><span class="line">$ pcs constraint order --full</span><br><span class="line">Ordering Constraints:</span><br><span class="line">  start VirtualIP1 <span class="keyword">then</span> start manager-kvm (kind:Mandatory) (id:order-VirtualIP1-manager-kvm-mandatory)</span><br><span class="line"></span><br><span class="line"><span class="comment">#input id</span></span><br><span class="line">$ pcs constraint order remove VirtualIP1 order-VirtualIP1-manager-kvm-mandatory</span><br><span class="line">$ pcs constraint order --full</span><br><span class="line">Ordering Constraints:</span><br></pre></td></tr></table></figure>
+<h4 id="Resource-migration"><a href="#Resource-migration" class="headerlink" title="Resource migration"></a>Resource migration</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ pcs resource update resource-name meta migration-threshold=<span class="string">"2"</span></span><br><span class="line">or </span><br><span class="line">$ pcs resource defaults migration-threshold=2</span><br><span class="line"></span><br><span class="line">$ pcs resource update resource-name meta failure-timeout=60s</span><br><span class="line">$ pcs resource show resource-name</span><br><span class="line"><span class="comment"># show fail-count</span></span><br><span class="line">$ pcs resource failcount show</span><br><span class="line">or</span><br><span class="line">$ crm_failcount -r resource-name</span><br><span class="line"></span><br><span class="line"><span class="comment"># reset the fail-counts </span></span><br><span class="line">$ pcs resource failcount reset resource-name node-name</span><br><span class="line">or </span><br><span class="line">$ pcs resource cleanup resource-name</span><br><span class="line">$ pcs resource failcount show  resource-name</span><br></pre></td></tr></table></figure>
+<h4 id="Not-move-resource-back"><a href="#Not-move-resource-back" class="headerlink" title="Not move resource back"></a>Not move resource back</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pcs resource defaults resource-stickiness=100</span><br><span class="line">$ pcs resource defaults</span><br></pre></td></tr></table></figure>
+<h4 id="Colocation-constraint"><a href="#Colocation-constraint" class="headerlink" title="Colocation constraint"></a>Colocation constraint</h4><p>A colocation constraint determines that the location of one resource depends on the location of another resource<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pcs constraint colocation add resource1 resource2 INFINITY</span><br><span class="line">$ pcs constraint colocation add resource1 with resource2 INFINITY</span><br><span class="line"><span class="comment">#remove</span></span><br><span class="line">$ pcs constraint --full</span><br><span class="line"></span><br><span class="line">$ pcs constraint colocation remove resource1</span><br></pre></td></tr></table></figure></p>
+<h4 id="Resource-location"><a href="#Resource-location" class="headerlink" title="Resource location"></a>Resource location</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ pcs constraint location resource-name prefers node1</span><br><span class="line">$ pcs constraint location resource-name avoids node1</span><br><span class="line">$ pcs constraint --full</span><br><span class="line">$ pcs constraint location remove location-resource-name</span><br><span class="line">$ pcs constraint location resource-name prefers node1=INFINITY</span><br><span class="line">$ crm_simulate <span class="_">-s</span>L <span class="comment"># get resource score</span></span><br><span class="line"><span class="comment"># Resource pefer node1,node2,node3</span></span><br><span class="line">pcs constraint location resource-name prefers node1=200</span><br><span class="line">pcs constraint location resource-name prefers node2=100</span><br><span class="line">pcs constraint location resource-name prefers node3=0</span><br></pre></td></tr></table></figure>
+<h4 id="Update-resource-config"><a href="#Update-resource-config" class="headerlink" title="Update resource config"></a>Update resource config</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pcs resource update ansible-kvm config=/opt/lustresz/DAS_NFS/vms/HA-kvm/homerl/config/ansible-kvm.xml</span><br></pre></td></tr></table></figure>
+<h4 id="Manage-resource"><a href="#Manage-resource" class="headerlink" title="Manage resource"></a>Manage resource</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pcs resource <span class="built_in">disable</span> resource-name    </span><br><span class="line">$ pcs resource <span class="built_in">enable</span> resource-name    </span><br><span class="line">$ pcs resource failcount show resource-name </span><br><span class="line">$ pcs resource failcount reset resource-name</span><br><span class="line">$ pcs resource cleanup resource-name</span><br></pre></td></tr></table></figure>
+<h4 id="Clear-error-output"><a href="#Clear-error-output" class="headerlink" title="Clear error output"></a>Clear error output</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcs resource cleanup</span><br></pre></td></tr></table></figure>
+<h4 id="Check-cluster-status"><a href="#Check-cluster-status" class="headerlink" title="Check cluster status"></a>Check cluster status</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ crm_verify -L -V</span><br></pre></td></tr></table></figure>
+<h3 id="Destroy-cluster"><a href="#Destroy-cluster" class="headerlink" title="Destroy cluster"></a>Destroy cluster</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pcs cluster destroy --all</span><br><span class="line"></span><br><span class="line">#or </span><br><span class="line">systemctl stop pacemaker corosync</span><br><span class="line">rm -f /var/lib/pacemaker/cib/*</span><br></pre></td></tr></table></figure>
+<p>Reference<br><a href="http://www.unixarena.com/2016/01/rhel-7-pacemaker-define-the-resource-behaviour.html" target="_blank" rel="external">RHEL 7 – Pacemaker</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/High_Availability_Add-On_Reference/s1-multistateresource-HAAR.html" target="_blank" rel="external">High_Availability_Add-On_Reference</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/centos/" rel="tag">#centos</a>
+          
+            <a href="/tags/ha/" rel="tag">#ha</a>
+          
+            <a href="/tags/cluster/" rel="tag">#cluster</a>
+          
+            <a href="/tags/3-nodes/" rel="tag">#3 nodes</a>
+          
+            <a href="/tags/corosync/" rel="tag">#corosync</a>
+          
+            <a href="/tags/pacemaker/" rel="tag">#pacemaker</a>
+          
+            <a href="/tags/kvm/" rel="tag">#kvm</a>
+          
+            <a href="/tags/virtualization/" rel="tag">#virtualization</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/09/kvm-tips/" rel="next" title="kvm_tips">
+                <i class="fa fa-chevron-left"></i> kvm_tips
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Just-for-test-not-in-my-production-environment-it-is-incomplete"><span class="nav-number">1.</span> <span class="nav-text">Just for test , not in my production environment, it is incomplete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Physical-node-OS"><span class="nav-number">2.</span> <span class="nav-text">Physical node OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-machine-OS"><span class="nav-number">3.</span> <span class="nav-text">Virtual machine OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-linux-HA-3-x-physical-server"><span class="nav-number">4.</span> <span class="nav-text">Create linux HA ,3 x physical server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Share-strorages"><span class="nav-number">5.</span> <span class="nav-text">Share strorages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-HA-cluster"><span class="nav-number">6.</span> <span class="nav-text">Setup HA cluster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-nodes-glusterfs-config"><span class="nav-number">7.</span> <span class="nav-text">3 nodes glusterfs config</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setup-physical-server"><span class="nav-number">7.1.</span> <span class="nav-text">Setup physical server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-etc-corosync-corosync-conf-for-every-node"><span class="nav-number">7.2.</span> <span class="nav-text">Setting /etc/corosync/corosync.conf for every node</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Start-cluster"><span class="nav-number">7.3.</span> <span class="nav-text">Start cluster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-stonith-for-physical-server"><span class="nav-number">7.4.</span> <span class="nav-text">Create stonith for physical server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-quorum-info"><span class="nav-number">7.5.</span> <span class="nav-text">Get quorum info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#backup-and-restore-configuration"><span class="nav-number">7.6.</span> <span class="nav-text">backup and restore configuration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-resources"><span class="nav-number">7.7.</span> <span class="nav-text">Create resources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-the-resource-group"><span class="nav-number">7.8.</span> <span class="nav-text">Create the resource group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#monitor"><span class="nav-number">7.9.</span> <span class="nav-text">monitor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Standby-and-maintance"><span class="nav-number">7.10.</span> <span class="nav-text">Standby and maintance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-constraint"><span class="nav-number">7.11.</span> <span class="nav-text">Resource constraint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-order"><span class="nav-number">7.12.</span> <span class="nav-text">Resource order</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-migration"><span class="nav-number">7.13.</span> <span class="nav-text">Resource migration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Not-move-resource-back"><span class="nav-number">7.14.</span> <span class="nav-text">Not move resource back</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Colocation-constraint"><span class="nav-number">7.15.</span> <span class="nav-text">Colocation constraint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-location"><span class="nav-number">7.16.</span> <span class="nav-text">Resource location</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Update-resource-config"><span class="nav-number">7.17.</span> <span class="nav-text">Update resource config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manage-resource"><span class="nav-number">7.18.</span> <span class="nav-text">Manage resource</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Clear-error-output"><span class="nav-number">7.19.</span> <span class="nav-text">Clear error output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Check-cluster-status"><span class="nav-number">7.20.</span> <span class="nav-text">Check cluster status</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Destroy-cluster"><span class="nav-number">8.</span> <span class="nav-text">Destroy cluster</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2017/03/13/HA-centos7-3-nodes-configuration/';
+      var disqus_title = 'HA centos 7 configuration';
+      var disqus_url = 'http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>
