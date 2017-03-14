@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-14T12:10:59.598Z</updated>
+  <updated>2017-03-14T12:11:59.518Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/"/>
     <id>http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/</id>
     <published>2017-03-13T01:56:08.000Z</published>
-    <updated>2017-03-14T12:10:59.598Z</updated>
+    <updated>2017-03-14T12:11:59.518Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Physical-node-OS&quot;&gt;&lt;a href=&quot;#Physical-node-OS&quot; class=&quot;headerlink&quot; title=&quot;Physical node OS&quot;&gt;&lt;/a&gt;Physical node OS&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;CentOS Linux release 7.3&lt;br&gt;&lt;img src=&quot;img/test-arch.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;li&gt;CentOS Linux release 7.3&lt;br&gt;&lt;img src=&quot;/img/test-arch.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;Create-linux-HA-3-x-physical-server&quot;&gt;&lt;a href=&quot;#Create-linux-HA-3-x-physical-server&quot; class=&quot;headerlink&quot; title=&quot;Create linux HA ,3 x physical server&quot;&gt;&lt;/a&gt;Create linux HA ,3 x physical server&lt;/h2&gt;&lt;p&gt;127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4&lt;br&gt;::1         localhost localhost.localdomain localhost6 localhost6.localdomain6&lt;br&gt;192.xx.xx.130 node01&lt;br&gt;192.xx.xx.131 node02&lt;br&gt;192.xx.xx.132 node03&lt;/p&gt;
 &lt;h3 id=&quot;Share-strorages&quot;&gt;&lt;a href=&quot;#Share-strorages&quot; class=&quot;headerlink&quot; title=&quot;Share strorages&quot;&gt;&lt;/a&gt;Share strorages&lt;/h3&gt;&lt;p&gt;NFS/Lustre&lt;/p&gt;
