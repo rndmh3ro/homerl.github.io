@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2017-03-22T09:27:20.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
+    
+    <lastmod>2017-03-21T08:33:50.882Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/</loc>
     
     <lastmod>2017-03-14T12:11:59.518Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
     
     <lastmod>2017-03-08T12:48:20.611Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
-    
-    <lastmod>2017-03-03T09:45:33.000Z</lastmod>
     
   </url>
   
