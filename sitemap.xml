@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/</loc>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
-    <lastmod>2017-04-14T08:21:04.700Z</lastmod>
+    <lastmod>2017-05-10T05:30:59.830Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2017-03-27T03:47:17.910Z</lastmod>
+    <lastmod>2017-05-02T11:06:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/</loc>
+    
+    <lastmod>2017-04-14T08:21:04.700Z</lastmod>
     
   </url>
   
@@ -117,13 +124,6 @@
     <loc>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</loc>
     
     <lastmod>2016-12-23T13:57:03.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
-    
-    <lastmod>2016-12-13T02:05:45.000Z</lastmod>
     
   </url>
   
