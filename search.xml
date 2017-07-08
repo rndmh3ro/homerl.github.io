@@ -21,6 +21,24 @@
 <p><a href="https://github.com/homerl/pin_affinity/blob/master/pin_affinity.sh" target="_blank" rel="external">my scripts</a><br>./pin_cpu.sh SAS3008 Mellanox Non-Volatile</p>
 <h5 id="The-others"><a href="#The-others" class="headerlink" title="The others"></a>The others</h5><p>running your app by numactl in single numa node<br>libvma to bypass kernel</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> benchmark </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> performance </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -35,6 +53,28 @@
 <h3 id="Get-battery-status"><a href="#Get-battery-status" class="headerlink" title="Get battery status"></a>Get battery status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli -n ControllerA -c <span class="string">"show storageArray batteryage;"</span></span><br></pre></td></tr></table></figure>
 <h3 id="Get-battery-status-1"><a href="#Get-battery-status-1" class="headerlink" title="Get battery status"></a>Get battery status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli -n ControllerA -c <span class="string">"show storageArray powerInfo;"</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> raid </tag>
+            
+            <tag> lsi </tag>
+            
+            <tag> smcli </tag>
+            
+            <tag> san </tag>
+            
+            <tag> monitor </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -48,6 +88,28 @@
 <h3 id="About-multipath"><a href="#About-multipath" class="headerlink" title="About multipath"></a>About multipath</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">no_path_retry queue</span><br><span class="line">features <span class="string">"0"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://dhelios.blogspot.com/2015/04/how-can-i-view-create-and-remove-scsi.html" target="_blank" rel="external">How can I view create and remove scsi</a><br><a href="http://lkml.iu.edu/hypermail/linux/kernel/0903.3/02074.html" target="_blank" rel="external">Target_Core_Mod</a><br><a href="https://lists.wpkg.org/pipermail/stgt/2010-October/017304.html" target="_blank" rel="external">Support for persistent reservations</a><br><a href="https://assets.cdn.sap.com/sapcom/docs/2016/06/84ea994f-767c-0010-82c7-eda71af511fa.pdf" target="_blank" rel="external">SAP HANA Fiber Channel Storage Connector Admin Guide</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hdd </tag>
+            
+            <tag> ssd </tag>
+            
+            <tag> sas </tag>
+            
+            <tag> spc </tag>
+            
+            <tag> scsi </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -95,6 +157,36 @@
 <h3 id="Destroy-cluster"><a href="#Destroy-cluster" class="headerlink" title="Destroy cluster"></a>Destroy cluster</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pcs cluster destroy --all</span><br><span class="line"></span><br><span class="line">#or </span><br><span class="line">systemctl stop pacemaker corosync</span><br><span class="line">rm -f /var/lib/pacemaker/cib/*</span><br></pre></td></tr></table></figure>
 <p>Reference<br><a href="http://www.unixarena.com/2016/01/rhel-7-pacemaker-define-the-resource-behaviour.html" target="_blank" rel="external">RHEL 7 – Pacemaker</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/High_Availability_Add-On_Reference/s1-multistateresource-HAAR.html" target="_blank" rel="external">High_Availability_Add-On_Reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> ha </tag>
+            
+            <tag> cluster </tag>
+            
+            <tag> 3 nodes </tag>
+            
+            <tag> corosync </tag>
+            
+            <tag> pacemaker </tag>
+            
+            <tag> kvm </tag>
+            
+            <tag> virtualization </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -106,6 +198,26 @@
 <h3 id="Create-convert-base-image"><a href="#Create-convert-base-image" class="headerlink" title="Create convert base image"></a>Create convert base image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">qemu-img create <span class="_">-f</span> qed vm1.qed 80G</span><br><span class="line">qemu-img convert <span class="_">-f</span> vmdk -O raw centos7.vmdk centos7.img</span><br><span class="line"><span class="comment">#Base images</span></span><br><span class="line">qemu-img create -b centos6-base.qed <span class="_">-f</span>  qed  centos6-tmp.qed</span><br><span class="line">qemu-img rebase  -u -b centos-6.qed ./kvm1.qed</span><br></pre></td></tr></table></figure>
 <h3 id="Virt-manager-show-unreadable-code"><a href="#Virt-manager-show-unreadable-code" class="headerlink" title="Virt-manager show unreadable code"></a>Virt-manager show unreadable code</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install dejavu-sans-fonts</span><br><span class="line"><span class="comment"># if you need Chinese</span></span><br><span class="line">yum -y install ghostscript-chinese-zh_CN</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> virtualization </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> centos </tag>
+            
+            <tag> kvm </tag>
+            
+            <tag> virtualization </tag>
+            
+            <tag> multipath </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -113,6 +225,22 @@
       <url>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</url>
       <content type="html"><![CDATA[<h3 id="Exclude-packages"><a href="#Exclude-packages" class="headerlink" title="Exclude packages"></a>Exclude packages</h3><h4 id="Cli"><a href="#Cli" class="headerlink" title="Cli"></a>Cli</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="keyword">if</span>=/dev/zero of=/dev/shm/<span class="built_in">test</span> bs=1M count=512</span><br><span class="line">$ mfks.ext3 -b 4096 /dev/shm/<span class="built_in">test</span></span><br><span class="line">$ mount /dev/shm/<span class="built_in">test</span> /mnt</span><br><span class="line"></span><br><span class="line">$ rm <span class="_">-f</span> <span class="built_in">test</span>;<span class="keyword">for</span> i <span class="keyword">in</span> &#123;0..10000&#125;; <span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$i</span>-<span class="variable">$i</span>-<span class="variable">$i</span> &gt;&gt; <span class="built_in">test</span>; <span class="keyword">done</span> </span><br><span class="line">$ filefrag -v <span class="built_in">test</span> </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">Filesystem cylinder groups approximately 4</span><br><span class="line">File size of <span class="built_in">test</span> is 146688 (36 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..      15:       2576..      2591:     16:             merged</span><br><span class="line">   1:       16..      16:      33424..     33424:      1:       2592: merged</span><br><span class="line">   2:       17..      17:      33457..     33457:      1:      33425: merged</span><br><span class="line">   3:       18..      18:      33490..     33490:      1:      33458: merged</span><br><span class="line">   4:       19..      19:      33523..     33523:      1:      33491: merged</span><br><span class="line">   5:       20..      20:      33556..     33556:      1:      33524: merged</span><br><span class="line">   6:       21..      21:      33589..     33589:      1:      33557: merged</span><br><span class="line">   7:       22..      22:      33622..     33622:      1:      33590: merged</span><br><span class="line">   8:       23..      23:      33655..     33655:      1:      33623: merged</span><br><span class="line">   9:       24..      24:      33688..     33688:      1:      33656: merged</span><br><span class="line">  10:       25..      25:      33721..     33721:      1:      33689: merged</span><br><span class="line">  11:       26..      26:      33754..     33754:      1:      33722: merged</span><br><span class="line">  12:       27..      27:      33787..     33787:      1:      33755: merged</span><br><span class="line">  13:       28..      28:      33820..     33820:      1:      33788: merged</span><br><span class="line">  14:       29..      29:      33853..     33853:      1:      33821: merged</span><br><span class="line">  15:       30..      30:      33886..     33886:      1:      33854: merged</span><br><span class="line">  16:       31..      31:      33919..     33919:      1:      33887: merged</span><br><span class="line">  17:       32..      32:      33952..     33952:      1:      33920: merged</span><br><span class="line">  18:       33..      33:      34017..     34017:      1:      33953: merged</span><br><span class="line">  19:       34..      34:      34082..     34082:      1:      34018: merged</span><br><span class="line">  20:       35..      35:      34147..     34147:      1:      34083: last,merged,eof</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">debugfs /dev/shm/<span class="built_in">test</span> </span><br><span class="line">debugfs 1.42.13 (17-May-2015)</span><br><span class="line">debugfs: <span class="built_in">stat</span> &lt;14&gt; </span><br><span class="line"></span><br><span class="line">Inode: 14   Type: regular    Mode:  0644   Flags: 0x0</span><br><span class="line">Generation: 3749441442    Version: 0x00000000:00000001</span><br><span class="line">User:     0   Group:     0   Size: 146688</span><br><span class="line">File ACL: 0    Directory ACL: 0</span><br><span class="line">Links: 1   Blockcount: 296</span><br><span class="line">Fragment:  Address: 0    Number: 0    Size: 0</span><br><span class="line"> ctime: 0x58763a68:1f1d1ee4 -- Wed Jan 11 22:00:08 2017</span><br><span class="line"> atime: 0x58763a67:e66e9d44 -- Wed Jan 11 22:00:07 2017</span><br><span class="line"> mtime: 0x58763a68:1f1d1ee4 -- Wed Jan 11 22:00:08 2017</span><br><span class="line">crtime: 0x58763a67:e66e9d44 -- Wed Jan 11 22:00:07 2017</span><br><span class="line">Size of extra inode fields: 32</span><br><span class="line">BLOCKS:</span><br><span class="line">(0-11):2576-2587, (IND):1538, (12-15):2588-2591, (16):33424, (17):33457, (18):33490, (19):33523, (20):33556, (21):33589, (22):33622, (23):33655, (24):33688, (25):33721, (26):33754, (27):33787, (28):33820, (29):33853, (30):33886, (31):33919, (32):33952, (33):34017, (34):34082, (35):34147</span><br><span class="line">TOTAL: 37</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/shm/<span class="built_in">test</span> of=<span class="built_in">test</span>-1 bs=4K skip=2576 count=$((2591-2576+1))</span><br><span class="line">head <span class="built_in">test</span>-1 ; wc <span class="_">-l</span> <span class="built_in">test</span>-1 ;tail <span class="built_in">test</span>-1</span><br><span class="line">0-0-0</span><br><span class="line">1-1-1</span><br><span class="line">2-2-2</span><br><span class="line">3-3-3</span><br><span class="line">4-4-4</span><br><span class="line">5-5-5</span><br><span class="line">6-6-6</span><br><span class="line">7-7-7</span><br><span class="line">8-8-8</span><br><span class="line">9-9-9</span><br><span class="line">4591 <span class="built_in">test</span>-1</span><br><span class="line">4582-4582-4582</span><br><span class="line">4583-4583-4583</span><br><span class="line">4584-4584-4584</span><br><span class="line">4585-4585-4585</span><br><span class="line">4586-4586-4586</span><br><span class="line">4587-4587-4587</span><br><span class="line">4588-4588-4588</span><br><span class="line">4589-4589-4589</span><br><span class="line">4590-4590-4590</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/shm/<span class="built_in">test</span> of=<span class="built_in">test</span>-2 bs=4K skip=33424 count=1</span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193943 s, 21.1 MB/s</span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># head test-2 ; wc -l test-2 ;tail test-2</span></span><br><span class="line">591-4591-4591</span><br><span class="line">4592-4592-4592</span><br><span class="line">4593-4593-4593</span><br><span class="line">4594-4594-4594</span><br><span class="line">4595-4595-4595</span><br><span class="line">4596-4596-4596</span><br><span class="line">4597-4597-4597</span><br><span class="line">4598-4598-4598</span><br><span class="line">4599-4599-4599</span><br><span class="line">4600-4600-4600</span><br><span class="line">273 <span class="built_in">test</span>-2</span><br><span class="line">4855-4855-4855</span><br><span class="line">4856-4856-4856</span><br><span class="line">4857-4857-4857</span><br><span class="line">4858-4858-4858</span><br><span class="line">4859-4859-4859</span><br><span class="line">4860-4860-4860</span><br><span class="line">4861-4861-4861</span><br><span class="line">4862-4862-4862</span><br><span class="line">4863-4863-4863</span><br><span class="line">48</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># dd if=/dev/shm/test of=test-3 bs=4K skip=33457 count=1</span></span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB, 4.0 KiB) copied, 0.000193132 s, 21.2 MB/s</span><br><span class="line">root@homerl-System-Product-Name:/mnt<span class="comment"># head test-3 ; wc -l test-3 ;tail test-3</span></span><br><span class="line">64-4864-4864</span><br><span class="line">4865-4865-4865</span><br><span class="line">4866-4866-4866</span><br><span class="line">4867-4867-4867</span><br><span class="line">4868-4868-4868</span><br><span class="line">4869-4869-4869</span><br><span class="line">4870-4870-4870</span><br><span class="line">4871-4871-4871</span><br><span class="line">4872-4872-4872</span><br><span class="line">4873-4873-4873</span><br><span class="line">273 <span class="built_in">test</span>-3</span><br><span class="line">5128-5128-5128</span><br><span class="line">5129-5129-5129</span><br><span class="line">5130-5130-5130</span><br><span class="line">5131-5131-5131</span><br><span class="line">5132-5132-5132</span><br><span class="line">5133-5133-5133</span><br><span class="line">5134-5134-5134</span><br><span class="line">5135-5135-5135</span><br><span class="line">5136-5136-5136</span><br><span class="line">513</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> filesystem </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ext4 </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -125,6 +253,8 @@
 <p>0x21000=135168<br>awk ‘BEGIN{print 135168/1024-128}’<br>4</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexdump -C disk0 | grep <span class="string">"0c b1 ba 00"</span> -i</span><br><span class="line">00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00021400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00061000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">00061400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffa1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffa1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffe1000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br><span class="line">3ffe1400  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        
     </entry>
     
     <entry>
@@ -165,6 +295,20 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;print strtonum("0x40f800")/1024&#125;'</span></span><br><span class="line">4158</span><br><span class="line"></span><br><span class="line">$ zdb -R <span class="built_in">test</span>-pool 0:f800:20000:r &gt; /tmp/file1</span><br><span class="line">-bash-4.1<span class="comment"># head /tmp/file1 </span></span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line"><span class="comment"># modify /tmp/file1</span></span><br><span class="line">$ head -n 4 /tmp/file1</span><br><span class="line"><span class="comment">#0</span></span><br><span class="line"><span class="comment">#1</span></span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-1 bs=1k count=4158</span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-2 bs=1k skip=4158 count=1</span><br><span class="line">$ dd <span class="keyword">if</span>=/tank/<span class="built_in">test</span>/disk0 of=/tmp/disk0-3 bs=1k skip=4159</span><br><span class="line"></span><br><span class="line">$ head /tmp/disk0-2 </span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line">-bash-4.1<span class="comment"># tail /tmp/disk0-2 </span></span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">28</span><br><span class="line"></span><br><span class="line">$ ls <span class="_">-l</span> /tmp/disk0-*</span><br><span class="line">-rw-r--r-- 1 root root   4257792 12月 28 19:59 /tmp/disk0-1</span><br><span class="line">-rw-r--r-- 1 root root      1024 12月 28 19:59 /tmp/disk0-2</span><br><span class="line">-rw-r--r-- 1 root root 100598784 12月 28 20:03 /tmp/disk0-3</span><br><span class="line"></span><br><span class="line"><span class="comment"># modify disk0-2</span></span><br><span class="line">$ vi /tmp/disk0-2 </span><br><span class="line">-bash-4.1<span class="comment"># head -n 2 /tmp/disk0-2 </span></span><br><span class="line"><span class="comment">#0</span></span><br><span class="line"><span class="comment">#1</span></span><br><span class="line"></span><br><span class="line">$ cp /tmp/disk0-1 /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ cat /tmp/disk0-2 &gt;&gt; /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ cat /tmp/disk0-3 &gt;&gt; /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">$ zpool import <span class="_">-d</span> /tank/<span class="built_in">test</span>/ <span class="built_in">test</span>-pool</span><br><span class="line">cannot import <span class="string">'test-pool'</span>: I/O error</span><br><span class="line">	Destroy and re-create the pool from</span><br><span class="line">	a backup source.</span><br><span class="line"></span><br><span class="line">$ zdb <span class="_">-l</span> /tank/<span class="built_in">test</span>/disk0 </span><br><span class="line">zdb <span class="_">-l</span> /tank/<span class="built_in">test</span>/disk0</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 0</span><br><span class="line">--------------------------------------------</span><br><span class="line">    version: 5000</span><br><span class="line">    name: <span class="string">'test-pool'</span></span><br><span class="line">    state: 0</span><br><span class="line">    txg: 1277</span><br><span class="line">    pool_guid: 2913619627256210242</span><br><span class="line">    errata: 0</span><br><span class="line">    hostname: <span class="string">'nas-57-11.local'</span></span><br><span class="line">    top_guid: 14729225611287826913</span><br><span class="line">    guid: 14729225611287826913</span><br><span class="line">    vdev_children: 1</span><br><span class="line">    vdev_tree:</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'file'</span></span><br><span class="line">        id: 0</span><br><span class="line">        guid: 14729225611287826913</span><br><span class="line">        path: <span class="string">'/tank/test/disk0'</span></span><br><span class="line">        metaslab_array: 35</span><br><span class="line">        metaslab_<span class="built_in">shift</span>: 24</span><br><span class="line">        ashift: 9</span><br><span class="line">        asize: 100139008</span><br><span class="line">        is_<span class="built_in">log</span>: 0</span><br><span class="line">        create_txg: 4</span><br><span class="line">    features_<span class="keyword">for</span>_<span class="built_in">read</span>:</span><br><span class="line">        com.delphix:hole_birth</span><br><span class="line">        com.delphix:embedded_data</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 1</span><br><span class="line">--------------------------------------------</span><br><span class="line">    version: 5000</span><br><span class="line">    name: <span class="string">'test-pool'</span></span><br><span class="line">    state: 0</span><br><span class="line">    txg: 1277</span><br><span class="line">    pool_guid: 2913619627256210242</span><br><span class="line">    errata: 0</span><br><span class="line">    hostname: <span class="string">'nas-57-11.local'</span></span><br><span class="line">    top_guid: 14729225611287826913</span><br><span class="line">    guid: 14729225611287826913</span><br><span class="line">    vdev_children: 1</span><br><span class="line">    vdev_tree:</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'file'</span></span><br><span class="line">        id: 0</span><br><span class="line">        guid: 14729225611287826913</span><br><span class="line">        path: <span class="string">'/tank/test/disk0'</span></span><br><span class="line">        metaslab_array: 35</span><br><span class="line">        metaslab_<span class="built_in">shift</span>: 24</span><br><span class="line">        ashift: 9</span><br><span class="line">        asize: 100139008</span><br><span class="line">        is_<span class="built_in">log</span>: 0</span><br><span class="line">        create_txg: 4</span><br><span class="line">    features_<span class="keyword">for</span>_<span class="built_in">read</span>:</span><br><span class="line">        com.delphix:hole_birth</span><br><span class="line">        com.delphix:embedded_data</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 2</span><br><span class="line">--------------------------------------------</span><br><span class="line">failed to unpack label 2</span><br><span class="line">--------------------------------------------</span><br><span class="line">LABEL 3</span><br><span class="line">--------------------------------------------</span><br><span class="line">failed to unpack label 3</span><br><span class="line"></span><br><span class="line">$ zpool import -N -o <span class="built_in">readonly</span>=on <span class="_">-f</span> <span class="_">-d</span> /tank/<span class="built_in">test</span>/ -F -T 1277</span><br><span class="line">   pool: <span class="built_in">test</span>-pool</span><br><span class="line">     id: 2913619627256210242</span><br><span class="line">  state: FAULTED</span><br><span class="line"> status: The pool metadata is corrupted.</span><br><span class="line"> action: The pool cannot be imported due to damaged devices or data.</span><br><span class="line">	The pool may be active on another system, but can be imported using</span><br><span class="line">	the <span class="string">'-f'</span> flag.</span><br><span class="line">   see: http://zfsonlinux.org/msg/ZFS-8000-72</span><br><span class="line"> config:</span><br><span class="line"></span><br><span class="line">	<span class="built_in">test</span>-pool           FAULTED  corrupted data</span><br><span class="line">	  /tank/<span class="built_in">test</span>/disk0  ONLINE</span><br></pre></td></tr></table></figure>
 <h3 id="Raidz-size"><a href="#Raidz-size" class="headerlink" title="Raidz size"></a><a href="http://blog.gjpvanwesten.nl/2014/08/part-iv-how-much-space-do-you-lose-with.html" target="_blank" rel="external">Raidz size</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;print 128/7&#125;'</span></span><br><span class="line">18.2857</span><br><span class="line">awk <span class="string">'BEGIN&#123;print 18.2857/20&#125;'</span></span><br><span class="line">0.914285</span><br><span class="line">awk <span class="string">'BEGIN&#123;print 18.2857/18.5&#125;'</span></span><br><span class="line">0.988416</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> filesystem </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> zfs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -173,6 +317,22 @@
       <content type="html"><![CDATA[<h3 id="blk-mq-in-RHEL-7-2"><a href="#blk-mq-in-RHEL-7-2" class="headerlink" title="blk-mq in RHEL 7.2"></a><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">blk-mq in RHEL 7.2</a></h3><p>It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.<br>If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).<br>It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.<br>To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.</p>
 <p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">High Performance Storage with blk-mq and scsi-mq</a><br><a href="http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf" target="_blank" rel="external">Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach</a><br><a href="https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq" target="_blank" rel="external">Linux Multi-Queue Block IO Queueing Mechanism</a>)<br><a href="http://chuansong.me/n/362178648541" target="_blank" rel="external">blk-mq SCSI performance</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> blk-mq </tag>
+            
+            <tag> queue </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1249,6 +1409,28 @@
 </table>
 <h3 id="Compute-node"><a href="#Compute-node" class="headerlink" title="Compute node"></a>Compute node</h3><p>SYS-4048B-TR4FT-EC028</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> raid </tag>
+            
+            <tag> hardware </tag>
+            
+            <tag> jbod </tag>
+            
+            <tag> das </tag>
+            
+            <tag> server </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1263,6 +1445,20 @@
 <h4 id="zero-range"><a href="#zero-range" class="headerlink" title="zero-range"></a>zero-range</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">$ cp  <span class="built_in">test</span> <span class="built_in">test</span>-sparse </span><br><span class="line">$ dd <span class="keyword">if</span>=/dev/zero of=<span class="built_in">test</span>-sparse bs=1M count=0 seek=1</span><br><span class="line">0+0 records <span class="keyword">in</span></span><br><span class="line">0+0 records out</span><br><span class="line">0 bytes copied, 0.000132755 s, 0.0 kB/s</span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] 130 $ filefrag -v <span class="built_in">test</span>-sparse </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of <span class="built_in">test</span>-sparse is 1048576 (256 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..       2:     589896..    589898:      3:             last,unwritten</span><br><span class="line"><span class="built_in">test</span>-sparse: 1 extent found</span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] $ cat <span class="built_in">test</span> &gt;&gt; <span class="built_in">test</span>-sparse </span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] $ filefrag -v <span class="built_in">test</span>-sparse </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of <span class="built_in">test</span>-sparse is 1397472 (342 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:        0..       2:     589896..    589898:      3:             unwritten</span><br><span class="line">   1:      256..     341:          0..        85:     86:     589899: last,unknown_loc,delalloc,eof</span><br><span class="line"><span class="built_in">test</span>-sparse: 2 extents found</span><br><span class="line">$  head <span class="built_in">test</span>-sparse </span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line">$ fallocate --zero-range --offset 1048576 --length 128 <span class="built_in">test</span>-sparse </span><br><span class="line">$ head <span class="built_in">test</span>-sparse </span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line"></span><br><span class="line">$ fallocate --zero-range --offset 1048576 --length 348896  <span class="built_in">test</span>-sparse</span><br><span class="line"><span class="comment"># clear all</span></span><br></pre></td></tr></table></figure>
 <h4 id="punch-hole"><a href="#punch-hole" class="headerlink" title="punch-hole"></a>punch-hole</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$ cat <span class="built_in">test</span> &gt;&gt; <span class="built_in">test</span>-sparse </span><br><span class="line">$ filefrag -v <span class="built_in">test</span>-sparse </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of <span class="built_in">test</span>-sparse is 1397472 (342 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:      256..     341:          0..        85:     86:             last,unknown_loc,delalloc,eof</span><br><span class="line"><span class="built_in">test</span>-sparse: 1 extent found</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$cat</span> <span class="built_in">test</span> &gt;&gt; <span class="built_in">test</span>-sparse </span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] $ ls -ls</span><br><span class="line">total 688</span><br><span class="line">344 -rw-rw-r-- 1 homerl homerl  348896 12月 19 17:29 <span class="built_in">test</span></span><br><span class="line">344 -rw-rw-r-- 1 homerl homerl 1397472 12月 19 17:53 <span class="built_in">test</span>-sparse</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> ((4096*256)=1048576 ;((4096*84))=344064</span><br><span class="line"></span><br><span class="line"><span class="variable">$fallocate</span> --punch-hole --offset 1048576 --length 344064  <span class="built_in">test</span>-sparse </span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] $ filefrag -v <span class="built_in">test</span>-sparse </span><br><span class="line">Filesystem <span class="built_in">type</span> is: ef53</span><br><span class="line">File size of <span class="built_in">test</span>-sparse is 1397472 (342 blocks of 4096 bytes)</span><br><span class="line"> ext:     logical_offset:        physical_offset: length:   expected: flags:</span><br><span class="line">   0:      340..     341:    3802396..   3802397:      2:             last,eof</span><br><span class="line"><span class="built_in">test</span>-sparse: 1 extent found</span><br><span class="line"></span><br><span class="line">1d [homerl:/tmp/<span class="built_in">test</span>/<span class="built_in">test</span>2] $ ls -ls <span class="built_in">test</span>-sparse </span><br><span class="line">8 -rw-rw-r-- 1 homerl homerl 1397472 12月 19 17:54 <span class="built_in">test</span>-sparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># space has recycled</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> file </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> sparse file </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1273,6 +1469,22 @@
 <p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
 <p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> network </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> net </tag>
+            
+            <tag> ethernet </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1280,6 +1492,24 @@
       <url>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</url>
       <content type="html"><![CDATA[<h3 id="script-and-scriptreplay"><a href="#script-and-scriptreplay" class="headerlink" title="script and scriptreplay"></a>script and scriptreplay</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ script --timing=time.txt script.log</span><br><span class="line"><span class="comment"># record what you do</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ scriptreplay --timing=time.txt script.log</span><br><span class="line"><span class="comment"># replay</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Tools </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> terminal </tag>
+            
+            <tag> record </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1291,6 +1521,20 @@
 <p>Browser proxy setting no changed (local port of shadowsocks client)</p>
 <h3 id="Some-of-issues"><a href="#Some-of-issues" class="headerlink" title="Some of issues"></a>Some of issues</h3><p>There is no “localhost/127.0.0.1” in openvz envirnoment, you need replace it by ip address</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shadowsocks </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1307,6 +1551,24 @@
 <h4 id="Security-erasing-SAS-SATA-SSD"><a href="#Security-erasing-SAS-SATA-SSD" class="headerlink" title="Security erasing SAS/SATA SSD"></a>Security erasing SAS/SATA SSD</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sg_format --format /dev/sdx</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdparm --user-master u --security-set-pass password /dev/sdx</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hdd </tag>
+            
+            <tag> ssd </tag>
+            
+            <tag> sas </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1329,6 +1591,26 @@
 <h3 id="HDD-DWPD"><a href="#HDD-DWPD" class="headerlink" title="HDD DWPD"></a>HDD DWPD</h3><p>ST10000VN0004 10TB<br>Workload Rate Limit (WRL) (TB/year) = 180<br>Warranty, Limited (years) = 3<br>DWPD(5y)=540/365/5=0.29589</p>
 <p><a href="http://superuser.com/questions/516949/formula-to-calculate-probability-of-unrecoverable-read-error-during-raid-rebuild" target="_blank" rel="external">Formula to calculate probability of unrecoverable read error during RAID rebuild</a><br><a href="http://queue.acm.org/detail.cfm?id=1670144" target="_blank" rel="external">Triple-Parity RAID and Beyond</a><br><a href="http://www.seagate.com/www-content/product-content/ironwolf/files/ironwolf-ds-1904-1-1606us.pdf" target="_blank" rel="external">seagate ironwolf spec</a><br><a href="http://math.stackexchange.com/questions/853643/how-to-convert-1e11-into-number" target="_blank" rel="external">how to convert 1e11 into number</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> tips </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> hdd </tag>
+            
+            <tag> ssd </tag>
+            
+            <tag> raid </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1339,6 +1621,22 @@
 <p>./test<br>C++11</p>
 <h3 id="Install-blasr"><a href="#Install-blasr" class="headerlink" title="Install blasr"></a>Install blasr</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">blasrpath=/xxxxxx/BLASR/blasr_el6</span><br><span class="line">HDF5=/xxxxxx/BLASR/hdf5-1.8.16-linux-centos6-x86_64-gcc447-shared</span><br><span class="line">LD_LIBRARY_PATH=<span class="variable">$blasrpath</span>/libcpp/alignment:<span class="variable">$blasrpath</span>/libcpp/hdf:<span class="variable">$blasrpath</span>/libcpp/pbdata:<span class="variable">$HDF5</span>/lib/:/xxxxxx/BLASR/blasr_el6/gcc/gcc5_el6/lib64:LD_LIBRARY</span><br><span class="line">PATH=/xxxxxx/BLASR/blasr_el6/gcc/gcc5_el6/bin:<span class="variable">$PATH</span></span><br><span class="line">./configure.py --shared --sub --no-pbbam HDF5_INCLUDE=<span class="variable">$HDF5</span>/include/ HDF5_LIB=<span class="variable">$HDF5</span>/lib</span><br><span class="line">make configure-submodule</span><br><span class="line">make build-submodule</span><br><span class="line">make blasr</span><br><span class="line">./blasr --version</span><br><span class="line">5.2</span><br><span class="line"></span><br><span class="line"><span class="comment">#benchamrk cpu</span></span><br><span class="line">time ./blasr /xxxxxx/BLASR/error_corrected_reads_7.fa /xxxxxx/BLASR/platypus.v2.fa.gapfilled.fa --sa /xxxxxx/BLASR/platypus.v2.fa.gapfilled.fa.blasr_sa --minMatch 11 --maxAnchorsPerPosition 500 --nproc $(cat /proc/cpuinfo | grep MHz -c) &gt; /dev/zero</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> bio </tag>
+            
+            <tag> software </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1350,6 +1648,22 @@
 <h3 id="NVME-Intel-SSD"><a href="#NVME-Intel-SSD" class="headerlink" title="NVME Intel SSD"></a>NVME Intel SSD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">isdct  show -smart -intelssd 0</span><br><span class="line">Description : NAND Bytes Written</span><br><span class="line">ID : F4</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 6142760</span><br><span class="line"></span><br><span class="line">- F5 -</span><br><span class="line"></span><br><span class="line">Description : Host Bytes Written</span><br><span class="line">ID : F5</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 2790072</span><br><span class="line"></span><br><span class="line">dd <span class="keyword">if</span>=/dev/zero of=<span class="built_in">test</span> bs=1M count=1024</span><br><span class="line"></span><br><span class="line">Description : NAND Bytes Written</span><br><span class="line">ID : F4</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 6142930</span><br><span class="line"></span><br><span class="line">- F5 -</span><br><span class="line"></span><br><span class="line">Description : Host Bytes Written</span><br><span class="line">ID : F5</span><br><span class="line">Normalized : 100</span><br><span class="line">Raw : 2790104</span><br></pre></td></tr></table></figure>
 <p>Raw value of Host Bytes Written improved 32</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ssd </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1357,6 +1671,20 @@
       <url>http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/</url>
       <content type="html"><![CDATA[<p><img src="/img/Dt9p6.jpg" alt=""><br>DMI 2.0 2 GB/s<br>DMI 3.0 3.93 GB/s<br>SATA SSD 500MB/s x 4/8 = 2000/4000MB/s<br><a href="http://electronics.stackexchange.com/questions/219440/why-do-cpus-typically-connect-to-only-one-bus/219446" target="_blank" rel="external">reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Architecture </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hardware </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1952,6 +2280,26 @@
 <p>###Another function<br><a href="http://www.intel.com/content/dam/www/public/us/en/documents/product-briefs/ethernet-x710-brief.pdf" target="_blank" rel="external">ethernet brief</a></p>
 <p><a href="https://www.nas.nasa.gov/assets/pdf/papers/NAS_Technical_Report_NAS-2014-01.pdf" target="_blank" rel="external">Comparison of 40G RDMA and Traditional Ethernet Technologies</a><br><a href="http://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters.pdf" target="_blank" rel="external">Performance Tuning Guidelines for Mellanox Network Adapters</a><br><a href="http://jaseywang.me/2013/11/02/10g82599eb-%E7%BD%91%E5%8D%A1%E6%B5%8B%E8%AF%95%E4%BC%98%E5%8C%96ethtool/" target="_blank" rel="external">10G 82599EB 网卡测试优化</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> nic </tag>
+            
+            <tag> Ethernet </tag>
+            
+            <tag> benchmark </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1962,6 +2310,22 @@
 <p>Turning drive cache off<br>Pros: Data integrity is preserved in the event of a sudden power loss.<br>Cons: Dramatic decrease in read and write performance.<br>Increased writes to NAND resulting in lower write endurance and decreased drive life. FTL data is still stored in the volatile cache, which leaves it at risk</p>
 <p>Capacitor hold-up circuitry<br>Pros: Data integrity is preserved in the event of a sudden power loss.<br>Cons: Increased cost due to inclusion of additional circuitry including capacitors. Additional board space is required.</p>
 <h3 id="Dell-Solid-State-Drive-FAQ"><a href="#Dell-Solid-State-Drive-FAQ" class="headerlink" title="Dell Solid-State-Drive-FAQ"></a><a href="http://www.dell.com/downloads/global/products/pvaul/en/Solid-State-Drive-FAQ-us.pdf" target="_blank" rel="external">Dell Solid-State-Drive-FAQ</a></h3>]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ssd </tag>
+            
+            <tag> power </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -1974,6 +2338,26 @@
 <h3 id="Hardware-Raid"><a href="#Hardware-Raid" class="headerlink" title="Hardware Raid"></a>Hardware Raid</h3><h4 id="LSI-Check-Interoperability-and-Compatibility"><a href="#LSI-Check-Interoperability-and-Compatibility" class="headerlink" title="LSI Check Interoperability and Compatibility"></a><a href="http://www.avagotech.com/support/interop-compatibility" target="_blank" rel="external">LSI Check Interoperability and Compatibility</a></h4><p><a href="http://docs.avagotech.com/docs-and-downloads/raid-controllers/MegaRAID_SAS_Gen3CompatibilityList.pdf" target="_blank" rel="external">MegaRAID SAS Gen3 Compatibility List</a><br><a href="http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/iMR_SAS_Gen3CompatibilityList.pdf" target="_blank" rel="external">iMR SAS Gen3 Compatibility List</a><br><a href="http://www.media-clone.net/v/vspfiles/downloads/LSI_6Gb_SAS_SATA_HBA_Compatibility_List.pdf" target="_blank" rel="external">LSI_6Gb_SAS_SATA_HBA Compatibility List</a><br>Just Compatibility, trim support not clean</p>
 <h4 id="HP-Raid-support"><a href="#HP-Raid-support" class="headerlink" title="HP Raid support"></a>HP Raid support</h4><p><a href="http://h20195.www2.hp.com/V2/GetPDF.aspx/4AA5-8637ENW" target="_blank" rel="external">Is TRIM supported when using RAID with SSDs?</a><br><img src="/img/hp-trim-support.png" alt=""><br>Raid 1,10,0 could be support<br>Raid 1E,5,6 has not support</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ssd </tag>
+            
+            <tag> raid </tag>
+            
+            <tag> zfs </tag>
+            
+            <tag> trim </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2044,6 +2428,24 @@
 <p>Using RAID Write-Back Caching (BBU)<br>Disabling RAID Read Ahead, except sequential read bandwidth with single threaded applications<br>Disabling RAID Read Cache, read caching consumes RAID memory that could be used by write-back caching.<br><a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/ssd-server-storage-applications-paper.pdf" target="_blank" rel="external">For more info</a></p>
 <h4 id="How-stripe-size"><a href="#How-stripe-size" class="headerlink" title="How stripe size"></a>How stripe size</h4><p><a href="http://www.research.ibm.com/haifa/conferences/systor2011/present/session5_talk2_systor2011.pdf" target="_blank" rel="external">Reference</a><br><a href="https://en.wikipedia.org/wiki/Direct_Media_Interface" target="_blank" rel="external">Reference</a><br><a href="http://www.ssdfans.com/?p=1840" target="_blank" rel="external">Garbage collector  Reference</a><br><a href="https://en.wikipedia.org/wiki/Write_amplification#BG-GC" target="_blank" rel="external">Garbage collector  Reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ssd </tag>
+            
+            <tag> raid </tag>
+            
+            <tag> interface </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2062,6 +2464,24 @@
 <h4 id="Kernel-io-schdule-Read-ahead"><a href="#Kernel-io-schdule-Read-ahead" class="headerlink" title="Kernel io schdule Read ahead"></a>Kernel io schdule Read ahead</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> 1024 &gt; /sys/block/sdb/queue/<span class="built_in">read</span>_ahead_kb</span><br></pre></td></tr></table></figure>
 <h4 id="increasing-the-maximal-I-O-queue-size-nr-requests"><a href="#increasing-the-maximal-I-O-queue-size-nr-requests" class="headerlink" title="increasing the maximal I/O queue size (nr_requests)"></a>increasing the maximal I/O queue size (nr_requests)</h4><p>Improve raid volume bandwidth (raid 6, 11x15k HDDs + 1HS)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 2048 &gt; /sys/block/sdb/queue/nr_requests</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ssd </tag>
+            
+            <tag> parted </tag>
+            
+            <tag> mkfs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2072,6 +2492,22 @@
 <h3 id="Ouput-to-stdout"><a href="#Ouput-to-stdout" class="headerlink" title="Ouput to stdout"></a>Ouput to stdout</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reader := bufio.NewReader(os.Stdin)</span><br><span class="line">fmt.Print(<span class="string">"What is your name:"</span>)</span><br><span class="line">data, _, _ := reader.ReadLine()</span><br><span class="line">fmt.Printf(<span class="string">"Your name is %s.\r\n"</span>, data)</span><br></pre></td></tr></table></figure>
 <p><a href="http://stackoverflow.com/questions/9644139/from-io-reader-to-string-in-go" target="_blank" rel="external">reference</a><br><a href="https://www.datadoghq.com/blog/crossing-streams-love-letter-gos-io-reader/" target="_blank" rel="external">reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> golang </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> golang </tag>
+            
+            <tag> string </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2080,6 +2516,22 @@
       <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
 <h3 id="supermicro-benchmark"><a href="#supermicro-benchmark" class="headerlink" title="supermicro benchmark"></a><a href="https://www.supermicro.com/white_paper/white_paper_NVMe.pdf" target="_blank" rel="external">supermicro benchmark</a></h3><p><img src="/img/nvme-12.png" alt=""></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ssd </tag>
+            
+            <tag> interface </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2087,12 +2539,28 @@
       <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
       <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> interface </tag>
+            
+            <tag> network </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
       <title><![CDATA[Lustre operations]]></title>
       <url>http://yoursite.com/2016/04/06/Lustre-operations/</url>
-      <content type="html"><![CDATA[<h3 id="Dump-log"><a href="#Dump-log" class="headerlink" title="Dump log"></a>Dump log</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">lctl get_param panic_on_lbug</span><br><span class="line">panic_on_lbug=1</span><br><span class="line"><span class="comment">#if not =1</span></span><br><span class="line">lctl <span class="built_in">set</span>_param panic_on_lbug=1</span><br><span class="line"></span><br><span class="line">lctl <span class="built_in">set</span>_param debug=-1</span><br><span class="line">lctl clear</span><br><span class="line">lctl mark <span class="string">"start mount"</span></span><br><span class="line">mount -t lustre xx.xx.xx.xx@tcp:/fsname /fsname <span class="comment"># or the other operate  </span></span><br><span class="line">lctl mark <span class="string">"Finish mount"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># MDS, OSS, Client</span></span><br><span class="line">lctl dk filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># in MDS</span></span><br><span class="line">mount -t lustre /dev/sdb1 /mnt/mgs;</span><br><span class="line">mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;</span><br><span class="line">llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of using debug_daemon and interactive lctl to dump debug files to a 40 MB file:</span></span><br><span class="line">lctl</span><br><span class="line">lctl &gt; debug_daemon start /var/<span class="built_in">log</span>/lustre.40.bin 40</span><br><span class="line">&lt;run filesystem operation(s) to debug (outside of the lctl session)&gt;</span><br><span class="line">lctl &gt; debug_daemon stop</span><br><span class="line">lctl &gt; debug_file /var/<span class="built_in">log</span>/lustre.40.bin /var/<span class="built_in">log</span>/lustre.log</span><br><span class="line"></span><br><span class="line">dmesg -C </span><br><span class="line"><span class="built_in">echo</span> t &gt; /proc/sysrq-trigger</span><br><span class="line">dmesg &gt; dmesg-t-sysrq.mds</span><br><span class="line"></span><br><span class="line">cat /proc/D_state_pid/wchan</span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h3 id="Dump-log"><a href="#Dump-log" class="headerlink" title="Dump log"></a>Dump log</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">lctl <span class="built_in">set</span>_param printk=+neterror</span><br><span class="line"></span><br><span class="line">lctl get_param panic_on_lbug</span><br><span class="line">panic_on_lbug=1</span><br><span class="line"><span class="comment">#if not =1</span></span><br><span class="line">lctl <span class="built_in">set</span>_param panic_on_lbug=1</span><br><span class="line"></span><br><span class="line">lctl <span class="built_in">set</span>_param debug=-1</span><br><span class="line">lctl clear</span><br><span class="line">lctl mark <span class="string">"start mount"</span></span><br><span class="line">mount -t lustre xx.xx.xx.xx@tcp:/fsname /fsname <span class="comment"># or the other operate  </span></span><br><span class="line">lctl mark <span class="string">"Finish mount"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lctl <span class="built_in">set</span>_param debug_mb=50</span><br><span class="line">lctl <span class="built_in">set</span>_param debug=+trace</span><br><span class="line">lctl dk &gt;/dev/null</span><br><span class="line">ls /opt/lustrewh/pmo</span><br><span class="line">lctl dk&gt; [filename]</span><br><span class="line"></span><br><span class="line"><span class="comment"># MDS, OSS, Client</span></span><br><span class="line">lctl dk filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># in MDS</span></span><br><span class="line">mount -t lustre /dev/sdb1 /mnt/mgs;</span><br><span class="line">mount -t ldiskfs /dev/sdb1 /mnt/ldiskfs;</span><br><span class="line">llog_reader /mnt/ldiskfs/CONFIGS/lustre2T-MDT0000 | grep pool</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of using debug_daemon and interactive lctl to dump debug files to a 40 MB file:</span></span><br><span class="line">lctl</span><br><span class="line">lctl &gt; debug_daemon start /var/<span class="built_in">log</span>/lustre.40.bin 40</span><br><span class="line">&lt;run filesystem operation(s) to debug (outside of the lctl session)&gt;</span><br><span class="line">lctl &gt; debug_daemon stop</span><br><span class="line">lctl &gt; debug_file /var/<span class="built_in">log</span>/lustre.40.bin /var/<span class="built_in">log</span>/lustre.log</span><br><span class="line"></span><br><span class="line">dmesg -C </span><br><span class="line"><span class="built_in">echo</span> t &gt; /proc/sysrq-trigger</span><br><span class="line">dmesg &gt; dmesg-t-sysrq.mds</span><br><span class="line"></span><br><span class="line">cat /proc/D_state_pid/wchan</span><br><span class="line">cat /proc/D_state_pid/stack</span><br><span class="line"></span><br><span class="line">lctl --device MGS llog_<span class="built_in">print</span> \$<span class="variable">$fsname</span>-client</span><br></pre></td></tr></table></figure>
 <p>##i Kdump<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum -y install kexec-tools</span><br><span class="line">cat /etc/kdump.conf</span><br><span class="line">nfs my.nfsserver.example.org:/path/to/expor</span><br><span class="line">core_collector makedumpfile <span class="_">-d</span> 16 -c</span><br><span class="line"><span class="comment">#-c Compress dump data by each page</span></span><br><span class="line"><span class="comment">#core_collector makedumpfile -d 16 -c message_level 16</span></span><br><span class="line"><span class="comment"># 1 Zero Pages 2 Cache Pages 4 Cache Private 8 User Pages 16 Free Pages</span></span><br><span class="line"><span class="comment"># 1 Progress Indicators 2 Common Messages 4 Error Messages 8 Debug Messages 16 Report Messages</span></span><br><span class="line"><span class="comment">#ssh user@my.server.example.org:/dest/path</span></span><br><span class="line"><span class="comment">#By default, uses ssh key at /root/.ssh/kdump_id_rsa</span></span><br><span class="line"><span class="comment">#core_collector makedumpfile &lt;options&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Enable-changlog"><a href="#Enable-changlog" class="headerlink" title="Enable changlog"></a>Enable changlog</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lctl <span class="built_in">set</span>_param mdt.<span class="variable">$FSNAME</span>-MDT0000.hsm_control=enabled</span><br><span class="line">lctl <span class="built_in">set</span>_param -P  mdt.lustresz-MDT0000.hsm_control=enabled</span><br><span class="line"> lctl <span class="built_in">set</span>_param mdt.<span class="variable">$FSNAME</span>-MDT0000.hsm.max_requests=64</span><br></pre></td></tr></table></figure>
 <h3 id="Fsck-ldiskfs-file-system-corruption"><a href="#Fsck-ldiskfs-file-system-corruption" class="headerlink" title="Fsck ldiskfs file system corruption"></a>Fsck ldiskfs file system corruption</h3><h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: LDISKFS-fs error (device sdz): ldiskfs_lookup: unlinked inode <span class="number">5384166</span> in dir <span class="comment">#145170469</span></span><br><span class="line">Dec <span class="number">29</span> <span class="number">14</span>:<span class="number">11</span>:<span class="number">32</span> mookie kernel: Remounting filesystem read-only</span><br></pre></td></tr></table></figure>
@@ -2136,6 +2604,20 @@
 <h3 id="Rebalance-OST"><a href="#Rebalance-OST" class="headerlink" title="Rebalance OST"></a>Rebalance OST</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lfs find /opt/lustrewh -obd lustrewh-OST000c_UUID -size +4G | lfs_migrate -y</span><br></pre></td></tr></table></figure>
 <h3 id="Move-data-to-one-OST"><a href="#Move-data-to-one-OST" class="headerlink" title="Move data to one OST"></a>Move data to one OST</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lfs migrate -c 1  -i 4  filepath <span class="comment">#to index 4</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Lustre </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> lustre </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2146,6 +2628,22 @@
 <h4 id="Read-by-Byte"><a href="#Read-by-Byte" class="headerlink" title="Read by Byte"></a>Read by Byte</h4><pre><code class="bash">
 </code></pre>
 ]]></content>
+      
+        <categories>
+            
+            <category> bash </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> bash </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2158,6 +2656,22 @@
 <p>output<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/tmp/awkscript file</span><br><span class="line">test <span class="number">1</span></span><br><span class="line">zest <span class="number">2</span></span><br><span class="line">hero <span class="number">3</span></span><br><span class="line">awk <span class="number">3</span></span><br><span class="line">flash <span class="number">4</span></span><br><span class="line">status <span class="number">4</span></span><br><span class="line">innovation <span class="number">10</span></span><br><span class="line">port <span class="number">12</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html" target="_blank" rel="external">gawk reference</a><br><a href="http://stackoverflow.com/questions/5342782/sort-associative-array-with-awk" target="_blank" rel="external">stackoverflow reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> awk </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> awk </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2172,6 +2686,24 @@
 <h4 id="no-oflag"><a href="#no-oflag" class="headerlink" title="no oflag"></a>no oflag</h4><p>There are a lot of different wait time in this situation<br>Because this situation is the most complex<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">wait <span class="number">5</span>s..</span><br><span class="line"> <span class="number">8</span>,<span class="number">33</span>   <span class="number">1</span>       <span class="number">29</span>    <span class="number">82.996414180</span>     <span class="number">0</span>  D  WS <span class="number">155453784</span> + <span class="number">8</span> [swapper/<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">51</span>    <span class="number">82.975991741</span>  <span class="number">9859</span>  A  WS <span class="number">155453736</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451688</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">52</span>    <span class="number">82.975993076</span>  <span class="number">9859</span>  Q  WS <span class="number">155453736</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">53</span>    <span class="number">82.975997048</span>  <span class="number">9859</span>  G  WS <span class="number">155453736</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">54</span>    <span class="number">82.975998182</span>  <span class="number">9859</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">55</span>    <span class="number">82.975999169</span>  <span class="number">9859</span>  A  WS <span class="number">155453744</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451696</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">56</span>    <span class="number">82.975999367</span>  <span class="number">9859</span>  Q  WS <span class="number">155453744</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">57</span>    <span class="number">82.976000324</span>  <span class="number">9859</span>  M  WS <span class="number">155453744</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">58</span>    <span class="number">82.976000804</span>  <span class="number">9859</span>  A  WS <span class="number">155453752</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451704</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">59</span>    <span class="number">82.976001005</span>  <span class="number">9859</span>  Q  WS <span class="number">155453752</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">60</span>    <span class="number">82.976001239</span>  <span class="number">9859</span>  M  WS <span class="number">155453752</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">61</span>    <span class="number">82.976001674</span>  <span class="number">9859</span>  A  WS <span class="number">155453760</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451712</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">62</span>    <span class="number">82.976001872</span>  <span class="number">9859</span>  Q  WS <span class="number">155453760</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">63</span>    <span class="number">82.976002097</span>  <span class="number">9859</span>  M  WS <span class="number">155453760</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">64</span>    <span class="number">82.976002487</span>  <span class="number">9859</span>  A  WS <span class="number">155453768</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451720</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">65</span>    <span class="number">82.976002688</span>  <span class="number">9859</span>  Q  WS <span class="number">155453768</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">66</span>    <span class="number">82.976002913</span>  <span class="number">9859</span>  M  WS <span class="number">155453768</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">67</span>    <span class="number">82.976003279</span>  <span class="number">9859</span>  A  WS <span class="number">155453776</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451728</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">68</span>    <span class="number">82.976003474</span>  <span class="number">9859</span>  Q  WS <span class="number">155453776</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">69</span>    <span class="number">82.976003696</span>  <span class="number">9859</span>  M  WS <span class="number">155453776</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">70</span>    <span class="number">82.976004914</span>  <span class="number">9859</span>  I  WS <span class="number">155453736</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">71</span>    <span class="number">82.976005793</span>  <span class="number">9859</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">72</span>    <span class="number">82.976006999</span>  <span class="number">9859</span>  D  WS <span class="number">155453736</span> + <span class="number">48</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">73</span>    <span class="number">82.976309138</span>     <span class="number">0</span>  C  WS <span class="number">155453736</span> + <span class="number">48</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">74</span>    <span class="number">82.976328284</span>  <span class="number">9859</span>  A FWFS <span class="number">155453784</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451736</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">75</span>    <span class="number">82.976328662</span>  <span class="number">9859</span>  Q FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">76</span>    <span class="number">82.976329421</span>  <span class="number">9859</span>  G FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">77</span>    <span class="number">82.976330021</span>  <span class="number">9859</span>  I FWFS <span class="number">155453784</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">78</span>    <span class="number">82.996586831</span>     <span class="number">0</span>  C  WS <span class="number">155453784</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">3</span>    <span class="number">83.004773614</span>     <span class="number">0</span>  C  WS <span class="number">155453784</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">8</span>s</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">3</span>       <span class="number">79</span>    <span class="number">92.668012660</span>  <span class="number">9646</span>  A   W <span class="number">272424</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">270376</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">80</span>    <span class="number">92.668014142</span>  <span class="number">9646</span>  Q   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">81</span>    <span class="number">92.668017571</span>  <span class="number">9646</span>  G   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">82</span>    <span class="number">92.668018489</span>  <span class="number">9646</span>  P   N [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">83</span>    <span class="number">92.668021330</span>  <span class="number">9646</span>  I   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">84</span>    <span class="number">92.668022206</span>  <span class="number">9646</span>  U   N [kworker/u8:<span class="number">0</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">85</span>    <span class="number">92.668023601</span>  <span class="number">9646</span>  D   W <span class="number">272424</span> + <span class="number">8</span> [kworker/u8:<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">3</span>       <span class="number">86</span>    <span class="number">92.668207032</span>     <span class="number">0</span>  C   W <span class="number">272424</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br><span class="line">wait <span class="number">5</span>s</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">23</span>    <span class="number">97.967994525</span>  <span class="number">9859</span>  A  WS <span class="number">155453792</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451744</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">24</span>    <span class="number">97.967996184</span>  <span class="number">9859</span>  Q  WS <span class="number">155453792</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">25</span>    <span class="number">97.967999937</span>  <span class="number">9859</span>  G  WS <span class="number">155453792</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">26</span>    <span class="number">97.968001062</span>  <span class="number">9859</span>  P   N [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">27</span>    <span class="number">97.968002124</span>  <span class="number">9859</span>  A  WS <span class="number">155453800</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451752</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">28</span>    <span class="number">97.968002415</span>  <span class="number">9859</span>  Q  WS <span class="number">155453800</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">29</span>    <span class="number">97.968003315</span>  <span class="number">9859</span>  M  WS <span class="number">155453800</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">30</span>    <span class="number">97.968003888</span>  <span class="number">9859</span>  A  WS <span class="number">155453808</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451760</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">31</span>    <span class="number">97.968004092</span>  <span class="number">9859</span>  Q  WS <span class="number">155453808</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">32</span>    <span class="number">97.968004323</span>  <span class="number">9859</span>  M  WS <span class="number">155453808</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">33</span>    <span class="number">97.968004722</span>  <span class="number">9859</span>  A  WS <span class="number">155453816</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451768</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">34</span>    <span class="number">97.968004923</span>  <span class="number">9859</span>  Q  WS <span class="number">155453816</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">35</span>    <span class="number">97.968005148</span>  <span class="number">9859</span>  M  WS <span class="number">155453816</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">36</span>    <span class="number">97.968006597</span>  <span class="number">9859</span>  I  WS <span class="number">155453792</span> + <span class="number">32</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">37</span>    <span class="number">97.968007347</span>  <span class="number">9859</span>  U   N [jbd2/sdc1<span class="bullet">-8</span>] <span class="number">1</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">38</span>    <span class="number">97.968008571</span>  <span class="number">9859</span>  D  WS <span class="number">155453792</span> + <span class="number">32</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">39</span>    <span class="number">97.968260397</span>     <span class="number">0</span>  C  WS <span class="number">155453792</span> + <span class="number">32</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">32</span>   <span class="number">2</span>       <span class="number">40</span>    <span class="number">97.968278433</span>  <span class="number">9859</span>  A FWFS <span class="number">155453824</span> + <span class="number">8</span> &lt;- (<span class="number">8</span>,<span class="number">33</span>) <span class="number">155451776</span></span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">41</span>    <span class="number">97.968278814</span>  <span class="number">9859</span>  Q FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">42</span>    <span class="number">97.968279507</span>  <span class="number">9859</span>  G FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">43</span>    <span class="number">97.968280119</span>  <span class="number">9859</span>  I FWFS <span class="number">155453824</span> + <span class="number">8</span> [jbd2/sdc1<span class="bullet">-8</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">4</span>    <span class="number">97.987635609</span>     <span class="number">0</span>  D  WS <span class="number">155453824</span> + <span class="number">8</span> [swapper/<span class="number">1</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">0</span>        <span class="number">5</span>    <span class="number">97.996024470</span>     <span class="number">0</span>  C  WS <span class="number">155453824</span> [<span class="number">0</span>]</span><br><span class="line">  <span class="number">8</span>,<span class="number">33</span>   <span class="number">2</span>       <span class="number">44</span>    <span class="number">97.987810139</span>     <span class="number">0</span>  C  WS <span class="number">155453824</span> + <span class="number">8</span> [<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://ext4.wiki.kernel.org/index.php/Ext3_Data%3DOrdered_vs_Data%3DWriteback_mode" target="_blank" rel="external">ext4 reference</a><br><a href="http://rick_stone.leanote.com/post/ext4%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%881%EF%BC%89%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B" target="_blank" rel="external">ext4 reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> IO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> io </tag>
+            
+            <tag> trace </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2179,6 +2711,22 @@
       <url>http://yoursite.com/2016/03/29/golang-bitwise-operators/</url>
       <content type="html"><![CDATA[<h3 id="bitwise-operators-example"><a href="#bitwise-operators-example" class="headerlink" title="bitwise operators example"></a>bitwise operators example</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">    <span class="comment">// Use bitwise OR | to get the bits that are in 1 OR 2</span></span><br><span class="line">    <span class="comment">// 1     = 00000001</span></span><br><span class="line">    <span class="comment">// 2     = 00000010</span></span><br><span class="line">    <span class="comment">// 1 | 2 = 00000011 = 3</span></span><br><span class="line">    fmt.Println(<span class="number">1</span> | <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use bitwise OR | to get the bits that are in 1 OR 5</span></span><br><span class="line">    <span class="comment">// 1     = 00000001</span></span><br><span class="line">    <span class="comment">// 5     = 00000101</span></span><br><span class="line">    <span class="comment">// 1 | 5 = 00000101 = 5</span></span><br><span class="line">    fmt.Println(<span class="number">1</span> | <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use bitwise XOR ^ to get the bits that are in 3 OR 6 BUT NOT BOTH</span></span><br><span class="line">    <span class="comment">// 3     = 00000011</span></span><br><span class="line">    <span class="comment">// 6     = 00000110</span></span><br><span class="line">    <span class="comment">// 3 ^ 6 = 00000101 = 5</span></span><br><span class="line">    fmt.Println(<span class="number">3</span> ^ <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use bitwise AND &amp; to get the bits that are in 3 AND 6</span></span><br><span class="line">    <span class="comment">// 3     = 00000011</span></span><br><span class="line">    <span class="comment">// 6     = 00000110</span></span><br><span class="line">    <span class="comment">// 3 &amp; 6 = 00000010 = 2</span></span><br><span class="line">    fmt.Println(<span class="number">3</span> &amp; <span class="number">6</span>)  </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use bit clear AND NOT &amp;^ to get the bits that are in 3 AND NOT 6 (order matters)</span></span><br><span class="line">    <span class="comment">// 26     = 00011010</span></span><br><span class="line">    <span class="comment">// 6      = 00000110</span></span><br><span class="line">    <span class="comment">// turn          11111001</span></span><br><span class="line">    <span class="comment">// 3 &amp;^ 6 = 00011000 = 1</span></span><br><span class="line">    fmt.Println(<span class="number">26</span> &amp;^ <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5  00000101</span></span><br><span class="line"><span class="comment">//-5  11111010+1=1111011 (two's complement of 5, the value was -5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6  00000110</span></span><br><span class="line"><span class="comment">//-6  11111001+1=11111010</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5  00000101</span></span><br><span class="line"><span class="comment">//-6  11111010 (one's complement of 5, the value was -6)</span></span><br><span class="line"></span><br><span class="line">     fmt.Println(^<span class="number">5</span>) </span><br><span class="line"></span><br><span class="line">     a := <span class="number">1</span></span><br><span class="line">     a |= <span class="number">1</span> &lt;&lt; <span class="number">2</span> </span><br><span class="line">     <span class="comment">// 0000100 | 00000001 = 0000101 =5 </span></span><br><span class="line">     </span><br><span class="line">     fmt.Println(a)</span><br><span class="line">     a |= <span class="number">1</span> &lt;&lt; <span class="number">6</span> </span><br><span class="line">     <span class="comment">// 0000101 | 0100000 = 0100101 =69</span></span><br><span class="line">     </span><br><span class="line">     fmt.Println(a)</span><br><span class="line">     fmt.Println(<span class="number">1</span>&lt;&lt;<span class="number">6</span>) </span><br><span class="line">     <span class="comment">//0000001 &lt;&lt;6 = 1000000 = 64</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">24</span></span><br><span class="line"><span class="number">-6</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">69</span></span><br><span class="line"><span class="number">64</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> golang </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> golang </tag>
+            
+            <tag> bitwise </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2188,6 +2736,22 @@
 <h3 id="Recover-file"><a href="#Recover-file" class="headerlink" title="Recover file"></a>Recover file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ ls -ih</span><br><span class="line">70179 -r-xr-xr-x 1 solexa solexa    0 Jan 10  2013 report.htm</span><br><span class="line"></span><br><span class="line">$ xfs_db -r /dev/sdb -c <span class="string">"inode 70179"</span> -c <span class="string">"bmap"</span></span><br><span class="line">data offset 0 startblock 2459337662 (9/43418558) count 1 flag 0a</span><br><span class="line"></span><br><span class="line">$ agblocks=$(xfs_db -r /dev/sdb -c sb -c p | grep ^agblocks | sed <span class="string">'s/.* = //'</span>)</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$agblocks</span></span><br><span class="line">268435455</span><br><span class="line">$ agcount=9</span><br><span class="line">$ b=43418558</span><br><span class="line">$ c=1</span><br><span class="line">$ <span class="built_in">echo</span> $((<span class="variable">$agblocks</span>*<span class="variable">$agcount</span>+<span class="variable">$b</span>)) </span><br><span class="line">2459337653</span><br><span class="line">$ <span class="built_in">echo</span> $((2459337662-9))</span><br><span class="line">2459337653</span><br><span class="line"></span><br><span class="line">$ dd <span class="keyword">if</span>=/dev/sdb bs=4096 skip=$((<span class="variable">$agblocks</span>*<span class="variable">$agcount</span>+<span class="variable">$b</span>)) count=<span class="variable">$c</span> of=/tmp/report.htm</span><br><span class="line">1+0 records <span class="keyword">in</span></span><br><span class="line">1+0 records out</span><br><span class="line">4096 bytes (4.1 kB) copied, 4.6345e-05 s, 88.4 MB/s</span><br><span class="line"></span><br><span class="line">$ cat /tmp/report.htm   <span class="comment"># file come back</span></span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=gbk"</span>/&gt;</span><br><span class="line">&lt;style&gt;</span><br></pre></td></tr></table></figure>
 <p><a href="https://bugzilla.redhat.com/show_bug.cgi?id=845233" target="_blank" rel="external">redhat reference</a><br><a href="http://oss.sgi.com/archives/xfs/2012-02/msg00561.html" target="_blank" rel="external">sgi reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> xfs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2202,6 +2766,24 @@
 <h3 id="Resolve-dependency-resolution-errors"><a href="#Resolve-dependency-resolution-errors" class="headerlink" title="Resolve dependency resolution errors"></a>Resolve dependency resolution errors</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum update</span></span><br><span class="line">** Found 5 pre-existing rpmdb problem(s), <span class="string">'yum check'</span> output follows:</span><br><span class="line">MegaCli-8.04.10-1.noarch is a duplicate with MegaCli-8.04.07-1.noarch</span><br><span class="line">kernel-2.6.32-279.5.1.el6_lustre.gb16fe80.x86_64 has missing requires of kernel-firmware &gt;= (<span class="string">'0'</span>, <span class="string">'2.6.32'</span>, <span class="string">'279.5.1.el6_lustre.gb16fe80'</span>)</span><br><span class="line">kernel-firmware-2.6.32-279.5.1.el6.noarch is a duplicate with kernel-firmware-2.6.32-279.el6.noarch</span><br><span class="line">kernel-headers-2.6.32-279.5.1.el6.x86_64 is a duplicate with kernel-headers-2.6.32-279.el6.x86_64</span><br><span class="line">libcom_err-1.42.3.wc3-7.el6.x86_64 is a duplicate with libcom_err-1.41.12-12.el6.i686</span><br><span class="line">......</span><br><span class="line">You could try using --skip-broken to work around the problem</span><br><span class="line">You could try running: rpm -Va --nofiles --nodigest</span><br></pre></td></tr></table></figure>
 <h4 id="Uninstall-rpm-packages-from-rpmdb"><a href="#Uninstall-rpm-packages-from-rpmdb" class="headerlink" title="Uninstall rpm packages from rpmdb"></a>Uninstall rpm packages from rpmdb</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ rpm <span class="_">-e</span> --justdb --nodeps <span class="string">"bad rpm packages"</span></span><br><span class="line">$ rpm -ivh --force <span class="string">"replace normal rpm packages"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># rebuild rpmdb</span></span><br><span class="line">$ <span class="built_in">cd</span> /var/lib/rpm</span><br><span class="line">$ rm  <span class="_">-f</span> __db*</span><br><span class="line">$ rpm --rebuilddb </span><br><span class="line"></span><br><span class="line">$ yum clean all</span><br><span class="line">$ yum -y update</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> tips </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> cli </tag>
+            
+            <tag> yum </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2226,6 +2808,28 @@
 <h4 id="2-x-CentOS6-corosync-conf"><a href="#2-x-CentOS6-corosync-conf" class="headerlink" title="2 x CentOS6 corosync.conf"></a>2 x CentOS6 corosync.conf</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"># Please read the corosync.conf.5 manual page</span><br><span class="line">compatibility: xxxx</span><br><span class="line"></span><br><span class="line">totem &#123;</span><br><span class="line">	version: 2</span><br><span class="line">	secauth: off</span><br><span class="line">	interface &#123;</span><br><span class="line">		member &#123;</span><br><span class="line">			memberaddr: nic0.serverA.xx.xx</span><br><span class="line">		&#125;</span><br><span class="line">		member &#123;</span><br><span class="line">			memberaddr: nic0.serverB.xx.xx</span><br><span class="line">		&#125;</span><br><span class="line">		ringnumber: 0</span><br><span class="line">		bindnetaddr: nic0.xx.xx.xx</span><br><span class="line">		mcastport: 5406</span><br><span class="line">		ttl: 1</span><br><span class="line">	&#125;</span><br><span class="line">	interface &#123;</span><br><span class="line">                member &#123;</span><br><span class="line">                        memberaddr: nic1.serverA.xx.xx</span><br><span class="line">                &#125;</span><br><span class="line">                member &#123;</span><br><span class="line">                        memberaddr: nic1.serverB.xx.xx</span><br><span class="line">                &#125;</span><br><span class="line">                ringnumber: 1</span><br><span class="line">                bindnetaddr: nic1.xx.xx.xx</span><br><span class="line">                mcastport: 5406</span><br><span class="line">                ttl: 1</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">	transport: udpu</span><br><span class="line">	token: 17000</span><br><span class="line">	rrp_mode: passive</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">	fileline: off</span><br><span class="line">	to_logfile: yes</span><br><span class="line">	to_syslog: yes</span><br><span class="line">	debug: on</span><br><span class="line">	logfile: /var/log/cluster/corosync.log</span><br><span class="line">	debug: off</span><br><span class="line">	timestamp: on</span><br><span class="line">	logger_subsys &#123;</span><br><span class="line">		subsys: AMF</span><br><span class="line">		debug: off</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://qiita.com/tukiyo3/items/3f8b99be73798df857fd" target="_blank" rel="external">config refence</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ha </tag>
+            
+            <tag> corosync </tag>
+            
+            <tag> pacemaker </tag>
+            
+            <tag> pcs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2235,6 +2839,24 @@
 <p>Because matplotlib dependencies numpy version, if you installed higher numpy version, There are some errors in the installation process.</p>
 <p><a href="http://stackoverflow.com/questions/22076553/matplotlib-install-issues-pip-centos-freetype-missing-when-it-is-installed" target="_blank" rel="external">reference</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Software install </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> software </tag>
+            
+            <tag> dependencies </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2258,6 +2880,26 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; SHOW VARIABLES LIKE <span class="string">"innodb_page_size"</span>;</span><br><span class="line">+------------------+-------+</span><br><span class="line">| Variable_name    | Value <span class="string">|</span><br><span class="line">+------------------+-------+</span><br><span class="line">| innodb_page_size | 16384 |</span><br><span class="line">+------------------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://wiki.archlinux.org/index.php/ZFS#Database" target="_blank" rel="external">zfs db</a><br><a href="https://www-304.ibm.com/partnerworld/wps/servlet/download/DownloadServlet?id=YxooL$U5GZkiPCA$cnt&amp;attachmentName=primer_to_run_sysbench_and_mariadb_benchmarks_on_lop.pdf&amp;token=MTQ1NjgyMjIzMTcyNA==&amp;locale=en_ALL_ZZ" target="_blank" rel="external">reference</a><br><a href="https://mariadb.org/using-lua-enabled-sysbench/" target="_blank" rel="external">reference2</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> iops </tag>
+            
+            <tag> mariadb </tag>
+            
+            <tag> sysbench </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2266,6 +2908,24 @@
       <content type="html"><![CDATA[<h4 id="Not-show-media-title"><a href="#Not-show-media-title" class="headerlink" title="Not show media title"></a>Not show media title</h4><p><a href="https://forum.videolan.org/viewtopic.php?t=50202" target="_blank" rel="external">Same question</a><br>Tools–&gt;Preferences–&gt;Subtitles / OSD–&gt; Show media title on media start (disable it)<br>Tools–&gt;Preferences–&gt;Subtitles / OSD–&gt; Enable on screen display (disable it)</p>
 <h4 id="Not-resize-interface"><a href="#Not-resize-interface" class="headerlink" title="Not resize interface"></a>Not resize interface</h4><p><img src="/img/vlc-set1.png" alt=""></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> vlc </tag>
+            
+            <tag> desktop </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2291,6 +2951,24 @@
 <h4 id="lhsmtool-cmd-log-file"><a href="#lhsmtool-cmd-log-file" class="headerlink" title="lhsmtool_cmd log file"></a>lhsmtool_cmd log file</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ tail <span class="_">-f</span> /var/<span class="built_in">log</span>/lhsmtool_cmd.log</span><br><span class="line">1482217383.283695 lhsmtool_cmd[6020]: waiting <span class="keyword">for</span> message from kernel</span><br><span class="line">1482227311.130852 lhsmtool_cmd[6020]: copytool fs=lustresz archive<span class="comment">#=1 item_count=1</span></span><br><span class="line">1482227311.130919 lhsmtool_cmd[6020]: waiting <span class="keyword">for</span> message from kernel</span><br><span class="line">1482227311.133001 lhsmtool_cmd[6025]: Running ARCHIVE <span class="built_in">command</span>: <span class="string">'/sbin/aliclient -action=push -fd=72 -fid=[0x200017990:0x29:0x0] -lustre_root=/opt/lustresz -objdomain=10.50.192.73 -objkeyid=zNWouvp5yGJWV9BB -objkey=9AKDku9VYhlovI1MO6OVCZWcIzMdnp -objbucket=bucket-dxjfbq-9'</span></span><br><span class="line">--syscmd output: /opt/lustresz/alioss/<span class="built_in">test</span>1.fasta</span><br><span class="line"></span><br><span class="line">--begin upload</span><br><span class="line">--The file size 70848886 Bytes</span><br><span class="line">--uploadfile fid fd filepath: [0x200017990:0x29:0x0] 72 /opt/lustresz/alioss/<span class="built_in">test</span>1.fasta</span><br><span class="line">1482227323.543305 lhsmtool_cmd[6025]: Action completed, notifying coordinator cookie=0x5858d7a9, FID=[0x200017990:0x29:0x0], hp_flags=0 err=0</span><br><span class="line">1482227323.548908 lhsmtool_cmd[6025]: llapi_hsm_action_end on <span class="string">'/opt/lustresz/.lustre/fid/0x200017990:0x29:0x0'</span> ok (rc=0)</span><br><span class="line">1482227667.051083 lhsmtool_cmd[6061]: Running RESTORE <span class="built_in">command</span>: <span class="string">'/sbin/aliclient -action=pull -fd=74 -fid=[0x200017990:0x29:0x0] -lustre_root=/opt/lustresz -objdomain=10.50.192.73 -objkeyid=zNWouvp5yGJWV9BB -objkey=9AKDku9VYhlovI1MO6OVCZWcIzMdnp -objbucket=bucket-dxjfbq-9'</span></span><br><span class="line">--syscmd output: /opt/lustresz/alioss/<span class="built_in">test</span>1.fasta</span><br><span class="line">--begin download</span><br><span class="line">1482227668.728724 lhsmtool_cmd[6061]: Action completed, notifying coordinator cookie=0x5858d7aa, FID=[0x200017990:0x29:0x0], hp_flags=0 err=0</span><br><span class="line">1482227668.776502 lhsmtool_cmd[6061]: llapi_hsm_action_end on <span class="string">'/opt/lustresz/.lustre/fid/0x200017990:0x29:0x0'</span> ok (rc=0)</span><br></pre></td></tr></table></figure>
 <p>reference:<br><a href="https://github.com/cea-hpc/robinhood/wiki/Documentation" target="_blank" rel="external">https://github.com/cea-hpc/robinhood/wiki/Documentation</a><br><a href="http://cdn.opensfs.org/wp-content/uploads/2013/04/lug13-robinhood.pdf" target="_blank" rel="external">http://cdn.opensfs.org/wp-content/uploads/2013/04/lug13-robinhood.pdf</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> zfs </tag>
+            
+            <tag> robinhood </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2300,6 +2978,22 @@
 <h3 id="Test-in-ubuntu"><a href="#Test-in-ubuntu" class="headerlink" title="Test in ubuntu"></a>Test in ubuntu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdd2 /opt</span><br><span class="line">mount --bind /dev/ /opt/dev</span><br><span class="line">mount --bind /sys/ /opt/sys</span><br><span class="line">mount --bind /proc /opt/proc</span><br><span class="line">chroot /opt</span><br><span class="line">grub-install /dev/sdd</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <h3 id="Test-in-CentOS-7-set-boot-menu"><a href="#Test-in-CentOS-7-set-boot-menu" class="headerlink" title="Test in CentOS 7, set boot menu"></a>Test in CentOS 7, set boot menu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat   /boot/grub2/grub.cfg | grep Windows</span><br><span class="line">menuentry <span class="string">"Windows 7 (loader) (on /dev/sda1)"</span></span><br><span class="line">grub2-set-default  <span class="string">"Windows 7 (loader) (on /dev/sda1)"</span></span><br><span class="line">grub2-editenv list</span><br><span class="line">saved_entry=Windows 7 (loader) (on /dev/sda1)</span><br><span class="line">or </span><br><span class="line">grub2-set-default <span class="string">"windows"</span></span><br><span class="line"></span><br><span class="line">grub2-mkconfig -o /boot/grub2/grub.conf</span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> grub </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2309,6 +3003,24 @@
 <h3 id="Modify-registry"><a href="#Modify-registry" class="headerlink" title="Modify registry"></a>Modify registry</h3><p>\HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SecurityLayer<br>from DWORD Hex ‘2’ to a value of ‘1’</p>
 <p>reference:<br><a href="http://ubuntuforums.org/showthread.php?t=2287213" target="_blank" rel="external">http://ubuntuforums.org/showthread.php?t=2287213</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> rdesktop </tag>
+            
+            <tag> windows </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2322,6 +3034,24 @@
 <h3 id="Clean-luks-partition"><a href="#Clean-luks-partition" class="headerlink" title="Clean luks partition"></a><em>Clean luks partition</em></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -c 3145728 /dev/zero &gt; /dev/vdb;sync</span><br></pre></td></tr></table></figure>
 <p>The default LUKS header (with only one key-slot enabled) takes 1052672 bytes, what is slightly more than 1 MiB. Having 2 key-slots enabled this would extend the header almost twice (key-slots <em> stripes </em> keysize + offset bytes). Therefore overwriting the first 3 MiB would do the job for us </p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> centos </tag>
+            
+            <tag> encrypt </tag>
+            
+            <tag> block device </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2331,6 +3061,24 @@
 <h3 id="Replace-broken-HDD-and-insert-a-new-HDD-to-JBOD-enclosure"><a href="#Replace-broken-HDD-and-insert-a-new-HDD-to-JBOD-enclosure" class="headerlink" title="Replace broken HDD, and insert a new HDD to JBOD enclosure"></a>Replace broken HDD, and insert a new HDD to JBOD enclosure</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">$ zpool status</span><br><span class="line">  pool: tank</span><br><span class="line"> state: DEGRADED</span><br><span class="line">status: One or more devices is currently being resilvered.  The pool will</span><br><span class="line">        <span class="built_in">continue</span> to <span class="keyword">function</span>, possibly <span class="keyword">in</span> a degraded state.</span><br><span class="line">action: Wait <span class="keyword">for</span> the resilver to complete.</span><br><span class="line">  scan: resilver <span class="keyword">in</span> progress since Wed Aug 19 01:45:26 2015</span><br><span class="line">    90.5G scanned out of 66.9T at 232M/s, 83h45m to go</span><br><span class="line">    4.09G resilvered, 0.13% <span class="keyword">done</span></span><br><span class="line">config:</span><br><span class="line"></span><br><span class="line">        NAME                        STATE     READ WRITE CKSUM</span><br><span class="line">        tank                        DEGRADED     0     0     0</span><br><span class="line">          raidz2-0                  DEGRADED     0     0     0</span><br><span class="line">            scsi-35000c500212bff8b  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bed8f  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c24d7  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c1bdb  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212b9a0b  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c50034d625f7  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500575f9a87  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212baaeb  ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bdcd3  UNAVAIL     33     0     0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ ls /dev/disk/by-id/scsi-35000c500212bdcd3</span><br><span class="line">ls: cannot access /dev/disk/by-id/scsi-35000c500212bdcd3: No such file or directory</span><br><span class="line"></span><br><span class="line">$ zpool replace tank scsi-35000c500212bdcd3</span><br><span class="line">cannot open <span class="string">'scsi-35000c500212bdcd3'</span>: no such device <span class="keyword">in</span> /dev</span><br><span class="line">must be a full path or shorthand device name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ dmesg</span><br><span class="line">.....</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Spinning up disk....................ready</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] 3907029168 512-byte logical blocks: (2.00 TB/1.81 TiB)</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Write Protect is off</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Write cache: enabled, <span class="built_in">read</span> cache: enabled, supports DPO and FUA</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sdk: unknown partition table</span><br><span class="line">Aug 19 01:32:40 xxxx-host kernel: sd 1:0:53:0: [sdk] Attached SCSI disk</span><br><span class="line"></span><br><span class="line"><span class="comment">#new hdd is sdk</span></span><br><span class="line">$ zpool add tank spare sdk</span><br><span class="line">        spares</span><br><span class="line">          scsi-35000c50021387d97    AVAIL</span><br><span class="line">          sdak                      AVAIL</span><br><span class="line">          sdaw                      AVAIL</span><br><span class="line">          sdk                       AVAIL</span><br><span class="line"></span><br><span class="line">$ zpool replace tank scsi-35000c500212bdcd3 sdk</span><br><span class="line">  scan: resilver <span class="keyword">in</span> progress since Wed Aug 19 01:57:53 2015</span><br><span class="line">    141M scanned out of 66.9T at 7.83M/s, (scan is slow, no estimated time)</span><br><span class="line">    8.72M resilvered, 0.00% <span class="keyword">done</span></span><br><span class="line">config:</span><br><span class="line"></span><br><span class="line">        NAME                          STATE     READ WRITE CKSUM</span><br><span class="line">        tank                          DEGRADED     0     0     0</span><br><span class="line">          raidz2-0                    DEGRADED     0     0     0</span><br><span class="line">            scsi-35000c500212bff8b    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212bed8f    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c24d7    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212c1bdb    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212b9a0b    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c50034d625f7    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500575f9a87    ONLINE       0     0     0</span><br><span class="line">            scsi-35000c500212baaeb    ONLINE       0     0     0</span><br><span class="line">            spare-8                   UNAVAIL      0     0     0</span><br><span class="line">              scsi-35000c500212bdcd3  UNAVAIL     33     0     0</span><br><span class="line">              sdk                     ONLINE       0     0     0  (resilvering)</span><br></pre></td></tr></table></figure>
 <p>Well done, it’s worked.</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> zfs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2377,6 +3125,24 @@
 </ul>
 <p><a href="http://zfsonlinux.org/docs.html" target="_blank" rel="external">http://zfsonlinux.org/docs.html</a><br><a href="http://ispire.me/if-zfs-is-eating-your-memory/" target="_blank" rel="external">http://ispire.me/if-zfs-is-eating-your-memory/</a><br><a href="https://bbs.archlinux.org/viewtopic.php?id=171559" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=171559</a><br><a href="http://broken.net/uncategorized/zfs-performance-tuning-for-scrubs-and-resilvers/" target="_blank" rel="external">http://broken.net/uncategorized/zfs-performance-tuning-for-scrubs-and-resilvers/</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> zfs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2391,6 +3157,28 @@
 <p>Try again<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> http_proxy=<span class="string">"http://127.0.0.1:1081"</span></span><br><span class="line">$ ~/.dropbox-dist/dropboxd</span><br><span class="line">or </span><br><span class="line">$ dropbox start -i</span><br></pre></td></tr></table></figure></p>
 <p>Nice, It’s worked<br><img src="/img/dropbox_online.png" alt=""> </p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> pinguyos </tag>
+            
+            <tag> dropbox </tag>
+            
+            <tag> proxy </tag>
+            
+            <tag> socks5 </tag>
+            
+            <tag> privoxy </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2413,6 +3201,26 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: 5000</span><br><span class="line">name: <span class="string">'tank'</span></span><br><span class="line">state: 2</span><br><span class="line">txg: 1256237</span><br><span class="line">pool_guid: 10281825564445304044</span><br><span class="line">errata: 0</span><br><span class="line">hostname: <span class="string">'nas-56-11.local'</span></span><br><span class="line">top_guid: 8832263634429449792</span><br><span class="line">guid: 8832263634429449792</span><br><span class="line">vdev_children: 1</span><br><span class="line">vdev_tree:</span><br><span class="line">    <span class="built_in">type</span>: <span class="string">'disk'</span></span><br><span class="line">    id: 0</span><br><span class="line">    guid: 8832263634429449792</span><br><span class="line">    path: <span class="string">'/dev/sdb1'</span></span><br><span class="line">    whole_disk: 1</span><br><span class="line">    metaslab_array: 33</span><br><span class="line">    metaslab_<span class="built_in">shift</span>: 37</span><br><span class="line">    ashift: 12</span><br><span class="line">    asize: 17990975750144</span><br><span class="line">    is_<span class="built_in">log</span>: 0</span><br><span class="line">    create_txg: 4</span><br></pre></td></tr></table></figure>
 <p>When you dd complete. Use “zpool -D import tank” import the loss pool.<br>The disk is a hardraid , There are 17TB important data in it. It really scared the heck out of me.<br>Really Thank Javen Wu very much, Because your help these data could be recovery.</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> zfs </tag>
+            
+            <tag> data recovery </tag>
+            
+            <tag> partition </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2466,6 +3274,36 @@
 <p>There is one Mellanox ConnectX-3 adapter could not work well in my test environment.<br>I checked config again and again until I upgrded the driver, it could work well.<br>Third time to waste my time in Mellanox ethernet adapter, until now I don’t think it’s a good choice.</p>
 <p>Reference<br><a href="http://clusterlabs.org/wiki/Guest_Fencing" target="_blank" rel="external">http://clusterlabs.org/wiki/Guest_Fencing</a><br><a href="https://access.redhat.com/solutions/293183" target="_blank" rel="external">https://access.redhat.com/solutions/293183</a><br><a href="https://access.redhat.com/solutions/917833" target="_blank" rel="external">https://access.redhat.com/solutions/917833</a><br><a href="https://alteeve.ca/w/Fencing_KVM_Virtual_Servers#Configuring_fence_xvm" target="_blank" rel="external">https://alteeve.ca/w/Fencing_KVM_Virtual_Servers#Configuring_fence_xvm</a><br><a href="http://people.redhat.com/ccaulfie/docs/Votequorum_Intro.pdf" target="_blank" rel="external">http://people.redhat.com/ccaulfie/docs/Votequorum_Intro.pdf</a><br><a href="https://www.ibm.com/developerworks/community/blogs/mhhaque/entry/configure_two_node_highly_available_cluster_using_kvm_fencing_on_rhel7?lang=en" target="_blank" rel="external">https://www.ibm.com/developerworks/community/blogs/mhhaque/entry/configure_two_node_highly_available_cluster_using_kvm_fencing_on_rhel7?lang=en</a><br><a href="https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_config_basics_global.html?view=print" target="_blank" rel="external">https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_config_basics_global.html?view=print</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> ha </tag>
+            
+            <tag> cluster </tag>
+            
+            <tag> 3 nodes </tag>
+            
+            <tag> corosync </tag>
+            
+            <tag> pacemaker </tag>
+            
+            <tag> kvm </tag>
+            
+            <tag> virtualization </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2478,6 +3316,26 @@
 <h3 id="Check-HDD"><a href="#Check-HDD" class="headerlink" title="Check HDD"></a>Check HDD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">smartctl -t long /dev/sdx</span><br><span class="line">smartctl -t short /dev/sdx</span><br></pre></td></tr></table></figure>
 <h3 id="Delete-Rescan-block-scsi-device"><a href="#Delete-Rescan-block-scsi-device" class="headerlink" title="Delete/Rescan block scsi device"></a>Delete/Rescan block scsi device</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo 1 &gt; /sys/block/sdXX/device/delete</span></span><br><span class="line"><span class="comment"># echo "- - -" &gt; /sys/class/scsi_host/hostXX/scan</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> smartctl </tag>
+            
+            <tag> hdparm </tag>
+            
+            <tag> sdparm </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2489,6 +3347,22 @@
 <p>there are 3 differents sector size in seagate product</p>
 <p><img src="/img/sector-size.png" alt=""></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hdd </tag>
+            
+            <tag> hard disk </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -2560,6 +3434,32 @@
 <p>Reference</p>
 <p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html-single/DM_Multipath/" target="_blank" rel="external">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html-single/DM_Multipath/</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Configuring_the_Red_Hat_High_Availability_Add-On_with_Pacemaker/index.html" target="_blank" rel="external">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Configuring_the_Red_Hat_High_Availability_Add-On_with_Pacemaker/index.html</a><br><a href="https://github.com/zfsonlinux/zfs/labels/Bug" target="_blank" rel="external">https://github.com/zfsonlinux/zfs/labels/Bug</a><br><a href="https://github.com/skiselkov/stmf-ha" target="_blank" rel="external">https://github.com/skiselkov/stmf-ha</a><br><a href="https://github.com/zfsonlinux/pkg-zfs/wiki/Ubuntu-ZFS-mountall-FAQ-and-troubleshooting" target="_blank" rel="external">https://github.com/zfsonlinux/pkg-zfs/wiki/Ubuntu-ZFS-mountall-FAQ-and-troubleshooting</a><br><a href="http://linux-ha.996297.n3.nabble.com/custom-script-status-td14629.html" target="_blank" rel="external">http://linux-ha.996297.n3.nabble.com/custom-script-status-td14629.html</a><br><a href="https://www.youtube.com/watch?v=2XQ3Kvtd-sw" target="_blank" rel="external">https://www.youtube.com/watch?v=2XQ3Kvtd-sw</a><br><a href="http://open-zfs.org/wiki/Main_Page" target="_blank" rel="external">http://open-zfs.org/wiki/Main_Page</a><br><a href="http://irvingpop.github.io/blog/2015/03/01/redhat7-clustering-experiments/" target="_blank" rel="external">http://irvingpop.github.io/blog/2015/03/01/redhat7-clustering-experiments/</a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ha </tag>
+            
+            <tag> cluster </tag>
+            
+            <tag> corosync </tag>
+            
+            <tag> pacemaker </tag>
+            
+            <tag> lustre </tag>
+            
+            <tag> zfs </tag>
+            
+        </tags>
+        
     </entry>
     
   
