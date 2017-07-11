@@ -67,7 +67,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Calculate upload/download speed by ping1$ ping -f -c 10000 -s 1472 10.100.100.100
 At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 msso in average it takes 0.219">
-<meta property="og:updated_time" content="2016-12-05T07:39:53.000Z">
+<meta property="og:updated_time" content="2017-07-10T03:24:29.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ping test in serial link">
 <meta name="twitter:description" content="Calculate upload/download speed by ping1$ ping -f -c 10000 -s 1472 10.100.100.100
@@ -346,6 +346,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
 <p>At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms<br>so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s<br>If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.</p>
 <p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
 <p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
+<h3 id="MTU-problem-check"><a href="#MTU-problem-check" class="headerlink" title="MTU problem check"></a>MTU problem check</h3><p>Level 3 network, between 2 nodes pass through gateway<br>Tcpdump show some packets loss, nmap show 10.xx.xx.clent port is “open”.<br>There are some packages return, some will not. Does it MTU problem ? ping could check it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  2.239 ms  1.901 ms  2.080 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.606 ms  0.584 ms  0.592 ms</span><br><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  1.881 ms  2.085 ms  2.245 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.563 ms * *</span><br><span class="line"></span><br><span class="line">$ ping <span class="_">-f</span> -c 20000 -M <span class="keyword">do</span> <span class="_">-s</span> 8972 10.xx.xx.client</span><br><span class="line">PING 10.xx.xx.client (10.xx.xx.client) 8972(9000) bytes of data.</span><br><span class="line">...................................................................^C</span><br><span class="line">--- 10.xx.xx.client ping statistics ---</span><br><span class="line">67 packets transmitted, 0 received, 100% packet loss, time 1076ms</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -456,7 +457,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -473,7 +474,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -537,7 +538,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Calculate-upload-download-speed-by-ping"><span class="nav-number">1.</span> <span class="nav-text">Calculate upload/download speed by ping</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Calculate-upload-download-speed-by-ping"><span class="nav-number">1.</span> <span class="nav-text">Calculate upload/download speed by ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MTU-problem-check"><span class="nav-number">2.</span> <span class="nav-text">MTU problem check</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

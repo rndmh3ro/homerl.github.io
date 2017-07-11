@@ -2,79 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
+    
+    <lastmod>2017-07-10T03:24:29.952Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/08/Memory-linux/</loc>
+    
+    <lastmod>2017-07-08T04:08:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/24/Performance-Tuning-in-centos7/</loc>
     
-    <lastmod>2017-07-08T01:30:28.901Z</lastmod>
+    <lastmod>2017-07-08T01:34:25.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2017-07-05T09:01:53.000Z</lastmod>
+    <lastmod>2017-07-05T09:01:53.017Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
     
-    <lastmod>2017-05-23T05:05:47.000Z</lastmod>
+    <lastmod>2017-05-23T05:05:49.757Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
-    <lastmod>2017-05-10T05:30:59.000Z</lastmod>
+    <lastmod>2017-05-10T05:30:59.830Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/</loc>
     
-    <lastmod>2017-04-14T08:19:32.000Z</lastmod>
+    <lastmod>2017-04-14T08:21:04.700Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
     
-    <lastmod>2017-03-21T08:33:50.000Z</lastmod>
+    <lastmod>2017-03-21T08:33:50.882Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/</loc>
     
-    <lastmod>2017-03-14T12:11:59.518Z</lastmod>
+    <lastmod>2017-03-14T12:11:59.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
-    <lastmod>2017-03-14T01:48:44.000Z</lastmod>
+    <lastmod>2017-03-14T01:48:44.206Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/03/09/kvm-tips/</loc>
     
-    <lastmod>2017-03-09T13:52:57.302Z</lastmod>
+    <lastmod>2017-03-09T13:52:57.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/03/Learn-openzfs/</loc>
     
-    <lastmod>2017-03-08T13:06:08.893Z</lastmod>
+    <lastmod>2017-03-08T13:06:08.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
     
-    <lastmod>2017-03-08T12:48:20.611Z</lastmod>
+    <lastmod>2017-03-08T12:48:20.000Z</lastmod>
     
   </url>
   
@@ -138,13 +152,6 @@
     <loc>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</loc>
     
     <lastmod>2016-12-23T13:57:03.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
-    
-    <lastmod>2016-12-05T07:39:53.000Z</lastmod>
     
   </url>
   

@@ -4,6 +4,51 @@
   
     
     <entry>
+      <title><![CDATA[Memory_linux]]></title>
+      <url>http://yoursite.com/2017/07/08/Memory-linux/</url>
+      <content type="html"><![CDATA[<h3 id="Process-memory"><a href="#Process-memory" class="headerlink" title="Process memory"></a>Process memory</h3><pre><code>/proc/[pid]/statm
+       Provides information about memory usage, measured in pages.
+       The columns are:
+
+           size       (1) total program size
+                      (same as VmSize in /proc/[pid]/status)
+           resident   (2) resident set size
+                      (same as VmRSS in /proc/[pid]/status)
+           shared     (3) number of resident shared pages (i.e., backed by a file)
+                      (same as RssFile+RssShmem in /proc/[pid]/status)
+           text       (4) text (code)
+           lib        (5) library (unused since Linux 2.6; always 0)
+           data       (6) data + stack
+           dt         (7) dirty pages (unused since Linux 2.6; always 0)
+</code></pre><p>cat /proc/3760/statm<br>400865 96456 37653 27355 0 157019 0</p>
+<p>Second field means res (resident)<br>pmap $(pgrep bash)</p>
+<p>There are some of share library in each resident</p>
+<p>If you want get share library memory consumption.<br>/proc/[pid]/smaps (since Linux 2.6.14)<br>              This file shows memory consumption for each of the process’s<br>              mappings.  (The pmap(1) command displays similar information,<br>              in a form that may be easier for parsing.)</p>
+<h4 id="Slab"><a href="#Slab" class="headerlink" title="Slab"></a>Slab</h4><p>In-kernel data structures cache.</p>
+<p>Cache pool for often userd dupulication objects<br>you could found these objects from slabtop</p>
+<p>Get all slabsize<br>awk ‘BEGIN{sum=0;}{sum=sum+$3*$4;}END{print sum/1024/1024}’ /proc/slabinfo MB</p>
+<h4 id="Page-table"><a href="#Page-table" class="headerlink" title="Page table"></a>Page table</h4><p>awk ‘$0~/PageTables/ {print $2}’ /proc/meminfo KB</p>
+<h4 id="Struct-page"><a href="#Struct-page" class="headerlink" title="Struct page"></a>Struct page</h4><p>page frame minimum unit. every page frame has a struct page to point<br><a href="https://stackoverflow.com/questions/34836806/how-to-get-physical-address-from-struct-page-in-linux-kernel" target="_blank" rel="external">struct page could mapping page frame to physical address</a><br>all page frame in the LUR list.<br>There are 2.3%(96/4096) usage in linux 2.6.32</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> mem </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Performance Tuning in centos7]]></title>
       <url>http://yoursite.com/2017/05/24/Performance-Tuning-in-centos7/</url>
       <content type="html"><![CDATA[<h5 id="High-availability-cluster"><a href="#High-availability-cluster" class="headerlink" title="High availability cluster"></a>High availability cluster</h5><p>2 x 2U Sever SAS3 connect 4 x 90 bay JBOD<br><img src="/img/supermicro-arch17.png" alt=""></p>
@@ -21,6 +66,7 @@
 <p><a href="https://github.com/homerl/pin_affinity/blob/master/pin_affinity.sh" target="_blank" rel="external">my scripts</a><br>./pin_cpu.sh SAS3008 Mellanox Non-Volatile</p>
 <h5 id="Trigger-raw-spin-lock"><a href="#Trigger-raw-spin-lock" class="headerlink" title="Trigger raw_spin_lock"></a>Trigger raw_spin_lock</h5><p>Reconnect SAS cable, no multipath, 10GB/s zfs throughput<br><img src="/img/supermicro-arch18.png" alt=""></p>
 <p>Glusterfs/Lustre could get performance 5~6GB/s in 2x25GbE</p>
+<h5 id="ZFS-for-all-SAS-SSD-JBOD"><a href="#ZFS-for-all-SAS-SSD-JBOD" class="headerlink" title="ZFS for all SAS SSD JBOD"></a>ZFS for all SAS SSD JBOD</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> logbias=troughput tank</span><br></pre></td></tr></table></figure>
 <h5 id="The-others"><a href="#The-others" class="headerlink" title="The others"></a>The others</h5><p>running your app by numactl in single numa node<br>libvma to bypass kernel</p>
 ]]></content>
       
@@ -100,9 +146,9 @@
         
         <tags>
             
-            <tag> hdd </tag>
-            
             <tag> ssd </tag>
+            
+            <tag> hdd </tag>
             
             <tag> sas </tag>
             
@@ -1470,6 +1516,7 @@
 <p>At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms<br>so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s<br>If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.</p>
 <p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
 <p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
+<h3 id="MTU-problem-check"><a href="#MTU-problem-check" class="headerlink" title="MTU problem check"></a>MTU problem check</h3><p>Level 3 network, between 2 nodes pass through gateway<br>Tcpdump show some packets loss, nmap show 10.xx.xx.clent port is “open”.<br>There are some packages return, some will not. Does it MTU problem ? ping could check it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  2.239 ms  1.901 ms  2.080 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.606 ms  0.584 ms  0.592 ms</span><br><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  1.881 ms  2.085 ms  2.245 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.563 ms * *</span><br><span class="line"></span><br><span class="line">$ ping <span class="_">-f</span> -c 20000 -M <span class="keyword">do</span> <span class="_">-s</span> 8972 10.xx.xx.client</span><br><span class="line">PING 10.xx.xx.client (10.xx.xx.client) 8972(9000) bytes of data.</span><br><span class="line">...................................................................^C</span><br><span class="line">--- 10.xx.xx.client ping statistics ---</span><br><span class="line">67 packets transmitted, 0 received, 100% packet loss, time 1076ms</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1563,9 +1610,9 @@
         
         <tags>
             
-            <tag> hdd </tag>
-            
             <tag> ssd </tag>
+            
+            <tag> hdd </tag>
             
             <tag> sas </tag>
             
@@ -1603,11 +1650,11 @@
         
         <tags>
             
-            <tag> linux </tag>
+            <tag> ssd </tag>
             
             <tag> hdd </tag>
             
-            <tag> ssd </tag>
+            <tag> linux </tag>
             
             <tag> raid </tag>
             
@@ -1660,9 +1707,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ssd </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -2513,6 +2560,29 @@
     </entry>
     
     <entry>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> interface </tag>
+            
+            <tag> network </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SSD Interface]]></title>
       <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
       <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
@@ -2531,29 +2601,6 @@
             <tag> ssd </tag>
             
             <tag> interface </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hardware </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> interface </tag>
-            
-            <tag> network </tag>
             
         </tags>
         
@@ -3456,9 +3503,9 @@
             
             <tag> pacemaker </tag>
             
-            <tag> lustre </tag>
-            
             <tag> zfs </tag>
+            
+            <tag> lustre </tag>
             
         </tags>
         

@@ -72,7 +72,7 @@ BIOS settingE">
 <meta property="og:image" content="http://yoursite.com/img/supermicro-arch17.png">
 <meta property="og:image" content="http://yoursite.com/img/Single-server-sas-throughput2017-5.png">
 <meta property="og:image" content="http://yoursite.com/img/supermicro-arch18.png">
-<meta property="og:updated_time" content="2017-07-08T01:30:28.901Z">
+<meta property="og:updated_time" content="2017-07-08T01:34:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Performance Tuning in centos7">
 <meta name="twitter:description" content="High availability cluster2 x 2U Sever SAS3 connect 4 x 90 bay JBOD
@@ -364,6 +364,7 @@ BIOS settingE">
 <p><a href="https://github.com/homerl/pin_affinity/blob/master/pin_affinity.sh" target="_blank" rel="external">my scripts</a><br>./pin_cpu.sh SAS3008 Mellanox Non-Volatile</p>
 <h5 id="Trigger-raw-spin-lock"><a href="#Trigger-raw-spin-lock" class="headerlink" title="Trigger raw_spin_lock"></a>Trigger raw_spin_lock</h5><p>Reconnect SAS cable, no multipath, 10GB/s zfs throughput<br><img src="/img/supermicro-arch18.png" alt=""></p>
 <p>Glusterfs/Lustre could get performance 5~6GB/s in 2x25GbE</p>
+<h5 id="ZFS-for-all-SAS-SSD-JBOD"><a href="#ZFS-for-all-SAS-SSD-JBOD" class="headerlink" title="ZFS for all SAS SSD JBOD"></a>ZFS for all SAS SSD JBOD</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> logbias=troughput tank</span><br></pre></td></tr></table></figure>
 <h5 id="The-others"><a href="#The-others" class="headerlink" title="The others"></a>The others</h5><p>running your app by numactl in single numa node<br>libvma to bypass kernel</p>
 
       
@@ -399,6 +400,10 @@ BIOS settingE">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/08/Memory-linux/" rel="prev" title="Memory_linux">
+                Memory_linux <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -473,7 +478,7 @@ BIOS settingE">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -490,7 +495,7 @@ BIOS settingE">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -554,7 +559,7 @@ BIOS settingE">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#High-availability-cluster"><span class="nav-number">1.</span> <span class="nav-text">High availability cluster</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Top-sas-throughput-base-32-x-Raidz2-9-2"><span class="nav-number">2.</span> <span class="nav-text">Top sas throughput base 32 x Raidz2 (9+2)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BIOS-setting"><span class="nav-number">3.</span> <span class="nav-text">BIOS setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu-setting"><span class="nav-number">4.</span> <span class="nav-text">cpu setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sysctl"><span class="nav-number">5.</span> <span class="nav-text">sysctl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dual-port-25GbE"><span class="nav-number">6.</span> <span class="nav-text">Dual port 25GbE</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#NIC-settting"><span class="nav-number">6.1.</span> <span class="nav-text">NIC settting</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bond-info"><span class="nav-number">6.2.</span> <span class="nav-text">Bond info</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-CPU-and-PCIE-adapter-topology"><span class="nav-number">6.3.</span> <span class="nav-text">Get CPU and PCIE adapter topology</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Numa-node0"><span class="nav-number">7.</span> <span class="nav-text">Numa node0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Numa-node1"><span class="nav-number">8.</span> <span class="nav-text">Numa node1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mpt3sas"><span class="nav-number">9.</span> <span class="nav-text">mpt3sas</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#storage-device-setting"><span class="nav-number">10.</span> <span class="nav-text">storage device setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Trigger-raw-spin-lock"><span class="nav-number">11.</span> <span class="nav-text">Trigger raw_spin_lock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-others"><span class="nav-number">12.</span> <span class="nav-text">The others</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#High-availability-cluster"><span class="nav-number">1.</span> <span class="nav-text">High availability cluster</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Top-sas-throughput-base-32-x-Raidz2-9-2"><span class="nav-number">2.</span> <span class="nav-text">Top sas throughput base 32 x Raidz2 (9+2)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BIOS-setting"><span class="nav-number">3.</span> <span class="nav-text">BIOS setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu-setting"><span class="nav-number">4.</span> <span class="nav-text">cpu setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sysctl"><span class="nav-number">5.</span> <span class="nav-text">sysctl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dual-port-25GbE"><span class="nav-number">6.</span> <span class="nav-text">Dual port 25GbE</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#NIC-settting"><span class="nav-number">6.1.</span> <span class="nav-text">NIC settting</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bond-info"><span class="nav-number">6.2.</span> <span class="nav-text">Bond info</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-CPU-and-PCIE-adapter-topology"><span class="nav-number">6.3.</span> <span class="nav-text">Get CPU and PCIE adapter topology</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Numa-node0"><span class="nav-number">7.</span> <span class="nav-text">Numa node0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Numa-node1"><span class="nav-number">8.</span> <span class="nav-text">Numa node1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mpt3sas"><span class="nav-number">9.</span> <span class="nav-text">mpt3sas</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#storage-device-setting"><span class="nav-number">10.</span> <span class="nav-text">storage device setting</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Trigger-raw-spin-lock"><span class="nav-number">11.</span> <span class="nav-text">Trigger raw_spin_lock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ZFS-for-all-SAS-SSD-JBOD"><span class="nav-number">12.</span> <span class="nav-text">ZFS for all SAS SSD JBOD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-others"><span class="nav-number">13.</span> <span class="nav-text">The others</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
