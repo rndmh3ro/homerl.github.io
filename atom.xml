@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-08T04:08:17.000Z</updated>
+  <updated>2017-07-12T08:33:58.557Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Enable blk-mq in centos 7.3</title>
+    <link href="http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/"/>
+    <id>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</id>
+    <published>2017-07-12T07:36:57.000Z</published>
+    <updated>2017-07-12T08:33:58.557Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue&quot;&gt;&lt;a href=&quot;#Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue&quot; class=&quot;headerlink&quot; title=&quot;Does it mean brute force, I found the answer in a slide that resolve the most important issue&quot;&gt;&lt;/a&gt;Does it mean brute force, I found the answer in a slide that resolve the most important issue&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scsi-mq&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;RHEL7.2 release note&lt;/a&gt;&lt;br&gt;To enable scsi-mq, specify scsi_mod.use_blk_mq=y on the kernel command line&lt;br&gt;can also be configured to use the blk-mq infrastructure if the dm_mod.use_blk_mq=y kernel option is specified, The default value is n (disabled).&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ cat /etc/default/grub &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_TIMEOUT=5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_DISTRIBUTOR=&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;variable&quot;&gt;$(sed &#39;s, release .*$,,g&#39; /etc/system-release)&lt;/span&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_DEFAULT=saved&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_DISABLE_SUBMENU=&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_TERMINAL_OUTPUT=&lt;span class=&quot;string&quot;&gt;&quot;console&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_CMDLINE_LINUX=&lt;span class=&quot;string&quot;&gt;&quot;crashkernel=auto rd.md.uuid=c13f982e:9af61476:91e4a31e:1bc18c08 scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y rhgb quiet&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GRUB_DISABLE_RECOVERY=&lt;span class=&quot;string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ reboot&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;Make-sure-enable-it&quot;&gt;&lt;a href=&quot;#Make-sure-enable-it&quot; class=&quot;headerlink&quot; title=&quot;Make sure enable it&quot;&gt;&lt;/a&gt;Make sure enable it&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tree /sys/class/block/sdl/mq /sys/class/block/dm-0/mq&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue&quot;&gt;&lt;a href=&quot;#Does-it-mean-brute-force-I-f
+    
+    </summary>
+    
+      <category term="Performance" scheme="http://yoursite.com/categories/Performance/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="scsi" scheme="http://yoursite.com/tags/scsi/"/>
+    
+      <category term="io" scheme="http://yoursite.com/tags/io/"/>
+    
+      <category term="performance" scheme="http://yoursite.com/tags/performance/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hot-plugin scan/rescan scsi</title>
+    <link href="http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/"/>
+    <id>http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/</id>
+    <published>2017-07-12T05:15:49.000Z</published>
+    <updated>2017-07-12T05:27:03.642Z</updated>
+    
+    <content type="html">&lt;h5 id=&quot;What-is-h-c-t-l&quot;&gt;&lt;a href=&quot;#What-is-h-c-t-l&quot; class=&quot;headerlink&quot; title=&quot;What is h c t l&quot;&gt;&lt;/a&gt;What is h c t l&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;          h == hostadapter id (first one being 0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          c == SCSI channel on hostadapter (first one being 0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          t == ID (target)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          l == LUN (first one being 0)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# lsscsi man page&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       Generic SCSI devices can also be accessed via the bsg driver &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; Linux.  By default, the bsg driver&lt;span class=&quot;string&quot;&gt;&#39;s device node names  are  of  the  form&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &#39;&lt;/span&gt;/dev/bsg/H:C:T:L&lt;span class=&quot;string&quot;&gt;&#39;.  So,  for example, the SCSI device shown by this utility on a line starting with the tuple &#39;&lt;/span&gt;6:0:1:2&lt;span class=&quot;string&quot;&gt;&#39; could be accessed&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       via the bsg driver with the &#39;&lt;/span&gt;/dev/bsg/6:0:1:2&lt;span class=&quot;string&quot;&gt;&#39; device node name.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;Add-the-scsi-device&quot;&gt;&lt;a href=&quot;#Add-the-scsi-device&quot; class=&quot;headerlink&quot; title=&quot;Add the scsi device&quot;&gt;&lt;/a&gt;Add the scsi device&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;- - -&quot;&lt;/span&gt; &amp;gt; /sys/class/scsi_host/host&amp;lt;h&amp;gt;/scan&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;c t l&quot;&lt;/span&gt; &amp;gt;  /sys/class/scsi_host/host&amp;lt;h&amp;gt;/scan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;Refresh-the-scsi-device&quot;&gt;&lt;a href=&quot;#Refresh-the-scsi-device&quot; class=&quot;headerlink&quot; title=&quot;Refresh the scsi device&quot;&gt;&lt;/a&gt;Refresh the scsi device&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 1 &amp;gt; /sys/block/sdau/device/rescan &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 1 &amp;gt; /sys/class/scsi_device/h:c:t:l/device/rescan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;Remove-the-scsi-device&quot;&gt;&lt;a href=&quot;#Remove-the-scsi-device&quot; class=&quot;headerlink&quot; title=&quot;Remove the scsi device&quot;&gt;&lt;/a&gt;Remove the scsi device&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 1 &amp;gt; /sys/class/scsi_device/h:c:t:l/device/delete&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 1 &amp;gt; /sys/block/&amp;lt;dev&amp;gt;/device/delete&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href=&quot;http://fibrevillage.com/storage/279-hot-add-remove-rescan-of-scsi-devices-on-linux&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;What-is-h-c-t-l&quot;&gt;&lt;a href=&quot;#What-is-h-c-t-l&quot; class=&quot;headerlink&quot; title=&quot;What is h c t l&quot;&gt;&lt;/a&gt;What is h c t l&lt;/h5&gt;&lt;figure class=&quot;highli
+    
+    </summary>
+    
+      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="mem" scheme="http://yoursite.com/tags/mem/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Memory_linux</title>
     <link href="http://yoursite.com/2017/07/08/Memory-linux/"/>
     <id>http://yoursite.com/2017/07/08/Memory-linux/</id>
     <published>2017-07-08T03:08:46.000Z</published>
-    <updated>2017-07-08T04:08:17.000Z</updated>
+    <updated>2017-07-12T05:31:45.404Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Process-memory&quot;&gt;&lt;a href=&quot;#Process-memory&quot; class=&quot;headerlink&quot; title=&quot;Process memory&quot;&gt;&lt;/a&gt;Process memory&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/proc/[pid]/statm
        Provides information about memory usage, measured in pages.
@@ -36,7 +96,7 @@
            lib        (5) library (unused since Linux 2.6; always 0)
            data       (6) data + stack
            dt         (7) dirty pages (unused since Linux 2.6; always 0)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;cat /proc/3760/statm&lt;br&gt;400865 96456 37653 27355 0 157019 0&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cat /proc/3760/statm &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;400865 96456 37653 27355 0 157019 0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;Second field means res (resident)&lt;br&gt;pmap $(pgrep bash)&lt;/p&gt;
 &lt;p&gt;There are some of share library in each resident&lt;/p&gt;
 &lt;p&gt;If you want get share library memory consumption.&lt;br&gt;/proc/[pid]/smaps (since Linux 2.6.14)&lt;br&gt;              This file shows memory consumption for each of the process’s&lt;br&gt;              mappings.  (The pmap(1) command displays similar information,&lt;br&gt;              in a form that may be easier for parsing.)&lt;/p&gt;
@@ -97,11 +157,11 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
+      <category term="performance" scheme="http://yoursite.com/tags/performance/"/>
+    
       <category term="benchmark" scheme="http://yoursite.com/tags/benchmark/"/>
     
       <category term="centos" scheme="http://yoursite.com/tags/centos/"/>
-    
-      <category term="performance" scheme="http://yoursite.com/tags/performance/"/>
     
   </entry>
   
@@ -174,9 +234,9 @@
     
       <category term="sas" scheme="http://yoursite.com/tags/sas/"/>
     
-      <category term="spc" scheme="http://yoursite.com/tags/spc/"/>
-    
       <category term="scsi" scheme="http://yoursite.com/tags/scsi/"/>
+    
+      <category term="spc" scheme="http://yoursite.com/tags/spc/"/>
     
   </entry>
   
@@ -1560,13 +1620,16 @@
     <link href="http://yoursite.com/2016/12/05/Ping-test-in-serial-link/"/>
     <id>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</id>
     <published>2016-12-05T07:13:14.000Z</published>
-    <updated>2017-07-10T03:24:29.952Z</updated>
+    <updated>2017-07-11T08:58:53.847Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Calculate-upload-download-speed-by-ping&quot;&gt;&lt;a href=&quot;#Calculate-upload-download-speed-by-ping&quot; class=&quot;headerlink&quot; title=&quot;Calculate upload/download speed by ping&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4575537/calculate-upload-download-speed-by-ping&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Calculate upload/download speed by ping&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ping &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; -c 10000 &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; 1472 10.100.100.100&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 ms&lt;br&gt;so in average it takes 0.219 ms to send 1500 bytes and receive 1500 bytes, that’s 24 kb. 24 kb / 0.219 ms = 110 Mb/s&lt;br&gt;If you want to use that to a server on the internet, you need to lower the packet size to something like 1464 (for MTU 1492), drop the -f option and lower the count so it won’t take too long to finish.&lt;/p&gt;
 &lt;p&gt;1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits&lt;br&gt;24000 / 0.219 = 109.589 Mb/s&lt;/p&gt;
 &lt;p&gt;It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.&lt;/p&gt;
 &lt;h3 id=&quot;MTU-problem-check&quot;&gt;&lt;a href=&quot;#MTU-problem-check&quot; class=&quot;headerlink&quot; title=&quot;MTU problem check&quot;&gt;&lt;/a&gt;MTU problem check&lt;/h3&gt;&lt;p&gt;Level 3 network, between 2 nodes pass through gateway&lt;br&gt;Tcpdump show some packets loss, nmap show 10.xx.xx.clent port is “open”.&lt;br&gt;There are some packages return, some will not. Does it MTU problem ? ping could check it.&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ traceroute 10.xx.xx.client&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 1  10.10.xx.gateway (10.10.xx.gateway)  2.239 ms  1.901 ms  2.080 ms&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 2  10.xx.xx.client (10.xx.xx.client)  0.606 ms  0.584 ms  0.592 ms&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ traceroute 10.xx.xx.client&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 1  10.10.xx.gateway (10.10.xx.gateway)  1.881 ms  2.085 ms  2.245 ms&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 2  10.xx.xx.client (10.xx.xx.client)  0.563 ms * *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ping &lt;span class=&quot;_&quot;&gt;-f&lt;/span&gt; -c 20000 -M &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; 8972 10.xx.xx.client&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PING 10.xx.xx.client (10.xx.xx.client) 8972(9000) bytes of data.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...................................................................^C&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--- 10.xx.xx.client ping statistics ---&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67 packets transmitted, 0 received, 100% packet loss, time 1076ms&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;You can got the issue from tcpdump, all larger than 1500 packets are loss.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;client &lt;span class=&quot;comment&quot;&gt;# tcpdump -v host 10.53.19.52 and greater 1500&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tcpdump: listening on bond0, link-type EN10MB (Ethernet), capture size 65535 bytes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11:23:58.134708 IP (tos 0x0, ttl 63, id 27071, offset 0, flags [DF], proto TCP (6), length 8532)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    10.53.19.52.988 &amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-57-21.exp2: Flags [P.], cksum 0x496d (incorrect -&amp;gt; 0x5fe6), seq 2359537411:2359545891, ack 3804990367, win 53, options [nop,nop,TS val 1203816317 ecr 81802289], length 8480&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11:23:58.136045 IP (tos 0x0, ttl 63, id 27077, offset 0, flags [DF], proto TCP (6), length 7292)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    10.53.19.52.988 &amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-57-21.exp2: Flags [.], cksum 0x4495 (incorrect -&amp;gt; 0xe386), seq 8480:15720, ack 1, win 53, options [nop,nop,TS val 1203816318 ecr 81802294], length 7240&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11:23:58.148023 IP (tos 0x0, ttl 63, id 27083, offset 0, flags [DF], proto TCP (6), length 8588)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    10.53.19.52.988 &amp;gt; &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;-57-21.exp2: Flags [P.], cksum 0x49a5 (incorrect -&amp;gt; 0x4006), seq 17016:25552, ack 1, win 53, options [nop,nop,TS val 1203816330 ecr 81802295], length 8536&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;If client MTU is 1500, tcpdump(client) will not receive any large packages. they are loss in switch.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1743,58 +1806,6 @@
       <category term="bio" scheme="http://yoursite.com/tags/bio/"/>
     
       <category term="software" scheme="http://yoursite.com/tags/software/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Monitor ssd device</title>
-    <link href="http://yoursite.com/2016/07/04/Monitor-ssd-device/"/>
-    <id>http://yoursite.com/2016/07/04/Monitor-ssd-device/</id>
-    <published>2016-07-04T02:01:10.000Z</published>
-    <updated>2016-07-05T10:35:51.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;Monitor-Intel-SATA-SSD&quot;&gt;&lt;a href=&quot;#Monitor-Intel-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Monitor Intel SATA SSD&quot;&gt;&lt;/a&gt;Monitor Intel SATA SSD&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;smartctl &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt; /dev/sdaa&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;233 Media_Wearout_Indicator 0x0032   097   097   000    Old_age   Always       -       0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24439&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=1M count=1024&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;241 Host_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       24471&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;242 Host_Reads_32MiB        0x0032   100   100   000    Old_age   Always       -       4275&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;243 NAND_Writes_32MiB       0x0032   100   100   000    Old_age   Always       -       40857&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;You can see write 32*32=1024M write to ssd. the value is “MB”.&lt;/p&gt;
-&lt;h3 id=&quot;Samsung-SATA-SSD&quot;&gt;&lt;a href=&quot;#Samsung-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Samsung SATA SSD&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.smartmontools.org/ticket/661&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Samsung SATA SSD&lt;/a&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;251 NAND_Writes             -O--CK   100   100   000    -    7546253904&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ||||||_ K auto-keep&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            |||||__ C event count&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ||||___ R error rate&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            |||____ S speed/performance&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ||_____ O updated online&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            |______ P prefailure warning&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;NVME-Intel-SSD&quot;&gt;&lt;a href=&quot;#NVME-Intel-SSD&quot; class=&quot;headerlink&quot; title=&quot;NVME Intel SSD&quot;&gt;&lt;/a&gt;NVME Intel SSD&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;isdct  show -smart -intelssd 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : NAND Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 6142760&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- F5 -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : Host Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 2790072&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dd &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=&lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; bs=1M count=1024&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : NAND Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 6142930&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- F5 -&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Description : Host Bytes Written&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ID : F5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Normalized : 100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Raw : 2790104&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Raw value of Host Bytes Written improved 32&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Monitor-Intel-SATA-SSD&quot;&gt;&lt;a href=&quot;#Monitor-Intel-SATA-SSD&quot; class=&quot;headerlink&quot; title=&quot;Monitor Intel SATA SSD&quot;&gt;&lt;/a&gt;Monitor Intel SATA S
-    
-    </summary>
-    
-      <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
-    
-    
-      <category term="ssd" scheme="http://yoursite.com/tags/ssd/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Main board SATA port bottle neck</title>
-    <link href="http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/"/>
-    <id>http://yoursite.com/2016/06/16/Main-board-SATA-bottle-neck/</id>
-    <published>2016-06-16T07:35:11.000Z</published>
-    <updated>2016-06-16T07:41:45.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/Dt9p6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;DMI 2.0 2 GB/s&lt;br&gt;DMI 3.0 3.93 GB/s&lt;br&gt;SATA SSD 500MB/s x 4/8 = 2000/4000MB/s&lt;br&gt;&lt;a href=&quot;http://electronics.stackexchange.com/questions/219440/why-do-cpus-typically-connect-to-only-one-bus/219446&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/img/Dt9p6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;DMI 2.0 2 GB/s&lt;br&gt;DMI 3.0 3.93 GB/s&lt;br&gt;SATA SSD 500MB/s x 4/8 = 2000/4000MB/s&lt;br&gt;&lt;a href=&quot;http://ele
-    
-    </summary>
-    
-      <category term="Architecture" scheme="http://yoursite.com/categories/Architecture/"/>
-    
-    
-      <category term="hardware" scheme="http://yoursite.com/tags/hardware/"/>
     
   </entry>
   

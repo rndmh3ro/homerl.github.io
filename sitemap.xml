@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
+    <loc>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</loc>
     
-    <lastmod>2017-07-10T03:24:29.952Z</lastmod>
+    <lastmod>2017-07-12T08:33:58.557Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/07/08/Memory-linux/</loc>
     
-    <lastmod>2017-07-08T04:08:17.000Z</lastmod>
+    <lastmod>2017-07-12T05:31:45.404Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/</loc>
+    
+    <lastmod>2017-07-12T05:27:03.642Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
+    
+    <lastmod>2017-07-11T08:58:53.847Z</lastmod>
     
   </url>
   

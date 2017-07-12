@@ -67,7 +67,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Calculate upload/download speed by ping1$ ping -f -c 10000 -s 1472 10.100.100.100
 At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.078/0.020 msso in average it takes 0.219">
-<meta property="og:updated_time" content="2017-07-10T03:24:29.952Z">
+<meta property="og:updated_time" content="2017-07-11T08:58:53.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ping test in serial link">
 <meta name="twitter:description" content="Calculate upload/download speed by ping1$ ping -f -c 10000 -s 1472 10.100.100.100
@@ -347,6 +347,9 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
 <p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
 <p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
 <h3 id="MTU-problem-check"><a href="#MTU-problem-check" class="headerlink" title="MTU problem check"></a>MTU problem check</h3><p>Level 3 network, between 2 nodes pass through gateway<br>Tcpdump show some packets loss, nmap show 10.xx.xx.clent port is “open”.<br>There are some packages return, some will not. Does it MTU problem ? ping could check it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  2.239 ms  1.901 ms  2.080 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.606 ms  0.584 ms  0.592 ms</span><br><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  1.881 ms  2.085 ms  2.245 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.563 ms * *</span><br><span class="line"></span><br><span class="line">$ ping <span class="_">-f</span> -c 20000 -M <span class="keyword">do</span> <span class="_">-s</span> 8972 10.xx.xx.client</span><br><span class="line">PING 10.xx.xx.client (10.xx.xx.client) 8972(9000) bytes of data.</span><br><span class="line">...................................................................^C</span><br><span class="line">--- 10.xx.xx.client ping statistics ---</span><br><span class="line">67 packets transmitted, 0 received, 100% packet loss, time 1076ms</span><br></pre></td></tr></table></figure></p>
+<p>You can got the issue from tcpdump, all larger than 1500 packets are loss.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">client <span class="comment"># tcpdump -v host 10.53.19.52 and greater 1500</span></span><br><span class="line">tcpdump: listening on bond0, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">11:23:58.134708 IP (tos 0x0, ttl 63, id 27071, offset 0, flags [DF], proto TCP (6), length 8532)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [P.], cksum 0x496d (incorrect -&gt; 0x5fe6), seq 2359537411:2359545891, ack 3804990367, win 53, options [nop,nop,TS val 1203816317 ecr 81802289], length 8480</span><br><span class="line">11:23:58.136045 IP (tos 0x0, ttl 63, id 27077, offset 0, flags [DF], proto TCP (6), length 7292)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [.], cksum 0x4495 (incorrect -&gt; 0xe386), seq 8480:15720, ack 1, win 53, options [nop,nop,TS val 1203816318 ecr 81802294], length 7240</span><br><span class="line">11:23:58.148023 IP (tos 0x0, ttl 63, id 27083, offset 0, flags [DF], proto TCP (6), length 8588)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [P.], cksum 0x49a5 (incorrect -&gt; 0x4006), seq 17016:25552, ack 1, win 53, options [nop,nop,TS val 1203816330 ecr 81802295], length 8536</span><br></pre></td></tr></table></figure>
+<p>If client MTU is 1500, tcpdump(client) will not receive any large packages. they are loss in switch.</p>
 
       
     </div>
@@ -457,7 +460,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -465,7 +468,7 @@ At the end of the result i get: round-trip min/avg/max/stddev = 0.174/0.219/2.07
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>

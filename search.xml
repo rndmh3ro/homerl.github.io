@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title><![CDATA[Enable blk-mq in centos 7.3]]></title>
+      <url>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</url>
+      <content type="html"><![CDATA[<h4 id="Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue"><a href="#Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue" class="headerlink" title="Does it mean brute force, I found the answer in a slide that resolve the most important issue"></a>Does it mean brute force, I found the answer in a slide that resolve the most important issue</h4><p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">scsi-mq</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">RHEL7.2 release note</a><br>To enable scsi-mq, specify scsi_mod.use_blk_mq=y on the kernel command line<br>can also be configured to use the blk-mq infrastructure if the dm_mod.use_blk_mq=y kernel option is specified, The default value is n (disabled).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/default/grub </span><br><span class="line">GRUB_TIMEOUT=5</span><br><span class="line">GRUB_DISTRIBUTOR=<span class="string">"<span class="variable">$(sed 's, release .*$,,g' /etc/system-release)</span>"</span></span><br><span class="line">GRUB_DEFAULT=saved</span><br><span class="line">GRUB_DISABLE_SUBMENU=<span class="literal">true</span></span><br><span class="line">GRUB_TERMINAL_OUTPUT=<span class="string">"console"</span></span><br><span class="line">GRUB_CMDLINE_LINUX=<span class="string">"crashkernel=auto rd.md.uuid=c13f982e:9af61476:91e4a31e:1bc18c08 scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y rhgb quiet"</span></span><br><span class="line">GRUB_DISABLE_RECOVERY=<span class="string">"true"</span></span><br><span class="line"></span><br><span class="line">$ grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg</span><br><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<h4 id="Make-sure-enable-it"><a href="#Make-sure-enable-it" class="headerlink" title="Make sure enable it"></a>Make sure enable it</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree /sys/class/block/sdl/mq /sys/class/block/dm-0/mq</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Performance </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> scsi </tag>
+            
+            <tag> io </tag>
+            
+            <tag> performance </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hot-plugin scan/rescan scsi]]></title>
+      <url>http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/</url>
+      <content type="html"><![CDATA[<h5 id="What-is-h-c-t-l"><a href="#What-is-h-c-t-l" class="headerlink" title="What is h c t l"></a>What is h c t l</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">          h == hostadapter id (first one being 0)</span><br><span class="line">          c == SCSI channel on hostadapter (first one being 0)</span><br><span class="line">          t == ID (target)</span><br><span class="line">          l == LUN (first one being 0)</span><br><span class="line"></span><br><span class="line"><span class="comment"># lsscsi man page</span></span><br><span class="line">       Generic SCSI devices can also be accessed via the bsg driver <span class="keyword">in</span> Linux.  By default, the bsg driver<span class="string">'s device node names  are  of  the  form</span><br><span class="line">       '</span>/dev/bsg/H:C:T:L<span class="string">'.  So,  for example, the SCSI device shown by this utility on a line starting with the tuple '</span>6:0:1:2<span class="string">' could be accessed</span><br><span class="line">       via the bsg driver with the '</span>/dev/bsg/6:0:1:2<span class="string">' device node name.</span></span><br></pre></td></tr></table></figure>
+<h5 id="Add-the-scsi-device"><a href="#Add-the-scsi-device" class="headerlink" title="Add the scsi device"></a>Add the scsi device</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"- - -"</span> &gt; /sys/class/scsi_host/host&lt;h&gt;/scan</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"c t l"</span> &gt;  /sys/class/scsi_host/host&lt;h&gt;/scan</span><br></pre></td></tr></table></figure>
+<h5 id="Refresh-the-scsi-device"><a href="#Refresh-the-scsi-device" class="headerlink" title="Refresh the scsi device"></a>Refresh the scsi device</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/block/sdau/device/rescan </span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/class/scsi_device/h:c:t:l/device/rescan</span><br></pre></td></tr></table></figure>
+<h5 id="Remove-the-scsi-device"><a href="#Remove-the-scsi-device" class="headerlink" title="Remove the scsi device"></a>Remove the scsi device</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/class/scsi_device/h:c:t:l/device/delete</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /sys/block/&lt;dev&gt;/device/delete</span><br></pre></td></tr></table></figure>
+<p><a href="http://fibrevillage.com/storage/279-hot-add-remove-rescan-of-scsi-devices-on-linux" target="_blank" rel="external">reference</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> mem </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Memory_linux]]></title>
       <url>http://yoursite.com/2017/07/08/Memory-linux/</url>
       <content type="html"><![CDATA[<h3 id="Process-memory"><a href="#Process-memory" class="headerlink" title="Process memory"></a>Process memory</h3><pre><code>/proc/[pid]/statm
@@ -20,7 +76,7 @@
            lib        (5) library (unused since Linux 2.6; always 0)
            data       (6) data + stack
            dt         (7) dirty pages (unused since Linux 2.6; always 0)
-</code></pre><p>cat /proc/3760/statm<br>400865 96456 37653 27355 0 157019 0</p>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/3760/statm </span><br><span class="line">400865 96456 37653 27355 0 157019 0</span><br></pre></td></tr></table></figure>
 <p>Second field means res (resident)<br>pmap $(pgrep bash)</p>
 <p>There are some of share library in each resident</p>
 <p>If you want get share library memory consumption.<br>/proc/[pid]/smaps (since Linux 2.6.14)<br>              This file shows memory consumption for each of the process’s<br>              mappings.  (The pmap(1) command displays similar information,<br>              in a form that may be easier for parsing.)</p>
@@ -79,11 +135,11 @@
         
         <tags>
             
+            <tag> performance </tag>
+            
             <tag> benchmark </tag>
             
             <tag> centos </tag>
-            
-            <tag> performance </tag>
             
         </tags>
         
@@ -152,9 +208,9 @@
             
             <tag> sas </tag>
             
-            <tag> spc </tag>
-            
             <tag> scsi </tag>
+            
+            <tag> spc </tag>
             
         </tags>
         
@@ -1517,6 +1573,9 @@
 <p>1500 TX Bytes + 1500 RX Bytes= 3000 Bytes = 3000 * 8 = 24000 bits<br>24000 / 0.219 = 109.589 Mb/s</p>
 <p>It ‘s not represent full throughput. just test single link in your ethernet adapter. not parallel.</p>
 <h3 id="MTU-problem-check"><a href="#MTU-problem-check" class="headerlink" title="MTU problem check"></a>MTU problem check</h3><p>Level 3 network, between 2 nodes pass through gateway<br>Tcpdump show some packets loss, nmap show 10.xx.xx.clent port is “open”.<br>There are some packages return, some will not. Does it MTU problem ? ping could check it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  2.239 ms  1.901 ms  2.080 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.606 ms  0.584 ms  0.592 ms</span><br><span class="line">$ traceroute 10.xx.xx.client</span><br><span class="line">traceroute to 10.xx.xx.client (10.xx.xx.client), 30 hops max, 60 byte packets</span><br><span class="line"> 1  10.10.xx.gateway (10.10.xx.gateway)  1.881 ms  2.085 ms  2.245 ms</span><br><span class="line"> 2  10.xx.xx.client (10.xx.xx.client)  0.563 ms * *</span><br><span class="line"></span><br><span class="line">$ ping <span class="_">-f</span> -c 20000 -M <span class="keyword">do</span> <span class="_">-s</span> 8972 10.xx.xx.client</span><br><span class="line">PING 10.xx.xx.client (10.xx.xx.client) 8972(9000) bytes of data.</span><br><span class="line">...................................................................^C</span><br><span class="line">--- 10.xx.xx.client ping statistics ---</span><br><span class="line">67 packets transmitted, 0 received, 100% packet loss, time 1076ms</span><br></pre></td></tr></table></figure></p>
+<p>You can got the issue from tcpdump, all larger than 1500 packets are loss.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">client <span class="comment"># tcpdump -v host 10.53.19.52 and greater 1500</span></span><br><span class="line">tcpdump: listening on bond0, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">11:23:58.134708 IP (tos 0x0, ttl 63, id 27071, offset 0, flags [DF], proto TCP (6), length 8532)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [P.], cksum 0x496d (incorrect -&gt; 0x5fe6), seq 2359537411:2359545891, ack 3804990367, win 53, options [nop,nop,TS val 1203816317 ecr 81802289], length 8480</span><br><span class="line">11:23:58.136045 IP (tos 0x0, ttl 63, id 27077, offset 0, flags [DF], proto TCP (6), length 7292)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [.], cksum 0x4495 (incorrect -&gt; 0xe386), seq 8480:15720, ack 1, win 53, options [nop,nop,TS val 1203816318 ecr 81802294], length 7240</span><br><span class="line">11:23:58.148023 IP (tos 0x0, ttl 63, id 27083, offset 0, flags [DF], proto TCP (6), length 8588)</span><br><span class="line">    10.53.19.52.988 &gt; <span class="built_in">test</span>-57-21.exp2: Flags [P.], cksum 0x49a5 (incorrect -&gt; 0x4006), seq 17016:25552, ack 1, win 53, options [nop,nop,TS val 1203816330 ecr 81802295], length 8536</span><br></pre></td></tr></table></figure>
+<p>If client MTU is 1500, tcpdump(client) will not receive any large packages. they are loss in switch.</p>
 ]]></content>
       
         <categories>

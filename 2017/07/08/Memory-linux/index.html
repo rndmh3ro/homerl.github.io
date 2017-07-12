@@ -75,7 +75,7 @@
 
            size       (1) total program size
                       (same as">
-<meta property="og:updated_time" content="2017-07-08T04:08:17.000Z">
+<meta property="og:updated_time" content="2017-07-12T05:31:45.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Memory_linux">
 <meta name="twitter:description" content="Process memory/proc/[pid]/statm
@@ -368,7 +368,7 @@
            lib        (5) library (unused since Linux 2.6; always 0)
            data       (6) data + stack
            dt         (7) dirty pages (unused since Linux 2.6; always 0)
-</code></pre><p>cat /proc/3760/statm<br>400865 96456 37653 27355 0 157019 0</p>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/3760/statm </span><br><span class="line">400865 96456 37653 27355 0 157019 0</span><br></pre></td></tr></table></figure>
 <p>Second field means res (resident)<br>pmap $(pgrep bash)</p>
 <p>There are some of share library in each resident</p>
 <p>If you want get share library memory consumption.<br>/proc/[pid]/smaps (since Linux 2.6.14)<br>              This file shows memory consumption for each of the process’s<br>              mappings.  (The pmap(1) command displays similar information,<br>              in a form that may be easier for parsing.)</p>
@@ -409,6 +409,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/12/Hot-plugin-scan-rescan-scsi/" rel="prev" title="Hot-plugin scan/rescan scsi">
+                Hot-plugin scan/rescan scsi <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -483,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">53</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -491,7 +495,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
