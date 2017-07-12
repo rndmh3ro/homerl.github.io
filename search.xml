@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[grubby]]></title>
+      <url>http://yoursite.com/2017/07/12/grub/</url>
+      <content type="html"><![CDATA[<p>CentOS 7 add kernel parameter<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grubby --remove-args=<span class="string">"argX argY"</span> --args=<span class="string">"argA argB"</span> --update-kernel /boot/kernel</span><br><span class="line">grubby --update-kernel=ALL --args=<span class="string">'scsi_mod.use_blk_mq=y dm_mod.use_blk_mq=y'</span></span><br></pre></td></tr></table></figure></p>
+<p>set default boot<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">grubby --info=ALL</span><br><span class="line">index=0</span><br><span class="line">kernel=/boot/vmlinuz-3.10.0-514.6.1.el7.x86_64</span><br><span class="line">args=<span class="string">"ro crashkernel=auto rd.md.uuid=cc0432b3:6f6f54bf:c2f2b91b:2978ff6a rhgb quiet "</span></span><br><span class="line">root=UUID=5b0e60cf-adf9-42a0-b6e3-0304b919dc33</span><br><span class="line">initrd=/boot/initramfs-3.10.0-514.6.1.el7.x86_64.img</span><br><span class="line">title=CentOS Linux (3.10.0-514.6.1.el7.x86_64) 7 (Core)</span><br><span class="line">index=1</span><br><span class="line">kernel=/boot/vmlinuz-3.10.0-327.el7.x86_64</span><br><span class="line">args=<span class="string">"ro crashkernel=auto rd.md.uuid=cc0432b3:6f6f54bf:c2f2b91b:2978ff6a rhgb quiet "</span></span><br><span class="line">root=UUID=5b0e60cf-adf9-42a0-b6e3-0304b919dc33</span><br><span class="line">initrd=/boot/initramfs-3.10.0-327.el7.x86_64.img</span><br><span class="line">title=CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)</span><br><span class="line">index=2</span><br><span class="line">kernel=/boot/vmlinuz-0-rescue<span class="_">-f</span>614a3c482eb4b21add5ae750b3871bb</span><br><span class="line">args=<span class="string">"ro crashkernel=auto rd.md.uuid=cc0432b3:6f6f54bf:c2f2b91b:2978ff6a rhgb quiet "</span></span><br><span class="line">root=UUID=5b0e60cf-adf9-42a0-b6e3-0304b919dc33</span><br><span class="line">initrd=/boot/initramfs-0-rescue<span class="_">-f</span>614a3c482eb4b21add5ae750b3871bb.img</span><br><span class="line">title=CentOS Linux (0-rescue<span class="_">-f</span>614a3c482eb4b21add5ae750b3871bb) 7 (Core)</span><br><span class="line">index=3</span><br><span class="line">non linux entry</span><br><span class="line"></span><br><span class="line">grubby --set-default /boot/vmlinuz-3.10.0-229.4.2.el7.x86_64</span><br><span class="line">grubby --info /boot/vmlinuz-3.10.0-229.4.2.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> grub </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Enable blk-mq in centos 7.3]]></title>
       <url>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</url>
       <content type="html"><![CDATA[<h4 id="Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue"><a href="#Does-it-mean-brute-force-I-found-the-answer-in-a-slide-that-resolve-the-most-important-issue" class="headerlink" title="Does it mean brute force, I found the answer in a slide that resolve the most important issue"></a>Does it mean brute force, I found the answer in a slide that resolve the most important issue</h4><p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">scsi-mq</a><br><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">RHEL7.2 release note</a><br>To enable scsi-mq, specify scsi_mod.use_blk_mq=y on the kernel command line<br>can also be configured to use the blk-mq infrastructure if the dm_mod.use_blk_mq=y kernel option is specified, The default value is n (disabled).</p>
@@ -135,11 +159,11 @@
         
         <tags>
             
-            <tag> performance </tag>
-            
             <tag> benchmark </tag>
             
             <tag> centos </tag>
+            
+            <tag> performance </tag>
             
         </tags>
         
@@ -2619,29 +2643,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
-      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
-      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hardware </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> interface </tag>
-            
-            <tag> network </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[SSD Interface]]></title>
       <url>http://yoursite.com/2016/04/08/SSD-interface/</url>
       <content type="html"><![CDATA[<h3 id="Interface-reference"><a href="#Interface-reference" class="headerlink" title="Interface reference"></a><a href="http://www.nvmexpress.org/wp-content/uploads/NVMe_Infrastructure_final1.pdf" target="_blank" rel="external">Interface reference</a></h3><p><img src="/img/nvme-1.png" alt=""><br><img src="/img/nvme-2.png" alt=""><br><img src="/img/nvme-3.png" alt=""><br><img src="/img/nvme-4.png" alt=""><br><img src="/img/nvme-5.png" alt=""><br><img src="/img/nvme-6.png" alt=""><br><img src="/img/nvme-7.png" alt=""><br><img src="/img/nvme-8.png" alt=""><br><img src="/img/nvme-9.png" alt=""><br><img src="/img/nvme-10.png" alt=""><br><img src="/img/nvme-11.png" alt=""></p>
@@ -2660,6 +2661,29 @@
             <tag> ssd </tag>
             
             <tag> interface </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SFP+ VS 10GBaseT]]></title>
+      <url>http://yoursite.com/2016/04/08/SFP-VS-10GBaseT/</url>
+      <content type="html"><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="http://www.missioncriticalmagazine.com/ext/resources/MC/Home/Files/PDFs/WP_Blade_Ethernet_Cabling.pdf" target="_blank" rel="external">reference</a></h3><p><img src="/img/sfp-10bt-1.png" alt=""><br><img src="/img/sfp-10bt-2.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hardware </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> interface </tag>
+            
+            <tag> network </tag>
             
         </tags>
         
@@ -3192,7 +3216,9 @@
     <entry>
       <title><![CDATA[Openzfs tips]]></title>
       <url>http://yoursite.com/2015/12/04/Openzfs-tips/</url>
-      <content type="html"><![CDATA[<h3 id="Optimize-with-lustre"><a href="#Optimize-with-lustre" class="headerlink" title="Optimize with lustre"></a><a href="http://wiki.lustre.org/images/4/48/ZFS-As-Backend-File-System_Paciucci.pdf" target="_blank" rel="external">Optimize with lustre</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/modprobe.d/zfs.conf</span><br><span class="line">options zfs zfs_prefetch_<span class="built_in">disable</span>=1</span><br><span class="line">options zfs metaslab_debug_unload=1</span><br><span class="line">options zfs zfs_arc_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.6&#125;'</span> /proc/meminfo) <span class="comment">#60%, 3/5</span></span><br><span class="line">options zfs zfs_arc_meta_<span class="built_in">limit</span>=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.75&#125;'</span> /proc/meminfo) <span class="comment">#MDS only,75%</span></span><br><span class="line">options zfs zfs_dirty_data_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.15&#125;'</span> /proc/meminfo) <span class="comment">#15%</span></span><br><span class="line">options zfs zfs_vdev_async_write_min_active=5 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_async_write_max_active=15</span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_min_active=16 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_max_active=16</span><br><span class="line">options zfs zfs_vdev_async_write_active_min_dirty_percent=20</span><br><span class="line">options zfs zfs_vdev_scheduler=deadline <span class="comment">#noop for SSD</span></span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h3 id="All-flash-setting"><a href="#All-flash-setting" class="headerlink" title="All flash setting"></a><a href="http://docs.oracle.com/cd/E19253-01/819-5461/givdo/index.html" target="_blank" rel="external">All flash setting</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The logbias property – You can use this property to provide a hint to ZFS about handling synchronous requests <span class="keyword">for</span> a specific dataset. If logbias is <span class="built_in">set</span> to latency, ZFS uses the pool<span class="string">'s separate log devices, if any, to handle the requests at low latency. If logbias is set to throughput, ZFS does not use the pool'</span>s separate <span class="built_in">log</span> devices. Instead, ZFS optimizes synchronous operations <span class="keyword">for</span> global pool throughput and efficient use of resources.</span><br></pre></td></tr></table></figure>
+<p>Does it mean in all flash env, you’d better set logbias=throughput</p>
+<h3 id="Optimize-with-lustre"><a href="#Optimize-with-lustre" class="headerlink" title="Optimize with lustre"></a><a href="http://wiki.lustre.org/images/4/48/ZFS-As-Backend-File-System_Paciucci.pdf" target="_blank" rel="external">Optimize with lustre</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/modprobe.d/zfs.conf</span><br><span class="line">options zfs zfs_prefetch_<span class="built_in">disable</span>=1</span><br><span class="line">options zfs metaslab_debug_unload=1</span><br><span class="line">options zfs zfs_arc_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.6&#125;'</span> /proc/meminfo) <span class="comment">#60%, 3/5</span></span><br><span class="line">options zfs zfs_arc_meta_<span class="built_in">limit</span>=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.75&#125;'</span> /proc/meminfo) <span class="comment">#MDS only,75%</span></span><br><span class="line">options zfs zfs_dirty_data_max=$(awk <span class="string">'$0~/MemTotal/&#123;printf "%.0f \n", $2*1024*0.15&#125;'</span> /proc/meminfo) <span class="comment">#15%</span></span><br><span class="line">options zfs zfs_vdev_async_write_min_active=5 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_async_write_max_active=15</span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_min_active=16 <span class="comment"># depends your hdd number of your volume ,SSD could be higher</span></span><br><span class="line">options zfs zfs_vdev_sync_<span class="built_in">read</span>_max_active=16</span><br><span class="line">options zfs zfs_vdev_async_write_active_min_dirty_percent=20</span><br><span class="line">options zfs zfs_vdev_scheduler=deadline <span class="comment">#noop for SSD</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://lustre.ornl.gov/ecosystem-2016/documents/tutorials/Stearman-LLNL-ZFS.pdf" target="_blank" rel="external">Tutorial: How to install, tune and Monitor a ZFS based Lustre file system</a></p>
 <h3 id="Readonly-mount"><a href="#Readonly-mount" class="headerlink" title="Readonly mount"></a>Readonly mount</h3><p>The /etc/zfs/zpool.cache file will be automatically updated when your pool configuration is changed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zpool <span class="built_in">set</span> cachefile=none tank</span><br><span class="line">zpool import -N -o cachefile=none <span class="_">-d</span> /dev/disk/by-id tank01</span><br><span class="line">zfs mount -o ro tank01</span><br><span class="line"><span class="comment">#deafult zfs mount -o rw,zfsutil tank01</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zfs <span class="built_in">set</span> compression=lz4 tank</span><br><span class="line">zfs <span class="built_in">set</span> compression=gzip-9 tank</span><br></pre></td></tr></table></figure>
@@ -3562,9 +3588,9 @@
             
             <tag> pacemaker </tag>
             
-            <tag> zfs </tag>
-            
             <tag> lustre </tag>
+            
+            <tag> zfs </tag>
             
         </tags>
         
