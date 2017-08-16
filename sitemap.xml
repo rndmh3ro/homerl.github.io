@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
+    
+    <lastmod>2017-08-15T06:50:00.911Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
+    
+    <lastmod>2017-08-10T00:20:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    
+    <lastmod>2017-08-07T05:00:46.158Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2017-08-01T13:21:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/</loc>
+    
+    <lastmod>2017-07-31T09:58:35.398Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2017-07-31T03:26:45.374Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
     
     <lastmod>2017-07-18T10:16:23.877Z</lastmod>
@@ -11,14 +53,7 @@
   <url>
     <loc>http://yoursite.com/2017/07/12/grub/</loc>
     
-    <lastmod>2017-07-12T09:52:27.606Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2017-07-12T09:27:56.154Z</lastmod>
+    <lastmod>2017-07-13T03:07:09.030Z</lastmod>
     
   </url>
   
@@ -58,20 +93,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
-    
-    <lastmod>2017-07-05T09:01:53.017Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
-    
-    <lastmod>2017-05-23T05:05:49.757Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
     
     <lastmod>2017-05-10T05:30:59.830Z</lastmod>
@@ -82,13 +103,6 @@
     <loc>http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/</loc>
     
     <lastmod>2017-04-14T08:21:04.700Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
-    
-    <lastmod>2017-03-21T08:33:50.882Z</lastmod>
     
   </url>
   
