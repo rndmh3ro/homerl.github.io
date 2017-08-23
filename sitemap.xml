@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2017-08-23T01:49:24.321Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    
+    <lastmod>2017-08-18T07:44:35.546Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
     
     <lastmod>2017-08-15T06:50:00.911Z</lastmod>
@@ -16,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
-    
-    <lastmod>2017-08-07T05:00:46.158Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
     <lastmod>2017-08-01T13:21:11.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/</loc>
     
     <lastmod>2017-07-31T09:58:35.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
-    
-    <lastmod>2017-07-31T03:26:45.374Z</lastmod>
     
   </url>
   
