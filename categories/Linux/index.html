@@ -62,7 +62,7 @@
 <meta name="description" content="The chioce you make, the risks you take">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Homer's Blog">
-<meta property="og:url" content="http://yoursite.com/categories/linux/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/Linux/index.html">
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="The chioce you make, the risks you take">
 <meta name="twitter:card" content="summary">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title> Category: linux | Homer's Blog </title>
+  <title> Category: Linux | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,7 +255,7 @@
   <section id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        linux
+        Linux
         <small>Category</small>
       </h2>
     </div>
@@ -268,9 +268,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2017/10/18/Bash-tips/" itemprop="url">
+            <a class="post-title-link" href="/2017/11/21/linux-errno/" itemprop="url">
               
-                <span itemprop="name">Bash tips</span>
+                <span itemprop="name">linux_errno</span>
               
             </a>
         
@@ -278,9 +278,93 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-18T10:33:38+08:00"
-              content="2017-10-18" >
-          10-18
+              datetime="2017-11-21T14:03:54+08:00"
+              content="2017-11-21" >
+          11-21
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/11/09/system_call/" itemprop="url">
+              
+                <span itemprop="name">system call</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-11-09T16:22:12+08:00"
+              content="2017-11-09" >
+          11-09
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/10/26/scsi_tips/" itemprop="url">
+              
+                <span itemprop="name">scsi tips</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-10-26T22:39:34+08:00"
+              content="2017-10-26" >
+          10-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/12/23/blk-mq-with-SAS-SSD/" itemprop="url">
+              
+                <span itemprop="name">blk-mq with SAS SSD</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-12-23T21:19:55+08:00"
+              content="2016-12-23" >
+          12-23
         </time>
       </div>
 
@@ -331,7 +415,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -505,7 +589,7 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = 'categories/linux/index.html';
+      var disqus_identifier = 'categories/Linux/index.html';
       var disqus_title = '';
       var disqus_url = '';
 
@@ -642,55 +726,6 @@
     // handle and trigger popup window;
     $(window).bind('scroll', function() {
       scrollTop = $( window ).scrollTop();
-      newHeight = scrollTop + 100;
-    });
-    $('#search-result a').mousedown(function(e) {
-        window.location.href = this.href;
-      });
-    $('.popup-trigger').mousedown(function(e) {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      $('#local-search-input').val($('#search-input').val());
-      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
-      e.stopPropagation();
-      if(jQuery(window).width() < 750) {
-        $('.site-search-form').after( $( ".popup" ) );
-        $('.popup').show().addClass('popup-mobile').css('top', 0);
-        $('html, body').animate({
-          scrollTop: $('.popup').offset().top
-        }, 500);
-      } else {
-        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
-      };
-    });
-
-    $('#search-input').focus(function() {
-    if ($(this).val().length > 0) {
-      $('#search-result').show();
-      }
-    });
-    $('#search-input').blur(function() {
-      $('#search-result').hide();
-    });
-
-    $('html').click(function() {
-      $('.popup').hide();
-    });
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-  
-
-  
-
-
-</body>
-</html>
-rollTop();
       newHeight = scrollTop + 100;
     });
     $('#search-result a').mousedown(function(e) {

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/21/linux-errno/</loc>
+    
+    <lastmod>2017-11-21T09:11:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
-    <lastmod>2017-11-21T05:52:49.000Z</lastmod>
+    <lastmod>2017-11-21T09:08:27.000Z</lastmod>
     
   </url>
   
@@ -123,7 +130,7 @@
   <url>
     <loc>http://yoursite.com/2017/05/24/Performance-Tuning-in-centos7/</loc>
     
-    <lastmod>2017-07-08T01:34:40.352Z</lastmod>
+    <lastmod>2017-07-08T01:34:25.000Z</lastmod>
     
   </url>
   
@@ -137,7 +144,7 @@
   <url>
     <loc>http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/</loc>
     
-    <lastmod>2017-03-14T12:11:59.518Z</lastmod>
+    <lastmod>2017-03-14T12:11:59.000Z</lastmod>
     
   </url>
   
@@ -151,28 +158,28 @@
   <url>
     <loc>http://yoursite.com/2017/03/09/kvm-tips/</loc>
     
-    <lastmod>2017-03-09T13:52:57.302Z</lastmod>
+    <lastmod>2017-03-09T13:52:57.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/03/Learn-openzfs/</loc>
     
-    <lastmod>2017-03-08T13:06:08.893Z</lastmod>
+    <lastmod>2017-03-08T13:06:08.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
     
-    <lastmod>2017-03-08T12:48:20.611Z</lastmod>
+    <lastmod>2017-03-08T12:48:20.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/12/01/Online-dropbox-with-socks5-proxy-command-line/</loc>
     
-    <lastmod>2017-03-02T12:57:31.457Z</lastmod>
+    <lastmod>2017-03-02T12:57:31.000Z</lastmod>
     
   </url>
   
@@ -193,14 +200,14 @@
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
-    <lastmod>2017-01-08T04:20:00.148Z</lastmod>
+    <lastmod>2017-01-08T04:20:00.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/12/28/Learn-ZFS-Internals-p1-p5/</loc>
     
-    <lastmod>2016-12-28T13:38:41.143Z</lastmod>
+    <lastmod>2016-12-28T13:38:28.000Z</lastmod>
     
   </url>
   
@@ -221,7 +228,7 @@
   <url>
     <loc>http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/</loc>
     
-    <lastmod>2016-12-23T13:57:03.785Z</lastmod>
+    <lastmod>2016-12-23T13:57:03.000Z</lastmod>
     
   </url>
   
@@ -235,7 +242,7 @@
   <url>
     <loc>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</loc>
     
-    <lastmod>2016-09-04T11:30:07.773Z</lastmod>
+    <lastmod>2016-09-04T11:30:07.000Z</lastmod>
     
   </url>
   
@@ -270,7 +277,7 @@
   <url>
     <loc>http://yoursite.com/2016/06/02/About-SSD-power-loss/</loc>
     
-    <lastmod>2016-06-01T17:24:45.845Z</lastmod>
+    <lastmod>2016-06-01T17:21:13.000Z</lastmod>
     
   </url>
   
@@ -284,7 +291,7 @@
   <url>
     <loc>http://yoursite.com/2016/05/06/Trim-discard-support/</loc>
     
-    <lastmod>2016-05-06T16:13:32.103Z</lastmod>
+    <lastmod>2016-05-06T16:13:32.000Z</lastmod>
     
   </url>
   
@@ -298,21 +305,21 @@
   <url>
     <loc>http://yoursite.com/2016/04/20/SSD-partition-alignment/</loc>
     
-    <lastmod>2016-04-19T16:31:44.819Z</lastmod>
+    <lastmod>2016-04-19T16:31:44.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/08/SSD-interface/</loc>
     
-    <lastmod>2016-04-19T15:40:15.379Z</lastmod>
+    <lastmod>2016-04-19T15:39:50.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/12/golang-io-reader-to-string/</loc>
     
-    <lastmod>2016-04-12T14:37:53.142Z</lastmod>
+    <lastmod>2016-04-12T14:37:49.000Z</lastmod>
     
   </url>
   
@@ -340,14 +347,14 @@
   <url>
     <loc>http://yoursite.com/2016/04/04/Sort-array-with-GAWK4/</loc>
     
-    <lastmod>2016-04-03T16:27:03.147Z</lastmod>
+    <lastmod>2016-04-03T16:27:03.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/01/blktrace/</loc>
     
-    <lastmod>2016-04-03T13:18:14.313Z</lastmod>
+    <lastmod>2016-04-03T13:18:14.000Z</lastmod>
     
   </url>
   
@@ -382,14 +389,14 @@
   <url>
     <loc>http://yoursite.com/2016/03/01/VLC-not-show-media-title/</loc>
     
-    <lastmod>2016-03-20T10:26:07.907Z</lastmod>
+    <lastmod>2016-03-20T10:25:35.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tools/index.html</loc>
     
-    <lastmod>2016-03-19T03:21:50.953Z</lastmod>
+    <lastmod>2016-03-19T03:21:50.000Z</lastmod>
     
   </url>
   
