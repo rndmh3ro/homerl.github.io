@@ -62,7 +62,7 @@
 <meta name="description" content="The chioce you make, the risks you take">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Homer's Blog">
-<meta property="og:url" content="http://yoursite.com/categories/Linux/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/linux/index.html">
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="The chioce you make, the risks you take">
 <meta name="twitter:card" content="summary">
@@ -85,7 +85,7 @@
   };
 </script>
 
-  <title> Category: Linux | Homer's Blog </title>
+  <title> Category: linux | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,7 +255,7 @@
   <section id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        Linux
+        linux
         <small>Category</small>
       </h2>
     </div>
@@ -268,9 +268,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/12/23/blk-mq-with-SAS-SSD/" itemprop="url">
+            <a class="post-title-link" href="/2017/10/18/Bash-tips/" itemprop="url">
               
-                <span itemprop="name">blk-mq with SAS SSD</span>
+                <span itemprop="name">Bash tips</span>
               
             </a>
         
@@ -278,9 +278,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-23T21:19:55+08:00"
-              content="2016-12-23" >
-          12-23
+              datetime="2017-10-18T10:33:38+08:00"
+              content="2017-10-18" >
+          10-18
         </time>
       </div>
 
@@ -331,7 +331,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -339,7 +339,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -348,7 +348,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -505,7 +505,7 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = 'categories/Linux/index.html';
+      var disqus_identifier = 'categories/linux/index.html';
       var disqus_title = '';
       var disqus_url = '';
 
@@ -642,6 +642,55 @@
     // handle and trigger popup window;
     $(window).bind('scroll', function() {
       scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>
+rollTop();
       newHeight = scrollTop + 100;
     });
     $('#search-result a').mousedown(function(e) {

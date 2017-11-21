@@ -1,0 +1,1037 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,scsi,jbod,monitor," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
+Smart checkPhy reset problem
+Running disparity error countA binary value indic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scsi tips">
+<meta property="og:url" content="http://yoursite.com/2017/10/26/scsi_tips/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
+Smart checkPhy reset problem
+Running disparity error countA binary value indic">
+<meta property="og:updated_time" content="2017-11-09T07:38:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scsi tips">
+<meta name="twitter:description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
+Smart checkPhy reset problem
+Running disparity error countA binary value indic">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> scsi tips | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                scsi tips
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-10-26T22:39:34+08:00" content="2017-10-26">
+              2017-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/10/26/scsi_tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/26/scsi_tips/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="sg3-utils"><a href="#sg3-utils" class="headerlink" title="sg3_utils"></a>sg3_utils</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sg_ses /dev/sg129 -p0x2 -I2,1 -j</span><br><span class="line">这个命令的I后面是2就是风扇，1是电源，3是温度</span><br><span class="line">然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇</span><br></pre></td></tr></table></figure>
+<h4 id="Smart-check"><a href="#Smart-check" class="headerlink" title="Smart check"></a>Smart check</h4><p>Phy reset problem</p>
+<p>Running disparity error count<br>A binary value indicating the cumulative encoded signal imbalance between the one and zero signal state of all characters since dword synchronization has been achieved.<br><a href="https://www.seagate.com/staticfiles/support/disc/manuals/Interface%20manuals/100293071c.pdf" target="_blank" rel="external">for more scsi info</a></p>
+<p>loss of DWORD synchroization<br>These errors mean that there is a problem in the link between the drive and the upstream port, if you have a cable in there the cable may be bad, if not it means one of the port is bad. Ofcourse even if you have a cable it can still mean one of the ports is bad.<br>The way to diagnose it is to use a different disk in the same slot and see if the error goes away or not, if it went away the disk is bad. If the error stayed the original disk is fine but the port on the server/chassis is bad and the server/chassis needs to be replaced.<br>The issue with loss of dword synchronization is that it means additional retries for some sent IOs and it will increase the latency of IOs by way of waiting more for data transmission due to these retransmits.</p>
+<p>SCSI errors in messages<br>“scsi data underrun”<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpt3sas_cm0:   handle(0x002d), ioc_status(scsi data underrun)(0x0045), smid(222)</span><br><span class="line">mpt3sas_cm0:   scsi_status(check condition)(0x02), scsi_state(autosense valid )(0x01)</span><br><span class="line">mpt3sas_cm0:   [sense_key,asc,ascq]: [0x06,0x2a,0x01], count(96)</span><br></pre></td></tr></table></figure></p>
+<p>“REPORT_LUNS handle retries”<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpt2sas0: REPORT_LUNS: handle(0x000a), retries(0)</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://gist.github.com/jaseywang/3786679" target="_blank" rel="external">Replace HDDs</a><br>(SAS Serial SCSI Protocol) SSP handle<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sep 26 15:03:03 wtf kernel: [5640834.981956] mpt2sas0: removing handle(0x000c), sas_addr(0x50014ee30011c706)</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.604300] scsi 0:0:13:0: Direct-Access     SEAGATE  ST2000NM0001     PS06 PQ: 0 ANSI: 6</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.604308] scsi 0:0:13:0: SSP: handle(0x0018), sas_addr(0x5000c50041f753c5), device_name(0x0000000000000000)</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.604312] scsi 0:0:13:0: SSP: enclosure_logical_id(0x500065b37689abff), slot(4)</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.604316] scsi 0:0:13:0: qdepth(254), tagged(1), simple(1), ordered(0), scsi_level(7), cmd_que(1)</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.604766] sd 0:0:13:0: Attached scsi generic sg1 <span class="built_in">type</span> 0</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.605237] sd 0:0:13:0: [sdb] 3907029168 512-byte logical blocks: (2.00 TB/1.81 TiB)</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.606128] sd 0:0:13:0: [sdb] Write Protect is off</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.606567] sd 0:0:13:0: [sdb] Write cache: enabled, <span class="built_in">read</span> cache: enabled, supports DPO and FUA</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.607915]  sdb: unknown partition table</span><br><span class="line">Sep 26 15:04:48 wtf kernel: [5640939.635779] sd 0:0:13:0: [sdb] Attached SCSI disk</span><br><span class="line">Sep 26 15:05:46 wtf kernel: [5640997.134363]  sdb: sdb1</span><br></pre></td></tr></table></figure></p>
+<p>You can enable SCSI logging using echo 0x010401cd &gt; /proc/sys/dev/scsi/logging_level</p>
+<p>显示当前级别：</p>
+<h1 id="sysctl-dev-scsi-logging-level"><a href="#sysctl-dev-scsi-logging-level" class="headerlink" title="sysctl dev.scsi.logging_level"></a>sysctl dev.scsi.logging_level</h1><p>dev.scsi.logging_level = 0<br>如果不是级别 128，请启用级别 128：</p>
+<h1 id="sysctl-w-dev-scsi-logging-level-128"><a href="#sysctl-w-dev-scsi-logging-level-128" class="headerlink" title="sysctl -w dev.scsi.logging_level=128"></a>sysctl -w dev.scsi.logging_level=128</h1><p>dev.scsi.logging_level = 128<br>要获取短时间内的非常详细的 scsi 日志记录，请启用级别 -1：</p>
+<h1 id="sysctl-w-dev-scsi-logging-level-1"><a href="#sysctl-w-dev-scsi-logging-level-1" class="headerlink" title="sysctl -w dev.scsi.logging_level=-1"></a>sysctl -w dev.scsi.logging_level=-1</h1><p>dev.scsi.logging_level = -1<br>日志输出将位于 /var/log/messages 中。<br>```</p>
+<p>scsi debug<br>scsi_logging_level syntax<br>Read syntax diagramSkip visual syntax diagram<br>                       .- —————————.<br>                       V                             |             </p>
+<blockquote>
+<blockquote>
+<p>-scsi_logging_level—-+————————-+-+–+- -s -+-&gt;&lt;<br>                         +- -a– <level>———–+    +- -g -+<br>                         +- -E– <level>———–+    ‘- -c -‘<br>                         +- -T– <level>———–+<br>                         +- -S– <level>———–+<br>                         +- -M– <level>———–+<br>                         +- –mlqueue– <level>—-+<br>                         +- –mlcomplete– <level>-+<br>                         +- -L– <level>———–+<br>                         +- –llqueue– <level>—-+<br>                         +- –llcomplete– <level>-+<br>                         +- -H– <level>———–+<br>                         +- –hlqueue– <level>—-+<br>                         +- –hlcomplete– <level>-+<br>                         ‘- -I– <level>———–’</level></level></level></level></level></level></level></level></level></level></level></level></level></level></p>
+</blockquote>
+</blockquote>
+<p>scsi_logging_level -g<br>Current scsi logging level:<br>dev.scsi.logging_level = 0<br>SCSI_LOG_ERROR=0<br>SCSI_LOG_TIMEOUT=0<br>SCSI_LOG_SCAN=0<br>SCSI_LOG_MLQUEUE=0<br>SCSI_LOG_MLCOMPLETE=0<br>SCSI_LOG_LLQUEUE=0<br>SCSI_LOG_LLCOMPLETE=0<br>SCSI_LOG_HLQUEUE=0<br>SCSI_LOG_HLCOMPLETE=0<br>SCSI_LOG_IOCTL=0</p>
+<p>scsi_logging_level –hlqueue 3 –highlevel 2 –all 1 -s<br>New scsi logging level:<br>dev.scsi.logging_level = 174363209<br>SCSI_LOG_ERROR=1<br>SCSI_LOG_TIMEOUT=1<br>SCSI_LOG_SCAN=1<br>SCSI_LOG_MLQUEUE=1<br>SCSI_LOG_MLCOMPLETE=1<br>SCSI_LOG_LLQUEUE=1<br>SCSI_LOG_LLCOMPLETE=1<br>SCSI_LOG_HLQUEUE=3<br>SCSI_LOG_HLCOMPLETE=2<br>SCSI_LOG_IOCTL=1<br><a href="https://www.ibm.com/support/knowledgecenter/en/linuxonibm/com.ibm.linux.z.lgdd/lgdd_r_scsilog_cmd.html" target="_blank" rel="external">https://www.ibm.com/support/knowledgecenter/en/linuxonibm/com.ibm.linux.z.lgdd/lgdd_r_scsilog_cmd.html</a></p>
+<p>The definitions can be found in<br><a href="https://en.opensuse.org/SDB:SCSI_debugging_hints" target="_blank" rel="external">https://en.opensuse.org/SDB:SCSI_debugging_hints</a></p>
+<p>drivers/scsi/scsi_logging.h<br>The possible areas are:</p>
+<p>ERROR<br>Used by any command which has to be retried/recovered via the SCSI error handling mechanism<br>TIMEOUT<br>Used by drivers/scsi/sg.c<br>SCAN<br>Used during device scan, ie whenever a new device / HBA is initialized<br>MLQUEUE<br>Mid-layer queue; requests are being pulled from the block-layer queue and submitted to the HBA<br>MLCOMPLETE<br>Mid-layer queue; requests are being completed by the HBA and results are being pushed back to the block-layer<br>LLQUEUE<br>Low-layer queue; Not used<br>LLCOMPLETE<br>Low-layer queue; Not used<br>HLQUEUE<br>High-layer queue; command preparation in drivers/scsi/sd.c<br>HLCOMPLETE<br>High-layer queue; command completion in drivers/scsi/sd.c<br>IOCTL<br>SCSI IOCTL logging<br>The detailed error level description:</p>
+<p>ERROR</p>
+<p>Error logging when a command is recovered via the SCSI error handling mechanism. The following levels are uses:</p>
+<p>Error handler thread statistics<br>Error handler command statistics<br>Error handler command logging<br>Not used<br>Error handler command details<br>and higher: not used<br>SCAN</p>
+<p>Logging during HBA / target scanning. The following levels are used:</p>
+<p>Logging of unusual devices where LUN 0 has a pqual of 3<br>Logging of devices with pqual 3<br>Logging of SCSI commands sent during scanning<br>and higher: not used.<br>MLQUEUE</p>
+<p>The MLQUEUE area is used when a command is being pulled from the block-layer queue and send to the HBA. It has the following levels:</p>
+<p>nothing (match completion)<br>log opcode + command of all commands<br>same as 2 plus dump cmd address<br>same as 3 plus dump extra junk<br>and higher: not used<br>MLCOMPLETE</p>
+<p>Logging of command completion from the HBA, before the completion is being called for the block-layer request. It has the following levels:</p>
+<p>log disposition, result, opcode + command, and conditionally sense data for failures or non SUCCESS dispositions.<br>same as 1 but for all command completions.<br>same as 2 plus dump cmd address<br>same as 3 plus dump extra junk<br>and higher: not used<br>Starting with SLES10 SP2 there is a command ‘scsi_logging_level’ which allows you to set the areas and levels without having to calculate the bit offsets by hand, very convenient if you want to enable a logging level other than 0xffffffff.</p>
+<p>A useful setting of the logging level without being buried in logging details is ERROR=3, SCAN=3, MLQUEUE=2, MLCOMPLETE=2, which evaluates to</p>
+<p>echo 9411 &gt; /proc/sys/dev/scsi/logging_level</p>
+<p>scsi errors</p>
+<p>LogSense Data<br>LogSense 0x00 00 Log Sense Pages Supported<br>LogSense 0x02 00 Write Errors<br>LogSense 0x03 00 Read Errors<br>LogSense 0x05 00 Verify Errors<br>LogSense 0x06 00 Non-medium Errors<br>LogSense 0x0D 00 Current temperature<br>LogSense 0x0E 00 Mfg Date, Start/Stop,Load/Unload Counters<br>LogSense 0x0F 00 Application Client Log (64 entries)<br>LogSense 0x10 00 Self-Test Results<br>LogSense 0x15 00 Background Media Scan Results<br>LogSense 0x18 00 Protocol Specific Log Parameters<br>LogSense 0x1A 00 Power State Transitiions<br>LogSense 0x2F 00 SMART Status and Temperature Reading<br>LogSense 0x30 00 Performance Counter Information<br>LogSense 0x37 00 Performance Statistics<br>LogSense 0x38 00 Voltage Monitoring Log<br>LogSense 0x3C 00 Helium Status Log (0 entries)</p>
+<p>From the SBC-4 document, here is a list of Log Pages<br>Table 180 — Log page codes and subpage codes for direct access block devices<br>Log page name Page code a Subpage code a Reference<br>Application Client 0Fh 00h SPC-5<br>ATA PASS-THROUGH Results 16h 00h SAT-3<br>Background Scan Results 15h 00h 6.4.2<br>Background Operation 15h 02h 6.4.3<br>Buffer Over-Run/Under-Run 01h 00h SPC-5<br>Cache Memory Statistics 19h 20h SPC-5<br>Environmental Limits 0Dh 02h SPC-5<br>Environmental Reporting 0Dh 01h SPC-5<br>Format Status 08h 00h 6.4.4<br>General Statistics and Performance 19h 00h SPC-5<br>Group Statistics and Performance (1 to 31) 19h 01h to 1Fh SPC-5<br>Informational Exceptions 2Fh 00h SPC-5<br>Last n Deferred Errors Or Asynchronous Events 0Bh 00h SPC-5<br>Last n Error Events 07h 00h SPC-5<br>Logical Block Provisioning 0Ch 00h 6.4.5<br>LPS Misalignment 15h 03h 6.4.6<br>Non-Medium Error 06h 00h SPC-5<br>Non-volatile Cache 17h 00h 6.4.7<br>Pending Defects 15h 01h 6.4.8<br>Power Condition Transitions 1Ah 00h SPC-5<br>Protocol-Specific Ports 18h 00h to FEh SPC-5<br>Read Error Counters 03h 00h SPC-5<br>Self-Test Results 10h 00h SPC-5<br>Solid State Media 11h 00h 6.4.9<br>Start-Stop Cycle Counter 0Eh 00h SPC-5<br>Supported Log Pages 00h 00h SPC-5<br>Supported Log Pages and Subpages 00h FFh SPC-5<br>Supported Subpages 01h to 3Fh FFh SPC-5<br>Temperature 0Dh 00h SPC-5<br>Utilization 0Eh 01h 6.4.10<br>Verify Error Counters 05h 00h SPC-5<br>Write Error Counters 02h 00h SPC-5<br>Vendor specific 30h to 3Eh 00h to FEh n/a</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/scsi/" rel="tag">#scsi</a>
+          
+            <a href="/tags/jbod/" rel="tag">#jbod</a>
+          
+            <a href="/tags/monitor/" rel="tag">#monitor</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/Bash-tips/" rel="next" title="Bash tips">
+                <i class="fa fa-chevron-left"></i> Bash tips
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/09/system_call/" rel="prev" title="system call">
+                system call <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sg3-utils"><span class="nav-number">1.</span> <span class="nav-text">sg3_utils</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Smart-check"><span class="nav-number">1.1.</span> <span class="nav-text">Smart check</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-dev-scsi-logging-level"><span class="nav-number"></span> <span class="nav-text">sysctl dev.scsi.logging_level</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-128"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=128</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-1"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=-1</span></a></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2017/10/26/scsi_tips/';
+      var disqus_title = 'scsi tips';
+      var disqus_url = 'http://yoursite.com/2017/10/26/scsi_tips/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>

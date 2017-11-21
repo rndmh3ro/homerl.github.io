@@ -59,22 +59,22 @@
 
 
 
-<meta name="description" content="Get storage-system-name12-n means storage-system-nameSMcli localhost
-Get storage system status1SMcli  -n ControllerA  -c &quot; show storagearray healthstatus;&quot;
-Show all info1234567SMcli  -n ControllerA  -">
+<meta name="description" content="Discovery devices1SMcli -A
+Get storage-system-name12-n means storage-system-nameSMcli localhost
+Get storage system statusshow ip address (ipaddr)1SMcli  -n ControllerA  -c &quot; show storagearray healthst">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SMcli monitor raid controller">
 <meta property="og:url" content="http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="Get storage-system-name12-n means storage-system-nameSMcli localhost
-Get storage system status1SMcli  -n ControllerA  -c &quot; show storagearray healthstatus;&quot;
-Show all info1234567SMcli  -n ControllerA  -">
-<meta property="og:updated_time" content="2017-04-14T08:21:04.700Z">
+<meta property="og:description" content="Discovery devices1SMcli -A
+Get storage-system-name12-n means storage-system-nameSMcli localhost
+Get storage system statusshow ip address (ipaddr)1SMcli  -n ControllerA  -c &quot; show storagearray healthst">
+<meta property="og:updated_time" content="2017-10-25T09:26:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMcli monitor raid controller">
-<meta name="twitter:description" content="Get storage-system-name12-n means storage-system-nameSMcli localhost
-Get storage system status1SMcli  -n ControllerA  -c &quot; show storagearray healthstatus;&quot;
-Show all info1234567SMcli  -n ControllerA  -">
+<meta name="twitter:description" content="Discovery devices1SMcli -A
+Get storage-system-name12-n means storage-system-nameSMcli localhost
+Get storage system statusshow ip address (ipaddr)1SMcli  -n ControllerA  -c &quot; show storagearray healthst">
 
 
 
@@ -345,8 +345,9 @@ Show all info1234567SMcli  -n ControllerA  -">
       
 
       
-        <h3 id="Get-storage-system-name"><a href="#Get-storage-system-name" class="headerlink" title="Get storage-system-name"></a>Get storage-system-name</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-n means storage-system-name</span><br><span class="line">SMcli localhost</span><br></pre></td></tr></table></figure>
-<h3 id="Get-storage-system-status"><a href="#Get-storage-system-status" class="headerlink" title="Get storage system status"></a>Get storage system status</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli  -n ControllerA  -c <span class="string">" show storagearray healthstatus;"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="Discovery-devices"><a href="#Discovery-devices" class="headerlink" title="Discovery devices"></a>Discovery devices</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli -A</span><br></pre></td></tr></table></figure>
+<h3 id="Get-storage-system-name"><a href="#Get-storage-system-name" class="headerlink" title="Get storage-system-name"></a>Get storage-system-name</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-n means storage-system-name</span><br><span class="line">SMcli localhost</span><br></pre></td></tr></table></figure>
+<h3 id="Get-storage-system-status"><a href="#Get-storage-system-status" class="headerlink" title="Get storage system status"></a>Get storage system status</h3><p>show ip address (ipaddr)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli  -n ControllerA  -c <span class="string">" show storagearray healthstatus;"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Show-all-info"><a href="#Show-all-info" class="headerlink" title="Show all info"></a>Show all info</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SMcli  -n ControllerA  -c <span class="string">"show allControllers  summary;"</span></span><br><span class="line">SMcli -n ControllerA -c <span class="string">"Show allVirtualDisks;"</span></span><br><span class="line">SMcli -n ControllerA -c <span class="string">"show AllPhysicalDisks summary;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### If no summary , it will output all details for each devices.</span></span><br><span class="line">SMcli -n ControllerA -c <span class="string">"show allcontrollers;"</span> <span class="comment">##NVRAM status, cache mirror</span></span><br><span class="line">SMcli  -n ControllerA  -c <span class="string">"Show allphysicalDisks ;"</span></span><br></pre></td></tr></table></figure>
 <h3 id="Output-controller-log"><a href="#Output-controller-log" class="headerlink" title="Output controller log"></a>Output controller log</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SMcli  -n ControllerA  -c <span class="string">"save storageArray supportdata file=\"/tmp/controller.log\" force=true;"</span></span><br></pre></td></tr></table></figure>
 <h3 id="Reset-controller"><a href="#Reset-controller" class="headerlink" title="Reset controller"></a>Reset controller</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SMcli -n  ControllerA -c <span class="string">"reset controller 0;"</span></span><br><span class="line">SMcli -n  ControllerA -c <span class="string">"reset controller 1;"</span></span><br></pre></td></tr></table></figure>
@@ -469,7 +470,7 @@ Show all info1234567SMcli  -n ControllerA  -">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -477,7 +478,7 @@ Show all info1234567SMcli  -n ControllerA  -">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -486,7 +487,7 @@ Show all info1234567SMcli  -n ControllerA  -">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -550,7 +551,7 @@ Show all info1234567SMcli  -n ControllerA  -">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-storage-system-name"><span class="nav-number">1.</span> <span class="nav-text">Get storage-system-name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-storage-system-status"><span class="nav-number">2.</span> <span class="nav-text">Get storage system status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-all-info"><span class="nav-number">3.</span> <span class="nav-text">Show all info</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-controller-log"><span class="nav-number">4.</span> <span class="nav-text">Output controller log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reset-controller"><span class="nav-number">5.</span> <span class="nav-text">Reset controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blink-the-device"><span class="nav-number">6.</span> <span class="nav-text">Blink the device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-battery-status"><span class="nav-number">7.</span> <span class="nav-text">Get battery status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-battery-status-1"><span class="nav-number">8.</span> <span class="nav-text">Get battery status</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Discovery-devices"><span class="nav-number">1.</span> <span class="nav-text">Discovery devices</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-storage-system-name"><span class="nav-number">2.</span> <span class="nav-text">Get storage-system-name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-storage-system-status"><span class="nav-number">3.</span> <span class="nav-text">Get storage system status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-all-info"><span class="nav-number">4.</span> <span class="nav-text">Show all info</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-controller-log"><span class="nav-number">5.</span> <span class="nav-text">Output controller log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reset-controller"><span class="nav-number">6.</span> <span class="nav-text">Reset controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blink-the-device"><span class="nav-number">7.</span> <span class="nav-text">Blink the device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-battery-status"><span class="nav-number">8.</span> <span class="nav-text">Get battery status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-battery-status-1"><span class="nav-number">9.</span> <span class="nav-text">Get battery status</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

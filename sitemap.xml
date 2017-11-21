@@ -2,142 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
     
-    <lastmod>2017-08-23T02:14:44.922Z</lastmod>
+    <lastmod>2017-11-21T05:52:49.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
     
-    <lastmod>2017-08-23T01:49:24.321Z</lastmod>
+    <lastmod>2017-11-10T13:22:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
+    <loc>http://yoursite.com/2017/11/09/system_call/</loc>
     
-    <lastmod>2017-08-15T06:50:00.911Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
-    
-    <lastmod>2017-08-10T00:20:46.000Z</lastmod>
+    <lastmod>2017-11-09T08:25:13.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    <loc>http://yoursite.com/2017/10/26/scsi_tips/</loc>
     
-    <lastmod>2017-08-01T13:21:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/</loc>
-    
-    <lastmod>2017-07-31T09:58:35.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
-    
-    <lastmod>2017-07-18T10:16:23.877Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/12/grub/</loc>
-    
-    <lastmod>2017-07-13T03:07:09.030Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</loc>
-    
-    <lastmod>2017-07-12T08:33:58.557Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/08/Memory-linux/</loc>
-    
-    <lastmod>2017-07-12T05:31:45.404Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/</loc>
-    
-    <lastmod>2017-07-12T05:27:03.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
-    
-    <lastmod>2017-07-11T08:58:53.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/05/24/Performance-Tuning-in-centos7/</loc>
-    
-    <lastmod>2017-07-08T01:34:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
-    
-    <lastmod>2017-05-10T05:30:59.830Z</lastmod>
+    <lastmod>2017-11-09T07:38:25.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/04/13/SMcli-monitor-raid-controller/</loc>
     
-    <lastmod>2017-04-14T08:21:04.700Z</lastmod>
+    <lastmod>2017-10-25T09:26:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/18/Bash-tips/</loc>
+    
+    <lastmod>2017-10-18T02:46:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/21/SCSI-Persistent-Reservations/</loc>
+    
+    <lastmod>2017-10-13T09:11:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/25/About-nfs/</loc>
+    
+    <lastmod>2017-08-28T01:27:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
+    
+    <lastmod>2017-08-24T06:33:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/11/06/Deploy%20Lustre%20and%20OpenZFS/</loc>
+    
+    <lastmod>2017-08-23T02:14:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/</loc>
+    
+    <lastmod>2017-07-31T09:58:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/17/Reinstall-grub2/</loc>
+    
+    <lastmod>2017-07-18T10:16:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/12/grub/</loc>
+    
+    <lastmod>2017-07-12T09:52:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/12/Enable-blk-mq-in-centos-7-3/</loc>
+    
+    <lastmod>2017-07-12T08:12:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/08/Memory-linux/</loc>
+    
+    <lastmod>2017-07-12T05:31:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/07/12/Hot-plugin-scan-rescan-scsi/</loc>
+    
+    <lastmod>2017-07-12T05:27:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/12/05/Ping-test-in-serial-link/</loc>
+    
+    <lastmod>2017-07-11T08:57:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/05/24/Performance-Tuning-in-centos7/</loc>
+    
+    <lastmod>2017-07-08T01:34:40.352Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    
+    <lastmod>2017-05-10T05:30:59.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/03/13/HA-centos7-3-nodes-configuration/</loc>
     
-    <lastmod>2017-03-14T12:11:59.000Z</lastmod>
+    <lastmod>2017-03-14T12:11:59.518Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2015/11/12/CentOS7%20HA%20configuration/</loc>
     
-    <lastmod>2017-03-14T01:48:44.206Z</lastmod>
+    <lastmod>2017-03-14T01:48:44.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/03/09/kvm-tips/</loc>
     
-    <lastmod>2017-03-09T13:52:57.000Z</lastmod>
+    <lastmod>2017-03-09T13:52:57.302Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/03/Learn-openzfs/</loc>
     
-    <lastmod>2017-03-08T13:06:08.000Z</lastmod>
+    <lastmod>2017-03-08T13:06:08.893Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/01/11/Ext_filesystem_recovery/</loc>
     
-    <lastmod>2017-03-08T12:48:20.000Z</lastmod>
+    <lastmod>2017-03-08T12:48:20.611Z</lastmod>
     
   </url>
   
