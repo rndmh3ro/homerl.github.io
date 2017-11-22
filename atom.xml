@@ -455,9 +455,9 @@
     
       <category term="centos" scheme="http://yoursite.com/tags/centos/"/>
     
-      <category term="benchmark" scheme="http://yoursite.com/tags/benchmark/"/>
-    
       <category term="performance" scheme="http://yoursite.com/tags/performance/"/>
+    
+      <category term="benchmark" scheme="http://yoursite.com/tags/benchmark/"/>
     
   </entry>
   
@@ -599,13 +599,13 @@
       <category term="Linux configuration" scheme="http://yoursite.com/categories/Linux-configuration/"/>
     
     
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
       <category term="centos" scheme="http://yoursite.com/tags/centos/"/>
     
       <category term="ha" scheme="http://yoursite.com/tags/ha/"/>
     
       <category term="cluster" scheme="http://yoursite.com/tags/cluster/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
       <category term="3 nodes" scheme="http://yoursite.com/tags/3-nodes/"/>
     

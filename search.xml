@@ -405,9 +405,9 @@
             
             <tag> centos </tag>
             
-            <tag> benchmark </tag>
-            
             <tag> performance </tag>
+            
+            <tag> benchmark </tag>
             
         </tags>
         
@@ -542,13 +542,13 @@
         
         <tags>
             
+            <tag> linux </tag>
+            
             <tag> centos </tag>
             
             <tag> ha </tag>
             
             <tag> cluster </tag>
-            
-            <tag> linux </tag>
             
             <tag> 3 nodes </tag>
             
@@ -3207,9 +3207,9 @@
         
         <tags>
             
-            <tag> ha </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ha </tag>
             
             <tag> corosync </tag>
             
@@ -3352,9 +3352,9 @@
             
             <tag> linux </tag>
             
-            <tag> robinhood </tag>
-            
             <tag> zfs </tag>
+            
+            <tag> robinhood </tag>
             
         </tags>
         
@@ -3461,9 +3461,9 @@
         
         <tags>
             
-            <tag> centos </tag>
-            
             <tag> linux </tag>
+            
+            <tag> centos </tag>
             
             <tag> zfs </tag>
             
@@ -3536,9 +3536,9 @@
         
         <tags>
             
-            <tag> centos </tag>
-            
             <tag> linux </tag>
+            
+            <tag> centos </tag>
             
             <tag> zfs </tag>
             
@@ -3685,13 +3685,13 @@
         
         <tags>
             
+            <tag> linux </tag>
+            
             <tag> centos </tag>
             
             <tag> ha </tag>
             
             <tag> cluster </tag>
-            
-            <tag> linux </tag>
             
             <tag> 3 nodes </tag>
             
@@ -3848,11 +3848,11 @@
         
         <tags>
             
+            <tag> linux </tag>
+            
             <tag> ha </tag>
             
             <tag> cluster </tag>
-            
-            <tag> linux </tag>
             
             <tag> corosync </tag>
             
