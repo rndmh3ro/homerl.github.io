@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/26/scsi_tips/</loc>
+    
+    <lastmod>2017-11-22T06:28:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/11/09/mdadm/</loc>
+    
+    <lastmod>2017-11-22T02:44:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/21/linux-errno/</loc>
     
     <lastmod>2017-11-21T09:11:37.000Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://yoursite.com/2017/11/09/system_call/</loc>
     
     <lastmod>2017-11-09T08:25:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/26/scsi_tips/</loc>
-    
-    <lastmod>2017-11-09T07:38:25.000Z</lastmod>
     
   </url>
   
