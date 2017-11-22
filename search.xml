@@ -31,8 +31,12 @@
     
     <entry>
       <title><![CDATA[system call]]></title>
-      <url>http://yoursite.com/2017/11/09/mdadm/</url>
-      <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br></pre></td></tr></table></figure>
+      <url>http://yoursite.com/2017/11/09/system_call/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part2" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part2</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part3" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part3</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part4" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part4</a></p>
+<p>一、进程控制：<br>fork    创建一个新进程<br>clone    按指定条件创建子进程<br>execve    运行可执行文件<br>exit    中止进程<br>_exit    立即中止当前进程<br>getdtablesize    进程所能打开的最大文件数<br>getpgid    获取指定进程组标识号<br>setpgid    设置指定进程组标志号<br>getpgrp    获取当前进程组标识号<br>setpgrp    设置当前进程组标志号<br>getpid    获取进程标识号<br>getppid    获取父进程标识号<br>getpriority    获取调度优先级<br>setpriority    设置调度优先级<br>modify_ldt    读写进程的本地描述表<br>nanosleep    使进程睡眠指定的时间<br>nice    改变分时进程的优先级<br>pause    挂起进程，等待信号<br>personality    设置进程运行域<br>prctl    对进程进行特定操作<br>ptrace    进程跟踪<br>sched_get_priority_max    取得静态优先级的上限<br>sched_get_priority_min    取得静态优先级的下限<br>sched_getparam    取得进程的调度参数<br>sched_getscheduler    取得指定进程的调度策略<br>sched_rr_get_interval    取得按RR算法调度的实时进程的时间片长度<br>sched_setparam    设置进程的调度参数<br>sched_setscheduler    设置指定进程的调度策略和参数<br>sched_yield    进程主动让出处理器,并将自己等候调度队列队尾<br>vfork    创建一个子进程，以供执行新程序，常与execve等同时使用<br>wait    等待子进程终止<br>wait3    参见wait<br>waitpid    等待指定子进程终止<br>wait4    参见waitpid<br>capget    获取进程权限<br>capset    设置进程权限<br>getsid    获取会晤标识号<br>setsid    设置会晤标识号<br>二、文件系统控制<br>1、文件读写操作<br>fcntl    文件控制<br>open    打开文件<br>creat    创建新文件<br>close    关闭文件描述字<br>read    读文件<br>write    写文件<br>readv    从文件读入数据到缓冲数组中<br>writev    将缓冲数组里的数据写入文件<br>pread    对文件随机读<br>pwrite    对文件随机写<br>lseek    移动文件指针<br>_llseek    在64位地址空间里移动文件指针<br>dup    复制已打开的文件描述字<br>dup2    按指定条件复制文件描述字<br>flock    文件加/解锁<br>poll    I/O多路转换<br>truncate    截断文件<br>ftruncate    参见truncate<br>umask    设置文件权限掩码<br>fsync    把文件在内存中的部分写回磁盘<br>2、文件系统操作<br>access    确定文件的可存取性<br>chdir    改变当前工作目录<br>fchdir    参见chdir<br>chmod    改变文件方式<br>fchmod    参见chmod<br>chown    改变文件的属主或用户组<br>fchown    参见chown<br>lchown    参见chown<br>chroot    改变根目录<br>stat    取文件状态信息<br>lstat    参见stat<br>fstat    参见stat<br>statfs    取文件系统信息<br>fstatfs    参见statfs<br>readdir    读取目录项<br>getdents    读取目录项<br>mkdir    创建目录<br>mknod    创建索引节点<br>rmdir    删除目录<br>rename    文件改名<br>link    创建链接<br>symlink    创建符号链接<br>unlink    删除链接<br>readlink    读符号链接的值<br>mount    安装文件系统<br>umount    卸下文件系统<br>ustat    取文件系统信息<br>utime    改变文件的访问修改时间<br>utimes    参见utime<br>quotactl    控制磁盘配额<br>三、系统控制<br>ioctl    I/O总控制函数<br>_sysctl    读/写系统参数<br>acct    启用或禁止进程记账<br>getrlimit    获取系统资源上限<br>setrlimit    设置系统资源上限<br>getrusage    获取系统资源使用情况<br>uselib    选择要使用的二进制函数库<br>ioperm    设置端口I/O权限<br>iopl    改变进程I/O权限级别<br>outb    低级端口操作<br>reboot    重新启动<br>swapon    打开交换文件和设备<br>swapoff    关闭交换文件和设备<br>bdflush    控制bdflush守护进程<br>sysfs    取核心支持的文件系统类型<br>sysinfo    取得系统信息<br>adjtimex    调整系统时钟<br>alarm    设置进程的闹钟<br>getitimer    获取计时器值<br>setitimer    设置计时器值<br>gettimeofday    取时间和时区<br>settimeofday    设置时间和时区<br>stime    设置系统日期和时间<br>time    取得系统时间<br>times    取进程运行时间<br>uname    获取当前UNIX系统的名称、版本和主机等信息<br>vhangup    挂起当前终端<br>nfsservctl    对NFS守护进程进行控制<br>vm86    进入模拟8086模式<br>create_module    创建可装载的模块项<br>delete_module    删除可装载的模块项<br>init_module    初始化模块<br>query_module    查询模块信息<br><em>get_kernel_syms    取得核心符号,已被query_module代替<br>四、内存管理<br>brk    改变数据段空间的分配<br>sbrk    参见brk<br>mlock    内存页面加锁<br>munlock    内存页面解锁<br>mlockall    调用进程所有内存页面加锁<br>munlockall    调用进程所有内存页面解锁<br>mmap    映射虚拟内存页<br>munmap    去除内存页映射<br>mremap    重新映射虚拟内存地址<br>msync    将映射内存中的数据写回磁盘<br>mprotect    设置内存映像保护<br>getpagesize    获取页面大小<br>sync    将内存缓冲区数据写回硬盘<br>cacheflush    将指定缓冲区中的内容写回磁盘<br>五、网络管理<br>getdomainname    取域名<br>setdomainname    设置域名<br>gethostid    获取主机标识号<br>sethostid    设置主机标识号<br>gethostname    获取本主机名称<br>sethostname    设置主机名称<br>六、socket控制<br>socketcall    socket系统调用<br>socket    建立socket<br>bind    绑定socket到端口<br>connect    连接远程主机<br>accept    响应socket连接请求<br>send    通过socket发送信息<br>sendto    发送UDP信息<br>sendmsg    参见send<br>recv    通过socket接收信息<br>recvfrom    接收UDP信息<br>recvmsg    参见recv<br>listen    监听socket端口<br>select    对多路同步I/O进行轮询<br>shutdown    关闭socket上的连接<br>getsockname    取得本地socket名字<br>getpeername    获取通信对方的socket名字<br>getsockopt    取端口设置<br>setsockopt    设置端口参数<br>sendfile    在文件或端口间传输数据<br>socketpair    创建一对已联接的无名socket<br>七、用户管理<br>getuid    获取用户标识号<br>setuid    设置用户标志号<br>getgid    获取组标识号<br>setgid    设置组标志号<br>getegid    获取有效组标识号<br>setegid    设置有效组标识号<br>geteuid    获取有效用户标识号<br>seteuid    设置有效用户标识号<br>setregid    分别设置真实和有效的的组标识号<br>setreuid    分别设置真实和有效的用户标识号<br>getresgid    分别获取真实的,有效的和保存过的组标识号<br>setresgid    分别设置真实的,有效的和保存过的组标识号<br>getresuid    分别获取真实的,有效的和保存过的用户标识号<br>setresuid    分别设置真实的,有效的和保存过的用户标识号<br>setfsgid    设置文件系统检查时使用的组标识号<br>setfsuid    设置文件系统检查时使用的用户标识号<br>getgroups    获取后补组标志清单<br>setgroups    设置后补组标志清单<br>八、进程间通信<br>ipc    进程间通信总控制调用<br>1、信号<br>sigaction    设置对指定信号的处理方法<br>sigprocmask    根据参数对信号集中的信号执行阻塞/解除阻塞等操作<br>sigpending    为指定的被阻塞信号设置队列<br>sigsuspend    挂起进程等待特定信号<br>signal    参见signal<br>kill    向进程或进程组发信号
+</em>sigblock    向被阻塞信号掩码中添加信号,已被sigprocmask代替<br><em>siggetmask    取得现有阻塞信号掩码,已被sigprocmask代替
+</em>sigsetmask    用给定信号掩码替换现有阻塞信号掩码,已被sigprocmask代替<br><em>sigmask    将给定的信号转化为掩码,已被sigprocmask代替
+</em>sigpause    作用同sigsuspend,已被sigsuspend代替<br>sigvec    为兼容BSD而设的信号处理函数,作用类似sigaction<br>ssetmask    ANSI C的信号处理函数,作用类似sigaction<br>2、消息<br>msgctl    消息控制操作<br>msgget    获取消息队列<br>msgsnd    发消息<br>msgrcv    取消息<br>3、管道<br>pipe    创建管道<br>4、信号量<br>semctl    信号量控制<br>semget    获取一组信号量<br>semop    信号量操作<br>5、共享内存<br>shmctl    控制共享内存<br>shmget    获取共享内存<br>shmat    连接共享内存<br>shmdt    拆卸共享内存</p>
 ]]></content>
       
         <categories>
@@ -56,12 +60,8 @@
     
     <entry>
       <title><![CDATA[system call]]></title>
-      <url>http://yoursite.com/2017/11/09/system_call/</url>
-      <content type="html"><![CDATA[<p><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part2" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part2</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part3" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part3</a><br><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part4" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part4</a></p>
-<p>一、进程控制：<br>fork    创建一个新进程<br>clone    按指定条件创建子进程<br>execve    运行可执行文件<br>exit    中止进程<br>_exit    立即中止当前进程<br>getdtablesize    进程所能打开的最大文件数<br>getpgid    获取指定进程组标识号<br>setpgid    设置指定进程组标志号<br>getpgrp    获取当前进程组标识号<br>setpgrp    设置当前进程组标志号<br>getpid    获取进程标识号<br>getppid    获取父进程标识号<br>getpriority    获取调度优先级<br>setpriority    设置调度优先级<br>modify_ldt    读写进程的本地描述表<br>nanosleep    使进程睡眠指定的时间<br>nice    改变分时进程的优先级<br>pause    挂起进程，等待信号<br>personality    设置进程运行域<br>prctl    对进程进行特定操作<br>ptrace    进程跟踪<br>sched_get_priority_max    取得静态优先级的上限<br>sched_get_priority_min    取得静态优先级的下限<br>sched_getparam    取得进程的调度参数<br>sched_getscheduler    取得指定进程的调度策略<br>sched_rr_get_interval    取得按RR算法调度的实时进程的时间片长度<br>sched_setparam    设置进程的调度参数<br>sched_setscheduler    设置指定进程的调度策略和参数<br>sched_yield    进程主动让出处理器,并将自己等候调度队列队尾<br>vfork    创建一个子进程，以供执行新程序，常与execve等同时使用<br>wait    等待子进程终止<br>wait3    参见wait<br>waitpid    等待指定子进程终止<br>wait4    参见waitpid<br>capget    获取进程权限<br>capset    设置进程权限<br>getsid    获取会晤标识号<br>setsid    设置会晤标识号<br>二、文件系统控制<br>1、文件读写操作<br>fcntl    文件控制<br>open    打开文件<br>creat    创建新文件<br>close    关闭文件描述字<br>read    读文件<br>write    写文件<br>readv    从文件读入数据到缓冲数组中<br>writev    将缓冲数组里的数据写入文件<br>pread    对文件随机读<br>pwrite    对文件随机写<br>lseek    移动文件指针<br>_llseek    在64位地址空间里移动文件指针<br>dup    复制已打开的文件描述字<br>dup2    按指定条件复制文件描述字<br>flock    文件加/解锁<br>poll    I/O多路转换<br>truncate    截断文件<br>ftruncate    参见truncate<br>umask    设置文件权限掩码<br>fsync    把文件在内存中的部分写回磁盘<br>2、文件系统操作<br>access    确定文件的可存取性<br>chdir    改变当前工作目录<br>fchdir    参见chdir<br>chmod    改变文件方式<br>fchmod    参见chmod<br>chown    改变文件的属主或用户组<br>fchown    参见chown<br>lchown    参见chown<br>chroot    改变根目录<br>stat    取文件状态信息<br>lstat    参见stat<br>fstat    参见stat<br>statfs    取文件系统信息<br>fstatfs    参见statfs<br>readdir    读取目录项<br>getdents    读取目录项<br>mkdir    创建目录<br>mknod    创建索引节点<br>rmdir    删除目录<br>rename    文件改名<br>link    创建链接<br>symlink    创建符号链接<br>unlink    删除链接<br>readlink    读符号链接的值<br>mount    安装文件系统<br>umount    卸下文件系统<br>ustat    取文件系统信息<br>utime    改变文件的访问修改时间<br>utimes    参见utime<br>quotactl    控制磁盘配额<br>三、系统控制<br>ioctl    I/O总控制函数<br>_sysctl    读/写系统参数<br>acct    启用或禁止进程记账<br>getrlimit    获取系统资源上限<br>setrlimit    设置系统资源上限<br>getrusage    获取系统资源使用情况<br>uselib    选择要使用的二进制函数库<br>ioperm    设置端口I/O权限<br>iopl    改变进程I/O权限级别<br>outb    低级端口操作<br>reboot    重新启动<br>swapon    打开交换文件和设备<br>swapoff    关闭交换文件和设备<br>bdflush    控制bdflush守护进程<br>sysfs    取核心支持的文件系统类型<br>sysinfo    取得系统信息<br>adjtimex    调整系统时钟<br>alarm    设置进程的闹钟<br>getitimer    获取计时器值<br>setitimer    设置计时器值<br>gettimeofday    取时间和时区<br>settimeofday    设置时间和时区<br>stime    设置系统日期和时间<br>time    取得系统时间<br>times    取进程运行时间<br>uname    获取当前UNIX系统的名称、版本和主机等信息<br>vhangup    挂起当前终端<br>nfsservctl    对NFS守护进程进行控制<br>vm86    进入模拟8086模式<br>create_module    创建可装载的模块项<br>delete_module    删除可装载的模块项<br>init_module    初始化模块<br>query_module    查询模块信息<br><em>get_kernel_syms    取得核心符号,已被query_module代替<br>四、内存管理<br>brk    改变数据段空间的分配<br>sbrk    参见brk<br>mlock    内存页面加锁<br>munlock    内存页面解锁<br>mlockall    调用进程所有内存页面加锁<br>munlockall    调用进程所有内存页面解锁<br>mmap    映射虚拟内存页<br>munmap    去除内存页映射<br>mremap    重新映射虚拟内存地址<br>msync    将映射内存中的数据写回磁盘<br>mprotect    设置内存映像保护<br>getpagesize    获取页面大小<br>sync    将内存缓冲区数据写回硬盘<br>cacheflush    将指定缓冲区中的内容写回磁盘<br>五、网络管理<br>getdomainname    取域名<br>setdomainname    设置域名<br>gethostid    获取主机标识号<br>sethostid    设置主机标识号<br>gethostname    获取本主机名称<br>sethostname    设置主机名称<br>六、socket控制<br>socketcall    socket系统调用<br>socket    建立socket<br>bind    绑定socket到端口<br>connect    连接远程主机<br>accept    响应socket连接请求<br>send    通过socket发送信息<br>sendto    发送UDP信息<br>sendmsg    参见send<br>recv    通过socket接收信息<br>recvfrom    接收UDP信息<br>recvmsg    参见recv<br>listen    监听socket端口<br>select    对多路同步I/O进行轮询<br>shutdown    关闭socket上的连接<br>getsockname    取得本地socket名字<br>getpeername    获取通信对方的socket名字<br>getsockopt    取端口设置<br>setsockopt    设置端口参数<br>sendfile    在文件或端口间传输数据<br>socketpair    创建一对已联接的无名socket<br>七、用户管理<br>getuid    获取用户标识号<br>setuid    设置用户标志号<br>getgid    获取组标识号<br>setgid    设置组标志号<br>getegid    获取有效组标识号<br>setegid    设置有效组标识号<br>geteuid    获取有效用户标识号<br>seteuid    设置有效用户标识号<br>setregid    分别设置真实和有效的的组标识号<br>setreuid    分别设置真实和有效的用户标识号<br>getresgid    分别获取真实的,有效的和保存过的组标识号<br>setresgid    分别设置真实的,有效的和保存过的组标识号<br>getresuid    分别获取真实的,有效的和保存过的用户标识号<br>setresuid    分别设置真实的,有效的和保存过的用户标识号<br>setfsgid    设置文件系统检查时使用的组标识号<br>setfsuid    设置文件系统检查时使用的用户标识号<br>getgroups    获取后补组标志清单<br>setgroups    设置后补组标志清单<br>八、进程间通信<br>ipc    进程间通信总控制调用<br>1、信号<br>sigaction    设置对指定信号的处理方法<br>sigprocmask    根据参数对信号集中的信号执行阻塞/解除阻塞等操作<br>sigpending    为指定的被阻塞信号设置队列<br>sigsuspend    挂起进程等待特定信号<br>signal    参见signal<br>kill    向进程或进程组发信号
-</em>sigblock    向被阻塞信号掩码中添加信号,已被sigprocmask代替<br><em>siggetmask    取得现有阻塞信号掩码,已被sigprocmask代替
-</em>sigsetmask    用给定信号掩码替换现有阻塞信号掩码,已被sigprocmask代替<br><em>sigmask    将给定的信号转化为掩码,已被sigprocmask代替
-</em>sigpause    作用同sigsuspend,已被sigsuspend代替<br>sigvec    为兼容BSD而设的信号处理函数,作用类似sigaction<br>ssetmask    ANSI C的信号处理函数,作用类似sigaction<br>2、消息<br>msgctl    消息控制操作<br>msgget    获取消息队列<br>msgsnd    发消息<br>msgrcv    取消息<br>3、管道<br>pipe    创建管道<br>4、信号量<br>semctl    信号量控制<br>semget    获取一组信号量<br>semop    信号量操作<br>5、共享内存<br>shmctl    控制共享内存<br>shmget    获取共享内存<br>shmat    连接共享内存<br>shmdt    拆卸共享内存</p>
+      <url>http://yoursite.com/2017/11/09/mdadm/</url>
+      <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -403,11 +403,11 @@
         
         <tags>
             
+            <tag> benchmark </tag>
+            
             <tag> centos </tag>
             
             <tag> performance </tag>
-            
-            <tag> benchmark </tag>
             
         </tags>
         
@@ -473,9 +473,9 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> hdd </tag>
+            
+            <tag> ssd </tag>
             
             <tag> sas </tag>
             
@@ -1940,9 +1940,9 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> hdd </tag>
+            
+            <tag> ssd </tag>
             
             <tag> sas </tag>
             
@@ -1980,11 +1980,11 @@
         
         <tags>
             
+            <tag> hdd </tag>
+            
             <tag> ssd </tag>
             
             <tag> linux </tag>
-            
-            <tag> hdd </tag>
             
             <tag> raid </tag>
             
