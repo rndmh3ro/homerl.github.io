@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,jbod,scsi,monitor," />
+  <meta name="keywords" content="linux,scsi,jbod,monitor," />
 
 
 
@@ -59,22 +59,19 @@
 
 
 
-<meta name="description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
-Smart checkPhy reset problem
-Running disparity error countA binary value indic">
+<meta name="description" content="smartSMART 5 - Reallocated_Sector_Count.SMART 187 - Reported_Uncorrectable_Errors.SMART 188 - Command_Timeout.SMART 197 - Current_Pending_Sector_Count.SMART 198 - Offline_Uncorrectable
+sg3_utils123sg_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scsi tips">
 <meta property="og:url" content="http://yoursite.com/2017/10/26/scsi_tips/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
-Smart checkPhy reset problem
-Running disparity error countA binary value indic">
-<meta property="og:updated_time" content="2017-11-22T06:28:25.000Z">
+<meta property="og:description" content="smartSMART 5 - Reallocated_Sector_Count.SMART 187 - Reported_Uncorrectable_Errors.SMART 188 - Command_Timeout.SMART 197 - Current_Pending_Sector_Count.SMART 198 - Offline_Uncorrectable
+sg3_utils123sg_">
+<meta property="og:updated_time" content="2017-11-27T01:09:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scsi tips">
-<meta name="twitter:description" content="sg3_utils123sg_ses /dev/sg129 -p0x2 -I2,1 -j这个命令的I后面是2就是风扇，1是电源，3是温度然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇
-Smart checkPhy reset problem
-Running disparity error countA binary value indic">
+<meta name="twitter:description" content="smartSMART 5 - Reallocated_Sector_Count.SMART 187 - Reported_Uncorrectable_Errors.SMART 188 - Command_Timeout.SMART 197 - Current_Pending_Sector_Count.SMART 198 - Offline_Uncorrectable
+sg3_utils123sg_">
 
 
 
@@ -345,7 +342,8 @@ Running disparity error countA binary value indic">
       
 
       
-        <h3 id="sg3-utils"><a href="#sg3-utils" class="headerlink" title="sg3_utils"></a>sg3_utils</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sg_ses /dev/sg129 -p0x2 -I2,1 -j</span><br><span class="line">这个命令的I后面是2就是风扇，1是电源，3是温度</span><br><span class="line">然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇</span><br></pre></td></tr></table></figure>
+        <h3 id="smart"><a href="#smart" class="headerlink" title="smart"></a><a href="https://www.computerworld.com/article/2846009/the-5-smart-stats-that-actually-predict-hard-drive-failure.html" target="_blank" rel="external">smart</a></h3><p>SMART 5 - Reallocated_Sector_Count.<br>SMART 187 - Reported_Uncorrectable_Errors.<br>SMART 188 - Command_Timeout.<br>SMART 197 - Current_Pending_Sector_Count.<br>SMART 198 - Offline_Uncorrectable</p>
+<h3 id="sg3-utils"><a href="#sg3-utils" class="headerlink" title="sg3_utils"></a>sg3_utils</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sg_ses /dev/sg129 -p0x2 -I2,1 -j</span><br><span class="line">这个命令的I后面是2就是风扇，1是电源，3是温度</span><br><span class="line">然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇</span><br></pre></td></tr></table></figure>
 <h4 id="Smart-check"><a href="#Smart-check" class="headerlink" title="Smart check"></a>Smart check</h4><p>Phy reset problem</p>
 <p>Running disparity error count<br>A binary value indicating the cumulative encoded signal imbalance between the one and zero signal state of all characters since dword synchronization has been achieved.<br><a href="https://www.seagate.com/staticfiles/support/disc/manuals/Interface%20manuals/100293071c.pdf" target="_blank" rel="external">for more scsi info</a></p>
 <p>loss of DWORD synchroization<br>These errors mean that there is a problem in the link between the drive and the upstream port, if you have a cable in there the cable may be bad, if not it means one of the port is bad. Ofcourse even if you have a cable it can still mean one of the ports is bad.<br>The way to diagnose it is to use a different disk in the same slot and see if the error goes away or not, if it went away the disk is bad. If the error stayed the original disk is fine but the port on the server/chassis is bad and the server/chassis needs to be replaced.<br>The issue with loss of dword synchronization is that it means additional retries for some sent IOs and it will increase the latency of IOs by way of waiting more for data transmission due to these retransmits.</p>
@@ -373,9 +371,9 @@ Running disparity error countA binary value indic">
           
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/jbod/" rel="tag">#jbod</a>
-          
             <a href="/tags/scsi/" rel="tag">#scsi</a>
+          
+            <a href="/tags/jbod/" rel="tag">#jbod</a>
           
             <a href="/tags/monitor/" rel="tag">#monitor</a>
           
@@ -471,7 +469,7 @@ Running disparity error countA binary value indic">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -552,7 +550,7 @@ Running disparity error countA binary value indic">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sg3-utils"><span class="nav-number">1.</span> <span class="nav-text">sg3_utils</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Smart-check"><span class="nav-number">1.1.</span> <span class="nav-text">Smart check</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-dev-scsi-logging-level"><span class="nav-number"></span> <span class="nav-text">sysctl dev.scsi.logging_level</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-128"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=128</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-1"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=-1</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#smart"><span class="nav-number">1.</span> <span class="nav-text">smart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sg3-utils"><span class="nav-number">2.</span> <span class="nav-text">sg3_utils</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Smart-check"><span class="nav-number">2.1.</span> <span class="nav-text">Smart check</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-dev-scsi-logging-level"><span class="nav-number"></span> <span class="nav-text">sysctl dev.scsi.logging_level</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-128"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=128</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sysctl-w-dev-scsi-logging-level-1"><span class="nav-number"></span> <span class="nav-text">sysctl -w dev.scsi.logging_level=-1</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

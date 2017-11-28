@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blk-mq,queue," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="blk-mq in RHEL 7.2It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.If the dm_mod.use_blk_mq=y kernel option is specified. The d">
+<meta name="description" content="2xP3520 NVME raid1 md1_raid1 cpu 100%12345PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND 7448 root      20   0       0      0      0 R 100.0  0.0   7:54.02 md1_raid1 4057 ro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blk-mq with SAS SSD">
-<meta property="og:url" content="http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/index.html">
+<meta property="og:title" content="mdadm">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/mdadm-1/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="blk-mq in RHEL 7.2It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.If the dm_mod.use_blk_mq=y kernel option is specified. The d">
-<meta property="og:updated_time" content="2016-12-23T13:57:03.000Z">
+<meta property="og:description" content="2xP3520 NVME raid1 md1_raid1 cpu 100%12345PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND 7448 root      20   0       0      0      0 R 100.0  0.0   7:54.02 md1_raid1 4057 ro">
+<meta property="og:updated_time" content="2017-11-22T13:52:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blk-mq with SAS SSD">
-<meta name="twitter:description" content="blk-mq in RHEL 7.2It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.If the dm_mod.use_blk_mq=y kernel option is specified. The d">
+<meta name="twitter:title" content="mdadm">
+<meta name="twitter:description" content="2xP3520 NVME raid1 md1_raid1 cpu 100%12345PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND 7448 root      20   0       0      0      0 R 100.0  0.0   7:54.02 md1_raid1 4057 ro">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> blk-mq with SAS SSD | Homer's Blog </title>
+  <title> mdadm | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +274,7 @@
             
             
               
-                blk-mq with SAS SSD
+                mdadm
               
             
           </h1>
@@ -286,38 +286,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-12-23T21:19:55+08:00" content="2016-12-23">
-              2016-12-23
+            <time itemprop="dateCreated" datetime="2017-11-22T21:18:12+08:00" content="2017-11-22">
+              2017-11-22
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/23/blk-mq-with-SAS-SSD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/23/blk-mq-with-SAS-SSD/" itemprop="commentsCount"></span>
+                <a href="/2017/11/22/mdadm-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/22/mdadm-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,8 +320,7 @@
       
 
       
-        <h3 id="blk-mq-in-RHEL-7-2"><a href="#blk-mq-in-RHEL-7-2" class="headerlink" title="blk-mq in RHEL 7.2"></a><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.2_Release_Notes/storage.html" target="_blank" rel="external">blk-mq in RHEL 7.2</a></h3><p>It can improve performance by allowing certain device drivers to map I/O requests to multiple hardware or software queues.<br>If the dm_mod.use_blk_mq=y kernel option is specified. The default value is n (disabled).<br>It may be beneficial to set dm_mod.use_blk_mq=y if the underlying SCSI devices are also using blk-mq, as doing so reduces locking overhead at the DM layer.<br>To determine whether DM multipath is using blk-mq on a system, cat the file /sys/block/dm-X/dm/use_blk_mq, where dm-X is replaced by the DM multipath device of interest. This file is read-only and reflects what the global value in /sys/module/dm_mod/parameters/use_blk_mq was at the time the request-based DM multipath device was created.</p>
-<p><a href="http://events.linuxfoundation.org/sites/events/files/slides/scsi.pdf" target="_blank" rel="external">High Performance Storage with blk-mq and scsi-mq</a><br><a href="http://events.linuxfoundation.org/sites/events/files/slides/Vault%20-%20scsi-mq%20v2.pdf" target="_blank" rel="external">Increasing SCSI LLD Driver Performance by Using the SCSI Multiqueue Approach</a><br><a href="https://www.thomas-krenn.com/en/wiki/Linux_Multi-Queue_Block_IO_Queueing_Mechanism_(blk-mq" target="_blank" rel="external">Linux Multi-Queue Block IO Queueing Mechanism</a>)<br><a href="http://chuansong.me/n/362178648541" target="_blank" rel="external">blk-mq SCSI performance</a></p>
+        <p>2xP3520 NVME raid1 md1_raid1 cpu 100%<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"> 7448 root      20   0       0      0      0 R 100.0  0.0   7:54.02 md1_raid1</span><br><span class="line"> 4057 root      20   0       0      0      0 R  87.5  0.0   1:27.26 kworker/u49:1</span><br><span class="line"> 6417 root      20   0  547536   3312    360 D  12.5  0.0   0:00.31 fio</span><br><span class="line"> 6436 root      20   0  547612   3324    352 D  12.5  0.0   0:00.23 fio</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -353,30 +333,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/blk-mq/" rel="tag">#blk-mq</a>
-          
-            <a href="/tags/queue/" rel="tag">#queue</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/22/Hardware-index/" rel="next" title="Hardware index">
-                <i class="fa fa-chevron-left"></i> Hardware index
+              <a href="/2017/11/21/linux-errno/" rel="next" title="linux_errno">
+                <i class="fa fa-chevron-left"></i> linux_errno
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/28/Learn-ZFS-Internals-p1-p5/" rel="prev" title="A copy about ZFS Internals(p1-p5)">
-                A copy about ZFS Internals(p1-p5) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +500,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#blk-mq-in-RHEL-7-2"><span class="nav-number">1.</span> <span class="nav-text">blk-mq in RHEL 7.2</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -803,9 +771,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
-      var disqus_identifier = '2016/12/23/blk-mq-with-SAS-SSD/';
-      var disqus_title = 'blk-mq with SAS SSD';
-      var disqus_url = 'http://yoursite.com/2016/12/23/blk-mq-with-SAS-SSD/';
+      var disqus_identifier = '2017/11/22/mdadm-1/';
+      var disqus_title = 'mdadm';
+      var disqus_url = 'http://yoursite.com/2017/11/22/mdadm-1/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
