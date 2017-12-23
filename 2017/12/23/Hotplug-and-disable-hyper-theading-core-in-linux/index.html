@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="###Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=">
+<meta name="description" content="Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=$0&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hotplug and disable hyper theading core in linux">
 <meta property="og:url" content="http://yoursite.com/2017/12/23/Hotplug-and-disable-hyper-theading-core-in-linux/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="###Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=">
-<meta property="og:updated_time" content="2017-12-23T06:34:04.000Z">
+<meta property="og:description" content="Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=$0&amp;">
+<meta property="og:updated_time" content="2017-12-23T07:20:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hotplug and disable hyper theading core in linux">
-<meta name="twitter:description" content="###Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=">
+<meta name="twitter:description" content="Found the half cores12345678910111213141516for ((i=0;i&amp;lt;$(grep -c processor /proc/cpuinfo);i++)); do   cat /sys/devices/system/cpu/cpu$i/cache/index2/shared_cpu_list; done | awk -F, &apos;&amp;#123;a[$1]=$0&amp;">
 
 
 
@@ -339,7 +339,7 @@
       
 
       
-        <p>###Found the half cores<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ((i=0;i&lt;$(grep -c processor /proc/cpuinfo);i++)); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  cat /sys/devices/system/cpu/cpu<span class="variable">$i</span>/cache/index2/shared_cpu_list; </span><br><span class="line"><span class="keyword">done</span> | awk -F, <span class="string">'&#123;a[$1]=$0&#125; END&#123;</span><br><span class="line">  count=0;</span><br><span class="line">  for (i in a) &#123;</span><br><span class="line">     if(count==0) &#123;</span><br><span class="line">       printf i</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       printf ","i</span><br><span class="line">     &#125;;</span><br><span class="line">       count++ </span><br><span class="line">  &#125; </span><br><span class="line">&#125;'</span></span><br><span class="line"></span><br><span class="line">17,4,18,5,19,6,7,8,9,10,11,12,13,0,14,1,15,2,16,3</span><br></pre></td></tr></table></figure></p>
+        <h3 id="Found-the-half-cores"><a href="#Found-the-half-cores" class="headerlink" title="Found the half cores"></a>Found the half cores</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ((i=0;i&lt;$(grep -c processor /proc/cpuinfo);i++)); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  cat /sys/devices/system/cpu/cpu<span class="variable">$i</span>/cache/index2/shared_cpu_list; </span><br><span class="line"><span class="keyword">done</span> | awk -F, <span class="string">'&#123;a[$1]=$0&#125; END&#123;</span><br><span class="line">  count=0;</span><br><span class="line">  for (i in a) &#123;</span><br><span class="line">     if(count==0) &#123;</span><br><span class="line">       printf i</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       printf ","i</span><br><span class="line">     &#125;;</span><br><span class="line">       count++ </span><br><span class="line">  &#125; </span><br><span class="line">&#125;'</span></span><br><span class="line"></span><br><span class="line">17,4,18,5,19,6,7,8,9,10,11,12,13,0,14,1,15,2,16,3</span><br></pre></td></tr></table></figure>
 <h3 id="Turn-off-the-core"><a href="#Turn-off-the-core" class="headerlink" title="Turn off the core"></a>Turn off the core</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 0 &gt; /sys/devices/system/cpu/cpu17/online</span><br></pre></td></tr></table></figure>
 
       
@@ -528,7 +528,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Turn-off-the-core"><span class="nav-number">1.</span> <span class="nav-text">Turn off the core</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Found-the-half-cores"><span class="nav-number">1.</span> <span class="nav-text">Found the half cores</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Turn-off-the-core"><span class="nav-number">2.</span> <span class="nav-text">Turn off the core</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
