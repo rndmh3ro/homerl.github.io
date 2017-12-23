@@ -101,11 +101,11 @@
   </entry>
   
   <entry>
-    <title>MDADM tips</title>
+    <title>mdadm tips</title>
     <link href="http://yoursite.com/2017/11/09/mdadm/"/>
     <id>http://yoursite.com/2017/11/09/mdadm/</id>
     <published>2017-11-09T08:22:12.000Z</published>
-    <updated>2017-12-23T07:11:21.000Z</updated>
+    <updated>2017-12-23T07:15:02.000Z</updated>
     
     <content type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mdadm --create /dev/md/imsm0 -n2  &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; imsm /dev/nvme&amp;#123;0..1&amp;#125;n1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mdadm -C /dev/md1 /dev/md/imsm0 -n 2 &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; 1 --bitmap=none&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 2000000 &amp;gt; /proc/sys/dev/raid/speed_&lt;span class=&quot;built_in&quot;&gt;limit&lt;/span&gt;_max&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mdadm -Ds &amp;gt; /etc/mdadm.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;If you ‘re running 2 x NVME SSD in a mirror. you’d better set bitmap=none to avoid cpu core 100%&lt;br&gt;Because enterprise SSD has the capacitance&lt;/p&gt;

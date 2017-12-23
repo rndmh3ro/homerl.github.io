@@ -83,7 +83,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[MDADM tips]]></title>
+      <title><![CDATA[mdadm tips]]></title>
       <url>http://yoursite.com/2017/11/09/mdadm/</url>
       <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1 --bitmap=none</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br><span class="line">mdadm -Ds &gt; /etc/mdadm.conf</span><br></pre></td></tr></table></figure>
 <p>If you ‘re running 2 x NVME SSD in a mirror. you’d better set bitmap=none to avoid cpu core 100%<br>Because enterprise SSD has the capacitance</p>
