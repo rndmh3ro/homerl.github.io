@@ -4,6 +4,38 @@
   
     
     <entry>
+      <title><![CDATA[Hotplug and disable hyper theading core in linux]]></title>
+      <url>http://yoursite.com/2017/12/23/Hotplug-and-disable-hyper-theading-core-in-linux/</url>
+      <content type="html"><![CDATA[<p>###Found the half cores<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ((i=0;i&lt;$(grep -c processor /proc/cpuinfo);i++)); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  cat /sys/devices/system/cpu/cpu<span class="variable">$i</span>/cache/index2/shared_cpu_list; </span><br><span class="line"><span class="keyword">done</span> | awk -F, <span class="string">'&#123;a[$1]=$0&#125; END&#123;</span><br><span class="line">  count=0;</span><br><span class="line">  for (i in a) &#123;</span><br><span class="line">     if(count==0) &#123;</span><br><span class="line">       printf i</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">       printf ","i</span><br><span class="line">     &#125;;</span><br><span class="line">       count++ </span><br><span class="line">  &#125; </span><br><span class="line">&#125;'</span></span><br><span class="line"></span><br><span class="line">17,4,18,5,19,6,7,8,9,10,11,12,13,0,14,1,15,2,16,3</span><br></pre></td></tr></table></figure></p>
+<h3 id="Turn-off-the-core"><a href="#Turn-off-the-core" class="headerlink" title="Turn off the core"></a>Turn off the core</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 0 &gt; /sys/devices/system/cpu/cpu17/online</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux configuration </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> cpu </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[issue]]></title>
+      <url>http://yoursite.com/2017/12/06/issue/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mdadm]]></title>
       <url>http://yoursite.com/2017/11/22/mdadm-1/</url>
       <content type="html"><![CDATA[<p>2xP3520 NVME raid1 md1_raid1 cpu 100%<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"> 7448 root      20   0       0      0      0 R 100.0  0.0   7:54.02 md1_raid1</span><br><span class="line"> 4057 root      20   0       0      0      0 R  87.5  0.0   1:27.26 kworker/u49:1</span><br><span class="line"> 6417 root      20   0  547536   3312    360 D  12.5  0.0   0:00.31 fio</span><br><span class="line"> 6436 root      20   0  547612   3324    352 D  12.5  0.0   0:00.23 fio</span><br></pre></td></tr></table></figure></p>
@@ -17,6 +49,31 @@
       <url>http://yoursite.com/2017/11/21/linux-errno/</url>
       <content type="html"><![CDATA[<p>Get it from<br>/usr/include/asm-generic/errno.h<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ifndef _ASM_GENERIC_ERRNO_H</span></span><br><span class="line"><span class="comment">#define _ASM_GENERIC_ERRNO_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;asm-generic/errno-base.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define	EDEADLK		35	/* Resource deadlock would occur */</span></span><br><span class="line"><span class="comment">#define	ENAMETOOLONG	36	/* File name too long */</span></span><br><span class="line"><span class="comment">#define	ENOLCK		37	/* No record locks available */</span></span><br><span class="line"><span class="comment">#define	ENOSYS		38	/* Function not implemented */</span></span><br><span class="line"><span class="comment">#define	ENOTEMPTY	39	/* Directory not empty */</span></span><br><span class="line"><span class="comment">#define	ELOOP		40	/* Too many symbolic links encountered */</span></span><br><span class="line"><span class="comment">#define	EWOULDBLOCK	EAGAIN	/* Operation would block */</span></span><br><span class="line"><span class="comment">#define	ENOMSG		42	/* No message of desired type */</span></span><br><span class="line"><span class="comment">#define	EIDRM		43	/* Identifier removed */</span></span><br><span class="line"><span class="comment">#define	ECHRNG		44	/* Channel number out of range */</span></span><br><span class="line"><span class="comment">#define	EL2NSYNC	45	/* Level 2 not synchronized */</span></span><br><span class="line"><span class="comment">#define	EL3HLT		46	/* Level 3 halted */</span></span><br><span class="line"><span class="comment">#define	EL3RST		47	/* Level 3 reset */</span></span><br><span class="line"><span class="comment">#define	ELNRNG		48	/* Link number out of range */</span></span><br><span class="line"><span class="comment">#define	EUNATCH		49	/* Protocol driver not attached */</span></span><br><span class="line"><span class="comment">#define	ENOCSI		50	/* No CSI structure available */</span></span><br><span class="line"><span class="comment">#define	EL2HLT		51	/* Level 2 halted */</span></span><br><span class="line"><span class="comment">#define	EBADE		52	/* Invalid exchange */</span></span><br><span class="line"><span class="comment">#define	EBADR		53	/* Invalid request descriptor */</span></span><br><span class="line"><span class="comment">#define	EXFULL		54	/* Exchange full */</span></span><br><span class="line"><span class="comment">#define	ENOANO		55	/* No anode */</span></span><br><span class="line"><span class="comment">#define	EBADRQC		56	/* Invalid request code */</span></span><br><span class="line"><span class="comment">#define	EBADSLT		57	/* Invalid slot */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define	EDEADLOCK	EDEADLK</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define	EBFONT		59	/* Bad font file format */</span></span><br><span class="line"><span class="comment">#define	ENOSTR		60	/* Device not a stream */</span></span><br><span class="line"><span class="comment">#define	ENODATA		61	/* No data available */</span></span><br><span class="line"><span class="comment">#define	ETIME		62	/* Timer expired */</span></span><br><span class="line"><span class="comment">#define	ENOSR		63	/* Out of streams resources */</span></span><br><span class="line"><span class="comment">#define	ENONET		64	/* Machine is not on the network */</span></span><br><span class="line"><span class="comment">#define	ENOPKG		65	/* Package not installed */</span></span><br><span class="line"><span class="comment">#define	EREMOTE		66	/* Object is remote */</span></span><br><span class="line"><span class="comment">#define	ENOLINK		67	/* Link has been severed */</span></span><br><span class="line"><span class="comment">#define	EADV		68	/* Advertise error */</span></span><br><span class="line"><span class="comment">#define	ESRMNT		69	/* Srmount error */</span></span><br><span class="line"><span class="comment">#define	ECOMM		70	/* Communication error on send */</span></span><br><span class="line"><span class="comment">#define	EPROTO		71	/* Protocol error */</span></span><br><span class="line"><span class="comment">#define	EMULTIHOP	72	/* Multihop attempted */</span></span><br><span class="line"><span class="comment">#define	EDOTDOT		73	/* RFS specific error */</span></span><br><span class="line"><span class="comment">#define	EBADMSG		74	/* Not a data message */</span></span><br><span class="line"><span class="comment">#define	EOVERFLOW	75	/* Value too large for defined data type */</span></span><br><span class="line"><span class="comment">#define	ENOTUNIQ	76	/* Name not unique on network */</span></span><br><span class="line"><span class="comment">#define	EBADFD		77	/* File descriptor in bad state */</span></span><br><span class="line"><span class="comment">#define	EREMCHG		78	/* Remote address changed */</span></span><br><span class="line"><span class="comment">#define	ELIBACC		79	/* Can not access a needed shared library */</span></span><br><span class="line"><span class="comment">#define	ELIBBAD		80	/* Accessing a corrupted shared library */</span></span><br><span class="line"><span class="comment">#define	ELIBSCN		81	/* .lib section in a.out corrupted */</span></span><br><span class="line"><span class="comment">#define	ELIBMAX		82	/* Attempting to link in too many shared libraries */</span></span><br><span class="line"><span class="comment">#define	ELIBEXEC	83	/* Cannot exec a shared library directly */</span></span><br><span class="line"><span class="comment">#define	EILSEQ		84	/* Illegal byte sequence */</span></span><br><span class="line"><span class="comment">#define	ERESTART	85	/* Interrupted system call should be restarted */</span></span><br><span class="line"><span class="comment">#define	ESTRPIPE	86	/* Streams pipe error */</span></span><br><span class="line"><span class="comment">#define	EUSERS		87	/* Too many users */</span></span><br><span class="line"><span class="comment">#define	ENOTSOCK	88	/* Socket operation on non-socket */</span></span><br><span class="line"><span class="comment">#define	EDESTADDRREQ	89	/* Destination address required */</span></span><br><span class="line"><span class="comment">#define	EMSGSIZE	90	/* Message too long */</span></span><br><span class="line"><span class="comment">#define	EPROTOTYPE	91	/* Protocol wrong type for socket */</span></span><br><span class="line"><span class="comment">#define	ENOPROTOOPT	92	/* Protocol not available */</span></span><br><span class="line"><span class="comment">#define	EPROTONOSUPPORT	93	/* Protocol not supported */</span></span><br><span class="line"><span class="comment">#define	ESOCKTNOSUPPORT	94	/* Socket type not supported */</span></span><br><span class="line"><span class="comment">#define	EOPNOTSUPP	95	/* Operation not supported on transport endpoint */</span></span><br><span class="line"><span class="comment">#define	EPFNOSUPPORT	96	/* Protocol family not supported */</span></span><br><span class="line"><span class="comment">#define	EAFNOSUPPORT	97	/* Address family not supported by protocol */</span></span><br><span class="line"><span class="comment">#define	EADDRINUSE	98	/* Address already in use */</span></span><br><span class="line"><span class="comment">#define	EADDRNOTAVAIL	99	/* Cannot assign requested address */</span></span><br><span class="line"><span class="comment">#define	ENETDOWN	100	/* Network is down */</span></span><br><span class="line"><span class="comment">#define	ENETUNREACH	101	/* Network is unreachable */</span></span><br><span class="line"><span class="comment">#define	ENETRESET	102	/* Network dropped connection because of reset */</span></span><br><span class="line"><span class="comment">#define	ECONNABORTED	103	/* Software caused connection abort */</span></span><br><span class="line"><span class="comment">#define	ECONNRESET	104	/* Connection reset by peer */</span></span><br><span class="line"><span class="comment">#define	ENOBUFS		105	/* No buffer space available */</span></span><br><span class="line"><span class="comment">#define	EISCONN		106	/* Transport endpoint is already connected */</span></span><br><span class="line"><span class="comment">#define	ENOTCONN	107	/* Transport endpoint is not connected */</span></span><br><span class="line"><span class="comment">#define	ESHUTDOWN	108	/* Cannot send after transport endpoint shutdown */</span></span><br><span class="line"><span class="comment">#define	ETOOMANYREFS	109	/* Too many references: cannot splice */</span></span><br><span class="line"><span class="comment">#define	ETIMEDOUT	110	/* Connection timed out */</span></span><br><span class="line"><span class="comment">#define	ECONNREFUSED	111	/* Connection refused */</span></span><br><span class="line"><span class="comment">#define	EHOSTDOWN	112	/* Host is down */</span></span><br><span class="line"><span class="comment">#define	EHOSTUNREACH	113	/* No route to host */</span></span><br><span class="line"><span class="comment">#define	EALREADY	114	/* Operation already in progress */</span></span><br><span class="line"><span class="comment">#define	EINPROGRESS	115	/* Operation now in progress */</span></span><br><span class="line"><span class="comment">#define	ESTALE		116	/* Stale file handle */</span></span><br><span class="line"><span class="comment">#define	EUCLEAN		117	/* Structure needs cleaning */</span></span><br><span class="line"><span class="comment">#define	ENOTNAM		118	/* Not a XENIX named type file */</span></span><br><span class="line"><span class="comment">#define	ENAVAIL		119	/* No XENIX semaphores available */</span></span><br><span class="line"><span class="comment">#define	EISNAM		120	/* Is a named type file */</span></span><br><span class="line"><span class="comment">#define	EREMOTEIO	121	/* Remote I/O error */</span></span><br><span class="line"><span class="comment">#define	EDQUOT		122	/* Quota exceeded */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define	ENOMEDIUM	123	/* No medium found */</span></span><br><span class="line"><span class="comment">#define	EMEDIUMTYPE	124	/* Wrong medium type */</span></span><br><span class="line"><span class="comment">#define	ECANCELED	125	/* Operation Canceled */</span></span><br><span class="line"><span class="comment">#define	ENOKEY		126	/* Required key not available */</span></span><br><span class="line"><span class="comment">#define	EKEYEXPIRED	127	/* Key has expired */</span></span><br><span class="line"><span class="comment">#define	EKEYREVOKED	128	/* Key has been revoked */</span></span><br><span class="line"><span class="comment">#define	EKEYREJECTED	129	/* Key was rejected by service */</span></span><br><span class="line"></span><br><span class="line">/* <span class="keyword">for</span> robust mutexes */</span><br><span class="line"><span class="comment">#define	EOWNERDEAD	130	/* Owner died */</span></span><br><span class="line"><span class="comment">#define	ENOTRECOVERABLE	131	/* State not recoverable */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define ERFKILL		132	/* Operation not possible due to RF-kill */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define EHWPOISON	133	/* Memory page has hardware error */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure></p>
 <p>/usr/include/asm-generic/errno-base.h<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ifndef _ASM_GENERIC_ERRNO_BASE_H</span></span><br><span class="line"><span class="comment">#define _ASM_GENERIC_ERRNO_BASE_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#define	EPERM		 1	/* Operation not permitted */</span></span><br><span class="line"><span class="comment">#define	ENOENT		 2	/* No such file or directory */</span></span><br><span class="line"><span class="comment">#define	ESRCH		 3	/* No such process */</span></span><br><span class="line"><span class="comment">#define	EINTR		 4	/* Interrupted system call */</span></span><br><span class="line"><span class="comment">#define	EIO		 5	/* I/O error */</span></span><br><span class="line"><span class="comment">#define	ENXIO		 6	/* No such device or address */</span></span><br><span class="line"><span class="comment">#define	E2BIG		 7	/* Argument list too long */</span></span><br><span class="line"><span class="comment">#define	ENOEXEC		 8	/* Exec format error */</span></span><br><span class="line"><span class="comment">#define	EBADF		 9	/* Bad file number */</span></span><br><span class="line"><span class="comment">#define	ECHILD		10	/* No child processes */</span></span><br><span class="line"><span class="comment">#define	EAGAIN		11	/* Try again */</span></span><br><span class="line"><span class="comment">#define	ENOMEM		12	/* Out of memory */</span></span><br><span class="line"><span class="comment">#define	EACCES		13	/* Permission denied */</span></span><br><span class="line"><span class="comment">#define	EFAULT		14	/* Bad address */</span></span><br><span class="line"><span class="comment">#define	ENOTBLK		15	/* Block device required */</span></span><br><span class="line"><span class="comment">#define	EBUSY		16	/* Device or resource busy */</span></span><br><span class="line"><span class="comment">#define	EEXIST		17	/* File exists */</span></span><br><span class="line"><span class="comment">#define	EXDEV		18	/* Cross-device link */</span></span><br><span class="line"><span class="comment">#define	ENODEV		19	/* No such device */</span></span><br><span class="line"><span class="comment">#define	ENOTDIR		20	/* Not a directory */</span></span><br><span class="line"><span class="comment">#define	EISDIR		21	/* Is a directory */</span></span><br><span class="line"><span class="comment">#define	EINVAL		22	/* Invalid argument */</span></span><br><span class="line"><span class="comment">#define	ENFILE		23	/* File table overflow */</span></span><br><span class="line"><span class="comment">#define	EMFILE		24	/* Too many open files */</span></span><br><span class="line"><span class="comment">#define	ENOTTY		25	/* Not a typewriter */</span></span><br><span class="line"><span class="comment">#define	ETXTBSY		26	/* Text file busy */</span></span><br><span class="line"><span class="comment">#define	EFBIG		27	/* File too large */</span></span><br><span class="line"><span class="comment">#define	ENOSPC		28	/* No space left on device */</span></span><br><span class="line"><span class="comment">#define	ESPIPE		29	/* Illegal seek */</span></span><br><span class="line"><span class="comment">#define	EROFS		30	/* Read-only file system */</span></span><br><span class="line"><span class="comment">#define	EMLINK		31	/* Too many links */</span></span><br><span class="line"><span class="comment">#define	EPIPE		32	/* Broken pipe */</span></span><br><span class="line"><span class="comment">#define	EDOM		33	/* Math argument out of domain of func */</span></span><br><span class="line"><span class="comment">#define	ERANGE		34	/* Math result not representable */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#endif</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> unix </tag>
+            
+            <tag> posix </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[system call]]></title>
+      <url>http://yoursite.com/2017/11/09/mdadm/</url>
+      <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -68,34 +125,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[system call]]></title>
-      <url>http://yoursite.com/2017/11/09/mdadm/</url>
-      <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-            <tag> unix </tag>
-            
-            <tag> posix </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[scsi tips]]></title>
       <url>http://yoursite.com/2017/10/26/scsi_tips/</url>
-      <content type="html"><![CDATA[<h3 id="smart"><a href="#smart" class="headerlink" title="smart"></a><a href="https://www.computerworld.com/article/2846009/the-5-smart-stats-that-actually-predict-hard-drive-failure.html" target="_blank" rel="external">smart</a></h3><p>SMART 5 - Reallocated_Sector_Count.<br>SMART 187 - Reported_Uncorrectable_Errors.<br>SMART 188 - Command_Timeout.<br>SMART 197 - Current_Pending_Sector_Count.<br>SMART 198 - Offline_Uncorrectable</p>
+      <content type="html"><![CDATA[<h3 id="Enable-read-write-cache"><a href="#Enable-read-write-cache" class="headerlink" title="Enable read write cache"></a>Enable read write cache</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##SATA</span></span><br><span class="line">hdparm -W 0 /dev/sdX --&gt; <span class="built_in">disable</span> write caching</span><br><span class="line">hdparm -W 1 /dev/sdX --&gt; <span class="built_in">enable</span> write caching</span><br><span class="line">hdparm -i /dev/sdX</span><br><span class="line"></span><br><span class="line"><span class="comment">##SAS</span></span><br><span class="line">sdparm /dev/sdX</span><br><span class="line">WCE 0 [cha: y, def: 1, sav: 0] --&gt; write caching is disabled</span><br><span class="line"></span><br><span class="line">sdparm --inquiry /dev/sdX</span><br><span class="line">sdparm --page=ca /dev/sdX</span><br><span class="line">sdparm --set=WCE /dev/sdX --&gt; this enables write caching</span><br><span class="line">sdparm –g WCE /dev/sdX  --&gt; get the WCE current value</span><br><span class="line">sdparm –s WCE –S /dev/sdX --&gt; To <span class="built_in">set</span> the WCE current and saved values (WCE=1)</span><br><span class="line">sdparm –c WCE /dev/sdX --&gt; To clear (<span class="built_in">disable</span>) the WCE current value (WCE=0)</span><br><span class="line">sdparm –c WCE –S /dev/sdX --&gt; To clear (<span class="built_in">disable</span>) the WCE current and saved values (WCE=0)</span><br></pre></td></tr></table></figure>
+<h3 id="smart"><a href="#smart" class="headerlink" title="smart"></a><a href="https://www.computerworld.com/article/2846009/the-5-smart-stats-that-actually-predict-hard-drive-failure.html" target="_blank" rel="external">smart</a></h3><p>SMART 5 - Reallocated_Sector_Count.<br>SMART 187 - Reported_Uncorrectable_Errors.<br>SMART 188 - Command_Timeout.<br>SMART 197 - Current_Pending_Sector_Count.<br>SMART 198 - Offline_Uncorrectable</p>
 <h3 id="sg3-utils"><a href="#sg3-utils" class="headerlink" title="sg3_utils"></a>sg3_utils</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sg_ses /dev/sg129 -p0x2 -I2,1 -j</span><br><span class="line">这个命令的I后面是2就是风扇，1是电源，3是温度</span><br><span class="line">然后命令的倒数第2个参数，例如上面命令的1， 就代表第1个风扇，是0，就代表第0个风扇，3就代表第3个风扇</span><br></pre></td></tr></table></figure>
 <h4 id="Smart-check"><a href="#Smart-check" class="headerlink" title="Smart check"></a>Smart check</h4><p>Phy reset problem</p>
 <p>Running disparity error count<br>A binary value indicating the cumulative encoded signal imbalance between the one and zero signal state of all characters since dword synchronization has been achieved.<br><a href="https://www.seagate.com/staticfiles/support/disc/manuals/Interface%20manuals/100293071c.pdf" target="_blank" rel="external">for more scsi info</a></p>
@@ -121,9 +154,9 @@
             
             <tag> linux </tag>
             
-            <tag> scsi </tag>
-            
             <tag> jbod </tag>
+            
+            <tag> scsi </tag>
             
             <tag> monitor </tag>
             
@@ -189,7 +222,95 @@
     <entry>
       <title><![CDATA[NIC issues]]></title>
       <url>http://yoursite.com/2017/08/14/NIC-issues/</url>
-      <content type="html"><![CDATA[<h4 id="About-irqbalance"><a href="#About-irqbalance" class="headerlink" title="About irqbalance"></a><a href="https://community.mellanox.com/docs/DOC-2123" target="_blank" rel="external">About irqbalance</a></h4><p>Irqbalance is a Linux daemon that help to balance the CPU load generated by interrupts across all CPUs. Irqbalance identifies the highest volume interrupt sources, and isolates them to a single CPU, so that load is spread as much as possible over an entire processor set, while minimizing cache hit rates for irq handlers<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#debug irqbalance</span></span><br><span class="line">irqbalance <span class="_">-d</span> <span class="_">-f</span></span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h4 id="Check-command"><a href="#Check-command" class="headerlink" title="Check command"></a>Check command</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="_">-s</span> <span class="_">-s</span> link/ifconfig</span><br><span class="line">ethttool -S dev | grep -Ei <span class="string">'err|miss|dis|drop|crc'</span></span><br><span class="line">sar -n DEV,ETCP 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># get firbe module detail</span></span><br><span class="line">ethttool -m dev</span><br></pre></td></tr></table></figure>
+<h4 id="Kernel-detail"><a href="#Kernel-detail" class="headerlink" title="Kernel detail"></a>Kernel detail</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sys/class/net/em2/statistics/</span><br><span class="line">/proc/net/dev</span><br></pre></td></tr></table></figure>
+<h4 id="RHEL-solutions"><a href="#RHEL-solutions" class="headerlink" title="RHEL solutions"></a><a href="https://access.redhat.com/solutions/21301" target="_blank" rel="external">RHEL solutions</a></h4><p>System dropping network packets</p>
+<ul>
+<li>High number of drop counters like drop, discard, err or error, fifo, buf or buffer, fail, miss, OOB, full counters in ethtool -S</li>
+<li>High number of dropped, error, overrun, or frame counters in ifconfig</li>
+<li>What is the first thing to try when I see my network interfaces dropping packets?<br>Root Cause<br>Counters like “discard” or “drop” in the output of ethtool -S ethX are caused by the exhaustion of the receive ring buffer.</li>
+</ul>
+<p>The ring buffer is a block of physical memory on the NIC.</p>
+<p>Each packet received by the NIC is stored in this memory while an interrupt is sent to the kernel to fetch the packet into kernel memory.</p>
+<p>If the available buffer is filling up faster than the kernel can take the packets, there will be discarded packets.</p>
+<p>Verify packet loss with:<br>[root@host]# ip -s -s link<br>Verify discards/drops/etc with:<br>[root@host]# ethtool -S ethX<br>Verify RX ring buffer current and maximum settings with:<br>[root@host]# ethtool -g ethX</p>
+<h5 id="0-05-packet-drop-rate"><a href="#0-05-packet-drop-rate" class="headerlink" title="0.05% packet drop rate"></a><a href="https://access.redhat.com/solutions/742043" target="_blank" rel="external">0.05% packet drop rate</a></h5><p>One of TCP’s main functions is to preserve a reliable data stream for applications by identifying and retrying any lost packets. It is normal operation for an underlying network to lose packets, for many different reasons, and for TCP be used and to hide this fact from application layers. Applications using unreliable transports (the major one being UDP) are expected to not care about the unreliability of the network. Applications which do care should use a reliable transport, eg. TCP (or more recently, SCTP) or implement their own reliability mechanisms.</p>
+<p>The only impact of packet loss in the underlying network (which includes the device-drivers and lower network layer code which is counting the drops you are seeing) is a reduction in performance from the peak network speed. The reduction is dependent, non-linearly, on the packet drop ratio, and also on the traffic type. For bulk transfers (such as file-transfer) over TCP a drop ratio of under 0.1% results in a very small reduction in throughput – assuming that the Select Acknowledgement (SACK) TCP option is enabled on both systems. If SACK is disabled on either system there will be a measurable reduction in throughput if the drop rate exceeds 0.001%. On the other hand, thin stream traffic, where there is often no outstanding data for the transmitter to send, will be affected more as the need to retry lost packets will only be noticed after a time out rather than being detectable when data arrives out-of-order. Examples of thin-stream traffic include request-response and interactive connections.</p>
+<h4 id="ifconfig-ip"><a href="#ifconfig-ip" class="headerlink" title="ifconfig/ip"></a><a href="https://unix.stackexchange.com/questions/184604/whats-the-difference-between-errors-dropped-overruns-and-frame-fiel" target="_blank" rel="external">ifconfig/ip</a></h4><ul>
+<li><p>RX</p>
+<ul>
+<li><p>frame/length counts only misaligned frames, it means frames with a length not divisible by 8. Because of that length is not a valid frame and it is simply discarded (too-short frames and too-long frames)</p>
+</li>
+<li><p>overruns/fifo counts that times when there is fifo overruns, caused by the rate at which the buffer gets full and the kernel isn’t able to reclaim the buffer</p>
+<ul>
+<li>No cpu resource, interrupt not balance and not affinity, eg: all nic interrupt in core0</li>
+</ul>
+</li>
+<li><p><a href="https://serverfault.com/questions/528290/ifconfig-eth0-rx-dropped-packets/601186" target="_blank" rel="external">dropped(normal) counts</a></p>
+<ul>
+<li>Softnet backlog full</li>
+<li>Bad / Unintended VLAN tags</li>
+<li>Unknown / Unregistered protocols</li>
+<li>IPv6 frames when the server is not configured for IPv6</li>
+</ul>
+</li>
+<li><p>dropped (in my opinion)</p>
+<ul>
+<li>Overloading</li>
+<li>Hardware issue<ul>
+<li>NIC ring buffer too slower</li>
+<li>NIC/optical module issue</li>
+<li>PCIE issue</li>
+<li>Bad cable</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="http://blog.hyfather.com/blog/2013/03/04/ifconfig/" target="_blank" rel="external">TX</a></p>
+<ul>
+<li>aborted transmission</li>
+<li>errors due to carrirer</li>
+<li>fifo err</li>
+<li>heartbeat erros</li>
+<li>window err</li>
+<li>collisions is the number of transmissions terminated due to CSMA/CD (Carrier Sense Multiple Access with Collision Detection).</li>
+</ul>
+</li>
+</ul>
+<p>If NIC driver loss packages, linux don ‘t know, you can’t count it in linux<br>Some overrun(ifconfig) has the same means with dropped(ethtool)</p>
+<ul>
+<li><a href="https://lp007819.wordpress.com/2013/05/23/intel%E7%BD%91%E5%8D%A1%E7%8A%B6%E6%80%81%E7%BB%9F%E8%AE%A1%E7%96%91%E9%97%AE/" target="_blank" rel="external">rx_missed_errors</a><ul>
+<li>real drop = rx_dropped(kernel drop) + rx_missed_errors<ul>
+<li>To reduce DMA skb(socket buffer) to test, eg: ethtool -G eth1 rx 48, ethtool -G eth1 tx 48, there are a lot of rx_missed_err </li>
+<li>这样看来rx_no_buffer_count 指的是在网卡通过DMA将设备FIFO中的skb-&gt;data传送到rx_buffer_info时，发现对应的rx_buffer_info还没有unmap，也就无法送到主存。说到底，这其实和软中断处理的速度有关。<br>猜测rx_missed_errors可能与硬中断有关。也就是在DMA传送完，发送硬中断之前，网卡的FIFO缓冲已经满了，导致接收的数据要立即丢掉。这个也可以验证：<br>首先卸载igb模块，然后insmod igb InterruptThrottleRate=10, 只让网卡每秒产生10个中断。关闭流控ethtool -A eth1 autoneg off , ethtool -A eth1 rx off , ethtool -A eth1 tx off ，再把DMA缓冲区调至最大ethtool -G eth1 rx 4096 , ethtool -G eth1 tx 4096。可以发现原来不增长或几乎不增长的rx_missed_errors 开始大幅增长，果然这个就是和网卡硬件的FIFO缓冲区有关。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="About-MPC-and-RNBC"><a href="#About-MPC-and-RNBC" class="headerlink" title="About MPC and RNBC"></a>About MPC and RNBC</h4><p>7.19.5 Missed Packets Count – MPC (0x4010; RC)<br>Counts the number of missed packets. Packets are missed when the receive FIFO has insufficient space<br>to store the incoming packet. This can be caused because of too few buffers allocated, or because there<br>is insufficient bandwidth on the PCI bus. Events setting this counter causes ICR.Rx Miss, the Receiver<br>Overrun Interrupt, to be set. This register does not increment if receives are not enabled.<br>These packets are also counted in the Total Packets Received register as well as in Total Octets<br>Received.</p>
+<p>7.19.34 Receive No Buffers Count – RNBC (0x40A0; RC)<br>This register counts the number of times that frames were received when there were no available<br>buffers in host memory to store those frames (receive descriptor head and tail pointers were equal).<br>The packet is still received if there is space in the FIFO. This register only increments if receives are enabled (RCTL.RXEN is set).<br>This register does not increment when flow control packets are received.</p>
+<h4 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h4><p><a href="http://jaseywang.me/2014/08/16/ifconfig-%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%97%E6%AE%B5errors-dropped-overruns/" target="_blank" rel="external">ethtool</a></p>
+<ul>
+<li>Physical layer<ul>
+<li>Speed</li>
+<li>Duplex</li>
+<li>CRC</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html" target="_blank" rel="external">sar</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sar -n TCP,ETCP 2</span><br><span class="line">02:47:30 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line">02:47:31 AM      0.00      0.00      8.51      6.38</span><br><span class="line"></span><br><span class="line">02:47:30 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">02:47:31 AM      0.00      0.00      0.00      0.00      0.00</span><br></pre></td></tr></table></figure></p>
+<p>active/s: Number of locally-initiated TCP connections per second (e.g., via connect()).<br>passive/s: Number of remotely-initiated TCP connections per second (e.g., via accept()).<br>retrans/s: Number of TCP retransmits per second.<br>The active and passive counts are often useful as a rough measure of server load: number of new accepted connections (passive), and number of downstream connections (active). It might help to think of active as outbound, and passive as inbound, but this isn’t strictly true (e.g., consider a localhost to localhost connection). </p>
+<p>Retransmits are a sign of a network or server issue; it may be an unreliable network (e.g., the public Internet), or it may be due a server being overloaded and dropping packets. The example above shows just one new TCP connection per-second. </p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/21113846/why-packet-drop-is-not-captured-under-ifconfig" target="_blank" rel="external">About iptables</a><ul>
+<li>This is because iptables and ifconfig statistics refer to different layers in the protocol stack. ifconfig statistics are for the NIC (Physical and MAC layers) while iptables rules execute once frames are received by the NIC and delivered to the kernel (INPUT) or before the packet is delivered to layer 2 in the protocol stack (for OUTPUT)</li>
+</ul>
+</li>
+</ul>
+<h4 id="About-irqbalance"><a href="#About-irqbalance" class="headerlink" title="About irqbalance"></a><a href="https://community.mellanox.com/docs/DOC-2123" target="_blank" rel="external">About irqbalance</a></h4><p>Irqbalance is a Linux daemon that help to balance the CPU load generated by interrupts across all CPUs. Irqbalance identifies the highest volume interrupt sources, and isolates them to a single CPU, so that load is spread as much as possible over an entire processor set, while minimizing cache hit rates for irq handlers<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#debug irqbalance</span></span><br><span class="line">irqbalance <span class="_">-d</span> <span class="_">-f</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf" target="_blank" rel="external">perf-brief-low-latency-tuning-rhel7</a><br>The irqbalance service continues to be enabled by default in Red Hat Enterprise Linux 7. It<br>remains an important service that helps spread IRQ-processing load across multiple processors dynamically.</p>
 <p>For more performance<br>here could be specific workloads or configuration where stopping irqbalance and using mlnx_tune is more optimal and recommended.</p>
 <h4 id="nic-interrupt-rates"><a href="#nic-interrupt-rates" class="headerlink" title="nic interrupt rates"></a><a href="https://www.ibm.com/support/knowledgecenter/en/SSQPD3_2.6.0/com.ibm.wllm.doc/usingethtoolrates.html" target="_blank" rel="external">nic interrupt rates</a></h4><ul>
@@ -200,11 +321,11 @@
 <li>tx-usecs This is the number of microseconds to wait before raising an TX interrupt after a packet has been sent. When tx-usecs is set to 0 tx-frames is used</li>
 <li>tx-frames This is the number of frames to queue up before raising an TX interrupt</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#10GbE 82599 setting</span></span><br><span class="line">ls /sys/class/net | egrep <span class="string">'(eth|en|p|em|br|bond)'</span> | <span class="keyword">while</span> <span class="built_in">read</span> nic</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  ethtool -C <span class="variable">$nic</span> rx-usecs 0 tx-usecs 0 adaptive-rx off adaptive-tx off</span><br><span class="line">  ethtool -G <span class="variable">$nic</span> rx 4096 tx 4096 <span class="comment">#rx-ring,tx-ring #10GbE 82599, 25GbE , 50GbE has more</span></span><br><span class="line">  ethtool -N <span class="variable">$nic</span> rx-flow-hash udp4 sdfn</span><br><span class="line">  ifconfig <span class="variable">$nic</span> mtu 9000</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">$ cat /etc/modprobe.d/ixgbe.conf </span><br><span class="line">options ixgbe LRO=1</span><br><span class="line">options ixgbe InterruptThrottleRate=16000,16000</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#10GbE 82599 setting</span></span><br><span class="line">ls /sys/class/net | egrep <span class="string">'(eth|en|p|em|br|bond)'</span> | <span class="keyword">while</span> <span class="built_in">read</span> nic</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  ethtool -C <span class="variable">$nic</span> rx-usecs 0 tx-usecs 0 adaptive-rx off adaptive-tx off</span><br><span class="line">  ethtool -G <span class="variable">$nic</span> rx 4096 tx 4096 <span class="comment">#for latency, you could reduce the value,rx-ring,tx-ring #10GbE 82599, 25GbE , 50GbE has more</span></span><br><span class="line">  ethtool -N <span class="variable">$nic</span> rx-flow-hash udp4 sdfn</span><br><span class="line">  ifconfig <span class="variable">$nic</span> mtu 9000</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">$ cat /etc/modprobe.d/ixgbe.conf </span><br><span class="line">options ixgbe LRO=1</span><br><span class="line">options ixgbe InterruptThrottleRate=16000,16000</span><br></pre></td></tr></table></figure>
 <h4 id="About-interruptthrottlerate"><a href="#About-interruptthrottlerate" class="headerlink" title="About interruptthrottlerate"></a><a href="https://www.kernel.org/doc/Documentation/networking/e1000.txt" target="_blank" rel="external">About interruptthrottlerate</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Setting InterruptThrottleRate to a value greater or equal to 100</span><br><span class="line">will program the adapter to send out a maximum of that many interrupts</span><br><span class="line">per second, even <span class="keyword">if</span> more packets have come in. This reduces interrupt</span><br><span class="line">load on the system and can lower CPU utilization under heavy load,</span><br><span class="line">but will increase latency as packets are not processed as quickly.</span><br><span class="line"></span><br><span class="line">The default behaviour of the driver previously assumed a static</span><br><span class="line">InterruptThrottleRate value of 8000</span><br></pre></td></tr></table></figure>
 <h4 id="About-LRO"><a href="#About-LRO" class="headerlink" title="About LRO"></a><a href="https://downloadmirror.intel.com/22919/eng/README.txt" target="_blank" rel="external">About LRO</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LRO</span><br><span class="line">---</span><br><span class="line">Large Receive Offload (LRO) is a technique <span class="keyword">for</span> increasing inbound throughput</span><br><span class="line">of high-bandwidth network connections by reducing CPU overhead. It works by</span><br><span class="line">aggregating multiple incoming packets from a single stream into a larger </span><br><span class="line">buffer before they are passed higher up the networking stack, thus reducing</span><br><span class="line">the number of packets that have to be processed. LRO combines multiple </span><br><span class="line">Ethernet frames into a single receive <span class="keyword">in</span> the stack, thereby potentially </span><br><span class="line">decreasing CPU utilization <span class="keyword">for</span> receives.</span><br></pre></td></tr></table></figure>
 <h4 id="Support-for-UDP-RSS"><a href="#Support-for-UDP-RSS" class="headerlink" title="Support for UDP RSS"></a><a href="https://downloadmirror.intel.com/22919/eng/README.txt" target="_blank" rel="external">Support for UDP RSS</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">   rx-flow-hash tcp4|udp4|ah4|esp4|sctp4|tcp6|udp6|ah6|esp6|sctp6</span><br><span class="line">     Retrieves the <span class="built_in">hash</span> options <span class="keyword">for</span> the specified network traffic type.</span><br><span class="line"></span><br><span class="line">  -N --config-nfc</span><br><span class="line">     Configures the receive network flow classification.</span><br><span class="line"></span><br><span class="line">   rx-flow-hash tcp4|udp4|ah4|esp4|sctp4|tcp6|udp6|ah6|esp6|sctp6 </span><br><span class="line">   m|v|t|s|d|f|n|r...</span><br><span class="line">     Configures the <span class="built_in">hash</span> options <span class="keyword">for</span> the specified network traffic type.</span><br><span class="line"></span><br><span class="line">     udp4    UDP over IPv4</span><br><span class="line">     udp6    UDP over IPv6</span><br><span class="line"></span><br><span class="line">     f   Hash on bytes 0 and 1 of the Layer 4 header of the rx packet.</span><br><span class="line">     n   Hash on bytes 2 and 3 of the Layer 4 header of the rx packet.</span><br><span class="line"></span><br><span class="line">The following is an example using udp4 (UDP over IPv4):</span><br><span class="line"></span><br><span class="line">  To include UDP port numbers <span class="keyword">in</span> RSS hashing run:</span><br><span class="line">     ethtool -N ethX rx-flow-hash udp4 sdfn</span><br><span class="line"></span><br><span class="line">  To exclude UDP port numbers from RSS hashing run:</span><br><span class="line">     ethtool -N ethX rx-flow-hash udp4 sd</span><br><span class="line"></span><br><span class="line">  To display UDP hashing current configuration run:</span><br><span class="line">     ethtool -n ethX rx-flow-hash udp4</span><br></pre></td></tr></table></figure>
-<h3 id="Ethool-S"><a href="#Ethool-S" class="headerlink" title="Ethool -S"></a>Ethool -S</h3><h4 id="rx-tx-ring"><a href="#rx-tx-ring" class="headerlink" title="rx,tx-ring"></a>rx,tx-ring</h4><p>ethtool -G $nic rx 4096 tx 4096 #rx-ring,tx-ring #10GbE 82599, 25GbE , 50GbE has more</p>
+<h3 id="Ethool-S"><a href="#Ethool-S" class="headerlink" title="Ethool -S"></a>Ethool -S</h3><h4 id="rx-tx-ring"><a href="#rx-tx-ring" class="headerlink" title="rx,tx-ring"></a>rx,tx-ring</h4><p>ethtool -G $nic rx 4096 tx 4096</p>
 <p>rx_no_buffer_count,there was nowhere to DMA the packet<br>DMA skb-data to rx-buffer-info(linux RAM, soft-interrupt). </p>
 <p>RNBC is a warning sign of a slow drain from the MAC and can be treated by adding more buffers.<br>There will be times when the RNBC will go up, but it will look like the stack and driver have a ton of buffers but work is not being done.  If you have a task that is eating up the CPU, the ISR or polling routines won’t refill the buffers fast enough and RNBC will happen.</p>
 <p>Imagine we have a slow CPU, but a wicked fastbus.  The software is very slow to process the descriptors and return them, but once the descriptors are given to the hardware, it empties the backlog (read the FIFO) faster than the incoming frames are filling the FIFO.  Returning to our kitchen sink analogy, the water is coming in at a fairly constant rate.  But imagine the stopper is down, making the sink fill up.  Just before it over flows, the drain is opened and down it goes.  Once the water doesn’t go down the drain would be the same moment our RNBC would be incremented.  The kitchen sink itself becomes our FIFO and if the FIFO is big enough, it can save frame for quiet some time.  This is 1 Gigabit (or faster) that we’re talking about, so with a good sized FIFO (24K RX for example) that’s only 375 frames at 64 bytes, or 267microseconds of data.  That’s not very much time.  But in a world full of 2 and 3 Gigahertz CPUs that’s long enough.  </p>
@@ -213,7 +334,7 @@
 <p>Imagine if you will, an interconnect bus that is slow.  Very slow.  Like a PCI 33hz bus.  Now attach that to a full line rate 1 Gigabit 64 byte packet data stream.  At one descriptor per packet, that’s about 1.4 million descriptors per second.  In this case the software is very fast, faster than the bus.  So the number of available descriptors is always kept a level that keeps the buffers available to the hardware to conduct a DMA.  But because the bus is so slow, data backs up into the FIFO.  Now that is what the FIFO is for.  By buffering the packet, it tries to give the packet the best chance at making into host memory alive.  In our slow case, the buffering isn’t enough and the FIFO fills up.  It is draining slower than its filling, its just a like a slow draining kitchen sink.  Eventually it overflows and makes a big mess.  Thank goodness things like TCP/IP will tell the applications data has been dropped, but if using a lossy frame type like UDP its just too bad, your frame is lost to the ether.  If you need to keep track, but need to use UDP, you’ll need to monitor the MPC count and decide what you want to do when it goes up.</p>
 <p>[猜测rx_missed_errors可能与硬中断有关。也就是在DMA传送完，发送硬中断之前，网卡的FIFO缓冲已经满了，导致接收的数据要立即丢掉。这个也可以验证：首先卸载igb模块，然后insmod igb InterruptThrottleRate=10, 只让网卡每秒产生10个中断。关闭流控ethtool -A eth1 autoneg off , ethtool -A eth1 rx off , ethtool -A eth1 tx off ，再把DMA缓冲区调至最大ethtool -G eth1 rx 4096 , ethtool -G eth1 tx 4096。可以发现原来不增长或几乎不增长的rx_missed_errors 开始大幅增长]<br>(<a href="https://lp007819.wordpress.com/2013/05/23/intel%E7%BD%91%E5%8D%A1%E7%8A%B6%E6%80%81%E7%BB%9F%E8%AE%A1%E7%96%91%E9%97%AE/" target="_blank" rel="external">https://lp007819.wordpress.com/2013/05/23/intel%E7%BD%91%E5%8D%A1%E7%8A%B6%E6%80%81%E7%BB%9F%E8%AE%A1%E7%96%91%E9%97%AE/</a>)</p>
 <p>rx_fifo_errors,<br>rx_over_errors</p>
-<p>##r ifconfig<br>frame counts only misaligned frames, it means frames with a length not divisible by 8. Because of that length is not a valid frame and it is simply discarded.</p>
+<h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h3><p>frame counts only misaligned frames, it means frames with a length not divisible by 8. Because of that length is not a valid frame and it is simply discarded.</p>
 <p>Meanwhile errors counts CRC errors, too-short frames and too-long frames.</p>
 <p>overruns counts that times when there is fifo overruns, caused by the rate at which the buffer gets full and the kernel isn’t able to empty it.</p>
 <p>overruns<br>overruns，表示这个数据包还没有被进入到网卡的接收缓存fifo队列就被丢掉，因此此时网卡的fifo是满的。为什么fifo会是满的？因为系统繁忙，来不及响应网卡中断，导致网卡里的数据包没有及时的拷贝到系统内存，fifo是满的就导致后面的数据包进不来，即这个数据包被网卡硬件丢掉。所以，个人觉得遇到overruns非0，需要检测cpu负载与cpu中断情况。</p>
@@ -249,8 +370,10 @@
     <entry>
       <title><![CDATA[upgrade hgst JBOD]]></title>
       <url>http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/</url>
-      <content type="html"><![CDATA[<pre><code class="bash">
-</code></pre>
+      <content type="html"><![CDATA[<p>get JBOD encolsure firmware version<br>sg_scan  -i | grep -i 1ES0059  -B 1<br>/dev/sg65: scsi14 channel=0 id=58 lun=0<br>HGST 4U60_STOR_ENCL 0210 [rmb=0 cmdq=1 pqual=0 pdev=0xd]</p>
+<p>upgrade firmware<br>[root@testhost1 fw]# ./hgst_upg_tool -d /dev/sg65 -f eros_4.2.5.0_CombinedImage.bin –m 7</p>
+<p>upgrade hdd firmware version<br>rpm -ivh hugo-6.1.2-1.x86_64.rpm<br>HUS726060AL5210 is HDD model</p>
+<p>update -f ./APGNAD05.bin -m HUS726060AL5210 </p>
 ]]></content>
       
         
@@ -448,13 +571,13 @@
             
             <tag> raid </tag>
             
+            <tag> monitor </tag>
+            
             <tag> lsi </tag>
             
             <tag> smcli </tag>
             
             <tag> san </tag>
-            
-            <tag> monitor </tag>
             
         </tags>
         
@@ -483,13 +606,13 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> hdd </tag>
             
-            <tag> scsi </tag>
+            <tag> ssd </tag>
             
             <tag> sas </tag>
+            
+            <tag> scsi </tag>
             
             <tag> spc </tag>
             
@@ -554,17 +677,17 @@
             
             <tag> linux </tag>
             
-            <tag> centos </tag>
-            
             <tag> ha </tag>
             
             <tag> cluster </tag>
             
-            <tag> 3 nodes </tag>
-            
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> 3 nodes </tag>
             
             <tag> kvm </tag>
             
@@ -1950,9 +2073,9 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> hdd </tag>
+            
+            <tag> ssd </tag>
             
             <tag> sas </tag>
             
@@ -1990,11 +2113,11 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> linux </tag>
             
             <tag> hdd </tag>
+            
+            <tag> ssd </tag>
             
             <tag> raid </tag>
             
@@ -2047,9 +2170,9 @@
         
         <tags>
             
-            <tag> ssd </tag>
-            
             <tag> linux </tag>
+            
+            <tag> ssd </tag>
             
         </tags>
         
@@ -3037,9 +3160,9 @@
         
         <tags>
             
-            <tag> bash </tag>
-            
             <tag> linux </tag>
+            
+            <tag> bash </tag>
             
         </tags>
         
@@ -3473,9 +3596,9 @@
             
             <tag> linux </tag>
             
-            <tag> centos </tag>
-            
             <tag> zfs </tag>
+            
+            <tag> centos </tag>
             
         </tags>
         
@@ -3548,9 +3671,9 @@
             
             <tag> linux </tag>
             
-            <tag> centos </tag>
-            
             <tag> zfs </tag>
+            
+            <tag> centos </tag>
             
         </tags>
         
@@ -3697,17 +3820,17 @@
             
             <tag> linux </tag>
             
-            <tag> centos </tag>
-            
             <tag> ha </tag>
             
             <tag> cluster </tag>
             
-            <tag> 3 nodes </tag>
-            
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
+            
+            <tag> centos </tag>
+            
+            <tag> 3 nodes </tag>
             
             <tag> kvm </tag>
             
@@ -3860,6 +3983,8 @@
             
             <tag> linux </tag>
             
+            <tag> lustre </tag>
+            
             <tag> ha </tag>
             
             <tag> cluster </tag>
@@ -3867,8 +3992,6 @@
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
-            
-            <tag> lustre </tag>
             
             <tag> zfs </tag>
             

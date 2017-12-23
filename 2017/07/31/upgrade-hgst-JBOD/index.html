@@ -59,16 +59,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="get JBOD encolsure firmware versionsg_scan  -i | grep -i 1ES0059  -B 1/dev/sg65: scsi14 channel=0 id=58 lun=0HGST 4U60_STOR_ENCL 0210 [rmb=0 cmdq=1 pqual=0 pdev=0xd]
+upgrade firmware[root@testhost1 fw">
 <meta property="og:type" content="article">
 <meta property="og:title" content="upgrade hgst JBOD">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/upgrade-hgst-JBOD/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-07-31T09:58:35.000Z">
+<meta property="og:description" content="get JBOD encolsure firmware versionsg_scan  -i | grep -i 1ES0059  -B 1/dev/sg65: scsi14 channel=0 id=58 lun=0HGST 4U60_STOR_ENCL 0210 [rmb=0 cmdq=1 pqual=0 pdev=0xd]
+upgrade firmware[root@testhost1 fw">
+<meta property="og:updated_time" content="2017-12-06T09:41:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="upgrade hgst JBOD">
-<meta name="twitter:description">
+<meta name="twitter:description" content="get JBOD encolsure firmware versionsg_scan  -i | grep -i 1ES0059  -B 1/dev/sg65: scsi14 channel=0 id=58 lun=0HGST 4U60_STOR_ENCL 0210 [rmb=0 cmdq=1 pqual=0 pdev=0xd]
+upgrade firmware[root@testhost1 fw">
 
 
 
@@ -320,8 +323,10 @@
       
 
       
-        <pre><code class="bash">
-</code></pre>
+        <p>get JBOD encolsure firmware version<br>sg_scan  -i | grep -i 1ES0059  -B 1<br>/dev/sg65: scsi14 channel=0 id=58 lun=0<br>HGST 4U60_STOR_ENCL 0210 [rmb=0 cmdq=1 pqual=0 pdev=0xd]</p>
+<p>upgrade firmware<br>[root@testhost1 fw]# ./hgst_upg_tool -d /dev/sg65 -f eros_4.2.5.0_CombinedImage.bin –m 7</p>
+<p>upgrade hdd firmware version<br>rpm -ivh hugo-6.1.2-1.x86_64.rpm<br>HUS726060AL5210 is HDD model</p>
+<p>update -f ./APGNAD05.bin -m HUS726060AL5210 </p>
 
       
     </div>
@@ -424,7 +429,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -441,7 +446,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-count">90</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
