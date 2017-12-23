@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,unix,posix," />
+  <meta name="keywords" content="linux,mdadm," />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="123mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1echo 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_max">
+<meta name="description" content="1234mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1 --bitmap=noneecho 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_maxmdadm -Ds &amp;gt; /etc/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="system call">
+<meta property="og:title" content="MDADM tips">
 <meta property="og:url" content="http://yoursite.com/2017/11/09/mdadm/index.html">
 <meta property="og:site_name" content="Homer's Blog">
-<meta property="og:description" content="123mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1echo 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_max">
-<meta property="og:updated_time" content="2017-11-22T02:44:30.000Z">
+<meta property="og:description" content="1234mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1 --bitmap=noneecho 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_maxmdadm -Ds &amp;gt; /etc/">
+<meta property="og:updated_time" content="2017-12-23T07:11:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="system call">
-<meta name="twitter:description" content="123mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1echo 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_max">
+<meta name="twitter:title" content="MDADM tips">
+<meta name="twitter:description" content="1234mdadm --create /dev/md/imsm0 -n2  -e imsm /dev/nvme&amp;#123;0..1&amp;#125;n1mdadm -C /dev/md1 /dev/md/imsm0 -n 2 -l 1 --bitmap=noneecho 2000000 &amp;gt; /proc/sys/dev/raid/speed_limit_maxmdadm -Ds &amp;gt; /etc/">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> system call | Homer's Blog </title>
+  <title> MDADM tips | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -274,7 +274,7 @@
             
             
               
-                system call
+                MDADM tips
               
             
           </h1>
@@ -339,7 +339,16 @@
       
 
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mdadm --create /dev/md/imsm0 -n2  <span class="_">-e</span> imsm /dev/nvme&#123;0..1&#125;n1</span><br><span class="line">mdadm -C /dev/md1 /dev/md/imsm0 -n 2 <span class="_">-l</span> 1 --bitmap=none</span><br><span class="line"><span class="built_in">echo</span> 2000000 &gt; /proc/sys/dev/raid/speed_<span class="built_in">limit</span>_max</span><br><span class="line">mdadm -Ds &gt; /etc/mdadm.conf</span><br></pre></td></tr></table></figure>
+<p>If you ‘re running 2 x NVME SSD in a mirror. you’d better set bitmap=none to avoid cpu core 100%<br>Because enterprise SSD has the capacitance</p>
+<h4 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h4><p>Bitmaps optimize rebuild time after a crash, or after removing and re-adding a device.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mdadm --grow --bitmap=internal /dev/md0</span><br><span class="line">mdadm --grow --bitmap=none /dev/md0</span><br></pre></td></tr></table></figure></p>
+<h4 id="SCAN"><a href="#SCAN" class="headerlink" title="SCAN"></a>SCAN</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mdadm --assemble --scan</span><br><span class="line">mdadm --assemble /dev/md1 --scan --force</span><br><span class="line">mdadm --assemble /dev/md1 /dev/sd[abc]2 --force</span><br><span class="line"></span><br><span class="line"><span class="comment">####Dangerours</span></span><br><span class="line">mdadm --create /dev/md1 --assume-clean <span class="_">-l</span>5 -n4 -c64 /dev/sd[abc]2 missing</span><br></pre></td></tr></table></figure>
+<h4 id="Set-readahead"><a href="#Set-readahead" class="headerlink" title="Set readahead"></a>Set readahead</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blockdev --setra 65536 /dev/mdX</span><br></pre></td></tr></table></figure>
+<h4 id="Set-stripe-cache"><a href="#Set-stripe-cache" class="headerlink" title="Set stripe-cache"></a>Set stripe-cache</h4><p>memory_consumed = system_page_size <em> nr_disks </em> stripe_cache_size<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set 16MB for /dev/md0</span></span><br><span class="line"><span class="built_in">echo</span> 16384 &gt; /sys/block/md0/md/stripe_cache_size</span><br></pre></td></tr></table></figure></p>
+<h4 id="Disable-NCQ"><a href="#Disable-NCQ" class="headerlink" title="Disable NCQ"></a>Disable NCQ</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sd[abcde]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> 1 &gt; /sys/block/<span class="variable">$i</span>/device/queue_depth</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h4 id="Clear-mdadm-infomation"><a href="#Clear-mdadm-infomation" class="headerlink" title="Clear mdadm infomation"></a>Clear mdadm infomation</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mdadm --stop /dev/md0</span><br><span class="line">mdadm --zero-superblock /dev/sdla</span><br></pre></td></tr></table></figure>
+<h4 id="Replace-device"><a href="#Replace-device" class="headerlink" title="Replace device"></a>Replace device</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check info</span></span><br><span class="line">mdadm --detail /dev/mdx</span><br><span class="line"></span><br><span class="line"><span class="comment"># mark the fail dev</span></span><br><span class="line">mdadm /dev/md0 <span class="_">-f</span> /dev/sdx  <span class="comment"># "F" in /proc/mdstat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># remove the dev</span></span><br><span class="line">mdadm /dev/md0 -r /dev/sdx</span><br><span class="line"></span><br><span class="line"><span class="comment"># re-add it</span></span><br><span class="line">mdadm /dev/md0 <span class="_">-a</span> /dev/sdx</span><br></pre></td></tr></table></figure>
+<h4 id="Device-detail"><a href="#Device-detail" class="headerlink" title="Device detail"></a>Device detail</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mdadm -E /dev/sdaa</span></span><br><span class="line">/dev/sdaa:</span><br><span class="line">          Magic : a92b4efc</span><br><span class="line">        Version : 1.2</span><br><span class="line">    Feature Map : 0x1</span><br><span class="line">     Array UUID : c82f3470:5eed5058:083fb704:62315597</span><br><span class="line">           Name : 3</span><br><span class="line">  Creation Time : Mon Jan  3 01:09:30 2011</span><br><span class="line">     Raid Level : raid6</span><br><span class="line">   Raid Devices : 44</span><br><span class="line"></span><br><span class="line"> Avail Dev Size : 976772896 (465.76 GiB 500.11 GB)</span><br><span class="line">     Array Size : 41024460288 (19561.99 GiB 21004.52 GB)</span><br><span class="line">  Used Dev Size : 976772864 (465.76 GiB 500.11 GB)</span><br><span class="line">    Data Offset : 272 sectors</span><br><span class="line">   Super Offset : 8 sectors</span><br><span class="line">          State : active</span><br><span class="line">    Device UUID : 788aa9<span class="built_in">cd</span>:3ed46a21:4bf3433d:74823b69</span><br><span class="line"></span><br><span class="line">Internal Bitmap : 8 sectors from superblock</span><br><span class="line">    Update Time : Mon Jan  3 01:09:30 2011</span><br><span class="line">       Checksum : b3e6d7a9 - correct</span><br><span class="line">         Events : 0</span><br><span class="line"></span><br><span class="line">     Chunk Size : 128K</span><br><span class="line"></span><br><span class="line">    Array Slot : 25 (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43)</span><br><span class="line">   Array State : uuuuuuuuuuuuuuuuuuuuuuuuuUuuuuuuuuuuuuuuuuuu</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -356,9 +365,7 @@
           
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/unix/" rel="tag">#unix</a>
-          
-            <a href="/tags/posix/" rel="tag">#posix</a>
+            <a href="/tags/mdadm/" rel="tag">#mdadm</a>
           
         </div>
       
@@ -367,16 +374,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/09/system_call/" rel="next" title="system call">
-                <i class="fa fa-chevron-left"></i> system call
+              <a href="/2017/10/26/scsi_tips/" rel="next" title="scsi tips">
+                <i class="fa fa-chevron-left"></i> scsi tips
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/21/linux-errno/" rel="prev" title="linux_errno">
-                linux_errno <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/09/system_call/" rel="prev" title="system call">
+                system call <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,7 +459,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">63</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -469,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">90</span>
+                <span class="site-state-item-count">91</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -533,7 +540,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap"><span class="nav-number">1.</span> <span class="nav-text">Bitmap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SCAN"><span class="nav-number">2.</span> <span class="nav-text">SCAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-readahead"><span class="nav-number">3.</span> <span class="nav-text">Set readahead</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-stripe-cache"><span class="nav-number">4.</span> <span class="nav-text">Set stripe-cache</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disable-NCQ"><span class="nav-number">5.</span> <span class="nav-text">Disable NCQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Clear-mdadm-infomation"><span class="nav-number">6.</span> <span class="nav-text">Clear mdadm infomation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Replace-device"><span class="nav-number">7.</span> <span class="nav-text">Replace device</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Device-detail"><span class="nav-number">8.</span> <span class="nav-text">Device detail</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -805,7 +812,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
       var disqus_identifier = '2017/11/09/mdadm/';
-      var disqus_title = 'system call';
+      var disqus_title = 'MDADM tips';
       var disqus_url = 'http://yoursite.com/2017/11/09/mdadm/';
 
       function run_disqus_script(disqus_script){
