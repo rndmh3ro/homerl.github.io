@@ -144,9 +144,9 @@
             
             <tag> linux </tag>
             
-            <tag> jbod </tag>
-            
             <tag> scsi </tag>
+            
+            <tag> jbod </tag>
             
             <tag> monitor </tag>
             
@@ -212,8 +212,44 @@
     <entry>
       <title><![CDATA[NIC issues]]></title>
       <url>http://yoursite.com/2017/08/14/NIC-issues/</url>
-      <content type="html"><![CDATA[<h4 id="Check-command"><a href="#Check-command" class="headerlink" title="Check command"></a>Check command</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="_">-s</span> <span class="_">-s</span> link/ifconfig</span><br><span class="line">ethttool -S dev | grep -Ei <span class="string">'err|miss|dis|drop|crc'</span></span><br><span class="line">sar -n DEV,ETCP 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># get firbe module detail</span></span><br><span class="line">ethttool -m dev</span><br></pre></td></tr></table></figure>
-<h4 id="Kernel-detail"><a href="#Kernel-detail" class="headerlink" title="Kernel detail"></a>Kernel detail</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sys/class/net/em2/statistics/</span><br><span class="line">/proc/net/dev</span><br></pre></td></tr></table></figure>
+      <content type="html"><![CDATA[<h4 id="Resolve-process"><a href="#Resolve-process" class="headerlink" title="Resolve process"></a>Resolve process</h4><ul>
+<li>Upgrade firmware/driver<ul>
+<li>Driver parameter</li>
+</ul>
+</li>
+<li>Disable iptables</li>
+<li>Improve ring buffer</li>
+<li>Modify kernel network parameter sysctl.conf</li>
+<li>Disable irqbalance, set the device irq affinity in local numa node</li>
+<li>Enable RPS/RFS/XPS</li>
+<li>Enable performance mode</li>
+</ul>
+<h4 id="About-RSS"><a href="#About-RSS" class="headerlink" title="About RSS"></a><a href="http://blog.csdn.net/vah101/article/details/40077937" target="_blank" rel="external">About RSS</a></h4><p>For unsupport optical module<br>modprobe ixgbe allow_unsupported_sfp=1,1</p>
+<p>Setting RSS queue<br>MQ:Disable or enable Multiple Queues, default 1 (array of int)<br>RSS:Number of Receive-Side Scaling Descriptor Queues, default 0=number of cpus (array of int)<br>modprobe ixgbe MQ=1,1 RSS=8,8</p>
+<p>$ cat /etc/modprobe.d/ixgbe.conf<br>options ixgbe allow_unsupported_sfp=1,1<br>options ixgbe MQ=1,1 RSS=8,8<br>options ixgbe LRO=1<br>options ixgbe InterruptThrottleRate=20000,20000</p>
+<p>InterruptThrottleRate:Maximum interrupts per second, per vector, (0,1,956-488281), default 1 (array of int)<br>LRO:Large Receive Offload (0,1), default 0 = off (array of int)</p>
+<h4 id="Ethernet-Flow-Director"><a href="#Ethernet-Flow-Director" class="headerlink" title="Ethernet Flow Director"></a>Ethernet Flow Director</h4><p>ethtool -K eth2 ntuple on<br>ethtool –config-ntuple eth2 flow-type ip4 src-ip 192.168.100.1  action -1<br>ethtool –config-ntuple eth2 flow-type tcp4 src-port 80  action 2<br>ethtool –config-ntuple eth2 flow-type udp4 src-port 80  action 2</p>
+<h4 id="Offload"><a href="#Offload" class="headerlink" title="Offload"></a>Offload</h4><p>ethtool -K ethX rx on  ## rx-checksuming tcp offload<br>ethtool -K ethX sg  ## tcp-sgmentation offloading<br><a href="https://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters_Archive.pdf" target="_blank" rel="external">For 100GbE</a><br>In case “tx-nocache-copy” is enabled, (this is the case for some kernels, e.g. kernel 3.10,<br>which is the default for RH7.0) “tx-nocache-copy” should be disabled.<br>ethtool -K <interface> tx-nocache-copy off</interface></p>
+<h4 id="Performance-mode"><a href="#Performance-mode" class="headerlink" title="Performance mode"></a>Performance mode</h4><h5 id="Get-numa-node"><a href="#Get-numa-node" class="headerlink" title="Get numa node"></a>Get numa node</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/net/[interface]/device/numa_node</span><br><span class="line">cat /sys/devices/[PCI root]/[PCIe <span class="keyword">function</span>]/numa_node</span><br></pre></td></tr></table></figure>
+<h5 id="Enable-CPU-performance-mode"><a href="#Enable-CPU-performance-mode" class="headerlink" title="Enable CPU performance mode"></a>Enable CPU performance mode</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">grub parameter: intel_idle.max_cstate=0 processor.max_cstate=1</span><br><span class="line"></span><br><span class="line">cpupower idle-set <span class="_">-d</span> 4</span><br><span class="line">cpupower idle-set <span class="_">-d</span> 3</span><br><span class="line">cpupower idle-set <span class="_">-d</span> 2</span><br><span class="line">cpupower  frequency-set -g performance</span><br><span class="line">tuned-adm profile throughput-performance</span><br><span class="line">tuned-adm active</span><br><span class="line">or </span><br><span class="line"><span class="built_in">echo</span> performance &gt; /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor</span><br><span class="line"></span><br><span class="line">cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq</span><br><span class="line">cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq</span><br></pre></td></tr></table></figure>
+<h4 id="Sysctl-conf"><a href="#Sysctl-conf" class="headerlink" title="Sysctl.conf"></a><a href="https://www.mellanox.com/related-docs/prod_software/Performance_Tuning_Guide_for_Mellanox_Network_Adapters_Archive.pdf" target="_blank" rel="external">Sysctl.conf</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">The following changes are recommended <span class="keyword">for</span> improving IPv4 traffic performance:</span><br><span class="line">Disable the TCP timestamps option <span class="keyword">for</span> better CPU utilization:</span><br><span class="line">sysctl -w net.ipv4.tcp_timestamps=0</span><br><span class="line"></span><br><span class="line">Enable the TCP selective acks option <span class="keyword">for</span> better throughput:</span><br><span class="line">With selective acknowledgments, the data receiver can inform the sender about all segments that have arrived successfully, so the sender need retransmit only the segments that have actually been lost.</span><br><span class="line">sysctl -w net.ipv4.tcp_sack=1</span><br><span class="line"></span><br><span class="line">Increase the maximum length of processor input queues:</span><br><span class="line">sysctl -w net.core.netdev_max_backlog=250000</span><br><span class="line"></span><br><span class="line">Increase the TCP maximum and default buffer sizes using setsockopt():</span><br><span class="line">sysctl -w net.core.rmem_max=4194304</span><br><span class="line">sysctl -w net.core.wmem_max=4194304</span><br><span class="line">sysctl -w net.core.rmem_default=4194304</span><br><span class="line">sysctl -w net.core.wmem_default=4194304</span><br><span class="line">sysctl -w net.core.optmem_max=4194304</span><br><span class="line"></span><br><span class="line">Increase memory thresholds to prevent packet dropping:</span><br><span class="line">sysctl -w net.ipv4.tcp_rmem=<span class="string">"4096 87380 4194304"</span></span><br><span class="line">sysctl -w net.ipv4.tcp_wmem=<span class="string">"4096 65536 4194304"</span></span><br><span class="line"></span><br><span class="line">Enable low latency mode <span class="keyword">for</span> TCP:</span><br><span class="line">sysctl -w net.ipv4.tcp_low_latency=1</span><br><span class="line"></span><br><span class="line">sysctl -w net.ipv4.tcp_adv_win_scale=1</span><br><span class="line">The following variable is used to tell the kernel how much of the socket buffer space should be used <span class="keyword">for</span> TCP window size, and how much to save <span class="keyword">for</span> an application buffer.</span><br><span class="line">A value of 1 means the socket buffer will be divided evenly between TCP windows size and application.</span><br></pre></td></tr></table></figure>
+<h5 id="nic-interrupt-rates"><a href="#nic-interrupt-rates" class="headerlink" title="nic interrupt rates"></a><a href="https://www.ibm.com/support/knowledgecenter/en/SSQPD3_2.6.0/com.ibm.wllm.doc/usingethtoolrates.html" target="_blank" rel="external">nic interrupt rates</a></h5><ul>
+<li>adaptive-rx Dynamic control to decrease RX latency at low packet rates and increase throughput at high packet rates</li>
+<li>rx-usecs This is the number of microseconds to wait before raising an RX interrupt after a packet has been received. When rx-usecs is set to 0 rx-frames is used</li>
+<li>rx-frames    This is the number of frames to queue up before raising an RX interrupt.</li>
+<li>adaptive-tx Dynamic control to decrease TX latency at low packet rates and increase throughput at high packet rates</li>
+<li>tx-usecs This is the number of microseconds to wait before raising an TX interrupt after a packet has been sent. When tx-usecs is set to 0 tx-frames is used</li>
+<li>tx-frames This is the number of frames to queue up before raising an TX interrupt</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#10GbE 82599 setting</span></span><br><span class="line">ls /sys/class/net | egrep <span class="string">'(eth|en|p|em|br|bond)'</span> | <span class="keyword">while</span> <span class="built_in">read</span> nic</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  ethtool -C <span class="variable">$nic</span> rx-usecs 0 tx-usecs 0 adaptive-rx off adaptive-tx off <span class="comment">## there are some compatibility with a vendor 25GbE</span></span><br><span class="line">  ethtool -G <span class="variable">$nic</span> rx 4096/8192 tx 4096/8192 <span class="comment">#for latency, you could reduce the value,rx-ring,tx-ring #10GbE 82599, 25GbE , 50GbE has more</span></span><br><span class="line">  ethtool -N <span class="variable">$nic</span> rx-flow-hash udp4 sdfn</span><br><span class="line">  ifconfig <span class="variable">$nic</span> mtu 9000</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h4 id="Check-command"><a href="#Check-command" class="headerlink" title="Check command"></a>Check command</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="_">-s</span> <span class="_">-s</span> link/ifconfig</span><br><span class="line">ethttool -S dev | grep -Ei <span class="string">'err|miss|dis|drop|crc'</span></span><br><span class="line">sar -n DEV,ETCP 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># get firbe module detail</span></span><br><span class="line">ethttool -m dev </span><br><span class="line"></span><br><span class="line"><span class="comment">##Get them from</span></span><br><span class="line">/sys/class/net/em2/statistics/</span><br><span class="line">/proc/net/dev</span><br></pre></td></tr></table></figure>
+<h4 id="RPS-RFS-for-not-support-RSS-ethernet-network-apapter"><a href="#RPS-RFS-for-not-support-RSS-ethernet-network-apapter" class="headerlink" title="RPS/RFS for not support RSS ethernet network apapter"></a>RPS/RFS for not support RSS ethernet network apapter</h4><h5 id="Check-the-device-support-RSS"><a href="#Check-the-device-support-RSS" class="headerlink" title="Check the device support RSS"></a>Check the device support RSS</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lspci -v <span class="_">-s</span> 83:00.0 | grep <span class="string">"MSI-X: Enable+"</span></span><br><span class="line">83:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)</span><br><span class="line">	Flags: bus master, fast devsel, latency 0, IRQ 247, NUMA node 1</span><br><span class="line">	I/O ports at d020 [size=32]</span><br><span class="line">	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+</span><br><span class="line">	Capabilities: [70] MSI-X: Enable+ Count=64 Masked-</span><br></pre></td></tr></table></figure>
+<p>I don’t know why there are some network adapter could not work well in 4 x numa node and in these server, all 25GbE adapter support RSS, some of vendor 4 x numa node is OK, there are the same network chip in each server, except they are the different OEM adapter<br>So I have to enabe RPS to get good performance, I guess it server design problem<br>There are about 10000~30000/s tcp retrans.</p>
+<p>Here is the script for 4 x numa</p>
+<p><a href="https://community.mellanox.com/docs/DOC-2820" target="_blank" rel="external">For interfaces that have a single queue or its number of queues is less than the number of NUMA node cores, it is recommended to configure the rps_cpus mask to the device NUMA node core list to gain the better parallelism of multi queue interfaces.</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/class/net/eth7/device/<span class="built_in">local</span>_cpus</span><br><span class="line">0000,000fffc0,00000000,0fffc000</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">bond=bond0</span><br><span class="line">rfc=16392</span><br><span class="line">cc=$(grep -c processor /proc/cpuinfo)</span><br><span class="line">rsfe=$((<span class="variable">$cc</span>*<span class="variable">$rfc</span>))</span><br><span class="line"></span><br><span class="line">sysctl -w net.core.rps_sock_flow_entries=<span class="variable">$rsfe</span></span><br><span class="line">dmidecode -t system | grep -i huawei &amp;&amp; cat /proc/net/bonding/<span class="variable">$bond</span>  | awk <span class="string">'$0~/Slave Interface:/ &#123;print $NF&#125;'</span> | <span class="keyword">while</span> <span class="built_in">read</span> nic</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    node=$(cat /sys/class/net/<span class="variable">$nic</span>/device/numa_node)</span><br><span class="line">    [[ -z <span class="variable">$node</span> ]] &amp;&amp; <span class="built_in">echo</span> not found numa &amp;&amp; <span class="built_in">exit</span> 1</span><br><span class="line">    [[ -z <span class="variable">$nic</span> ]] &amp;&amp; <span class="built_in">echo</span> not found bond &amp;&amp; <span class="built_in">exit</span> 1</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"the nic is <span class="variable">$nic</span> in the node-<span class="variable">$node</span>"</span></span><br><span class="line">    service iptables stop</span><br><span class="line">    ethtool -G <span class="variable">$nic</span> rx 8192 tx 1024</span><br><span class="line">    ethtool -G <span class="variable">$nic</span> rx 8192 tx 1024</span><br><span class="line">    ethtool -K <span class="variable">$nic</span> lro on</span><br><span class="line">    ethtool -K <span class="variable">$bond</span> lro on</span><br><span class="line">    service irqbalance stop</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ -n <span class="variable">$node</span> ];<span class="keyword">then</span></span><br><span class="line">          <span class="built_in">echo</span> <span class="string">"bind int to node <span class="variable">$node</span>"</span></span><br><span class="line">          <span class="built_in">set</span>_irq_affinity_bynode.sh <span class="variable">$node</span> <span class="variable">$nic</span> <span class="comment">##### mlnx driver script</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> fileRps <span class="keyword">in</span> $(ls /sys/class/net/<span class="variable">$&#123;nic&#125;</span>/queues/rx-*/rps_cpus)</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">           [[ <span class="variable">$node</span> <span class="_">-eq</span> 1 ]] &amp;&amp; <span class="built_in">echo</span> 0000,00000000,00000000,0ff00000 &gt;<span class="variable">$fileRps</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> fileR<span class="built_in">fc</span> <span class="keyword">in</span> $(ls /sys/class/net/<span class="variable">$&#123;nic&#125;</span>/queues/rx-*/rps_flow_cnt)</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">           <span class="built_in">echo</span> <span class="variable">$rfc</span> &gt;<span class="variable">$fileRfc</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> fileRps <span class="keyword">in</span> $(ls /sys/class/net/<span class="variable">$&#123;nic&#125;</span>/queues/tx-*/xps_cpus)</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">           [[ <span class="variable">$node</span> <span class="_">-eq</span> 1 ]] &amp;&amp; <span class="built_in">echo</span> 0000,00000000,00000000,000<span class="built_in">fc</span>000 &gt;<span class="variable">$fileRps</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rfs" target="_blank" rel="external">RFS</a> is disabled by default. To enable RFS, you must edit two files:<br>/proc/sys/net/core/rps_sock_flow_entries<br>Set the value of this file to the maximum expected number of concurrently active connections. We recommend a value of 32768 for moderate server loads. All values entered are rounded up to the nearest power of 2 in practice.<br>/sys/class/net/device/queues/rx-queue/rps_flow_cnt<br>Replace device with the name of the network device you wish to configure (for example, eth0), and rx-queue with the receive queue you wish to configure (for example, rx-0).<br>Set the value of this file to the value of rps_sock_flow_entries divided by N, where N is the number of receive queues on a device. For example, if rps_flow_entries is set to 32768 and there are 16 configured receive queues, rps_flow_cnt should be set to 2048. For single-queue devices, the value of rps_flow_cnt is the same as the value of rps_sock_flow_entries.<br>Data received from a single sender is not sent to more than one CPU. If the amount of data received from a single sender is greater than a single CPU can handle, configure a larger frame size to reduce the number of interrupts and therefore the amount of processing work for the CPU. Alternatively, consider NIC offload options or faster CPUs.</p>
+<p><a href="http://www.simlinux.com/2017/02/28/net-softirq.html#RPS-RFS" target="_blank" rel="external">RPS</a>: 网卡驱动对每一个数据库包根据四元组(SIP,SPORT,DIP,DPORT)生成HASH值,通过HASH值将每个连接和CPU 绑定<br>RFS： 由于RPS只是单纯的把数据包均衡到不同的CPU上，此时如果应用程序所在CPU和中断处理的CPU不在同一个核，将会对CPU Cache影响很大，RFS的作用就是将应用程序和软中断处理分配到同一个CPU<br>XPS: 负载均衡选择网卡多队列发包<br>Data received from a single sender is not sent to more than one CPU. If the amount of data received from a single sender is greater than a single CPU can handle, configure a larger frame size to reduce the number of interrupts and therefore the amount of processing work for the CPU. Alternatively, consider NIC offload options or faster CPUs.<br>(Consider using numactl or taskset in conjunction with RFS to pin applications to specific cores, sockets, or NUMA nodes. This can help prevent packets from being processed out of order)[<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rfs" target="_blank" rel="external">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rfs</a>)</p>
 <h4 id="RHEL-solutions"><a href="#RHEL-solutions" class="headerlink" title="RHEL solutions"></a><a href="https://access.redhat.com/solutions/21301" target="_blank" rel="external">RHEL solutions</a></h4><p>System dropping network packets</p>
 <ul>
 <li>High number of drop counters like drop, discard, err or error, fifo, buf or buffer, fail, miss, OOB, full counters in ethtool -S</li>
@@ -303,15 +339,6 @@
 <h4 id="About-irqbalance"><a href="#About-irqbalance" class="headerlink" title="About irqbalance"></a><a href="https://community.mellanox.com/docs/DOC-2123" target="_blank" rel="external">About irqbalance</a></h4><p>Irqbalance is a Linux daemon that help to balance the CPU load generated by interrupts across all CPUs. Irqbalance identifies the highest volume interrupt sources, and isolates them to a single CPU, so that load is spread as much as possible over an entire processor set, while minimizing cache hit rates for irq handlers<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#debug irqbalance</span></span><br><span class="line">irqbalance <span class="_">-d</span> <span class="_">-f</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v1.1.pdf" target="_blank" rel="external">perf-brief-low-latency-tuning-rhel7</a><br>The irqbalance service continues to be enabled by default in Red Hat Enterprise Linux 7. It<br>remains an important service that helps spread IRQ-processing load across multiple processors dynamically.</p>
 <p>For more performance<br>here could be specific workloads or configuration where stopping irqbalance and using mlnx_tune is more optimal and recommended.</p>
-<h4 id="nic-interrupt-rates"><a href="#nic-interrupt-rates" class="headerlink" title="nic interrupt rates"></a><a href="https://www.ibm.com/support/knowledgecenter/en/SSQPD3_2.6.0/com.ibm.wllm.doc/usingethtoolrates.html" target="_blank" rel="external">nic interrupt rates</a></h4><ul>
-<li>adaptive-rx Dynamic control to decrease RX latency at low packet rates and increase throughput at high packet rates</li>
-<li>rx-usecs This is the number of microseconds to wait before raising an RX interrupt after a packet has been received. When rx-usecs is set to 0 rx-frames is used</li>
-<li>rx-frames    This is the number of frames to queue up before raising an RX interrupt.</li>
-<li>adaptive-tx Dynamic control to decrease TX latency at low packet rates and increase throughput at high packet rates</li>
-<li>tx-usecs This is the number of microseconds to wait before raising an TX interrupt after a packet has been sent. When tx-usecs is set to 0 tx-frames is used</li>
-<li>tx-frames This is the number of frames to queue up before raising an TX interrupt</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#10GbE 82599 setting</span></span><br><span class="line">ls /sys/class/net | egrep <span class="string">'(eth|en|p|em|br|bond)'</span> | <span class="keyword">while</span> <span class="built_in">read</span> nic</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  ethtool -C <span class="variable">$nic</span> rx-usecs 0 tx-usecs 0 adaptive-rx off adaptive-tx off</span><br><span class="line">  ethtool -G <span class="variable">$nic</span> rx 4096 tx 4096 <span class="comment">#for latency, you could reduce the value,rx-ring,tx-ring #10GbE 82599, 25GbE , 50GbE has more</span></span><br><span class="line">  ethtool -N <span class="variable">$nic</span> rx-flow-hash udp4 sdfn</span><br><span class="line">  ifconfig <span class="variable">$nic</span> mtu 9000</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">$ cat /etc/modprobe.d/ixgbe.conf </span><br><span class="line">options ixgbe LRO=1</span><br><span class="line">options ixgbe InterruptThrottleRate=16000,16000</span><br></pre></td></tr></table></figure>
 <h4 id="About-interruptthrottlerate"><a href="#About-interruptthrottlerate" class="headerlink" title="About interruptthrottlerate"></a><a href="https://www.kernel.org/doc/Documentation/networking/e1000.txt" target="_blank" rel="external">About interruptthrottlerate</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Setting InterruptThrottleRate to a value greater or equal to 100</span><br><span class="line">will program the adapter to send out a maximum of that many interrupts</span><br><span class="line">per second, even <span class="keyword">if</span> more packets have come in. This reduces interrupt</span><br><span class="line">load on the system and can lower CPU utilization under heavy load,</span><br><span class="line">but will increase latency as packets are not processed as quickly.</span><br><span class="line"></span><br><span class="line">The default behaviour of the driver previously assumed a static</span><br><span class="line">InterruptThrottleRate value of 8000</span><br></pre></td></tr></table></figure>
 <h4 id="About-LRO"><a href="#About-LRO" class="headerlink" title="About LRO"></a><a href="https://downloadmirror.intel.com/22919/eng/README.txt" target="_blank" rel="external">About LRO</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LRO</span><br><span class="line">---</span><br><span class="line">Large Receive Offload (LRO) is a technique <span class="keyword">for</span> increasing inbound throughput</span><br><span class="line">of high-bandwidth network connections by reducing CPU overhead. It works by</span><br><span class="line">aggregating multiple incoming packets from a single stream into a larger </span><br><span class="line">buffer before they are passed higher up the networking stack, thus reducing</span><br><span class="line">the number of packets that have to be processed. LRO combines multiple </span><br><span class="line">Ethernet frames into a single receive <span class="keyword">in</span> the stack, thereby potentially </span><br><span class="line">decreasing CPU utilization <span class="keyword">for</span> receives.</span><br></pre></td></tr></table></figure>
 <h4 id="Support-for-UDP-RSS"><a href="#Support-for-UDP-RSS" class="headerlink" title="Support for UDP RSS"></a><a href="https://downloadmirror.intel.com/22919/eng/README.txt" target="_blank" rel="external">Support for UDP RSS</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">   rx-flow-hash tcp4|udp4|ah4|esp4|sctp4|tcp6|udp6|ah6|esp6|sctp6</span><br><span class="line">     Retrieves the <span class="built_in">hash</span> options <span class="keyword">for</span> the specified network traffic type.</span><br><span class="line"></span><br><span class="line">  -N --config-nfc</span><br><span class="line">     Configures the receive network flow classification.</span><br><span class="line"></span><br><span class="line">   rx-flow-hash tcp4|udp4|ah4|esp4|sctp4|tcp6|udp6|ah6|esp6|sctp6 </span><br><span class="line">   m|v|t|s|d|f|n|r...</span><br><span class="line">     Configures the <span class="built_in">hash</span> options <span class="keyword">for</span> the specified network traffic type.</span><br><span class="line"></span><br><span class="line">     udp4    UDP over IPv4</span><br><span class="line">     udp6    UDP over IPv6</span><br><span class="line"></span><br><span class="line">     f   Hash on bytes 0 and 1 of the Layer 4 header of the rx packet.</span><br><span class="line">     n   Hash on bytes 2 and 3 of the Layer 4 header of the rx packet.</span><br><span class="line"></span><br><span class="line">The following is an example using udp4 (UDP over IPv4):</span><br><span class="line"></span><br><span class="line">  To include UDP port numbers <span class="keyword">in</span> RSS hashing run:</span><br><span class="line">     ethtool -N ethX rx-flow-hash udp4 sdfn</span><br><span class="line"></span><br><span class="line">  To exclude UDP port numbers from RSS hashing run:</span><br><span class="line">     ethtool -N ethX rx-flow-hash udp4 sd</span><br><span class="line"></span><br><span class="line">  To display UDP hashing current configuration run:</span><br><span class="line">     ethtool -n ethX rx-flow-hash udp4</span><br></pre></td></tr></table></figure>
@@ -526,11 +553,11 @@
         
         <tags>
             
+            <tag> benchmark </tag>
+            
             <tag> centos </tag>
             
             <tag> performance </tag>
-            
-            <tag> benchmark </tag>
             
         </tags>
         
@@ -561,13 +588,13 @@
             
             <tag> raid </tag>
             
-            <tag> monitor </tag>
-            
             <tag> lsi </tag>
             
             <tag> smcli </tag>
             
             <tag> san </tag>
+            
+            <tag> monitor </tag>
             
         </tags>
         
@@ -667,17 +694,17 @@
             
             <tag> linux </tag>
             
+            <tag> centos </tag>
+            
             <tag> ha </tag>
             
             <tag> cluster </tag>
             
+            <tag> 3 nodes </tag>
+            
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
-            
-            <tag> centos </tag>
-            
-            <tag> 3 nodes </tag>
             
             <tag> kvm </tag>
             
@@ -3027,9 +3054,9 @@
         
         <tags>
             
-            <tag> interface </tag>
-            
             <tag> network </tag>
+            
+            <tag> interface </tag>
             
         </tags>
         
@@ -3586,9 +3613,9 @@
             
             <tag> linux </tag>
             
-            <tag> zfs </tag>
-            
             <tag> centos </tag>
+            
+            <tag> zfs </tag>
             
         </tags>
         
@@ -3661,9 +3688,9 @@
             
             <tag> linux </tag>
             
-            <tag> zfs </tag>
-            
             <tag> centos </tag>
+            
+            <tag> zfs </tag>
             
         </tags>
         
@@ -3810,17 +3837,17 @@
             
             <tag> linux </tag>
             
+            <tag> centos </tag>
+            
             <tag> ha </tag>
             
             <tag> cluster </tag>
             
+            <tag> 3 nodes </tag>
+            
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
-            
-            <tag> centos </tag>
-            
-            <tag> 3 nodes </tag>
             
             <tag> kvm </tag>
             
@@ -3973,8 +4000,6 @@
             
             <tag> linux </tag>
             
-            <tag> lustre </tag>
-            
             <tag> ha </tag>
             
             <tag> cluster </tag>
@@ -3982,6 +4007,8 @@
             <tag> corosync </tag>
             
             <tag> pacemaker </tag>
+            
+            <tag> lustre </tag>
             
             <tag> zfs </tag>
             
