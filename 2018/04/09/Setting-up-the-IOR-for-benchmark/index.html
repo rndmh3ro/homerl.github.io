@@ -1,0 +1,997 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,benchmark,MPI," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Install mpich in each node1234567yum install wget -ymkdir src;cd srcwget http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gzyum install gcc gcc-c++ gcc-fortran kernel-devel -y tar -xvf mpic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up the IOR for benchmark">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/Setting-up-the-IOR-for-benchmark/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Install mpich in each node1234567yum install wget -ymkdir src;cd srcwget http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gzyum install gcc gcc-c++ gcc-fortran kernel-devel -y tar -xvf mpic">
+<meta property="og:updated_time" content="2018-04-09T08:10:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Setting up the IOR for benchmark">
+<meta name="twitter:description" content="Install mpich in each node1234567yum install wget -ymkdir src;cd srcwget http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gzyum install gcc gcc-c++ gcc-fortran kernel-devel -y tar -xvf mpic">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Setting up the IOR for benchmark | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Setting up the IOR for benchmark
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-04-09T15:31:43+08:00" content="2018-04-09">
+              2018-04-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/04/09/Setting-up-the-IOR-for-benchmark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/09/Setting-up-the-IOR-for-benchmark/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Install-mpich-in-each-node"><a href="#Install-mpich-in-each-node" class="headerlink" title="Install mpich in each node"></a>Install mpich in each node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y</span><br><span class="line">mkdir src;<span class="built_in">cd</span> src</span><br><span class="line">wget http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz</span><br><span class="line">yum install gcc gcc-c++ gcc-fortran kernel-devel -y </span><br><span class="line">tar -xvf mpich-3.1.4.tar.gz</span><br><span class="line">./configure --prefix=PATH=/mpich-3.1.4</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h4 id="disable-firewall-and-selinux"><a href="#disable-firewall-and-selinux" class="headerlink" title="disable firewall and selinux"></a>disable firewall and selinux</h4><h4 id="Add-env-var"><a href="#Add-env-var" class="headerlink" title="Add env var"></a>Add env var</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/mpich-3.1.4/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/mpich-3.1.4/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
+<h4 id="Add-host-mapping-etc-hosts-for-each-nodes"><a href="#Add-host-mapping-etc-hosts-for-each-nodes" class="headerlink" title="Add host mapping /etc/hosts for each nodes"></a>Add host mapping /etc/hosts for each nodes</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10.xx.xx.1 server-1 <span class="comment">## mpirun ior xxxxx</span></span><br><span class="line">10.xx.xx.2 server-2 <span class="comment">## ior running</span></span><br><span class="line">10.xx.xx.3 server-3 <span class="comment">## ior running</span></span><br><span class="line">10.xx.xx.4 server-4 <span class="comment">## ior running</span></span><br></pre></td></tr></table></figure>
+<h4 id="Create-mpi-hosts-file"><a href="#Create-mpi-hosts-file" class="headerlink" title="Create mpi_hosts file"></a>Create mpi_hosts file</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat mpi_hosts</span><br><span class="line">10.xx.xx.2:4</span><br><span class="line">10.xx.xx.3:4</span><br><span class="line">10.xx.xx.4:4</span><br></pre></td></tr></table></figure>
+<h4 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mpirun <span class="_">-f</span> mpi_hosts -n 8 <span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+<h4 id="Install-IOR-in-the-share-dir"><a href="#Install-IOR-in-the-share-dir" class="headerlink" title="Install IOR in the share dir"></a>Install IOR in the share dir</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/LLNL/ior.git</span><br><span class="line"><span class="built_in">cd</span> ior</span><br><span class="line">module load mpi/openmpi-x86_64 (failed)</span><br><span class="line">./bootstrap</span><br><span class="line">./configure --with-lustre</span><br><span class="line">make clean &amp;&amp; make</span><br><span class="line"></span><br><span class="line">./src/ior</span><br><span class="line">IOR-3.0.1: MPI Coordinated Test of Parallel I/O</span><br><span class="line"></span><br><span class="line">Began: Mon Apr  9 04:03:16 2018</span><br><span class="line">Command line used: src/ior</span><br><span class="line">Machine: Linux bgi-sz1-homerl-test73</span><br><span class="line"></span><br><span class="line">Test 0 started: Mon Apr  9 04:03:16 2018</span><br><span class="line">Summary:</span><br><span class="line">	api                = POSIX</span><br><span class="line">	<span class="built_in">test</span> filename      = <span class="built_in">test</span>File</span><br><span class="line">	access             = single-shared-file</span><br><span class="line">	ordering <span class="keyword">in</span> a file = sequential offsets</span><br><span class="line">	ordering inter file= no tasks offsets</span><br><span class="line">	clients            = 1 (1 per node)</span><br><span class="line">	repetitions        = 1</span><br><span class="line">	xfersize           = 262144 bytes</span><br><span class="line">	blocksize          = 1 MiB</span><br><span class="line">	aggregate filesize = 1 MiB</span><br><span class="line"></span><br><span class="line">access    bw(MiB/s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter</span><br><span class="line">------    ---------  ---------- ---------  --------   --------   --------   --------   ----</span><br><span class="line">write     1621.30    1024.00    256.00     0.000077   0.000537   0.000003   0.000617   0</span><br><span class="line"><span class="built_in">read</span>      4810       1024.00    256.00     0.000003   0.000204   0.000001   0.000208   0</span><br><span class="line">remove    -          -          -          -          -          -          0.000099   0</span><br><span class="line"></span><br><span class="line">Max Write: 1621.30 MiB/sec (1700.06 MB/sec)</span><br><span class="line">Max Read:  4809.98 MiB/sec (5043.63 MB/sec)</span><br><span class="line"></span><br><span class="line">Summary of all tests:</span><br><span class="line">Operation   Max(MiB)   M<span class="keyword">in</span>(MiB)  Mean(MiB)     StdDev    Mean(s) Test<span class="comment"># #Tasks tPN reps fPP reord reordoff reordrand seed segcnt blksiz xsize aggsize API RefNum</span></span><br><span class="line">write        1621.30    1621.30    1621.30       0.00    0.00062 0 1 1 1 0 0 1 0 0 1 1048576 262144 1048576 POSIX 0</span><br><span class="line"><span class="built_in">read</span>         4809.98    4809.98    4809.98       0.00    0.00021 0 1 1 1 0 0 1 0 0 1 1048576 262144 1048576 POSIX 0</span><br><span class="line"></span><br><span class="line">Finished: Mon Apr  9 04:03:16 2018</span><br></pre></td></tr></table></figure>
+<h3 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">mpirun <span class="_">-f</span> mpi_hosts  /ior/src/ior -v <span class="_">-a</span> MPIIO -N 8 -i5 -g -w -W -r <span class="_">-s</span> 5 -b 5g -T 10 -F <span class="_">-l</span> -C -t 1m -o /lustre/<span class="built_in">test</span>/<span class="built_in">test</span>File1</span><br><span class="line">IOR-3.0.1: MPI Coordinated Test of Parallel I/O</span><br><span class="line"></span><br><span class="line">Began: Mon Apr  9 15:56:16 2018</span><br><span class="line">Command line used: /ior/src/ior -v <span class="_">-a</span> MPIIO -N 8 -i5 -g -w -W -r <span class="_">-s</span> 5 -b 5g -T 10 -F <span class="_">-l</span> -C -t 1m -o /lustre/<span class="built_in">test</span>/<span class="built_in">test</span>File1</span><br><span class="line">Machine: Linux cngb-rbh-m20-1</span><br><span class="line">Start time skew across all tasks: 32.04 sec</span><br><span class="line"></span><br><span class="line">Test 0 started: Mon Apr  9 15:56:16 2018</span><br><span class="line">Path: /lustre/<span class="built_in">test</span></span><br><span class="line">FS: 503.2 TiB   Used FS: 36.6%   Inodes: xxx Mi   Used Inodes: xxx%</span><br><span class="line">Participating tasks: 8</span><br><span class="line">Using reorderTasks <span class="string">'-C'</span> (expecting block, not cyclic, task assignment)</span><br><span class="line">Summary:</span><br><span class="line">	api                = MPIIO (version=3, subversion=0)</span><br><span class="line">	<span class="built_in">test</span> filename      = /lustre/<span class="built_in">test</span>/<span class="built_in">test</span>File1</span><br><span class="line">	access             = file-per-process, independent</span><br><span class="line">	pattern            = strided (5 segments)</span><br><span class="line">	ordering <span class="keyword">in</span> a file = sequential offsets</span><br><span class="line">	ordering inter file= constant task offsets = 1</span><br><span class="line">	clients            = 8 (4 per node)</span><br><span class="line">	repetitions        = 5</span><br><span class="line">	xfersize           = 1 MiB</span><br><span class="line">	blocksize          = 5 GiB</span><br><span class="line">	aggregate filesize = 200 GiB</span><br><span class="line"></span><br><span class="line">access    bw(MiB/s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter</span><br><span class="line">------    ---------  ---------- ---------  --------   --------   --------   --------   ----</span><br><span class="line">Commencing write performance <span class="built_in">test</span>: Mon Apr  9 15:56:16 2018</span><br><span class="line">write     2684.20    5242880    1024.00    0.005928   76.29      0.007870   76.30      0</span><br><span class="line">Verifying contents of the file(s) just written.</span><br><span class="line">Mon Apr  9 15:57:32 2018</span><br><span class="line"></span><br><span class="line">Commencing <span class="built_in">read</span> performance <span class="built_in">test</span>: Mon Apr  9 16:00:02 2018</span><br><span class="line"><span class="built_in">read</span>      1384.58    5242880    1024.00    0.011709   147.90     0.008630   147.91     0</span><br><span class="line">remove    -          -          -          -          -          -          0.019093   0</span><br><span class="line">Commencing write performance <span class="built_in">test</span>: Mon Apr  9 16:02:31 2018</span><br><span class="line">write     2807.84    5242880    1024.00    0.034148   72.91      0.009123   72.94      1</span><br><span class="line">Verifying contents of the file(s) just written.</span><br><span class="line">Mon Apr  9 16:03:44 2018</span><br><span class="line"></span><br><span class="line">remove    -          -          -          -          -          -          0.038034   1</span><br><span class="line">remove    -          -          -          -          -          -          0.000761   2</span><br><span class="line">remove    -          -          -          -          -          -          0.000795   3</span><br><span class="line">remove    -          -          -          -          -          -          0.001311   4</span><br><span class="line"></span><br><span class="line">Max Write: 2807.84 MiB/sec (2944.24 MB/sec)</span><br><span class="line">Max Read:  inf MiB/sec (inf MB/sec)</span><br><span class="line"></span><br><span class="line">Summary of all tests:</span><br><span class="line">Operation   Max(MiB)   M<span class="keyword">in</span>(MiB)  Mean(MiB)     StdDev    Mean(s) Test<span class="comment"># #Tasks tPN reps fPP reord reordoff reordrand seed segcnt blksiz xsize aggsize API RefNum</span></span><br><span class="line">write           -nan       -nan       -nan       -nan   29.84735 0 8 4 5 1 1 1 0 0 5 5368709120 1048576 214748364800 MPIIO 0</span><br><span class="line"><span class="built_in">read</span>            -nan       -nan       -nan       -nan   29.58294 0 8 4 5 1 1 1 0 0 5 5368709120 1048576 214748364800 MPIIO 0</span><br></pre></td></tr></table></figure>
+<h3 id="issue"><a href="#issue" class="headerlink" title="issue"></a><a href="http://wiki.lustre.org/IOR" target="_blank" rel="external">issue</a></h3><p>Note: There is currently a bug in some versions of the libfabric library, notably version 1.3.0, that can cause a delay in starting MPI applications. When this occurs the following warning will appear in the command output:<br>hfi_wait_for_device: The /dev/hfi1_0 device failed to appear after 15.0 seconds: Connection timed out<br>This issue affects RHEL and CentOS 7.3, and is resolved in RHEL / CentOS 7.4+ and the upstream project. Details can be found here:<br><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1408316" target="_blank" rel="external">https://bugzilla.redhat.com/show_bug.cgi?id=1408316</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/benchmark/" rel="tag">#benchmark</a>
+          
+            <a href="/tags/MPI/" rel="tag">#MPI</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/Glusterfs_and_HA/" rel="next" title="Glusterfs and HA">
+                <i class="fa fa-chevron-left"></i> Glusterfs and HA
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-mpich-in-each-node"><span class="nav-number">1.</span> <span class="nav-text">Install mpich in each node</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#disable-firewall-and-selinux"><span class="nav-number">1.1.</span> <span class="nav-text">disable firewall and selinux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-env-var"><span class="nav-number">1.2.</span> <span class="nav-text">Add env var</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-host-mapping-etc-hosts-for-each-nodes"><span class="nav-number">1.3.</span> <span class="nav-text">Add host mapping /etc/hosts for each nodes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-mpi-hosts-file"><span class="nav-number">1.4.</span> <span class="nav-text">Create mpi_hosts file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Test"><span class="nav-number">1.5.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-IOR-in-the-share-dir"><span class="nav-number">1.6.</span> <span class="nav-text">Install IOR in the share dir</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Benchmark"><span class="nav-number">2.</span> <span class="nav-text">Benchmark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#issue"><span class="nav-number">3.</span> <span class="nav-text">issue</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2018/04/09/Setting-up-the-IOR-for-benchmark/';
+      var disqus_title = 'Setting up the IOR for benchmark';
+      var disqus_url = 'http://yoursite.com/2018/04/09/Setting-up-the-IOR-for-benchmark/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>
