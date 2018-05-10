@@ -4,6 +4,54 @@
   
     
     <entry>
+      <title><![CDATA[Compile_4.14.38_to_CentOS7]]></title>
+      <url>http://yoursite.com/2018/05/03/Compile_4.14.38_to_CentOS7/</url>
+      <content type="html"><![CDATA[<p>###<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://sourceware.org/elfutils/ftp/0.170/elfutils-0.170.tar.bz2</span><br><span class="line">$ tar xjvf elfutils-0.170.tar.bz2</span><br><span class="line">$ <span class="built_in">cd</span> ./elfutils-0.170</span><br><span class="line">$ ./configire; make -j 8; make install</span><br><span class="line">$ <span class="built_in">export</span> C_INCLUDE_PATH=/sources/kernel/elfutils-0.170/libelf:/sources/lib/el7/mpich-3.2.1/include/:<span class="variable">$C_INCLUDE_PATH</span></span><br><span class="line">$ cp -v /boot/config-3.10.0-693.21.1.el7.x86_64 .config</span><br><span class="line">make menuconfig</span><br><span class="line">make rpm-pkg</span><br><span class="line"><span class="comment">### enable what your want</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="I-need-Google-BBR"><a href="#I-need-Google-BBR" class="headerlink" title="I need Google BBR"></a>I need Google BBR</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'net.core.default_qdisc=fq'</span> | sudo tee <span class="_">-a</span> /etc/sysctl.conf</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'net.ipv4.tcp_congestion_control=bbr'</span> | sudo tee <span class="_">-a</span> /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br><span class="line"></span><br><span class="line">$ sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line">net.ipv4.tcp_available_congestion_control = cubic bbr reno</span><br><span class="line"></span><br><span class="line">$ sysctl -n net.ipv4.tcp_congestion_control</span><br><span class="line">bbr</span><br></pre></td></tr></table></figure>
+<h3 id="And-lustre-client"><a href="#And-lustre-client" class="headerlink" title="And lustre client"></a>And lustre client</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ modinfo lustre</span><br><span class="line">filename:       /lib/modules/4.14.38/kernel/drivers/staging/lustre/lustre/llite/lustre.ko</span><br><span class="line">license:        GPL</span><br><span class="line">version:        2.6.99</span><br><span class="line">description:    Lustre Client File System</span><br><span class="line">author:         OpenSFS, Inc. &lt;http://www.lustre.org/&gt;</span><br><span class="line"><span class="built_in">alias</span>:          fs-lustre</span><br><span class="line">srcversion:     76867314D4CA935952377A8</span><br><span class="line">depends:        obdclass,ptlrpc,libcfs,lnet,lmv,mdc,lov</span><br><span class="line">staging:        Y</span><br><span class="line">retpoline:      Y</span><br><span class="line">intree:         Y</span><br><span class="line">name:           lustre</span><br><span class="line">vermagic:       4.14.38 SMP mod_unload modversions</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> kernel </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Ansible]]></title>
+      <url>http://yoursite.com/2018/04/12/ansible/</url>
+      <content type="html"><![CDATA[<p>###<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook playbook.yml --start-at=<span class="string">"install packages"</span></span><br><span class="line">ansible-playbook playbook.yml --step <span class="comment">## every step will ask you</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ansible </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Setting up the IOR for benchmark]]></title>
       <url>http://yoursite.com/2018/04/09/Setting-up-the-IOR-for-benchmark/</url>
       <content type="html"><![CDATA[<h3 id="Install-mpich-in-each-node"><a href="#Install-mpich-in-each-node" class="headerlink" title="Install mpich in each node"></a>Install mpich in each node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y</span><br><span class="line">mkdir src;<span class="built_in">cd</span> src</span><br><span class="line">wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz</span><br><span class="line">yum install gcc gcc-c++ gcc-fortran kernel-devel -y </span><br><span class="line">tar -xvf mpich-3.2.1.tar.gz</span><br><span class="line">./configure --prefix=PATH=/mpich-3.2.1</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
@@ -56,20 +104,6 @@
             <tag> glusterfs </tag>
             
         </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Ansible]]></title>
-      <url>http://yoursite.com/2018/02/05/ansible/</url>
-      <content type="html"></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
         
     </entry>
     
@@ -409,7 +443,7 @@
 </ul>
 </li>
 </ul>
-<p><a href="http://www.brendangregg.com/blog/2014-09-06/linux-ftrace-tcp-retransmit-tracing.html" target="_blank" rel="external">tcpretrans</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">11:14:40 0      10.53.19.53:988      R&gt; 10.53.4.143:1022     ESTABLISHED</span><br><span class="line">11:14:40 0      10.53.19.53:988      R&gt; 10.53.4.143:1022     ESTABLISHED</span><br><span class="line">11:14:40 0      10.53.19.53:988      R&gt; 10.53.4.143:1022     ESTABLISHED</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.brendangregg.com/blog/2014-09-06/linux-ftrace-tcp-retransmit-tracing.html" target="_blank" rel="external">tcpretrans</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">11:14:40 0      10.0.19.53:988      R&gt; 10.0.4.143:1022     ESTABLISHED</span><br><span class="line">11:14:40 0      10.0.19.53:988      R&gt; 10.0.4.143:1022     ESTABLISHED</span><br><span class="line">11:14:40 0      10.0.19.53:988      R&gt; 10.0.4.143:1022     ESTABLISHED</span><br></pre></td></tr></table></figure></p>
 <p><a href="http://www.brendangregg.com/blog/2014-09-06/linux-ftrace-tcp-retransmit-tracing.html" target="_blank" rel="external">netstat</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">netstat <span class="_">-s</span> | grep -i retr</span><br><span class="line">    905260805 segments retransmited</span><br><span class="line">    9599 <span class="built_in">times</span> recovered from packet loss due to fast retransmit</span><br><span class="line">    TCPLostRetransmit: 6059087</span><br><span class="line">    152 timeouts after reno fast retransmit</span><br><span class="line">    737224794 fast retransmits</span><br><span class="line">    13068581 forward retransmits</span><br><span class="line">    146850567 retransmits <span class="keyword">in</span> slow start</span><br><span class="line">    1015 classic Reno fast retransmits failed</span><br><span class="line">    3214020 SACK retransmits failed</span><br><span class="line">    TCPRetransFail: 16</span><br><span class="line">    TCPSynRetrans: 61</span><br></pre></td></tr></table></figure></p>
 <p><a href="http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html" target="_blank" rel="external">sar</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sar -n TCP,ETCP 2</span><br><span class="line">02:47:30 AM  active/s passive/s    iseg/s    oseg/s</span><br><span class="line">02:47:31 AM      0.00      0.00      8.51      6.38</span><br><span class="line"></span><br><span class="line">02:47:30 AM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">02:47:31 AM      0.00      0.00      0.00      0.00      0.00</span><br></pre></td></tr></table></figure></p>
 <p>active/s: Number of locally-initiated TCP connections per second (e.g., via connect()).<br>passive/s: Number of remotely-initiated TCP connections per second (e.g., via accept()).<br>retrans/s: Number of TCP retransmits per second.<br>The active and passive counts are often useful as a rough measure of server load: number of new accepted connections (passive), and number of downstream connections (active). It might help to think of active as outbound, and passive as inbound, but this isn’t strictly true (e.g., consider a localhost to localhost connection). </p>
@@ -477,6 +511,10 @@
 <h4 id="NFS-hangs"><a href="#NFS-hangs" class="headerlink" title="NFS hangs"></a>NFS hangs</h4><p>NFS server tcp zero window problem</p>
 <p>Zero Window is something to investigate. TCP Zero Window is when the Window size in a machine remains at zero for a specified amount of time. This means that a client is not able to receive further information at the moment, and the TCP transmission is halted until it can process the information in its receive buffer.</p>
 <p><a href="https://wiki.wireshark.org/TCP%20ZeroWindow" target="_blank" rel="external">Troubleshooting a Zero Window</a> For one reason or another, the machine alerting the Zero Window will not receive any more data from the host. It could be that the machine is running too many processes at that moment, and its processor is maxed. Or it could be that there is an error in the TCP receiver, like a Windows registry misconfiguration. Try to determine what the client was doing when the TCP Zero Window happened.</p>
+<p>case 2:<br>after modify sysctl.conf, all NFS throughput are interruptted. all TCP state are timewait<br>net.ipv4.tcp_low_latency=0 to net.ipv4.tcp_low_latency=1<br>net.ipv4.tcp_adv_win_scale=0 to net.ipv4.tcp_adv_win_scale=1</p>
+<p>restart service ,it ‘s not work, restart rpcbind ,it ‘s not work, looks like tcp issue.<br>Add net.ipv4.tcp_tw_reuse=1 to sysctl.conf, all TCP state to ESTABLISHED, it ‘s recovery.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">net.core.netdev_max_backlog = 300000 </span><br><span class="line">net.core.somaxconn=16384</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 16384</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_sack=1</span><br><span class="line">net.core.netdev_budget=600</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_timestamps=1</span><br><span class="line">net.ipv4.tcp_tw_reuse=1</span><br><span class="line"></span><br><span class="line"><span class="comment">#TCP buffer maxinum 64MB</span></span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 67108864</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 67108864</span><br><span class="line"></span><br><span class="line"><span class="comment">### 128M buffer</span></span><br><span class="line">net.core.rmem_max = 134217728</span><br><span class="line">net.core.wmem_max = 134217728</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_adv_win_scale=1</span><br><span class="line">net.ipv4.tcp_window_scaling = 1</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_mtu_probing=1</span><br><span class="line"></span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.core.default_qdisc=fq_codel</span><br><span class="line">net.core.default_qdisc = pfifo_fast</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_congestion_control=cubic</span><br><span class="line"></span><br><span class="line"><span class="comment">#throughput network env</span></span><br><span class="line">net.ipv4.tcp_congestion_control=htcp</span><br><span class="line">net.ipv4.tcp_low_latency=0</span><br><span class="line"></span><br><span class="line"><span class="comment">#bad network env</span></span><br><span class="line">net.ipv4.tcp_low_latency=1</span><br><span class="line">net.ipv4.tcp_frto=1</span><br><span class="line">net.ipv4.tcp_congestion_control=bbr</span><br><span class="line"></span><br><span class="line">tcp_frto (<span class="built_in">integer</span>; default: 0; since Linux 2.4.21/2.6)</span><br><span class="line">              Enable  F-RTO,  an enhanced recovery algorithm <span class="keyword">for</span> TCP retrans‐</span><br><span class="line">              mission timeouts (RTOs).   It  is  particularly  beneficial  <span class="keyword">in</span></span><br><span class="line">              wireless  environments  <span class="built_in">where</span>  packet  loss is typically due to</span><br><span class="line">              random radio interference rather than intermediate router  con‐</span><br><span class="line">              gestion.  See RFC 4138 <span class="keyword">for</span> more details.</span><br><span class="line"></span><br><span class="line">              This file can have one of the following values:</span><br><span class="line"></span><br><span class="line">              0  Disabled.</span><br><span class="line"></span><br><span class="line">              1  The basic version F-RTO algorithm is enabled.</span><br><span class="line"></span><br><span class="line">              2  Enable  SACK-enhanced  F-RTO  <span class="keyword">if</span>  flow uses SACK.  The basic</span><br><span class="line">                 version can be used also when SACK is <span class="keyword">in</span> use though <span class="keyword">in</span>  that</span><br><span class="line">                 <span class="keyword">case</span> scenario(s) exists <span class="built_in">where</span> F-RTO interacts badly with the</span><br><span class="line">                 packet counting of the SACK-enabled TCP flow.</span><br><span class="line"></span><br><span class="line"><span class="comment">#keepalive for limit no-use client number, save server resource</span></span><br><span class="line"><span class="comment">#net.ipv4.tcp_keepalive_intvl = 75</span></span><br><span class="line">net.ipv4.tcp_keepalive_intvl = 30</span><br><span class="line"><span class="comment">#net.ipv4.tcp_keepalive_probes = 9</span></span><br><span class="line">net.ipv4.tcp_keepalive_probes = 25</span><br><span class="line"><span class="comment">#net.ipv4.tcp_keepalive_time = 7200</span></span><br><span class="line">net.ipv4.tcp_keepalive_time = 360</span><br><span class="line"></span><br><span class="line">$ netstat -no | grep ESTAB</span><br><span class="line">tcp        0      0 10.0.25.57:49128       10.0.19.100:49152      ESTABLISHED keepalive (7.51/0/0)</span><br><span class="line">tcp        0      0 10.0.25.57:2049        10.2.64.5:883           ESTABLISHED off (0.00/0/0)</span><br><span class="line">tcp        0    704 172.30.39.156:988      172.30.39.231:1023     ESTABLISHED on (0.20/0/0)</span><br><span class="line">tcp        0      0 10.10.25.57:2049        10.10.67.6:685           ESTABLISHED off (0.00/0/0)</span><br><span class="line"></span><br><span class="line">$ netstat -n | awk <span class="string">'/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;'</span></span><br><span class="line">ESTABLISHED 119</span><br><span class="line">TIME_WAIT 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># reduce TIME-WAIT</span></span><br><span class="line">net.ipv4.tcp_timestamps=1</span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_tw_recycle = 1</span><br><span class="line">net.ipv4.tcp_fin_timeout=30</span><br><span class="line"></span><br><span class="line">[There are warnings saying that net.ipv4.tcp_tw_reuse and](https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c00916755) </span><br><span class="line">    net.ipv4.tcp_tw_recycle tunables should not be changed without </span><br><span class="line">    consulting experts first.  What does this mean and what can go </span><br><span class="line">    wrong <span class="keyword">if</span> they are enabled. </span><br><span class="line"></span><br><span class="line">    Answer:  Potential problems are not specific to Linux.  Enabling </span><br><span class="line">    these tunables will not make the host crash or unstable, but it </span><br><span class="line">    may <span class="built_in">break</span> TCP/IP functionality <span class="keyword">if</span> the host is connected to devices</span><br><span class="line">    such as load-balancers or firewalls.  Some of these devices can </span><br><span class="line">    reject SYN <span class="keyword">if</span> it reuses the same connection (i.e. src/dst IP and </span><br><span class="line">    src/dst ports are the same) too quickly.  RFC 1122 describes when</span><br><span class="line">    it is acceptable to recycle the connection when SYN arrives <span class="keyword">for</span> a</span><br><span class="line">    connection <span class="keyword">in</span> TIME_WAIT state.</span><br></pre></td></tr></table></figure>
+<h4 id="THEORETICAL-MAXIMUM-RATE"><a href="#THEORETICAL-MAXIMUM-RATE" class="headerlink" title="THEORETICAL MAXIMUM RATE"></a><a href="https://support-kb.spirent.com/resources/sites/SPIRENT/content/live/FAQS/10000/FAQ10597/en_US/How_to_Test_10G_Ethernet_WhitePaper_RevB.PDF" target="_blank" rel="external">THEORETICAL MAXIMUM RATE</a></h4><p>There are two important concepts related to 10GbE performance: frame rate and<br>throughput. The MAC bit rate of 10GbE, defined in the IEEE standard 802.3ae, is<br>10 billion bits per second. Frame rate is a simple arithmetic calculation based on<br>the bit rate and frame format definitions. Throughput, defined in IETF RFC 1242,<br>is the highest rate at which the system under test can forward the offered load,<br>without loss. Manufacturers can claim line-rate throughput only if their switch<br>forwards all the traffic offered at the<br>10Gb/s line rate for the entire duration of the test.<br>The bit rate at which 10GbE Media Access Layer (MAC) operates, 10 billion<br>bits per second, is only one of the parameters in defining the transmission<br>rate for this important new technology. The usual description of true network<br>performance is frame rate, which indicates how many Ethernet frames are<br>moving across the network. The maximum frame rate for 10GbE is determined<br>by a formula that divides the 10 billion bits per second by the preamble, frame<br>length, and inter-frame gap fields, expressed in bits.<br>The maximum frame rate is calculated using the minimum values of the<br>following parameters, as described in the IEEE 802.3ae standard:<br>•     Preamble - 8 bytes <em> 8 = 64 bits<br>•     Frame length - 64 bytes (minimum) </em> 8 = 512 bits<br>•     Inter-frame gap - 12 bytes (minimum) * 8 = 96 bits<br>Therefore,<br>Maximum Frame Rate =<br>MAC Transmit Bit Rate/<br>(Preamble + Frame Length + Inter-frame Gap)<br>= 10,000,000,000 / (64 + 512 + 96)<br>= 10,000,000,000 / 672<br>= 14,880,952.38 frame per second (fps)</p>
 <h4 id="About-FEC"><a href="#About-FEC" class="headerlink" title="About FEC"></a><a href="http://www.qlogic.com/Resources/Documents/WhitePapers/Adapters/Localized/White_Paper-25Gb_Ethernet_SN0530917-05_CN.pdf" target="_blank" rel="external">About FEC</a></h4><p>IEEE 标准指定了两个底板和铜接口。这些接口的目标不同，因此接口存在不同。–S 短距离接口旨在支持无需转发纠错（FEC）的高质量电缆，以最大限度地降低延迟。全距离接口旨在实现尽可能低的电缆或背板成本以及尽可能长的距离，这需要使用FEC。FEC 选项包括 BASE-R FEC（也称为 Fire Code）和 RS-FEC（也称为 Reed-Solomon）。RS-FEC 已用于一系列应用，包括数据存储卫星传播。BASE-R FEC 是一种新型技术，特别适合纠正背板通道中由于接收均衡器的错误传播而导致的突发错误。</p>
 ]]></content>
       
@@ -674,9 +712,9 @@
             
             <tag> centos </tag>
             
-            <tag> benchmark </tag>
-            
             <tag> performance </tag>
+            
+            <tag> benchmark </tag>
             
         </tags>
         
@@ -742,13 +780,13 @@
         
         <tags>
             
-            <tag> hdd </tag>
-            
             <tag> ssd </tag>
             
-            <tag> scsi </tag>
+            <tag> hdd </tag>
             
             <tag> sas </tag>
+            
+            <tag> scsi </tag>
             
             <tag> spc </tag>
             
@@ -811,13 +849,13 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> centos </tag>
             
             <tag> ha </tag>
             
             <tag> cluster </tag>
+            
+            <tag> linux </tag>
             
             <tag> 3 nodes </tag>
             
@@ -2161,13 +2199,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[kcptun_and_shadowsocks]]></title>
+      <title><![CDATA[proxychains and kcptun]]></title>
       <url>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</url>
       <content type="html"><![CDATA[<h3 id="Server-Parameters"><a href="#Server-Parameters" class="headerlink" title="Server Parameters"></a>Server Parameters</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su <span class="_">-s</span> /bin/bash nobody -c <span class="string">'./server_linux_amd64 -l "vps_ip:kcptun_port" -t "serer_ip:shadowsocks_port" -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3'</span></span><br></pre></td></tr></table></figure>
 <h3 id="Client-Parameters"><a href="#Client-Parameters" class="headerlink" title="Client Parameters"></a>Client Parameters</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./client_linux_amd64 -r <span class="string">"vps_ip:kcptun_port"</span> <span class="_">-l</span> <span class="string">":kcptun_client_port"</span> -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3</span><br></pre></td></tr></table></figure>
 <h3 id="Modify-shadowsocks-config"><a href="#Modify-shadowsocks-config" class="headerlink" title="Modify shadowsocks config"></a>Modify shadowsocks config</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"server":"127.0.0.1",</span><br><span class="line">"server_port":kcptun_client_port,</span><br></pre></td></tr></table></figure>
 <p>Browser proxy setting no changed (local port of shadowsocks client)</p>
 <h3 id="Some-of-issues"><a href="#Some-of-issues" class="headerlink" title="Some of issues"></a>Some of issues</h3><p>There is no “localhost/127.0.0.1” in openvz envirnoment, you need replace it by ip address</p>
+<h3 id="Start-dropbox-by-proxy"><a href="#Start-dropbox-by-proxy" class="headerlink" title="Start dropbox by proxy"></a>Start dropbox by proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 ~/.dropbox-dist/dropboxd &amp;</span><br><span class="line"></span><br><span class="line">cat /etc/proxychains.conf</span><br><span class="line">strict_chain</span><br><span class="line">proxy_dns </span><br><span class="line">remote_dns_subnet 224</span><br><span class="line">tcp_<span class="built_in">read</span>_time_out 15000</span><br><span class="line">tcp_connect_time_out 8000</span><br><span class="line">localnet 127.0.0.0/255.0.0.0</span><br><span class="line">quiet_mode</span><br><span class="line"></span><br><span class="line">[ProxyList]</span><br><span class="line">socks5  127.0.0.1 your_porxy_port_number</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -2180,6 +2219,8 @@
         <tags>
             
             <tag> shadowsocks </tag>
+            
+            <tag> proxychains4 </tag>
             
         </tags>
         
@@ -2209,9 +2250,9 @@
         
         <tags>
             
-            <tag> hdd </tag>
-            
             <tag> ssd </tag>
+            
+            <tag> hdd </tag>
             
             <tag> sas </tag>
             
@@ -2249,11 +2290,11 @@
         
         <tags>
             
-            <tag> linux </tag>
+            <tag> ssd </tag>
             
             <tag> hdd </tag>
             
-            <tag> ssd </tag>
+            <tag> linux </tag>
             
             <tag> raid </tag>
             
@@ -2306,9 +2347,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ssd </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -3310,9 +3351,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> bash </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -3490,9 +3531,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ha </tag>
+            
+            <tag> linux </tag>
             
             <tag> corosync </tag>
             
@@ -3744,9 +3785,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> centos </tag>
+            
+            <tag> linux </tag>
             
             <tag> zfs </tag>
             
@@ -3819,9 +3860,9 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> centos </tag>
+            
+            <tag> linux </tag>
             
             <tag> zfs </tag>
             
@@ -3968,13 +4009,13 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> centos </tag>
             
             <tag> ha </tag>
             
             <tag> cluster </tag>
+            
+            <tag> linux </tag>
             
             <tag> 3 nodes </tag>
             
@@ -4131,11 +4172,11 @@
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> ha </tag>
             
             <tag> cluster </tag>
+            
+            <tag> linux </tag>
             
             <tag> corosync </tag>
             

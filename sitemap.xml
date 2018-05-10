@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
+    
+    <lastmod>2018-05-10T13:51:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</loc>
+    
+    <lastmod>2018-05-05T03:47:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/03/Compile_4.14.38_to_CentOS7/</loc>
+    
+    <lastmod>2018-05-03T09:03:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/12/ansible/</loc>
+    
+    <lastmod>2018-04-12T07:24:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/09/Setting-up-the-IOR-for-benchmark/</loc>
     
     <lastmod>2018-04-10T09:57:27.000Z</lastmod>
@@ -23,23 +51,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/02/05/ansible/</loc>
-    
-    <lastmod>2018-02-05T07:53:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/10/26/scsi_tips/</loc>
     
     <lastmod>2018-02-04T12:18:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
-    
-    <lastmod>2018-01-22T09:59:16.000Z</lastmod>
     
   </url>
   
@@ -271,13 +285,6 @@
     <loc>http://yoursite.com/2016/12/01/Record-and-Replay-Linux-Terminal/</loc>
     
     <lastmod>2016-12-01T05:35:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/</loc>
-    
-    <lastmod>2016-09-04T11:30:07.000Z</lastmod>
     
   </url>
   

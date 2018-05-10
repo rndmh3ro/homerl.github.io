@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="shadowsocks," />
+  <meta name="keywords" content="shadowsocks,proxychains4," />
 
 
 
@@ -62,14 +62,14 @@
 <meta name="description" content="Server Parameters1su -s /bin/bash nobody -c &apos;./server_linux_amd64 -l &quot;vps_ip:kcptun_port&quot; -t &quot;serer_ip:shadowsocks_port&quot; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&apos;
 Cl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kcptun_and_shadowsocks">
+<meta property="og:title" content="proxychains and kcptun">
 <meta property="og:url" content="http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/index.html">
 <meta property="og:site_name" content="Homer's Blog">
 <meta property="og:description" content="Server Parameters1su -s /bin/bash nobody -c &apos;./server_linux_amd64 -l &quot;vps_ip:kcptun_port&quot; -t &quot;serer_ip:shadowsocks_port&quot; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&apos;
 Cl">
-<meta property="og:updated_time" content="2016-09-04T11:30:07.000Z">
+<meta property="og:updated_time" content="2018-05-05T03:47:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kcptun_and_shadowsocks">
+<meta name="twitter:title" content="proxychains and kcptun">
 <meta name="twitter:description" content="Server Parameters1su -s /bin/bash nobody -c &apos;./server_linux_amd64 -l &quot;vps_ip:kcptun_port&quot; -t &quot;serer_ip:shadowsocks_port&quot; -key yourkeyfile -mode fast2 --crypt aes-128 --datashard 10 --parityshard 3&apos;
 Cl">
 
@@ -89,7 +89,7 @@ Cl">
   };
 </script>
 
-  <title> kcptun_and_shadowsocks | Homer's Blog </title>
+  <title> proxychains and kcptun | Homer's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -277,7 +277,7 @@ Cl">
             
             
               
-                kcptun_and_shadowsocks
+                proxychains and kcptun
               
             
           </h1>
@@ -347,6 +347,7 @@ Cl">
 <h3 id="Modify-shadowsocks-config"><a href="#Modify-shadowsocks-config" class="headerlink" title="Modify shadowsocks config"></a>Modify shadowsocks config</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"server":"127.0.0.1",</span><br><span class="line">"server_port":kcptun_client_port,</span><br></pre></td></tr></table></figure>
 <p>Browser proxy setting no changed (local port of shadowsocks client)</p>
 <h3 id="Some-of-issues"><a href="#Some-of-issues" class="headerlink" title="Some of issues"></a>Some of issues</h3><p>There is no “localhost/127.0.0.1” in openvz envirnoment, you need replace it by ip address</p>
+<h3 id="Start-dropbox-by-proxy"><a href="#Start-dropbox-by-proxy" class="headerlink" title="Start dropbox by proxy"></a>Start dropbox by proxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 ~/.dropbox-dist/dropboxd &amp;</span><br><span class="line"></span><br><span class="line">cat /etc/proxychains.conf</span><br><span class="line">strict_chain</span><br><span class="line">proxy_dns </span><br><span class="line">remote_dns_subnet 224</span><br><span class="line">tcp_<span class="built_in">read</span>_time_out 15000</span><br><span class="line">tcp_connect_time_out 8000</span><br><span class="line">localnet 127.0.0.0/255.0.0.0</span><br><span class="line">quiet_mode</span><br><span class="line"></span><br><span class="line">[ProxyList]</span><br><span class="line">socks5  127.0.0.1 your_porxy_port_number</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -362,6 +363,8 @@ Cl">
         <div class="post-tags">
           
             <a href="/tags/shadowsocks/" rel="tag">#shadowsocks</a>
+          
+            <a href="/tags/proxychains4/" rel="tag">#proxychains4</a>
           
         </div>
       
@@ -455,7 +458,7 @@ Cl">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -472,7 +475,7 @@ Cl">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">97</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -536,7 +539,7 @@ Cl">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server-Parameters"><span class="nav-number">1.</span> <span class="nav-text">Server Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-Parameters"><span class="nav-number">2.</span> <span class="nav-text">Client Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modify-shadowsocks-config"><span class="nav-number">3.</span> <span class="nav-text">Modify shadowsocks config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-of-issues"><span class="nav-number">4.</span> <span class="nav-text">Some of issues</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server-Parameters"><span class="nav-number">1.</span> <span class="nav-text">Server Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-Parameters"><span class="nav-number">2.</span> <span class="nav-text">Client Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modify-shadowsocks-config"><span class="nav-number">3.</span> <span class="nav-text">Modify shadowsocks config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-of-issues"><span class="nav-number">4.</span> <span class="nav-text">Some of issues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-dropbox-by-proxy"><span class="nav-number">5.</span> <span class="nav-text">Start dropbox by proxy</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -808,7 +811,7 @@ Cl">
     <script type="text/javascript">
       var disqus_shortname = 'homersblog';
       var disqus_identifier = '2016/09/04/kcptun-and-shadowsocks/';
-      var disqus_title = 'kcptun_and_shadowsocks';
+      var disqus_title = 'proxychains and kcptun';
       var disqus_url = 'http://yoursite.com/2016/09/04/kcptun-and-shadowsocks/';
 
       function run_disqus_script(disqus_script){
