@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2018-05-10T15:12:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
     
     <lastmod>2018-05-10T13:51:07.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://yoursite.com/2017/11/21/linux-errno/</loc>
     
     <lastmod>2017-11-21T09:11:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2017-11-21T09:08:27.000Z</lastmod>
     
   </url>
   
