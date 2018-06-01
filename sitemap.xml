@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    <loc>http://yoursite.com/2018/06/01/NIC-benchmark/</loc>
     
-    <lastmod>2018-05-28T12:24:05.000Z</lastmod>
+    <lastmod>2018-06-01T07:25:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/06/01/tcptrace/</loc>
+    
+    <lastmod>2018-06-01T07:15:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/06/01/parallel/</loc>
+    
+    <lastmod>2018-06-01T06:25:46.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/08/14/NIC-issues/</loc>
     
-    <lastmod>2018-05-28T08:26:08.000Z</lastmod>
+    <lastmod>2018-06-01T02:50:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/18/Install-robinhood/</loc>
+    
+    <lastmod>2018-05-28T12:24:05.000Z</lastmod>
     
   </url>
   

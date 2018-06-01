@@ -1,0 +1,1017 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nic,ethtool,debug,driver,irq,pin," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Test server123Dell PowerEdge R7302 x Xeon E5 2630v416G 2133MHz x 8
+reference100GbE tuningbenchmark123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NIC benchmark">
+<meta property="og:url" content="http://yoursite.com/2018/06/01/NIC-benchmark/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="Test server123Dell PowerEdge R7302 x Xeon E5 2630v416G 2133MHz x 8
+reference100GbE tuningbenchmark123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555">
+<meta property="og:updated_time" content="2018-06-01T07:25:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NIC benchmark">
+<meta name="twitter:description" content="Test server123Dell PowerEdge R7302 x Xeon E5 2630v416G 2133MHz x 8
+reference100GbE tuningbenchmark123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> NIC benchmark | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NIC benchmark
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-06-01T10:49:42+08:00" content="2018-06-01">
+              2018-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/network/" itemprop="url" rel="index">
+                    <span itemprop="name">network</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/06/01/NIC-benchmark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/01/NIC-benchmark/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Test-server"><a href="#Test-server" class="headerlink" title="Test server"></a>Test server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dell PowerEdge R730</span><br><span class="line">2 x Xeon E5 2630v4</span><br><span class="line">16G 2133MHz x 8</span><br></pre></td></tr></table></figure>
+<h4 id="reference"><a href="#reference" class="headerlink" title="reference"></a><a href="https://www.intel.com/content/dam/www/public/us/en/documents/reference-guides/xl710-x710-performance-tuning-linux-guide.pdf" target="_blank" rel="external">reference</a></h4><h4 id="100GbE-tuning"><a href="#100GbE-tuning" class="headerlink" title="100GbE tuning"></a><a href="https://fasterdata.es.net/host-tuning/100g-tuning/" target="_blank" rel="external">100GbE tuning</a></h4><h4 id="benchmark"><a href="#benchmark" class="headerlink" title="benchmark"></a>benchmark</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep Ethernet</span><br><span class="line">01:00.0 Ethernet controller: Broadcom Limited NetXtreme II BCM57800 1/10 Gigabit Ethernet (rev 10)</span><br><span class="line">01:00.1 Ethernet controller: Broadcom Limited NetXtreme II BCM57800 1/10 Gigabit Ethernet (rev 10)</span><br><span class="line">01:00.2 Ethernet controller: Broadcom Limited NetXtreme II BCM57800 1/10 Gigabit Ethernet (rev 10)</span><br><span class="line">01:00.3 Ethernet controller: Broadcom Limited NetXtreme II BCM57800 1/10 Gigabit Ethernet (rev 10)</span><br><span class="line">03:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)</span><br><span class="line">03:00.1 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)</span><br><span class="line">04:00.0 Ethernet controller: Mellanox Technologies MT27710 Family [ConnectX-4 Lx]</span><br><span class="line">04:00.1 Ethernet controller: Mellanox Technologies MT27710 Family [ConnectX-4 Lx]</span><br><span class="line">05:00.0 Ethernet controller: Intel Corporation Ethernet Controller XXV710 <span class="keyword">for</span> 25GbE SFP28 (rev 02)</span><br><span class="line">05:00.1 Ethernet controller: Intel Corporation Ethernet Controller XXV710 <span class="keyword">for</span> 25GbE SFP28 (rev 02)</span><br><span class="line"></span><br><span class="line">$ lspci <span class="_">-s</span> 05:00.0 -vvv | grep -Ei <span class="string">'8G|MSI-X'</span></span><br><span class="line">	Capabilities: [70] MSI-X: Enable+ Count=129 Masked-</span><br><span class="line">		LnkCap:	Port <span class="comment">#0, Speed 8GT/s, Width x8, ASPM L1, Latency L0 &lt;2us, L1 &lt;16us</span></span><br><span class="line">		LnkSta:	Speed 8GT/s, Width x8, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ethtool -i p5p2</span><br><span class="line">driver: i40e</span><br><span class="line">version: 2.4.6</span><br><span class="line">firmware-version: 6.01 0x80003554 1.1747.0</span><br><span class="line">bus-info: 0000:05:00.1</span><br><span class="line">supports-statistics: yes</span><br><span class="line">supports-test: yes</span><br><span class="line">supports-eeprom-access: yes</span><br><span class="line">supports-register-dump: yes</span><br><span class="line">supports-priv-flags: yes</span><br><span class="line"></span><br><span class="line">ethtool <span class="_">-l</span> p5p2</span><br><span class="line">Channel parameters <span class="keyword">for</span> p5p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		1</span><br><span class="line">Combined:	64</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		1</span><br><span class="line">Combined:	8</span><br><span class="line"></span><br><span class="line">ethtool -g p5p2</span><br><span class="line">Ring parameters <span class="keyword">for</span> p5p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		4096</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		4096</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		512</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		512</span><br><span class="line"></span><br><span class="line">ip2=xx.xx.xx.xx</span><br><span class="line">  <span class="keyword">for</span> k <span class="keyword">in</span> &#123;1..4&#125;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">  numactl -N 0 -m 0 iperf3  -c <span class="variable">$ip2</span> -P 1 -t 36000 -p 520<span class="variable">$&#123;k&#125;</span> &amp;</span><br><span class="line">  numactl -N 0 -m 0 qperf  -lp 400<span class="variable">$&#123;k&#125;</span> -t 36000 -oo msg_size:1K:4K:*2 <span class="variable">$ip2</span> tcp_bw &amp;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for latency</span></span><br><span class="line">qperf -lp 4001 -t 60 -oo msg_size:64:1024K:*4 <span class="variable">$ip2</span> tcp_lat</span><br><span class="line">qperf -lp 4001 -t 60 -oo msg_size:64:1024K:*4 <span class="variable">$ip2</span> udp_lat</span><br></pre></td></tr></table></figure>
+<h4 id="xl710-performance-tuning"><a href="#xl710-performance-tuning" class="headerlink" title="xl710 performance tuning"></a><a href="https://www.intel.com/content/dam/www/public/us/en/documents/reference-guides/xl710-x710-performance-tuning-linux-guide.pdf" target="_blank" rel="external">xl710 performance tuning</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Intel recommends that IOMMU be in pass-through mode for optimal host network performance</span></span><br><span class="line">iommu=pt</span><br><span class="line"></span><br><span class="line"><span class="comment">#update driver</span></span><br><span class="line">modinfo i40e</span><br><span class="line">filename:       /lib/modules/4.14.38/updates/drivers/net/ethernet/intel/i40e/i40e.ko</span><br><span class="line">version:        2.4.6</span><br><span class="line"></span><br><span class="line"><span class="comment">#Note: The TCP_RR test in netperf returns latency in a value of transactions/sec. This is a round-trip</span></span><br><span class="line">number. The one-way latency can be calculated using the following equation:</span><br><span class="line">Latency(usec) = (½) / [Transactions/sec] * 1,000,000</span><br></pre></td></tr></table></figure>
+<h4 id="IRQ-Affinity"><a href="#IRQ-Affinity" class="headerlink" title="IRQ Affinity"></a>IRQ Affinity</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> irqbalance</span><br><span class="line">systemctl stop irqbalance</span><br><span class="line"></span><br><span class="line"><span class="comment">#intel</span></span><br><span class="line"><span class="built_in">set</span>_irq_affinity -x all ethX</span><br><span class="line"><span class="built_in">set</span>_irq_affinity -x <span class="built_in">local</span> ethX</span><br><span class="line"><span class="built_in">set</span>_irq_affinity 1-2 ethX</span><br><span class="line"></span><br><span class="line"><span class="comment">#mellanox</span></span><br><span class="line"><span class="built_in">set</span>_irq_affinity_bynode.sh 0 p7p1</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /sys/class/net/p5p2/device/</span><br><span class="line">$ cat numa_node</span><br><span class="line">0</span><br><span class="line"></span><br><span class="line">lscpu</span><br><span class="line">NUMA node0 CPU(s):     0,2,4,6,8,10,12,14,16,18</span><br><span class="line">NUMA node1 CPU(s):     1,3,5,7,9,11,13,15,17,19</span><br><span class="line"></span><br><span class="line"><span class="comment">#manual</span></span><br><span class="line">cat /proc/interrupts | grep p5p1 | awk <span class="string">'&#123;print $1&#125;'</span> &gt; /tmp/tmp1</span><br><span class="line">sed -i <span class="string">'s/\://g'</span> /tmp/tmp1</span><br><span class="line"></span><br><span class="line">  awk <span class="string">'&#123;if(NR%8==1) print $1&#125;'</span> /tmp/tmp1 | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> 1 &gt; /proc/irq/<span class="variable">$&#123;line&#125;</span>/smp_affinity</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">  </span><br><span class="line">  awk <span class="string">'&#123;if(NR%8==2) print $1&#125;'</span> /tmp/tmp1 | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> 4 &gt; /proc/irq/<span class="variable">$&#123;line&#125;</span>/smp_affinity</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">  awk <span class="string">'&#123;if(NR%8==3) print $1&#125;'</span> /tmp/tmp1 | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> 10 &gt; /proc/irq/<span class="variable">$&#123;line&#125;</span>/smp_affinity</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">  awk <span class="string">'&#123;if(NR%8==4) print $1&#125;'</span> /tmp/tmp1 | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> 40 &gt; /proc/irq/<span class="variable">$&#123;line&#125;</span>/smp_affinity</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">  ......</span><br><span class="line"></span><br><span class="line"><span class="comment">#https://access.redhat.com/solutions/2144921</span></span><br><span class="line">CPU      0   1    2    3    4    5    6    7    8    9    10   11    12 </span><br><span class="line">bin    0001 0010 0100 1000 10000 </span><br><span class="line">Decimal  1   2    4    8   16   32   64  128  256  512  1024 2048  4096</span><br><span class="line">Hex      1   2    4    8   10   20   40   80  100  200   400  800  1000</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> %0.2x<span class="string">'\n'</span> 1024</span><br><span class="line">400</span><br></pre></td></tr></table></figure>
+<h4 id="Interrupt-Moderation"><a href="#Interrupt-Moderation" class="headerlink" title="Interrupt Moderation"></a>Interrupt Moderation</h4><p>The range of 0-235 microseconds provides an effective range of 4,310 to 250,000 interrupts per second. The value of rx-µsecs-high can be set independent of rx-µsecs and tx-µsecs in the same ethtool command, and is also independent of the adaptive interrupt moderation algorithm. The<br>underlying hardware supports granularity in 2-microsecond intervals, so adjacent values might result in the same interrupt rate.<br>To turn off adaptive interrupt moderation<br>ethtool -C ethX adaptive-rx off adaptive-tx off<br> To turn on adaptive interrupt moderation<br>ethtool -C ethX adaptive-rx on adaptive-tx on </p>
+<p>A good place to start for general tuning is 84 µs, or ~12000 interrupts/s. If you see rx_dropped<br>counters are running during traffic (using ethtool -S ethX) then you probably have too slow of a CPU,<br>not enough buffers from the adapter’s ring size (ethtool -G) to hold packets for 84 µs or to low of an<br>interrupt rate.<br>ethtool -C ethX adaptive-rx off adaptive-tx off rx-usecs 84 tx-usecs 84</p>
+<p>The next value to try, if you are not maxed out on CPU utilization, is 62 µs. This uses more CPU, but it<br>services buffers faster, and requires fewer descriptors (ring size, ethtool -G).<br>ethtool -C ethX adaptive-rx off adaptive-tx off rx-usecs 62 tx-usecs 62</p>
+<p>If your CPU is at 100%, then increasing the interrupt rate is not advised. In certain circumstances such<br>as a CPU bound workload, you might want to increase the µs value to enable more CPU time for other<br>applications.</p>
+<p>If you require low latency performance and/or have plenty of CPU to devote to network processing, you<br>can disable interrupt moderation entirely, which enables the interrupts to fire as fast as possible.<br>ethtool -C ethX adaptive-rx off adaptive-tx off rx-usecs 0 tx-usecs 0</p>
+<p>If cache pressure is suspected (many queues active) reducing buffers from default can help Intel® Data<br>Direct I/O (Intel® DDIO) operate with better efficiently. Intel recommends trying 128 or 256 per queue,<br>being aware that an increase in interrupt rate via ethtool -C might be necessary to avoid an increase in<br>rx_dropped.<br>ethtool -G eth12 rx 256 tx 256 </p>
+<p>Change the Tx and Rx ring sizes as needed, a larger value takes more resources but can provide better forwarding rates:<br>ethtool -G ethX rx 4096 tx 4096</p>
+<p>Layer 2 flow control can impact TCP performance considerably and is recommended to be disabled for most workloads<br>ethtool -A ethX rx off tx off</p>
+<h4 id="Kernel-parameter"><a href="#Kernel-parameter" class="headerlink" title="Kernel parameter"></a><a href="https://download.01.org/packet-processing/ONPS2.1/Intel_ONP_Release_2.1_Performance_Test_Report_Rev1.0.pdf" target="_blank" rel="external">Kernel parameter</a></h4><p>default_hugepagesz=1G hugepagesz=1G hugepages=16 hugepagesz=2M hugepages=2048 intel_iommu=off isolcpus=1-7 idle=poll pcie_aspm=off<br>pcie_aspm=off (pcie power managment)</p>
+<h4 id="sysctl-conf"><a href="#sysctl-conf" class="headerlink" title="sysctl.conf"></a>sysctl.conf</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">net.core.netdev_max_backlog = 300000</span><br><span class="line">net.ipv4.tcp_sack = 1</span><br><span class="line">net.core.netdev_budget=600</span><br><span class="line">net.ipv4.tcp_timestamps=1</span><br><span class="line">net.ipv4.tcp_low_latency=1</span><br><span class="line"><span class="comment"># allow auto-tuning up to 128MB buffers</span></span><br><span class="line">net.ipv4.tcp_rmem = 4096 87380 134217728</span><br><span class="line">net.ipv4.tcp_wmem = 4096 65536 134217728</span><br><span class="line"><span class="comment">### 256M</span></span><br><span class="line">net.core.rmem_max = 268435456</span><br><span class="line">net.core.wmem_max = 268435456</span><br><span class="line">net.core.somaxconn=16384</span><br><span class="line">net.ipv4.tcp_tw_reuse=1</span><br><span class="line">net.ipv4.tcp_adv_win_scale=1</span><br><span class="line">net.ipv4.tcp_window_scaling = 1</span><br><span class="line">net.ipv4.tcp_mtu_probing=1</span><br><span class="line">net.core.rmem_max=16777216</span><br><span class="line"><span class="comment">#net.core.default_qdisc = pfifo_fast</span></span><br><span class="line">net.ipv4.tcp_congestion_control=cubic</span><br><span class="line"><span class="comment"># net.ipv4.tcp_frto=1</span></span><br><span class="line"><span class="comment"># works best with &lt;= 500 client computers ##</span></span><br><span class="line">net.ipv4.neigh.default.gc_interval = 3600</span><br><span class="line">net.ipv4.neigh.default.gc_stale_time = 3600</span><br><span class="line">net.ipv4.neigh.default.gc_thresh3 = 8192</span><br><span class="line">net.ipv4.neigh.default.gc_thresh2 = 4096</span><br><span class="line">net.ipv4.neigh.default.gc_thresh1 = 2048</span><br><span class="line"><span class="comment"># don't cache ssthresh from previous connection</span></span><br><span class="line">net.ipv4.tcp_no_metrics_save = 1</span><br><span class="line">net.ipv4.tcp_mtu_probing=1</span><br></pre></td></tr></table></figure>
+<h4 id="Mellanox-25GbE-tiny-packages-test"><a href="#Mellanox-25GbE-tiny-packages-test" class="headerlink" title="Mellanox 25GbE tiny packages test"></a>Mellanox 25GbE tiny packages test</h4><p>4.14.38 defaults driver in mellanox<br>Intel update to 2.4.6 driver<br>enable irqbalance, big performance gap compare with intel and mellanox<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Found the single port limit, the max is iperf3 and qperf</span></span><br><span class="line"><span class="comment"># tune mtu to 100 to test tiny packages</span></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:         p7p2      0.00      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p1      0.00      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em2     23.60      2.21      1.66      1.79      0.00      0.00      1.03      0.00</span><br><span class="line">Average:         p6p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond1     27.62     22.70      2.04      6.58      0.00      0.00      2.07      0.00</span><br><span class="line">Average:         p7p1      0.00      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em1      4.02     20.48      0.39      4.79      0.00      0.00      1.03      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond0      0.00      0.06      0.00      0.01      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond3 13628292.96 13155007.58 1516361.42 1463669.72      0.00      0.00      0.00     49.69</span><br><span class="line">Average:         p5p2 13628292.96 13155007.55 1516361.42 1463669.71      0.00      0.00      0.00     49.69</span><br><span class="line">Average:           lo      0.03      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00     87.99      0.00      0.00</span><br><span class="line"></span><br><span class="line"><span class="comment">#iperf3 qperf hping3</span></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:          em1      9.78      8.30      0.79      3.27      0.00      0.00      1.05      0.00</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p2 10573306.56 9479324.80 1145456.45 1031709.27      0.00      0.00      0.00     37.53</span><br><span class="line">Average:        bond2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em2      5.64      0.05      0.42      0.01      0.00      0.00      1.03      0.00</span><br><span class="line">Average:         p7p1      0.00      0.05      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond1     15.42      8.34      1.21      3.27      0.00      0.00      2.08      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p7p2      0.00      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond0      0.00      0.08      0.00      0.01      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p1      0.00      0.03      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond3 10573306.56 9479324.83 1145456.45 1031709.27      0.00      0.00      0.00     37.53</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00     17.28      0.00      0.00</span><br><span class="line"></span><br><span class="line">$ ethtool -i p5p2 (default driver)</span><br><span class="line">driver: mlx5_core</span><br><span class="line">version: 5.0-0</span><br><span class="line">firmware-version: 14.22.1002 (MT_2420110034)</span><br><span class="line">bus-info: 0000:05:00.1</span><br><span class="line">supports-statistics: yes</span><br><span class="line">supports-test: yes</span><br><span class="line">supports-eeprom-access: no</span><br><span class="line">supports-register-dump: no</span><br><span class="line">supports-priv-flags: yes</span><br><span class="line"></span><br><span class="line">$ ethtool <span class="_">-l</span> p5p2</span><br><span class="line">Channel parameters <span class="keyword">for</span> p5p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		0</span><br><span class="line">Combined:	20</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		0</span><br><span class="line">Combined:	20</span><br><span class="line"></span><br><span class="line">05:00.0 Ethernet controller: Mellanox Technologies MT27710 Family [ConnectX-4 Lx]</span><br><span class="line">05:00.1 Ethernet controller: Mellanox Technologies MT27710 Family [ConnectX-4 Lx]</span><br><span class="line"></span><br><span class="line">$ ethtool -g p5p2</span><br><span class="line">Ring parameters <span class="keyword">for</span> p5p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		8192</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		8192</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		8192</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		8192</span><br><span class="line"></span><br><span class="line"><span class="comment">### intel XXV710 just only</span></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:         p7p2 638985.97 561219.31  47179.49  35996.44      0.00      0.00      0.97      1.55</span><br><span class="line">Average:         p5p1      0.96      0.96      0.12      0.12      0.00      0.00      0.96      0.00</span><br><span class="line">Average:        bond2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em2      5.75      0.03      0.43      0.00      0.00      0.00      1.03      0.00</span><br><span class="line">Average:         p6p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond1     16.02      9.07      1.25      3.15      0.00      0.00      2.07      0.00</span><br><span class="line">Average:         p7p1 1274325.00 1500723.53 117041.60 140325.32      0.00      0.00      0.97      4.60</span><br><span class="line">Average:          em1     10.27      9.03      0.82      3.14      0.00      0.00      1.03      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond0 1913311.11 2061943.42 164221.10 176321.80      0.00      0.00      1.93      2.89</span><br><span class="line">Average:         p6p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond3      1.93      1.92      0.23      0.23      0.00      0.00      0.96      0.00</span><br><span class="line">Average:         p5p2      0.96      0.96      0.12      0.12      0.00      0.00      0.00      0.00</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00    376.04      0.00 551105.10</span><br><span class="line"></span><br><span class="line"><span class="comment">########after install new driver, just iperf3 and qperf ,no hping3</span></span><br><span class="line"><span class="keyword">if</span> you want get the value, you must turn down the combined number, If you use default value(40), you will get the bad performance</span><br><span class="line"></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:          em1      7.27      6.33      0.62      2.83      0.00      0.00      1.04      0.00</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p2      0.96      0.96      0.12      0.12      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em2      5.62      0.05      0.42      0.01      0.00      0.00      1.04      0.00</span><br><span class="line">Average:         p7p1 1329967.15 5047114.53 144536.02 560435.29      0.00      0.00      0.96     18.36</span><br><span class="line">Average:         p6p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond1     12.90      6.38      1.04      2.83      0.00      0.00      2.08      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p7p2 9065347.53 5169871.40 1005450.11 570174.50      0.00      0.00      0.96     32.95</span><br><span class="line">Average:        bond0 10395315.01 10216986.82 1149986.17 1130609.90      0.00      0.00      1.93     18.84</span><br><span class="line">Average:         p5p1      0.95      0.96      0.12      0.12      0.00      0.00      0.95      0.00</span><br><span class="line">Average:         p6p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond3      1.91      1.93      0.23      0.23      0.00      0.00      0.95      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00   1397.61      0.00      0.00</span><br><span class="line"></span><br><span class="line">$ iperf3 qperf hping3 </span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:          em1      4.00      2.02      0.39      1.30      0.00      0.00      1.03      0.00</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p2      0.97      0.95      0.12      0.12      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em2     12.80      7.00      0.91      1.72      0.00      0.00      1.03      0.00</span><br><span class="line">Average:         p7p1 1199952.10 3400065.27 117937.47 367595.79      0.00      0.00      0.97     12.05</span><br><span class="line">Average:         p6p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond1     16.80      9.03      1.30      3.02      0.00      0.00      2.05      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p7p2 5612070.10 3728111.02 609006.93 402145.77      0.00      0.00      0.97     19.96</span><br><span class="line">Average:        bond0 6812021.83 7128179.62 726944.35 769741.92      0.00      0.00      1.95     12.61</span><br><span class="line">Average:         p5p1      0.97      0.95      0.12      0.12      0.00      0.00      0.97      0.00</span><br><span class="line">Average:         p6p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond3      1.95      1.90      0.24      0.23      0.00      0.00      0.97      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00   1607.30      0.00      0.00</span><br><span class="line"></span><br><span class="line"><span class="comment">################ Intel 82599ES, iperf3 qperf hping3, stop irqbalace pin CPU</span></span><br><span class="line">$ modinfo ixgbe</span><br><span class="line">filename:       /lib/modules/4.14.38/updates/drivers/net/ethernet/intel/ixgbe/ixgbe.ko</span><br><span class="line">version:        5.3.4</span><br><span class="line"></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:        bond3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond2 5278807.03 5078328.86 1457147.96 1384356.92      0.00      0.00      1.93     59.68</span><br><span class="line">Average:          em2      3.94      7.43      0.38      2.39      0.00      0.00      1.03      0.00</span><br><span class="line">Average:         p5p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p2 2232922.19 2348985.92 605712.92 635339.92      0.00      0.00      0.97     52.05</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p7p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em1     13.35      2.40      0.96      1.36      0.00      0.00      1.04      0.00</span><br><span class="line">Average:        bond1     17.29      9.83      1.34      3.75      0.00      0.00      2.08      0.00</span><br><span class="line">Average:         p7p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p1 3045885.03 2729341.71 851435.07 749016.58      0.00      0.00      0.97     69.75</span><br><span class="line">Average:        bond0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00  11207.90      0.00 584046.17</span><br><span class="line"></span><br><span class="line"><span class="comment">### throughput test</span></span><br><span class="line">Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil</span><br><span class="line">Average:          em1      3.74     11.08      0.37      3.76      0.00      0.00      1.03      0.00</span><br><span class="line">Average:           lo      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:          em4      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p5p2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:        bond2 341967.08 334926.50 2433153.42 2433317.47      0.00      0.00      1.92     99.67</span><br><span class="line">Average:          em2     13.90      0.04      0.99      0.00      0.00      0.00      1.04      0.00</span><br><span class="line">Average:         p7p1      0.96      0.96      0.12      0.12      0.00      0.00      0.96      0.00</span><br><span class="line">Average:         p6p2 168791.45 166256.97 1216628.27 1216686.42      0.00      0.00      0.96     99.67</span><br><span class="line">Average:        bond1     17.64     11.12      1.36      3.76      0.00      0.00      2.07      0.00</span><br><span class="line">Average:          em3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p7p2      0.96      0.97      0.12      0.12      0.00      0.00      0.96      0.00</span><br><span class="line">Average:        bond0      1.92      1.93      0.23      0.23      0.00      0.00      1.92      0.00</span><br><span class="line">Average:         p5p1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line">Average:         p6p1 173175.65 168669.40 1216525.38 1216629.82      0.00      0.00      0.96     99.67</span><br><span class="line">Average:        bond3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00</span><br><span class="line"></span><br><span class="line">Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s</span><br><span class="line">Average:         0.00      0.00      0.19      0.00      0.00</span><br><span class="line"></span><br><span class="line">$ ethtool -g p6p2</span><br><span class="line">Ring parameters <span class="keyword">for</span> p6p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		4096</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		4096</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		4096</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		4096</span><br><span class="line"></span><br><span class="line">$ ethtool <span class="_">-l</span> p6p2</span><br><span class="line">Channel parameters <span class="keyword">for</span> p6p2:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		1</span><br><span class="line">Combined:	63</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		0</span><br><span class="line">TX:		0</span><br><span class="line">Other:		1</span><br><span class="line">Combined:	20</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nic/" rel="tag">#nic</a>
+          
+            <a href="/tags/ethtool/" rel="tag">#ethtool</a>
+          
+            <a href="/tags/debug/" rel="tag">#debug</a>
+          
+            <a href="/tags/driver/" rel="tag">#driver</a>
+          
+            <a href="/tags/irq/" rel="tag">#irq</a>
+          
+            <a href="/tags/pin/" rel="tag">#pin</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/27/ipmi/" rel="next" title="ipmitool">
+                <i class="fa fa-chevron-left"></i> ipmitool
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/01/tcptrace/" rel="prev" title="trace network">
+                trace network <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">72</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-server"><span class="nav-number">1.</span> <span class="nav-text">Test server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">2.</span> <span class="nav-text">reference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100GbE-tuning"><span class="nav-number">3.</span> <span class="nav-text">100GbE tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#benchmark"><span class="nav-number">4.</span> <span class="nav-text">benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xl710-performance-tuning"><span class="nav-number">5.</span> <span class="nav-text">xl710 performance tuning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IRQ-Affinity"><span class="nav-number">6.</span> <span class="nav-text">IRQ Affinity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interrupt-Moderation"><span class="nav-number">7.</span> <span class="nav-text">Interrupt Moderation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kernel-parameter"><span class="nav-number">8.</span> <span class="nav-text">Kernel parameter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sysctl-conf"><span class="nav-number">9.</span> <span class="nav-text">sysctl.conf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mellanox-25GbE-tiny-packages-test"><span class="nav-number">10.</span> <span class="nav-text">Mellanox 25GbE tiny packages test</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2018/06/01/NIC-benchmark/';
+      var disqus_title = 'NIC benchmark';
+      var disqus_url = 'http://yoursite.com/2018/06/01/NIC-benchmark/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>
