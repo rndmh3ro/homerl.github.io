@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/27/cpu/</loc>
+    
+    <lastmod>2018-06-21T14:05:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2018-06-13T13:28:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/06/05/SAS-JBOD-issues/</loc>
     
-    <lastmod>2018-06-05T13:03:27.000Z</lastmod>
+    <lastmod>2018-06-10T07:11:34.000Z</lastmod>
     
   </url>
   
@@ -103,13 +117,6 @@
     <loc>http://yoursite.com/2018/04/03/Glusterfs_and_HA/</loc>
     
     <lastmod>2018-04-03T05:42:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
-    
-    <lastmod>2018-03-12T11:51:02.000Z</lastmod>
     
   </url>
   
