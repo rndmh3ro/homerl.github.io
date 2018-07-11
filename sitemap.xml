@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2018-07-11T07:21:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/02/mem/</loc>
+    
+    <lastmod>2018-07-09T01:48:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
+    
+    <lastmod>2018-07-03T02:05:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/11/memory/</loc>
+    
+    <lastmod>2018-07-02T02:49:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/05/27/vnc/</loc>
     
     <lastmod>2018-06-22T07:22:41.000Z</lastmod>
@@ -12,13 +40,6 @@
     <loc>http://yoursite.com/2018/05/27/cpu/</loc>
     
     <lastmod>2018-06-21T14:05:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
-    
-    <lastmod>2018-06-13T13:28:39.000Z</lastmod>
     
   </url>
   
@@ -82,13 +103,6 @@
     <loc>http://yoursite.com/2018/05/10/sriov_in_intel_ethernet/</loc>
     
     <lastmod>2018-05-15T05:54:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/12/04/Openzfs-tips/</loc>
-    
-    <lastmod>2018-05-10T15:12:15.000Z</lastmod>
     
   </url>
   
