@@ -1,0 +1,1019 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="kernel,nic," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Homer's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="First questionDoes the ring buffer in ethernet NIC or it ‘s just server memory ?Yes, NIC has the microprocess and system memory, but it’s not ring buffer in linux
+High end ethernet cards will almost c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NIC receive package from linux">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/nic_info/index.html">
+<meta property="og:site_name" content="Homer's Blog">
+<meta property="og:description" content="First questionDoes the ring buffer in ethernet NIC or it ‘s just server memory ?Yes, NIC has the microprocess and system memory, but it’s not ring buffer in linux
+High end ethernet cards will almost c">
+<meta property="og:updated_time" content="2018-07-18T04:07:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NIC receive package from linux">
+<meta name="twitter:description" content="First questionDoes the ring buffer in ethernet NIC or it ‘s just server memory ?Yes, NIC has the microprocess and system memory, but it’s not ring buffer in linux
+High end ethernet cards will almost c">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> NIC receive package from linux | Homer's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Homer's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            Tools
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-rss">
+          <a href="/atom.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-rss fa-fw"></i> <br />
+            
+            Rss
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'K4XNzEUeT9VohamGXb51','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NIC receive package from linux
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-07-12T02:29:15+08:00" content="2018-07-12">
+              2018-07-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/07/12/nic_info/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/12/nic_info/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="First-question"><a href="#First-question" class="headerlink" title="First question"></a>First question</h3><p>Does the ring buffer in ethernet NIC or it ‘s just server memory ?<br>Yes, NIC has the microprocess and system memory, but it’s not ring buffer in linux</p>
+<p>High end ethernet cards will almost certainly have their own memory and microprocessors to offload work from the rest of the computer.<br>BTW: eg: if tcp stack offload by NIC and bypass kernel that means the ring buffer in NIC.</p>
+<p>Low end ethernet cards may not have their own onboard memory or microprocessors, and will use the host system’s resources to handle network traffic.<br>BTW: I think if you NIC adapter could not offload anything, that means all packages will process by linux, some low end ethernet cards could bypass kernel too, could use direct memory access for some of IO</p>
+<p>Infiniband cards on the other hand will tend to have their own onboard processors but no onboard memory, and will use direct memory access for all IO.</p>
+<p><a href="https://stackoverflow.com/questions/17154759/how-much-memory-does-a-common-nic-have" target="_blank" rel="external">reference</a></p>
+<h4 id="What-‘s-the-ring-buffer"><a href="#What-‘s-the-ring-buffer" class="headerlink" title="What ‘s the ring buffer"></a>What ‘s the ring buffer</h4><p><a href="https://www.ibm.com/support/knowledgecenter/en/SSQPD3_2.6.0/com.ibm.wllm.doc/nicringbuffers.html" target="_blank" rel="external">Ring buffers on the NIC are important to handle bursts of incoming packets especially if there is some delay when the hardware interrupt handler schedules the packet receiving software interrupt (softirq). NIC ring buffer sizes vary per NIC vendor and NIC grade (that is, server or desktop). By increasing the Rx/Tx ring buffer size as shown below, you can decrease the probability of discarding packets in the NIC during a scheduling delay. The tool used to change ring buffer settings is the Linux utility, ethtool.</a></p>
+<h4 id="Socket-buffer"><a href="#Socket-buffer" class="headerlink" title="Socket buffer"></a>Socket buffer</h4><p>Each network socket is allocated a send buffer for outbound packets and a receive socket for inbound packets. These buffers are assigned a default size that depends on parameters of the operating system<br>In linux<br>receive<br>net.core.rmem_max<br>net.core.rmem_default </p>
+<p>Sender<br>net.core.wmem_max<br>net.core.wmem_default </p>
+<p>###<br>NIC start register a lof of infomation from linux kernel<br>Linux malloc system memory —mapping—&gt; ring buffer queue ( interface:struct sk_buff, netdev_alloc_skb - allocate an skbuff for rx on a specific device ) <a href="https://elixir.bootlin.com/linux/v4.4/source/include/linux/skbuff.h#L706" target="_blank" rel="external">source code</a></p>
+<p>Ring Buffer queue base unit is Packet Descriptor(ready and used)<br>ready means point the null sk_buff</p>
+<p>NIC data —-DMA—-&gt; next ready packet descriptor ( net.core.default_qdisc ? ,The default queuing discipline to use for network devices.)<br>DMA get finish —-&gt; trigger the hardware interrupt (IRQ) let CPU receive the data —-&gt; if not support NAPI, one irq ,got one farme or packget ??<br>DMA get finish —-&gt; trigger the hardware interrupt (IRQ) let CPU receive the data —-&gt; support NAPI, merge IRQ to reduce CPU loading    </p>
+<p>NAPI how to reduce CPU loading ( need driver support )<br>NIC driver register poll, poll get bulk of data from ring buffer<br>    —-&gt; NIC driver register poll<br>    —-&gt; NIC DMA write to linux memory<br>    —-&gt; NIC trigger the IRQ to run driver interrupt handler<br>    —-&gt; interrupt handler <a href="https://elixir.bootlin.com/linux/v4.4/source/include/linux/netdevice.h#L421" target="_blank" rel="external">napi_schdule</a> tirgger the softirq <a href="https://elixir.bootlin.com/linux/v4.4/source/net/core/dev.c#L3204" target="_blank" rel="external">NET_RX_SOFTIRQ ,NAPI subsystem</a>, NET_RX_SOFTIRQ ‘s handler is net_rx_action<br>    —-&gt; let poll(driver register poll) got all receive packages<br>        —-&gt; read sk_buff from ring buffer<br>        —-&gt; check sk_buff, merge sk_buff, because single Frame in diff ring buff<br>        —-&gt; throw sk_buff to high level network stack<br>        —-&gt; clear sk_buff, reset ring buff to ready<br>        —-&gt; update kernel info , receive how many packages , bytes<br>        —-&gt; if no data or if trigger net.core.netdev_budget(packages numbers) or netdev_budget_usecs(timeout), exit the poll<br>    —-&gt; driver will disable irq, after poll receive all packegs, driver will enable NIC interrupts again and disable NAPI subsystem<br> return —-&gt; NIC DMA write to linux memory</p>
+<h5 id="sysctl-w-net-core-netdev-budget-2000"><a href="#sysctl-w-net-core-netdev-budget-2000" class="headerlink" title="sysctl -w net.core.netdev_budget=2000"></a>sysctl -w net.core.netdev_budget=2000</h5><p>Maximum number of packets taken from all interfaces in one polling cycle (NAPI poll).<br>In one polling cycle interfaces which are registered to polling are probed in a round-robin manner. Also, a polling cycle may not exceed netdev_budget_usecs microseconds, even if netdev_budget has not been exhausted.</p>
+<h6 id="netdev-budget-usecs"><a href="#netdev-budget-usecs" class="headerlink" title="netdev_budget_usecs"></a>netdev_budget_usecs</h6><p>Maximum number of microseconds in one NAPI polling cycle. Polling will exit when either netdev_budget_usecs have elapsed during the poll cycle or the number of packets processed reaches netdev_budget.</p>
+<h5 id="netdev-max-backlog"><a href="#netdev-max-backlog" class="headerlink" title="netdev_max_backlog"></a>netdev_max_backlog</h5><p>Maximum number  of  packets,  queued  on  the  INPUT  side, when the interface receives packets faster than kernel can process them.<br>Sets the maximum number of packets allowed to queue when a particular interface receives packets faster than the kernel can process them.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ethtool -g em1</span><br><span class="line">Ring parameters <span class="keyword">for</span> em1:</span><br><span class="line">Pre-set maximums:</span><br><span class="line">RX:		4078</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		4078</span><br><span class="line">Current hardware settings:</span><br><span class="line">RX:		1024</span><br><span class="line">RX Mini:	0</span><br><span class="line">RX Jumbo:	0</span><br><span class="line">TX:		4078</span><br><span class="line"></span><br><span class="line">ethtool -G em1 rx 4078 tx 4078</span><br></pre></td></tr></table></figure>
+<h3 id="NIC-Offload"><a href="#NIC-Offload" class="headerlink" title="NIC Offload"></a><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-nic-offloads" target="_blank" rel="external">NIC Offload</a></h3><h4 id="Generic-Receive-Offloading-replace-Large-receive-offload-https-lwn-net-Articles-358910"><a href="#Generic-Receive-Offloading-replace-Large-receive-offload-https-lwn-net-Articles-358910" class="headerlink" title="[Generic Receive Offloading replace Large receive offload] (https://lwn.net/Articles/358910/)"></a>[Generic Receive Offloading replace Large receive offload] (<a href="https://lwn.net/Articles/358910/" target="_blank" rel="external">https://lwn.net/Articles/358910/</a>)</h4><p><a href="https://en.wikipedia.org/wiki/Large_receive_offload" target="_blank" rel="external">Large receive offload(LRO)</a><br> It works by aggregating multiple incoming packets from a single stream into a larger buffer before they are passed higher up the networking stack, thus reducing the number of packets that have to be processed. Linux implementations generally use LRO in conjunction with the New API (NAPI) to also reduce the number of interrupts.</p>
+<p>LRO Uses the TCP protocol. All incoming packets are re-segmented as they are received, reducing the number of segments the system has to process. They can be merged either in the driver or using the NIC. A problem with LRO is that it tends to resegment all incoming packets, often ignoring differences in headers and other information which can cause errors. It is generally not possible to use LRO when IP forwarding is enabled.</p>
+<p>GRO Uses either the TCP or UDP protocols. GRO is more rigorous than LRO when resegmenting packets. For example it checks the MAC headers of each packet, which must match, only a limited number of TCP or IP headers can be different, and the TCP timestamps must match. Resegmenting can be handled by either the NIC or the GSO code.</p>
+<h4 id="TCP-Segmentation-Offload-TSO"><a href="#TCP-Segmentation-Offload-TSO" class="headerlink" title="TCP Segmentation Offload (TSO)"></a>TCP Segmentation Offload (TSO)</h4><p>Uses the TCP protocol to send large packets. Uses the NIC to handle segmentation, and then adds the TCP, IP and data link layer protocol headers to each segment.</p>
+<h4 id="UDP-Fragmentation-Offload-UFO"><a href="#UDP-Fragmentation-Offload-UFO" class="headerlink" title="UDP Fragmentation Offload (UFO)"></a>UDP Fragmentation Offload (UFO)</h4><p>Uses the UDP protocol to send large packets. Uses the NIC to handle IP fragmentation into MTU sized packets for large UDP datagrams.</p>
+<h4 id="Generic-Segmentation-Offload-GSO"><a href="#Generic-Segmentation-Offload-GSO" class="headerlink" title="Generic Segmentation Offload (GSO)"></a>Generic Segmentation Offload (GSO)</h4><p>Uses the TCP or UDP protocol to send large packets. If the NIC cannot handle segmentation/fragmentation, GSO performs the same operations, bypassing the NIC hardware. This is achieved by delaying segmentation until as late as possible, for example, when the packet is processed by the device driver.</p>
+<h5 id="intel-82599"><a href="#intel-82599" class="headerlink" title="intel 82599"></a>intel 82599</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"> ethtool -k enp131s0f1</span><br><span class="line">Features <span class="keyword">for</span> enp131s0f1:</span><br><span class="line">rx-checksumming: on</span><br><span class="line">tx-checksumming: on</span><br><span class="line">	tx-checksum-ipv4: off [fixed]</span><br><span class="line">	tx-checksum-ip-generic: on</span><br><span class="line">	tx-checksum-ipv6: off [fixed]</span><br><span class="line">	tx-checksum-fcoe-crc: on [fixed]</span><br><span class="line">	tx-checksum-sctp: on</span><br><span class="line">scatter-gather: on</span><br><span class="line">	tx-scatter-gather: on</span><br><span class="line">	tx-scatter-gather-fraglist: off [fixed]</span><br><span class="line">tcp-segmentation-offload: on</span><br><span class="line">	tx-tcp-segmentation: on</span><br><span class="line">	tx-tcp-ecn-segmentation: off [fixed]</span><br><span class="line">	tx-tcp6-segmentation: on</span><br><span class="line">	tx-tcp-mangleid-segmentation: off</span><br><span class="line">udp-fragmentation-offload: off [fixed]</span><br><span class="line">generic-segmentation-offload: on</span><br><span class="line">generic-receive-offload: on</span><br><span class="line">large-receive-offload: off</span><br><span class="line">rx-vlan-offload: on</span><br><span class="line">tx-vlan-offload: on</span><br><span class="line">ntuple-filters: off</span><br><span class="line">receive-hashing: on</span><br><span class="line">highdma: on [fixed]</span><br><span class="line">rx-vlan-filter: on</span><br><span class="line">vlan-challenged: off [fixed]</span><br><span class="line">tx-lockless: off [fixed]</span><br><span class="line">netns-local: off [fixed]</span><br><span class="line">tx-gso-robust: off [fixed]</span><br><span class="line">tx-fcoe-segmentation: on [fixed]</span><br><span class="line">tx-gre-segmentation: on</span><br><span class="line">tx-ipip-segmentation: on</span><br><span class="line">tx-sit-segmentation: on</span><br><span class="line">tx-udp_tnl-segmentation: on</span><br><span class="line">tx-mpls-segmentation: off [fixed]</span><br><span class="line">fcoe-mtu: off [fixed]</span><br><span class="line">tx-nocache-copy: off</span><br><span class="line">loopback: off [fixed]</span><br><span class="line">rx-fcs: off [fixed]</span><br><span class="line">rx-all: off</span><br><span class="line">tx-vlan-stag-hw-insert: off [fixed]</span><br><span class="line">rx-vlan-stag-hw-parse: off [fixed]</span><br><span class="line">rx-vlan-stag-filter: off [fixed]</span><br><span class="line">busy-poll: on [fixed]</span><br><span class="line">tx-gre-csum-segmentation: on</span><br><span class="line">tx-udp_tnl-csum-segmentation: on</span><br><span class="line">tx-gso-partial: on</span><br><span class="line">tx-sctp-segmentation: off [fixed]</span><br><span class="line">l2-fwd-offload: off</span><br><span class="line">hw-tc-offload: off [fixed]</span><br></pre></td></tr></table></figure>
+<h5 id="Mellanox-ConnectX-4-Lx"><a href="#Mellanox-ConnectX-4-Lx" class="headerlink" title="Mellanox ConnectX-4 Lx"></a>Mellanox ConnectX-4 Lx</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">ethtool -k enp131s0f1</span><br><span class="line">Features <span class="keyword">for</span> enp131s0f1:</span><br><span class="line">rx-checksumming: on</span><br><span class="line">tx-checksumming: on</span><br><span class="line">	tx-checksum-ipv4: on</span><br><span class="line">	tx-checksum-ip-generic: off [fixed]</span><br><span class="line">	tx-checksum-ipv6: on</span><br><span class="line">	tx-checksum-fcoe-crc: off [fixed]</span><br><span class="line">	tx-checksum-sctp: off [fixed]</span><br><span class="line">scatter-gather: on</span><br><span class="line">	tx-scatter-gather: on</span><br><span class="line">	tx-scatter-gather-fraglist: off [fixed]</span><br><span class="line">tcp-segmentation-offload: on</span><br><span class="line">	tx-tcp-segmentation: on</span><br><span class="line">	tx-tcp-ecn-segmentation: off [fixed]</span><br><span class="line">	tx-tcp6-segmentation: on</span><br><span class="line">	tx-tcp-mangleid-segmentation: off</span><br><span class="line">udp-fragmentation-offload: off [fixed]</span><br><span class="line">generic-segmentation-offload: on</span><br><span class="line">generic-receive-offload: on</span><br><span class="line">large-receive-offload: on</span><br><span class="line">rx-vlan-offload: on</span><br><span class="line">tx-vlan-offload: on</span><br><span class="line">ntuple-filters: off</span><br><span class="line">receive-hashing: on</span><br><span class="line">highdma: on [fixed]</span><br><span class="line">rx-vlan-filter: on</span><br><span class="line">vlan-challenged: off [fixed]</span><br><span class="line">tx-lockless: off [fixed]</span><br><span class="line">netns-local: off [fixed]</span><br><span class="line">tx-gso-robust: off [fixed]</span><br><span class="line">tx-fcoe-segmentation: off [fixed]</span><br><span class="line">tx-gre-segmentation: off [fixed]</span><br><span class="line">tx-ipip-segmentation: off [fixed]</span><br><span class="line">tx-sit-segmentation: off [fixed]</span><br><span class="line">tx-udp_tnl-segmentation: on</span><br><span class="line">tx-mpls-segmentation: off [fixed]</span><br><span class="line">fcoe-mtu: off [fixed]</span><br><span class="line">tx-nocache-copy: off</span><br><span class="line">loopback: off [fixed]</span><br><span class="line">rx-fcs: off</span><br><span class="line">rx-all: off</span><br><span class="line">tx-vlan-stag-hw-insert: off [fixed]</span><br><span class="line">rx-vlan-stag-hw-parse: off [fixed]</span><br><span class="line">rx-vlan-stag-filter: off [fixed]</span><br><span class="line">busy-poll: off [fixed]</span><br><span class="line">tx-gre-csum-segmentation: off [fixed]</span><br><span class="line">tx-udp_tnl-csum-segmentation: on</span><br><span class="line">tx-gso-partial: on</span><br><span class="line">tx-sctp-segmentation: off [fixed]</span><br><span class="line">l2-fwd-offload: off [fixed]</span><br><span class="line">hw-tc-offload: off</span><br></pre></td></tr></table></figure>
+<h4 id="softnet-stat"><a href="#softnet-stat" class="headerlink" title="softnet_stat"></a><a href="https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/" target="_blank" rel="external">softnet_stat</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/net/softnet_<span class="built_in">stat</span>;</span><br><span class="line">00000797 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000</span><br><span class="line">1e391700 00000000 00000039 00000000 00000000 00000000 00000000 00000000 00000000 00000000</span><br><span class="line">e46ce530 00000000 00000010 00000000 00000000 00000000 00000000 00000000 00000000 00000000</span><br><span class="line">046aed8d 00000000 0000003f 00000000 00000000 00000000 00000000 00000000 00000000 00000000</span><br><span class="line">-----    -----    --------                                              -------  -------</span><br><span class="line">   \      \_ drop count \                                                  \        \-flow <span class="built_in">limit</span> cont</span><br><span class="line">    \_ packet count      \                                                  \-- cpu collision          </span><br><span class="line">                          \- time sequeeze</span><br><span class="line"></span><br><span class="line">Important details about /proc/net/softnet_<span class="built_in">stat</span>:</span><br><span class="line"></span><br><span class="line">Each line of /proc/net/softnet_<span class="built_in">stat</span> corresponds to a struct softnet_data structure, of <span class="built_in">which</span> there is 1 per CPU.</span><br><span class="line"></span><br><span class="line">The values are separated by a single space and are displayed <span class="keyword">in</span> hexadecimal</span><br><span class="line">The first value, sd-&gt;processed, is the number of network frames processed. This can be more than the total number of network frames received <span class="keyword">if</span> you are using ethernet bonding. There are cases <span class="built_in">where</span> the ethernet bonding driver will trigger network data to be re-processed, <span class="built_in">which</span> would increment the sd-&gt;processed count more than once <span class="keyword">for</span> the same packet.</span><br><span class="line"></span><br><span class="line">The second value, sd-&gt;dropped, is the number of network frames dropped because there was no room on the processing queue. More on this later.</span><br><span class="line">If second values are gorwing, improve sysctl -w net.core.netdev_max_backlog = 2000, A value over 10000 is unlikely to be very helpful.</span><br><span class="line"></span><br><span class="line">The third value, sd-&gt;time_squeeze, is (as we saw) the number of <span class="built_in">times</span> the net_rx_action loop terminated because the budget was consumed or the time <span class="built_in">limit</span> was reached, but more work could have been. Increasing the budget as explained earlier can <span class="built_in">help</span> reduce this.</span><br><span class="line">If 3rd column is growing,improve sysctl -w net.core.netdev_budget=600</span><br><span class="line">Be careful of increasing this value unless there is a very good reason. A value exceeding 1000 is unlikely to be very helpful. In fact increasing this value too much can have detrimental effect and <span class="keyword">in</span> the worse <span class="keyword">case</span> scenario lead to softirq hangs or performance problems, as the softirqs can run <span class="keyword">for</span> too long and starve other processes of CPU</span><br><span class="line"></span><br><span class="line">The next 5 values are always 0.</span><br><span class="line"></span><br><span class="line">The ninth value, sd-&gt;cpu_collision, is a count of the number of <span class="built_in">times</span> a collision occurred when trying to obtain a device lock when transmitting packets. This article is about receive, so this statistic will not be seen below.</span><br><span class="line"></span><br><span class="line">The tenth value, sd-&gt;received_rps, is a count of the number of <span class="built_in">times</span> this CPU has been woken up to process packets via an Inter-processor Interrupt</span><br><span class="line"></span><br><span class="line">The last value, flow_<span class="built_in">limit</span>_count, is a count of the number of <span class="built_in">times</span> the flow <span class="built_in">limit</span> has been reached. Flow limiting is an optional Receive Packet Steering feature that will be examined shortly.</span><br><span class="line"></span><br><span class="line">If you decide to monitor this file and graph the results, you must be extremely careful that the ordering of these fields hasn’t changed and that the meaning of each field has been preserved. You will need to <span class="built_in">read</span> the kernel <span class="built_in">source</span> to verify this.</span><br><span class="line"></span><br><span class="line">seq_<span class="built_in">printf</span>(seq,</span><br><span class="line">       <span class="string">"%08x %08x %08x %08x %08x %08x %08x %08x %08x %08x %08x\n"</span>,</span><br><span class="line">       sd-&gt;processed, sd-&gt;dropped, sd-&gt;time_squeeze, 0,</span><br><span class="line">       0, 0, 0, 0, /* was fastroute */</span><br><span class="line">       sd-&gt;cpu_collision, sd-&gt;received_rps, flow_<span class="built_in">limit</span>_count);</span><br><span class="line"></span><br><span class="line"><span class="comment">#convert these data by bash</span></span><br><span class="line"></span><br><span class="line">cat ./softnet_stat.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">awk <span class="string">'BEGIN &#123;</span><br><span class="line">     t[1]="sd-&gt;processed"</span><br><span class="line">     t[2]="sd-&gt;dropped"</span><br><span class="line">     t[3]="sd-&gt;time_squeeze"</span><br><span class="line">     t[9]="sd-&gt;cpu_collision"</span><br><span class="line">     t[10]="sd-&gt;received_rps"</span><br><span class="line">     printf "%s %s %s %s %s\n",t[1],t[2],t[3],t[9],t[10];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   printf "%d %d %d %d %d\n", strtonum( "0x"$1 ),strtonum( "0x"$2 ),strtonum( "0x"$3 ),strtonum( "0x"$9 ),strtonum( "0x"$10 )</span><br><span class="line">&#125;'</span>  /proc/net/softnet_<span class="built_in">stat</span> | column -t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ watch <span class="_">-d</span> ./softnet_stat.sh</span><br><span class="line">Every 2.0s: ./softnet_stat.sh                                                                                          Wed Jul 18 11:32:10 2018</span><br><span class="line"></span><br><span class="line">sd-&gt;processed  sd-&gt;dropped  sd-&gt;time_squeeze  sd-&gt;cpu_collision  sd-&gt;received_rps</span><br><span class="line">511952849      0            3                 0                  0</span><br><span class="line">172076174      0            0                 0                  0</span><br><span class="line">424094332      0            0                 0                  0</span><br><span class="line">202775884      0            0                 0                  0</span><br><span class="line">207782085      0            0                 0                  0</span><br><span class="line">269964983      0            1                 0                  0</span><br><span class="line">409462655      0            0                 0                  0</span><br><span class="line">253556517      0            0                 0                  0</span><br><span class="line">215071078      0            0                 0                  0</span><br><span class="line">321583328      0            0                 0                  0</span><br><span class="line">4854           0            0                 0                  0</span><br><span class="line">5438           0            0                 0                  0</span><br><span class="line">4832           0            0                 0                  0</span><br><span class="line">5124           0            0                 0                  0</span><br><span class="line">5409           0            0                 0                  0</span><br><span class="line">5512           0            0                 0                  0</span><br><span class="line">5765           0            0                 0                  0</span><br><span class="line">4915           0            0                 0                  0</span><br><span class="line">4208           0            0                 0                  0</span><br><span class="line">3617           0            0                 0                  0</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kernel/" rel="tag">#kernel</a>
+          
+            <a href="/tags/nic/" rel="tag">#nic</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/11/memory/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/kernel_stack_record/" rel="prev" title="Linux kernel stack record">
+                Linux kernel stack record <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/mq1-penn.jpg"
+               alt="Homer Li" />
+          <p class="site-author-name" itemprop="name">Homer Li</p>
+          <p class="site-description motion-element" itemprop="description">The chioce you make, the risks you take</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">107</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/homerl/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/112219574615546910314" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> G+
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-question"><span class="nav-number">1.</span> <span class="nav-text">First question</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-‘s-the-ring-buffer"><span class="nav-number">1.1.</span> <span class="nav-text">What ‘s the ring buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket-buffer"><span class="nav-number">1.2.</span> <span class="nav-text">Socket buffer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sysctl-w-net-core-netdev-budget-2000"><span class="nav-number">1.2.1.</span> <span class="nav-text">sysctl -w net.core.netdev_budget=2000</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#netdev-budget-usecs"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">netdev_budget_usecs</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#netdev-max-backlog"><span class="nav-number">1.2.2.</span> <span class="nav-text">netdev_max_backlog</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NIC-Offload"><span class="nav-number">2.</span> <span class="nav-text">NIC Offload</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Generic-Receive-Offloading-replace-Large-receive-offload-https-lwn-net-Articles-358910"><span class="nav-number">2.1.</span> <span class="nav-text">[Generic Receive Offloading replace Large receive offload] (https://lwn.net/Articles/358910/)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-Segmentation-Offload-TSO"><span class="nav-number">2.2.</span> <span class="nav-text">TCP Segmentation Offload (TSO)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-Fragmentation-Offload-UFO"><span class="nav-number">2.3.</span> <span class="nav-text">UDP Fragmentation Offload (UFO)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Generic-Segmentation-Offload-GSO"><span class="nav-number">2.4.</span> <span class="nav-text">Generic Segmentation Offload (GSO)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#intel-82599"><span class="nav-number">2.4.1.</span> <span class="nav-text">intel 82599</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mellanox-ConnectX-4-Lx"><span class="nav-number">2.4.2.</span> <span class="nav-text">Mellanox ConnectX-4 Lx</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#softnet-stat"><span class="nav-number">2.5.</span> <span class="nav-text">softnet_stat</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Homer Li</span>
+&nbsp&nbsp&nbsp Pageviews: <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+&nbsp&nbsp&nbsp You are the <span id="busuanzi_value_site_uv"></span>th visitor &nbsp&nbsp&nbsp
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'homersblog';
+      var disqus_identifier = '2018/07/12/nic_info/';
+      var disqus_title = 'NIC receive package from linux';
+      var disqus_url = 'http://yoursite.com/2018/07/12/nic_info/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var scrollTop = '';
+    var newHeight = '100';
+
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+
+    // monitor main search box;
+    $('#search-input').on('input', function() {
+    if ($(this).val().length <= 0) {
+      $('#search-result').hide();
+      return;
+    }
+    $('i.search-keyword').text($(this).val());
+    $('a.search-result[href!="#"]').each(function(){
+      this.href = this.href.replace(/\=(.*?)(?=%20site)/,'='+$('#search-input').val())
+    });
+    $('#search-result').show();
+    });
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    searchFunc = function(){};
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: false,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 100;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end); 
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        }
+    });}
+
+    // handle and trigger popup window;
+    $(window).bind('scroll', function() {
+      scrollTop = $( window ).scrollTop();
+      newHeight = scrollTop + 100;
+    });
+    $('#search-result a').mousedown(function(e) {
+        window.location.href = this.href;
+      });
+    $('.popup-trigger').mousedown(function(e) {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      $('#local-search-input').val($('#search-input').val());
+      document.getElementById('local-search-input').dispatchEvent(new Event('input'));
+      e.stopPropagation();
+      if(jQuery(window).width() < 750) {
+        $('.site-search-form').after( $( ".popup" ) );
+        $('.popup').show().addClass('popup-mobile').css('top', 0);
+        $('html, body').animate({
+          scrollTop: $('.popup').offset().top
+        }, 500);
+      } else {
+        $('.popup').removeClass('popup-mobile').css('top', newHeight).toggle();
+      };
+    });
+
+    $('#search-input').focus(function() {
+    if ($(this).val().length > 0) {
+      $('#search-result').show();
+      }
+    });
+    $('#search-input').blur(function() {
+      $('#search-result').hide();
+    });
+
+    $('html').click(function() {
+      $('.popup').hide();
+    });
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+
+</body>
+</html>

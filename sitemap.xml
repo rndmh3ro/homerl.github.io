@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    <loc>http://yoursite.com/2018/07/17/TCP_retrans_because_duplicate_ack/</loc>
     
-    <lastmod>2018-07-11T07:46:08.000Z</lastmod>
+    <lastmod>2018-07-18T05:05:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/12/nic_info/</loc>
+    
+    <lastmod>2018-07-18T04:07:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/12/kernel_stack_record/</loc>
+    
+    <lastmod>2018-07-12T07:54:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/12/benchmark/</loc>
+    
+    <lastmod>2018-07-12T06:28:21.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/07/02/mem/</loc>
     
-    <lastmod>2018-07-09T01:48:13.000Z</lastmod>
+    <lastmod>2018-07-12T06:27:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/04/06/Lustre-operations/</loc>
+    
+    <lastmod>2018-07-11T09:42:08.000Z</lastmod>
     
   </url>
   
